@@ -28,11 +28,11 @@ public class registro {
         private String horaAssinaturaCoordenacao = "";
         private String dataAssinaturaCoordenacao = "";
 
-        public Registro(String id, String name) {
+        public registro(String id, String name) {
             this.id = id;
             this.name = name;
         }
-        public Registro(String id, String name, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String dataAssinatura, String horaAssinatura) {
+        public registro(String id, String name, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String dataAssinatura, String horaAssinatura) {
             this.id = id;
             this.name = name;
             this.setor = setor;

@@ -9,7 +9,7 @@ package model;
  * @author gbarrosn
  */
 public class registro {
-     private String id;
+        private String id;
         private String name;
         private String setor;
         private String turno;

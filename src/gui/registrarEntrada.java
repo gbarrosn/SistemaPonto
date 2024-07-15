@@ -39,7 +39,6 @@ public class registrarEntrada extends javax.swing.JFrame {
         jButtonEntrada = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,8 +110,6 @@ public class registrarEntrada extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jLabel3.setText("jLabel3");
-
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
         jLabel4.setText("Registrar entrada");
 
@@ -127,11 +124,6 @@ public class registrarEntrada extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(110, Short.MAX_VALUE)
                     .addComponent(jLabel4)
@@ -145,11 +137,6 @@ public class registrarEntrada extends javax.swing.JFrame {
                     .addContainerGap(21, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 84, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addGap(0, 85, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -209,7 +196,6 @@ public class registrarEntrada extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEntrada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldMatricula;

@@ -171,6 +171,9 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaActionPerformed
         // TODO add your handling code here:
+        registrarSaida telaSaida = new registrarSaida();
+        telaSaida.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonSaidaActionPerformed
 
     private void jButtonAssinaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaActionPerformed

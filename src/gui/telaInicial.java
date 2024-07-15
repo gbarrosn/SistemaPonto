@@ -162,6 +162,11 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaActionPerformed
         // TODO add your handling code here:
+        registrarEntrada telaEntrada = new registrarEntrada();
+        telaEntrada.setVisible(true);
+        this.dispose();
+        //TODO: falta fechar a tela inicial
+
     }//GEN-LAST:event_jButtonEntradaActionPerformed
 
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaActionPerformed

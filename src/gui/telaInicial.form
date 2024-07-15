@@ -150,10 +150,13 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sa&#xed;da Almo&#xe7;o"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaidaAlmocoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEntradaAlmoco">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sa&#xed;da Almo&#xe7;o"/>
+                <Property name="text" type="java.lang.String" value="Retorno Almo&#xe7;o"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonAssinatura">

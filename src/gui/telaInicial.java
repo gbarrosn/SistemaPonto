@@ -61,8 +61,13 @@ public class telaInicial extends javax.swing.JFrame {
         });
 
         jButtonSaidaAlmoco.setText("Saída Almoço");
+        jButtonSaidaAlmoco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaidaAlmocoActionPerformed(evt);
+            }
+        });
 
-        jButtonEntradaAlmoco.setText("Saída Almoço");
+        jButtonEntradaAlmoco.setText("Retorno Almoço");
 
         jButtonAssinatura.setText("Registrar Assinatura");
         jButtonAssinatura.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +188,13 @@ public class telaInicial extends javax.swing.JFrame {
     private void jButtonAssinaturaCoordenacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaCoordenacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAssinaturaCoordenacaoActionPerformed
+
+    private void jButtonSaidaAlmocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaAlmocoActionPerformed
+        // TODO add your handling code here:
+        saidaAlmoco almoco = new saidaAlmoco();
+        this.dispose();
+        almoco.setVisible(true);
+    }//GEN-LAST:event_jButtonSaidaAlmocoActionPerformed
 
     /**
      * @param args the command line arguments

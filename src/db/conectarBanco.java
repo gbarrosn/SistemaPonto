@@ -2,6 +2,7 @@ package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -31,12 +32,15 @@ public class conectarBanco {
                 }
                 connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
                 System.out.println("Conexão com o banco de dados MySQL estabelecida!");
+                Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery("SHOW TABLES");
+                if (!rs.next()) {
+                    criarTabelas();
+                }
+                stmt.close();
             } catch (SQLException e) {
                 if (e.getMessage().contains("database 'pontoeletronico' does not exist")) {
-                    criarBanco();
-                    criarTabelas(); // Call the function to create tables
-                    connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
-                    System.out.println("Banco de dados PontoEletronico criado e tabelas criadas com sucesso!");
+                    
                 } else {
                     throw e;
                 }
@@ -60,40 +64,40 @@ public class conectarBanco {
 
     private static void criarTabelas() throws SQLException {
         // Replace with your actual table creation SQL statements
-        String sqlCriarFuncionarios = "CREATE TABLE funcionarios (\n" +
-                                        "  id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                                        "  nome TEXT NOT NULL,\n" +
-                                        "  matricula INTEGER NOT NULL UNIQUE,\n" +
-                                        "  setor TEXT NOT NULL,\n" +
-                                        "  turno TEXT NOT NULL,\n" +
-                                        "  funcao TEXT NOT NULL,\n" +
-                                        "  data_admissao TEXT NOT NULL,\n" +
-                                        "  escala TEXT NOT NULL,\n" +
-                                        "  horario TEXT NOT NULL,\n" +
-                                        "  horas_semanais TEXT NOT NULL,\n" +
-                                        "  codigo_de_barras TEXT NOT NULL UNIQUE,\n" +
-                                        "  senha TEXT NOT NULL\n" +
+        String sqlCriarFuncionarios = "CREATE TABLE funcionarios (" +
+                                        "  id INTEGER PRIMARY KEY," +
+                                        "  nome TEXT NOT NULL," +
+                                        "  matricula INTEGER NOT NULL," +
+                                        "  setor TEXT NOT NULL," +
+                                        "  turno TEXT NOT NULL," +
+                                        "  funcao TEXT NOT NULL," +
+                                        "  data_admissao TEXT NOT NULL," +
+                                        "  escala TEXT NOT NULL," +
+                                        "  horario TEXT NOT NULL," +
+                                        "  horas_semanais TEXT NOT NULL," +
+                                        "  codigo_de_barras TEXT NOT NULL," +
+                                        "  senha TEXT NOT NULL" +
                                         ");";
 
-        String sqlCriarRegistros = "CREATE TABLE registros (\n" +
-                                    "  id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                                    "  setor TEXT NOT NULL,\n" +
-                                    "  turno TEXT NOT NULL,\n" +
-                                    "  funcao TEXT NOT NULL,\n" +
-                                    "  id_funcionario INTEGER NOT NULL,\n" +
-                                    "  hora_entrada TEXT NOT NULL,\n" +
-                                    "  saida_almoco TEXT NOT NULL,\n" +
-                                    "  retorno_almoco TEXT NOT NULL,\n" +
-                                    "  saida TEXT NOT NULL,\n" +
-                                    "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)\n" +
+        String sqlCriarRegistros = "CREATE TABLE registros (" +
+                                    "  id INTEGER PRIMARY KEY ," +
+                                    "  setor TEXT NOT NULL," +
+                                    "  turno TEXT NOT NULL," +
+                                    "  funcao TEXT NOT NULL," +
+                                    "  id_funcionario INTEGER NOT NULL," +
+                                    "  hora_entrada TEXT NOT NULL," +
+                                    "  saida_almoco TEXT NOT NULL," +
+                                    "  retorno_almoco TEXT NOT NULL," +
+                                    "  saida TEXT NOT NULL," +
+                                    "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
                                     ");";
 
-        String sqlCriarAssinatura = "CREATE TABLE assinatura (\n" +
-                                    "  id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                                    "  id_funcionario INTEGER NOT NULL,\n" +
-                                    "  data_assinatura TEXT NOT NULL,\n" +
-                                    "  hora_assinatura TEXT NOT NULL,\n" +
-                                    "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id) \n" +
+        String sqlCriarAssinatura = "CREATE TABLE assinatura (" +
+                                    "  id INTEGER PRIMARY KEY," +
+                                    "  id_funcionario INTEGER NOT NULL," +
+                                    "  data_assinatura TEXT NOT NULL," +
+                                    "  hora_assinatura TEXT NOT NULL," +
+                                    "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id) " +
                                     ");";
 
         Connection conn = conectarBanco.conectar(); // Get a connection
@@ -102,6 +106,7 @@ public class conectarBanco {
         // Execute the table creation SQL statements
         stmt.execute(sqlCriarFuncionarios);
         stmt.execute(sqlCriarRegistros);
+        stmt.execute(sqlCriarAssinatura);
 
     }
     public static void main(String[] args) {

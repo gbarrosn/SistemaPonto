@@ -13,5 +13,44 @@ public class assinatura {
     int idFuncionario;
     String dataAssinatura;
     String horaAssinatura;
-    
+
+    public assinatura(int idAssinatura, int idFuncionario, String dataAssinatura, String horaAssinatura) {
+        this.idAssinatura = idAssinatura;
+        this.idFuncionario = idFuncionario;
+        this.dataAssinatura = dataAssinatura;
+        this.horaAssinatura = horaAssinatura;
+    }
+    // Getters
+    public int getIdAssinatura() {
+        return idAssinatura;
+    }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public String getDataAssinatura() {
+        return dataAssinatura;
+    }
+
+    public String getHoraAssinatura() {
+        return horaAssinatura;
+    }
+
+    // Setters
+    public void setIdAssinatura(int idAssinatura) {
+        this.idAssinatura = idAssinatura;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public void setDataAssinatura(String dataAssinatura) {
+        this.dataAssinatura = dataAssinatura;
+    }
+
+    public void setHoraAssinatura(String horaAssinatura) {
+        this.horaAssinatura = horaAssinatura;
+    }
 }

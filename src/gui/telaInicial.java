@@ -188,6 +188,9 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void jButtonAssinaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaActionPerformed
         // TODO add your handling code here:
+        registrarAssinatura assinar = new registrarAssinatura();
+        this.dispose();
+        assinar.setVisible(true);
     }//GEN-LAST:event_jButtonAssinaturaActionPerformed
 
     private void jButtonAssinaturaCoordenacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaCoordenacaoActionPerformed

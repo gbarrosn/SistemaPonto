@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package db;
-import java.sql.*;
 
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -93,5 +95,24 @@ public class conectarBanco {
             System.out.println("Conexão com o banco de dados fechada!");
         }
     }
+
+
+  public static void main(String[] args) throws SQLException {
+    // Connect to the database
+    try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (final ClassNotFoundException e) {
+            System.err.println(e);
+            return;
+        }
+    Connection connection = conectarBanco.conectar();
+
+    if (connection != null) {
+      System.out.println("Conectado com sucesso!");
+      connection.close(); // Close the connection after testing
+    } else {
+      System.out.println("Falha ao conectar!");
+    }
+  }
 
 }

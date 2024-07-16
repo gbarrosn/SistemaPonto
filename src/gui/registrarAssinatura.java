@@ -52,9 +52,11 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
         jLabel4.setText("Mês da frequência");
 
-        jTextFieldMatricula.setText("Matrícula");
-
-        jPasswordField1.setText("jPasswordField1");
+        jTextFieldMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMatriculaActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Senha:");
 
@@ -126,6 +128,11 @@ public class registrarAssinatura extends javax.swing.JFrame {
         );
 
         jButton2.setText("Tela Inicial");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -199,6 +206,17 @@ public class registrarAssinatura extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        telaInicial tela = new telaInicial();
+        this.dispose();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextFieldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
 
     /**
      * @param args the command line arguments

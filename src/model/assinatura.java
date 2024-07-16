@@ -9,5 +9,9 @@ package model;
  * @author gbarrosn
  */
 public class assinatura {
+    int idAssinatura;
+    int idFuncionario;
+    String dataAssinatura;
+    String horaAssinatura;
     
 }

@@ -190,4 +190,26 @@ public class dadosFuncionario {
         }
     }
 
+    // funcao que deleta um funcionario do banco de dados
+    public void deletarFuncionario(int id) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to delete the funcionario
+        String query = "DELETE FROM funcionarios WHERE id = " + id;
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+            
+            // Close the statement and connection
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

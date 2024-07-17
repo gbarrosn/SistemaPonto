@@ -90,6 +90,7 @@ public class conectarBanco {
                                     "  retorno_almoco TEXT NOT NULL," +
                                     "  saida TEXT NOT NULL," +
                                     "  data TEXT NOT NULL," +
+                                    "  mes INTEGER NOT NULL," +
                                     "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
                                     ");";
 

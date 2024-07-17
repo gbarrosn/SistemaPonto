@@ -47,9 +47,10 @@ public class dadosRegistro {
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
+                int mes = resultSet.getInt("mes");
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
+                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data, mes);
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -67,7 +68,7 @@ public class dadosRegistro {
         // Create a query to insert the registro
         String query = "INSERT INTO registros (setor, turno, funcao, id_funcionario, hora_entrada, saida_almoco, retorno_almoco, saida, data) VALUES ('" 
         + registro.getSetor() + "', '" + registro.getTurno() + "', '" + registro.getFuncao() + "', " + registro.getIdFuncionario() + ", '" 
-        + registro.getHoraEntrada() + "', '" + registro.getSaidaAlmoco() + "', '" + registro.getRetornoAlmoco() + "', '" + registro.getHoraSaida() + "', '" + registro.getData() + "')";
+        + registro.getHoraEntrada() + "', '" + registro.getSaidaAlmoco() + "', '" + registro.getRetornoAlmoco() + "', '" + registro.getHoraSaida() + "', '" + registro.getData() + "', '" + registro.getMes() + "')";
         
         try {
             // Create a statement
@@ -112,9 +113,10 @@ public class dadosRegistro {
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
+                int mes = resultSet.getInt("mes");
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
+                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data, mes);
                 registros.add(registro);
             }
         } catch (SQLException e) {

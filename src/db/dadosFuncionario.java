@@ -45,11 +45,11 @@ public class dadosFuncionario {
                 String setor = resultSet.getString("setor");
                 String turno = resultSet.getString("turno");
                 String funcao = resultSet.getString("funcao");
-                String dataAdmissao = resultSet.getString("dataAdmissao");
+                String dataAdmissao = resultSet.getString("data_admissao");
                 String escala = resultSet.getString("escala");
                 String horario = resultSet.getString("horario");
-                String horasSemanais = resultSet.getString("horasSemanais");
-                String codigoDeBarras = resultSet.getString("codigoDeBarras");
+                String horasSemanais = resultSet.getString("horas_semanais");
+                String codigoDeBarras = resultSet.getString("codigo_de_barras");
                 String senha = resultSet.getString("senha");
 
                 // Retrieve other fields as needed

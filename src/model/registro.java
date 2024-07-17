@@ -19,8 +19,10 @@ public class registro {
     String retornoAlmoco;
     String horaSaida;
     String data;
+    int mes;
 
-    public registro(int idRegistro, String setor, String turno, String funcao, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
+    public registro(int idRegistro, String setor, String turno, String funcao, 
+    int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data, int mes) {
         this.idRegistro = idRegistro;
         this.setor = setor;
         this.turno = turno;
@@ -31,6 +33,7 @@ public class registro {
         this.retornoAlmoco = retornoAlmoco;
         this.horaSaida = horaSaida;
         this.data = data;
+        this.mes = mes;
     }
 
     // Getters
@@ -74,6 +77,10 @@ public class registro {
         return data;
     }
 
+    public int getMes() {
+        return mes;
+    }
+
     // Setters
     public void setIdRegistro(int idRegistro) {
         this.idRegistro = idRegistro;
@@ -113,6 +120,10 @@ public class registro {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
     }
 
 }

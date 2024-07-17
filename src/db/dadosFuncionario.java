@@ -73,4 +73,53 @@ public class dadosFuncionario {
         return funcionarios;
     }
 
+    // funcao que busca um funcionario pelo id
+    public funcionario buscarFuncionarioPorId(int id) throws SQLException {
+        funcionario funcionario = null;
+        
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to retrieve the funcionario by id
+        String query = "SELECT * FROM funcionarios WHERE id = " + id;
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery(query);
+            
+            // Check if the result set has any data
+            if (resultSet.next()) {
+                // Retrieve the data from the result set
+                String nome = resultSet.getString("nome");
+                String matricula = resultSet.getString("matricula");
+                String setor = resultSet.getString("setor");
+                String turno = resultSet.getString("turno");
+                String funcao = resultSet.getString("funcao");
+                String dataAdmissao = resultSet.getString("data_admissao");
+                String escala = resultSet.getString("escala");
+                String horario = resultSet.getString("horario");
+                String horasSemanais = resultSet.getString("horas_semanais");
+                String codigoDeBarras = resultSet.getString("codigo_de_barras");
+                String senha = resultSet.getString("senha");
+
+                // Retrieve other fields as needed
+                
+                // Create a new Funcionario object
+                funcionario = new funcionario(id, nome, matricula, setor, turno, funcao, dataAdmissao, escala, horario, horasSemanais, codigoDeBarras, senha);
+                // Set other fields as needed
+            }
+            
+            // Close the result set, statement, and connection
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return funcionario;
+    }
 }

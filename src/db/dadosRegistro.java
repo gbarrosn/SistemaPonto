@@ -126,4 +126,48 @@ public class dadosRegistro {
         return registros;
     }
 
+    // funcao que busca registros pelo id do funcionario e numero do mes e retorna uma lista de registros
+    public List<registro> buscarRegistrosPorIdEMes(int idFuncionario, int mes) throws SQLException {
+
+        List<registro> registros = new ArrayList<>();
+        
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to retrieve the registros by id_funcionario and mes
+        String query = "SELECT * FROM registros WHERE id_funcionario = " + idFuncionario + " AND mes = " + mes;
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery(query);
+            
+            // Iterate over the result set
+            while (resultSet.next()) {
+                // Retrieve the data from the result set
+                int idRegistro = resultSet.getInt("id");
+                String setor = resultSet.getString("setor");
+                String turno = resultSet.getString("turno");
+                String funcao = resultSet.getString("funcao");
+                int idFuncionarioResult = resultSet.getInt("id_funcionario");
+                String horaEntrada = resultSet.getString("hora_entrada");
+                String saidaAlmoco = resultSet.getString("saida_almoco");
+                String retornoAlmoco = resultSet.getString("retorno_almoco");
+                String horaSaida = resultSet.getString("saida");
+                String data = resultSet.getString("data");
+                int mesResult = resultSet.getInt("mes");
+
+                // Create a new Registro object
+                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data, mesResult);
+                registros.add(registro);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return registros;
+    }
+
 }

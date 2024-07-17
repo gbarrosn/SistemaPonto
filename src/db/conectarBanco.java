@@ -99,6 +99,7 @@ public class conectarBanco {
                                     "  id_funcionario INTEGER NOT NULL," +
                                     "  data_assinatura TEXT NOT NULL," +
                                     "  hora_assinatura TEXT NOT NULL," +
+                                    "  mes INTEGER NOT NULL," +
                                     "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id) " +
                                     ");";
 

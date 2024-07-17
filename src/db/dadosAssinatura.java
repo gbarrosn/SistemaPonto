@@ -14,7 +14,7 @@ public class dadosAssinatura {
         Connection connection = conectarBanco.conectar();
         
         // Create a query to insert the assinatura
-        String query = "INSERT INTO assinaturas (id_funcionario, mes, data_assinatura, hora_assinatura) VALUES (" + idFuncionario + ", " + mes + ", '" + dataAssinatura + "', '" + horaAssinatura + "')";
+        String query = "INSERT INTO assinaturas (id_funcionario, data_assinatura, hora_assinatura, mes) VALUES (" + idFuncionario +  ", '" + dataAssinatura + "', '" + horaAssinatura + ", " + mes +"')";
         
         try {
             // Create a statement
@@ -29,4 +29,8 @@ public class dadosAssinatura {
 
     }
 
-}
+    // buscar assinatura usando o id do funcionario
+    
+
+
+

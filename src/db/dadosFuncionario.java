@@ -122,4 +122,37 @@ public class dadosFuncionario {
         
         return funcionario;
     }
+
+    // funcao que insere um funcionario no banco de dados
+    public void inserirFuncionario(funcionario funcionario) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to insert the funcionario
+        String query = "INSERT INTO funcionarios " + 
+                        "(nome, matricula, setor, turno, funcao," +
+                        "data_admissao, escala, horario, horas_semanais, " +
+                        "codigo_de_barras, senha) " +
+                        "VALUES ('" + funcionario.getNome() + "', '" + 
+                        funcionario.getMatricula() + "', '" + funcionario.getSetor() + "', '" + 
+                        funcionario.getTurno() + "', '" + funcionario.getFuncao() + "', '" + 
+                        funcionario.getDataAdmissao() + "', '" + funcionario.getEscala() + "', '" + 
+                        funcionario.getHorario() + "', '" + funcionario.getHorasSemanais() + "', '" + 
+                        funcionario.getCodigoDeBarras() + "', '" + funcionario.getSenha() + "');";
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+            
+            // Close the statement and connection
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -155,4 +155,39 @@ public class dadosFuncionario {
         }
     }
 
+    // funcao que atualiza um funcionario no banco de dados
+    public void atualizarFuncionario(funcionario funcionario) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to update the funcionario
+        String query = "UPDATE funcionarios SET " + 
+                        "nome = '" + funcionario.getNome() + "', " + 
+                        "matricula = '" + funcionario.getMatricula() + "', " + 
+                        "setor = '" + funcionario.getSetor() + "', " + 
+                        "turno = '" + funcionario.getTurno() + "', " + 
+                        "funcao = '" + funcionario.getFuncao() + "', " + 
+                        "data_admissao = '" + funcionario.getDataAdmissao() + "', " + 
+                        "escala = '" + funcionario.getEscala() + "', " + 
+                        "horario = '" + funcionario.getHorario() + "', " + 
+                        "horas_semanais = '" + funcionario.getHorasSemanais() + "', " + 
+                        "codigo_de_barras = '" + funcionario.getCodigoDeBarras() + "', " + 
+                        "senha = '" + funcionario.getSenha() + "' " + 
+                        "WHERE id = " + funcionario.getIdFuncionario();
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+            
+            // Close the statement and connection
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

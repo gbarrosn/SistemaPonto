@@ -11,12 +11,14 @@ package model;
 public class assinatura {
     int idAssinatura;
     int idFuncionario;
+    int mes;
     String dataAssinatura;
     String horaAssinatura;
 
-    public assinatura(int idAssinatura, int idFuncionario, String dataAssinatura, String horaAssinatura) {
+    public assinatura(int idAssinatura, int idFuncionario, int mes, String dataAssinatura, String horaAssinatura) {
         this.idAssinatura = idAssinatura;
         this.idFuncionario = idFuncionario;
+        this.mes = mes;
         this.dataAssinatura = dataAssinatura;
         this.horaAssinatura = horaAssinatura;
     }
@@ -37,6 +39,10 @@ public class assinatura {
         return horaAssinatura;
     }
 
+    public int getMes() {
+        return mes;
+    }   
+
     // Setters
     public void setIdAssinatura(int idAssinatura) {
         this.idAssinatura = idAssinatura;
@@ -52,5 +58,9 @@ public class assinatura {
 
     public void setHoraAssinatura(String horaAssinatura) {
         this.horaAssinatura = horaAssinatura;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
     }
 }

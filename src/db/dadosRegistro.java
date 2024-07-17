@@ -44,7 +44,7 @@ public class dadosRegistro {
                 String horaEntrada = resultSet.getString("hora_entrada");
                 String saidaAlmoco = resultSet.getString("saida_almoco");
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
-                String horaSaida = resultSet.getString("hora_saida");
+                String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
 
                 // Create a new Registro object

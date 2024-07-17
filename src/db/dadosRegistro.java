@@ -17,6 +17,7 @@ import model.registro;
  */
 public class dadosRegistro {
     
+    // funcao que lista todos os registros e retorna uma lista dos mesmos
     public List<registro> buscarRegistros() throws SQLException {
         List<registro> registros = new ArrayList<>();
         
@@ -58,12 +59,15 @@ public class dadosRegistro {
         return registros;
     }
 
+    // funcao que insere um registro no banco de dados
     public void inserirRegistro(registro registro) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         
         // Create a query to insert the registro
-        String query = "INSERT INTO registros (setor, turno, funcao, id_funcionario, hora_entrada, saida_almoco, retorno_almoco, saida, data) VALUES ('" + registro.getSetor() + "', '" + registro.getTurno() + "', '" + registro.getFuncao() + "', " + registro.getIdFuncionario() + ", '" + registro.getHoraEntrada() + "', '" + registro.getSaidaAlmoco() + "', '" + registro.getRetornoAlmoco() + "', '" + registro.getHoraSaida() + "', '" + registro.getData() + "')";
+        String query = "INSERT INTO registros (setor, turno, funcao, id_funcionario, hora_entrada, saida_almoco, retorno_almoco, saida, data) VALUES ('" 
+        + registro.getSetor() + "', '" + registro.getTurno() + "', '" + registro.getFuncao() + "', " + registro.getIdFuncionario() + ", '" 
+        + registro.getHoraEntrada() + "', '" + registro.getSaidaAlmoco() + "', '" + registro.getRetornoAlmoco() + "', '" + registro.getHoraSaida() + "', '" + registro.getData() + "')";
         
         try {
             // Create a statement
@@ -75,6 +79,49 @@ public class dadosRegistro {
             e.printStackTrace();
         }
 
+    }
+
+    // funcao que busca registros pelo id do funcionario e retorna uma lista de registros
+    public List<registro> buscarRegistrosPorId(int idFuncionario) throws SQLException {
+
+        List<registro> registros = new ArrayList<>();
+        
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to retrieve the registros by id_funcionario
+        String query = "SELECT * FROM registros WHERE id_funcionario = " + idFuncionario;
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery(query);
+            
+            // Iterate over the result set
+            while (resultSet.next()) {
+                // Retrieve the data from the result set
+                int idRegistro = resultSet.getInt("id");
+                String setor = resultSet.getString("setor");
+                String turno = resultSet.getString("turno");
+                String funcao = resultSet.getString("funcao");
+                int idFuncionarioResult = resultSet.getInt("id_funcionario");
+                String horaEntrada = resultSet.getString("hora_entrada");
+                String saidaAlmoco = resultSet.getString("saida_almoco");
+                String retornoAlmoco = resultSet.getString("retorno_almoco");
+                String horaSaida = resultSet.getString("saida");
+                String data = resultSet.getString("data");
+
+                // Create a new Registro object
+                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
+                registros.add(registro);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return registros;
     }
 
 }

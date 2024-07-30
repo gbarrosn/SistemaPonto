@@ -199,6 +199,8 @@ public class registrarEntrada extends javax.swing.JFrame {
         } else {
             // Show message "Funcionário não encontrado"
             JOptionPane.showMessageDialog(this, "Funcionário não encontrado.");
+            // Clear the text field
+            jTextFieldMatricula.setText("");
         }
         
         

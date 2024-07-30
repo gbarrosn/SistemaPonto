@@ -127,6 +127,9 @@ public class configuracoes extends javax.swing.JFrame {
 
     private void jButtonListarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarFuncionariosActionPerformed
         // TODO add your handling code here:
+        listarFuncionarios tela = new listarFuncionarios();
+        this.dispose();
+        tela.setVisible(true);
     }//GEN-LAST:event_jButtonListarFuncionariosActionPerformed
 
     /**

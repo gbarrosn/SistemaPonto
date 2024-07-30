@@ -20,7 +20,7 @@ import model.funcionario;
 public class dadosFuncionario {
 
     // funcao que lista todos os funcionarios e retorna uma lista dos mesmos
-    public List<funcionario> buscarFuncionarios() throws SQLException {
+    public static List<funcionario> buscarFuncionarios() throws SQLException {
         List<funcionario> funcionarios = new ArrayList<>();
         
         // Connect to the database

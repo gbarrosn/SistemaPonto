@@ -214,7 +214,7 @@ public class dadosFuncionario {
     }
 
     // funcao que busca o funcionario pela matricula
-    public funcionario buscarFuncionarioPorMatricula(String matricula) throws SQLException {
+    public static funcionario buscarFuncionarioPorMatricula(String matricula) throws SQLException {
         funcionario funcionario = null;
         
         // Connect to the database

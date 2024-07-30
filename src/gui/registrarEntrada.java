@@ -1,10 +1,15 @@
 package gui;
 
+import db.dadosFuncionario;
 import db.dadosRegistro;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -49,7 +54,12 @@ public class registrarEntrada extends javax.swing.JFrame {
         jButtonEntrada.setText("Registrar Entrada");
         jButtonEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEntradaActionPerformed(evt);
+                try {
+                    jButtonEntradaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -161,14 +171,19 @@ public class registrarEntrada extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaActionPerformed
+    private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButtonEntradaActionPerformed
         // TODO add your handling code here:
         String matricula = jTextFieldMatricula.getText();
         String data = java.time.LocalDate.now().toString();
         String hora = java.time.LocalTime.now().toString();
 
         // registrar no banco de dados
-        Funcionario funcionarioRegistro = findFuncionarioByMatricula(matricula);
+        funcionario funcionarioRegistro = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
+
+        if (funcionarioRegistro != null) {
+            dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), data, hora);
+        }
+        
         
     }//GEN-LAST:event_jButtonEntradaActionPerformed
 

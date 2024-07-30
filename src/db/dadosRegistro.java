@@ -232,5 +232,23 @@ public class dadosRegistro {
         }
     }
 
+    public static void registrarSaidaAlmoco(int id_funcionario, String hora, String data) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to update the registro
+        String query = "UPDATE registros SET saida_almoco = '" + hora + "' WHERE id_funcionario = " + id_funcionario + " AND data = '" + data + "'";
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
 
 }

@@ -3,10 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
+import db.dadosRegistro;
+import model.funcionario;
 /**
  *
  * @author gbarrosn
@@ -43,6 +51,16 @@ public class saidaAlmoco extends javax.swing.JFrame {
         jLabel1.setText("Insira a sua matrícula abaixo:");
 
         jButtonSaida.setText("Registrar Saída");
+        jButtonSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    jButtonSaidaActionPerformed(evt);
+                } catch (HeadlessException | SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
 
         jButton1.setText("Tela Inicial");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +164,32 @@ public class saidaAlmoco extends javax.swing.JFrame {
         tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, SQLException {//GEN-FIRST:event_jButtonSaidaActionPerformed
+        // TODO add your handling code here:
+        // Get the matricula from the jTextField
+        String matricula = jTextFieldMatricula.getText();
+        String data = java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String hora = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        funcionario funcionarioRegistro = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
+
+        if (funcionarioRegistro != null) {
+            if (dadosRegistro.verificarRegistroExistente(funcionarioRegistro.getIdFuncionario(), data)) {
+                dadosRegistro.registrarSaidaAlmoco(funcionarioRegistro.getIdFuncionario(), hora, data);
+                JOptionPane.showMessageDialog(this, "Saída registrada!");
+                jTextFieldMatricula.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Registro de entrada não encontrado!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Funcionário não encontrado!");
+        }
+
+        
+
+
+    }//GEN-LAST:event_jButtonSaidaActionPerformed
 
     /**
      * @param args the command line arguments

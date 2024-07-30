@@ -138,13 +138,12 @@ public class listarFuncionarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
 
         //List<funcionario> funcionarios = new ArrayList<>();
         try {
             funcionarios = dadosFuncionario.buscarFuncionarios();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 
@@ -169,7 +168,7 @@ public class listarFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
             // TODO: utilizar os dados do funcionario selecionado para preencher os campos do formulário de alteração
@@ -177,7 +176,7 @@ public class listarFuncionarios extends javax.swing.JFrame {
             
 
         } else {
-            // TODO: mostrar uma mensagem pedindo para selecionar o usuário a ser alterado
+
             JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário para alterar.");
         }
 

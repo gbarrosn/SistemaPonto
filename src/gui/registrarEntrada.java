@@ -1,6 +1,6 @@
 package gui;
 
-
+import db.dadosRegistro;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Timer;
@@ -47,6 +47,11 @@ public class registrarEntrada extends javax.swing.JFrame {
         jLabel1.setText("Insira a sua matrícula abaixo:");
 
         jButtonEntrada.setText("Registrar Entrada");
+        jButtonEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntradaActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Tela Inicial");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +160,17 @@ public class registrarEntrada extends javax.swing.JFrame {
         tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaActionPerformed
+        // TODO add your handling code here:
+        String matricula = jTextFieldMatricula.getText();
+        String data = java.time.LocalDate.now().toString();
+        String hora = java.time.LocalTime.now().toString();
+
+        // registrar no banco de dados
+        Funcionario funcionarioRegistro = findFuncionarioByMatricula(matricula);
+        
+    }//GEN-LAST:event_jButtonEntradaActionPerformed
 
     /**
      * @param args the command line arguments

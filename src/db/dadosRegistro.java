@@ -170,4 +170,21 @@ public class dadosRegistro {
         return registros;
     }
 
+    public void criarRegistro(String matricula, String hora, String data) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to insert the registro
+        String query = "INSERT INTO registros (id_funcionario, hora_entrada, data) VALUES (" + matricula + ", '" + hora + "', '" + data + "')";
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+    }
+}
 }

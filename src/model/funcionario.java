@@ -11,7 +11,7 @@ package model;
 public class funcionario {
     int idFuncionario;
     String nome;
-    String matricula;
+    int matricula;
     String setor;
     String turno;
     String funcao;
@@ -22,7 +22,7 @@ public class funcionario {
     String codigoDeBarras;
     String senha;
 
-    public funcionario(int idFuncionario, String nome, String matricula, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String senha) {
+    /*public funcionario(int idFuncionario, String nome, String matricula, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String senha) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.matricula = matricula;
@@ -35,7 +35,7 @@ public class funcionario {
         this.horasSemanais = horasSemanais;
         this.codigoDeBarras = codigoDeBarras;
         this.senha = senha;
-    }
+    }*/
 
     public int getIdFuncionario() {
         return idFuncionario;
@@ -53,12 +53,12 @@ public class funcionario {
         this.nome = nome;
     }
 
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setMatricula(int i) {
+        this.matricula = i;
     }
 
     public String getSetor() {

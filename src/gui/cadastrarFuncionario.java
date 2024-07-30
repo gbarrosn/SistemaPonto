@@ -4,6 +4,8 @@
  */
 package gui;
 
+import model.funcionario;
+
 /**
  *
  * @author gbarrosn
@@ -51,7 +53,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jTextFieldCodigoBarras = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldSenha = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jButtonCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,10 +103,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jLabel12.setText("Senha:");
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
@@ -165,7 +167,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,7 +215,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -251,9 +253,22 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldHorarioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        funcionario novoFuncionario = new funcionario();
+        novoFuncionario.setNome(jTextFieldNome.getText());
+        novoFuncionario.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+        novoFuncionario.setSetor(jTextFieldSetor.getText());
+        novoFuncionario.setTurno(jComboBoxTurno.getSelectedItem().toString());
+        novoFuncionario.setFuncao(jTextFieldFuncao.getText());
+        novoFuncionario.setDataAdmissao(jTextFieldDataAdmissao.getText());
+        novoFuncionario.setEscala(jTextFieldEscala.getText());
+        novoFuncionario.setHorario(jTextFieldHorario.getText());
+        novoFuncionario.setHorasSemanais(jTextFieldHorasSemanais.getText());
+        novoFuncionario.setCodigoDeBarras(jTextFieldCodigoBarras.getText());
+        novoFuncionario.setSenha(jTextFieldSenha.getText());
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,7 +307,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

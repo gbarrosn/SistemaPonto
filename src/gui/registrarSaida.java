@@ -4,10 +4,17 @@
  */
 package gui;
 
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.swing.JOptionPane;
+
+import model.funcionario;
+import db.dadosFuncionario;
+import db.dadosRegistro;
 /**
  *
  * @author gbarrosn
@@ -44,6 +51,16 @@ public class registrarSaida extends javax.swing.JFrame {
         jLabel1.setText("Insira a sua matrícula abaixo:");
 
         jButtonSaida.setText("Registrar Saída");
+        jButtonSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    jButtonSaidaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
 
         jButton1.setText("Tela Inicial");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +164,29 @@ public class registrarSaida extends javax.swing.JFrame {
         tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButtonSaidaActionPerformed
+
+        String matricula = jTextFieldMatricula.getText();
+        String data = java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String hora = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        funcionario funcionarioRegistro = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
+
+        if (funcionarioRegistro != null) {
+            if (dadosRegistro.verificarRegistroExistente(funcionarioRegistro.getIdFuncionario(), data)) {
+                dadosRegistro.registrarSaida(funcionarioRegistro.getIdFuncionario(), hora, data);
+                JOptionPane.showMessageDialog(this, "Saída registrada!");
+                jTextFieldMatricula.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Registro de entrada não encontrado!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Funcionário não encontrado!");
+        }
+
+
+    }//GEN-LAST:event_jButtonSaidaActionPerformed
 
     /**
      * @param args the command line arguments

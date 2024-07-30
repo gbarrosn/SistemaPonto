@@ -55,7 +55,19 @@ public class dadosFuncionario {
                 // Retrieve other fields as needed
                 
                 // Create a new Funcionario object
-                funcionario funcionario = new funcionario(id, nome, matricula, setor, turno, funcao, dataAdmissao, escala, horario, horasSemanais, codigoDeBarras, senha);
+                funcionario funcionario = new funcionario();
+                funcionario.setIdFuncionario(id);
+                funcionario.setNome(nome);
+                funcionario.setMatricula(Integer.parseInt(matricula));
+                funcionario.setSetor(setor);
+                funcionario.setTurno(turno);
+                funcionario.setFuncao(funcao);
+                funcionario.setDataAdmissao(dataAdmissao);
+                funcionario.setEscala(escala);
+                funcionario.setHorario(horario);
+                funcionario.setHorasSemanais(horasSemanais);
+                funcionario.setCodigoDeBarras(codigoDeBarras);
+                funcionario.setSenha(senha);
                 // Set other fields as needed
                 
                 // Add the funcionario to the list
@@ -94,7 +106,7 @@ public class dadosFuncionario {
             if (resultSet.next()) {
                 // Retrieve the data from the result set
                 String nome = resultSet.getString("nome");
-                String matricula = resultSet.getString("matricula");
+                int matricula = resultSet.getInt("matricula");
                 String setor = resultSet.getString("setor");
                 String turno = resultSet.getString("turno");
                 String funcao = resultSet.getString("funcao");
@@ -108,7 +120,20 @@ public class dadosFuncionario {
                 // Retrieve other fields as needed
                 
                 // Create a new Funcionario object
-                funcionario = new funcionario(id, nome, matricula, setor, turno, funcao, dataAdmissao, escala, horario, horasSemanais, codigoDeBarras, senha);
+                funcionario = new funcionario();
+                funcionario.setIdFuncionario(id);
+                funcionario.setNome(nome);
+                funcionario.setMatricula(matricula);
+                funcionario.setSetor(setor);
+                funcionario.setTurno(turno);
+                funcionario.setFuncao(funcao);
+                funcionario.setDataAdmissao(dataAdmissao);
+                funcionario.setEscala(escala);
+                funcionario.setHorario(horario);
+                funcionario.setHorasSemanais(horasSemanais);
+                funcionario.setCodigoDeBarras(codigoDeBarras);
+                funcionario.setSenha(senha);
+
                 // Set other fields as needed
             }
             
@@ -214,7 +239,7 @@ public class dadosFuncionario {
     }
 
     // funcao que busca o funcionario pela matricula
-    public static funcionario buscarFuncionarioPorMatricula(String matricula) throws SQLException {
+    public static funcionario buscarFuncionarioPorMatricula(int matricula) throws SQLException {
         funcionario funcionario = null;
         
         // Connect to the database
@@ -248,7 +273,19 @@ public class dadosFuncionario {
                 // Retrieve other fields as needed
                 
                 // Create a new Funcionario object
-                funcionario = new funcionario(id, nome, matricula, setor, turno, funcao, dataAdmissao, escala, horario, horasSemanais, codigoDeBarras, senha);
+                funcionario = new funcionario();
+                funcionario.setIdFuncionario(id);
+                funcionario.setNome(nome);
+                funcionario.setMatricula(matricula);
+                funcionario.setSetor(setor);
+                funcionario.setTurno(turno);
+                funcionario.setFuncao(funcao);
+                funcionario.setDataAdmissao(dataAdmissao);
+                funcionario.setEscala(escala);
+                funcionario.setHorario(horario);
+                funcionario.setHorasSemanais(horasSemanais);
+                funcionario.setCodigoDeBarras(codigoDeBarras);
+                funcionario.setSenha(senha);
                 // Set other fields as needed
             }
             

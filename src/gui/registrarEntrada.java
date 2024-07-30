@@ -9,6 +9,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+
 import model.*;
 
 /*
@@ -181,7 +184,21 @@ public class registrarEntrada extends javax.swing.JFrame {
         funcionario funcionarioRegistro = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
 
         if (funcionarioRegistro != null) {
-            dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), hora, data);
+            if (dadosRegistro.verificarRegistroExistente(funcionarioRegistro.getIdFuncionario(), data)) {
+                // Registro já existe
+                JOptionPane.showMessageDialog(this, "Registro já existe para este funcionário na data atual.");
+                jTextFieldMatricula.setText("");
+            } else {
+                // Criar novo registro
+                dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), hora, data);
+                // Show message "Entrada registrada!"
+                JOptionPane.showMessageDialog(this, "Entrada registrada!");
+                // Clear the text field
+                jTextFieldMatricula.setText("");
+            }
+        } else {
+            // Show message "Funcionário não encontrado"
+            JOptionPane.showMessageDialog(this, "Funcionário não encontrado.");
         }
         
         

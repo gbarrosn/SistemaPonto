@@ -187,4 +187,32 @@ public class dadosRegistro {
             e.printStackTrace();
         }
     }
+
+    public static boolean verificarRegistroExistente(int id_funcionario, String data) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to check if the registro exists
+        String query = "SELECT * FROM registros WHERE id_funcionario = " + id_funcionario + " AND data = '" + data + "'";
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery(query);
+            
+            // Check if the result set is empty
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+
+
+
 }

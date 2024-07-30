@@ -109,10 +109,10 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jButton1" min="-2" pref="114" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonCadastrar" min="-2" pref="108" max="-2" attributes="0"/>
+                          <Component id="jButtonAlterar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -172,7 +172,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonCadastrar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="jButtonAlterar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -291,12 +291,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldSenha">
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonCadastrar">
+        <Component class="javax.swing.JButton" name="jButtonAlterar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar"/>
+            <Property name="text" type="java.lang.String" value="Alterar funcion&#xe1;rio"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAlterarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

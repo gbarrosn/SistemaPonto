@@ -68,7 +68,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jTextFieldCodigoBarras = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldSenha = new javax.swing.JTextField();
-        jButtonCadastrar = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,10 +118,10 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jLabel12.setText("Senha:");
 
-        jButtonCadastrar.setText("Cadastrar");
-        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAlterar.setText("Alterar funcionário");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
+                jButtonAlterarActionPerformed(evt);
             }
         });
 
@@ -179,10 +179,10 @@ public class alterarFuncionario extends javax.swing.JFrame {
                                 .addComponent(jTextFieldHorario)
                                 .addComponent(jLabel11)
                                 .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonAlterar)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -230,7 +230,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
                     .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -267,7 +267,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldHorarioActionPerformed
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
 
         String nome = jTextFieldNome.getText().trim();
@@ -345,6 +345,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         }
 
         funcionario novoFuncionario = new funcionario();
+        novoFuncionario.setIdFuncionario(funcionario.getIdFuncionario());
         novoFuncionario.setNome(nome);
         novoFuncionario.setMatricula(matricula);
         novoFuncionario.setSetor(setor);
@@ -367,7 +368,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar o funcionário: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,7 +408,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

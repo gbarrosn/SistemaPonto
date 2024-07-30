@@ -9,7 +9,7 @@ package model;
  * @author gbarrosn
  */
 public class funcionario {
-    int idFuncionario;
+    static int idFuncionario;
     String nome;
     int matricula;
     String setor;
@@ -37,7 +37,7 @@ public class funcionario {
         this.senha = senha;
     }*/
 
-    public int getIdFuncionario() {
+    public static int getIdFuncionario() {
         return idFuncionario;
     }
 

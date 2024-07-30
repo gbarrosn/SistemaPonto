@@ -23,7 +23,7 @@ public class conectarBanco {
     private static Connection connection;
 
     public static Connection conectar() throws SQLException {
-        if (connection == null) {
+        if (connection == null || connection.isClosed()) {
             try {
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver"); // Replace with your MySQL driver class name
@@ -32,15 +32,12 @@ public class conectarBanco {
                 }
                 connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
                 System.out.println("Conexão com o banco de dados MySQL estabelecida!");
-                Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery("SHOW TABLES");
-                if (!rs.next()) {
-                    criarTabelas();
-                }
-                stmt.close();
+                //Statement stmt = connection.createStatement();
+                
             } catch (SQLException e) {
                 if (e.getMessage().contains("database 'pontoeletronico' does not exist")) {
-                    
+                    criarBanco();
+                    criarTabelas();
                 } else {
                     throw e;
                 }
@@ -80,19 +77,15 @@ public class conectarBanco {
                                         ");";
 
         String sqlCriarRegistros = "CREATE TABLE registros (" +
-                                    "  id INTEGER PRIMARY KEY ," +
-                                    "  setor TEXT NOT NULL," +
-                                    "  turno TEXT NOT NULL," +
-                                    "  funcao TEXT NOT NULL," +
-                                    "  id_funcionario INTEGER NOT NULL," +
-                                    "  hora_entrada TEXT NOT NULL," +
-                                    "  saida_almoco TEXT NOT NULL," +
-                                    "  retorno_almoco TEXT NOT NULL," +
-                                    "  saida TEXT NOT NULL," +
-                                    "  data TEXT NOT NULL," +
-                                    "  mes INTEGER NOT NULL," +
-                                    "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
-                                    ");";
+                        "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +
+                        "  id_funcionario INTEGER NOT NULL," +
+                        "  hora_entrada TIME," +
+                        "  saida_almoco TIME," +
+                        "  retorno_almoco TIME," +
+                        "  saida TIME," +
+                        "  data DATE NOT NULL," +
+                        "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
+                        ");";
 
         String sqlCriarAssinatura = "CREATE TABLE assinatura (" +
                                     "  id INTEGER PRIMARY KEY," +

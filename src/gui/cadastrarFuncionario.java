@@ -4,6 +4,11 @@
  */
 package gui;
 
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
 import model.funcionario;
 
 /**
@@ -106,7 +111,12 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
+                try {
+                    jButtonCadastrarActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -253,7 +263,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldHorarioActionPerformed
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
         funcionario novoFuncionario = new funcionario();
         novoFuncionario.setNome(jTextFieldNome.getText());
@@ -267,6 +277,18 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setHorasSemanais(jTextFieldHorasSemanais.getText());
         novoFuncionario.setCodigoDeBarras(jTextFieldCodigoBarras.getText());
         novoFuncionario.setSenha(jTextFieldSenha.getText());
+
+        if (jTextFieldNome.getText().isEmpty() || jTextFieldMatricula.getText().isEmpty() || jTextFieldSetor.getText().isEmpty() || jTextFieldFuncao.getText().isEmpty() || jTextFieldDataAdmissao.getText().isEmpty() || jTextFieldEscala.getText().isEmpty() || jTextFieldHorario.getText().isEmpty() || jTextFieldHorasSemanais.getText().isEmpty() || jTextFieldCodigoBarras.getText().isEmpty() || jTextFieldSenha.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor preencha todos os dados!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dadosFuncionario.cadastrarFuncionario(novoFuncionario);
+            JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            cadastrarFuncionario tela = new cadastrarFuncionario();
+            tela.setVisible(true);
+
+        }
+        
         
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 

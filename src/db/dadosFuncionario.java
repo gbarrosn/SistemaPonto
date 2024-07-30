@@ -149,7 +149,7 @@ public class dadosFuncionario {
     }
 
     // funcao que insere um funcionario no banco de dados
-    public void inserirFuncionario(funcionario funcionario) throws SQLException {
+    public static void cadastrarFuncionario(funcionario funcionario) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         

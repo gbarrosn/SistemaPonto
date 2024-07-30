@@ -62,7 +62,7 @@ public class conectarBanco {
     private static void criarTabelas() throws SQLException {
         // Replace with your actual table creation SQL statements
         String sqlCriarFuncionarios = "CREATE TABLE funcionarios (" +
-                                        "  id INTEGER PRIMARY KEY," +
+                                        "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +
                                         "  nome TEXT NOT NULL," +
                                         "  matricula INTEGER NOT NULL," +
                                         "  setor TEXT NOT NULL," +

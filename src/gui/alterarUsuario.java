@@ -4,6 +4,11 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
+import model.funcionario;
+
 /**
  *
  * @author gbarrosn
@@ -13,8 +18,20 @@ public class alterarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form alterarUsuario
      */
-    public alterarUsuario() {
+    public alterarUsuario(funcionario funcionario) {
         initComponents();
+
+        jTextFieldNome.setText(funcionario.getNome());
+        jTextFieldMatricula.setText(String.valueOf(funcionario.getMatricula()));
+        jTextFieldSetor.setText(funcionario.getSetor());
+        jTextFieldFuncao.setText(funcionario.getFuncao());
+        jTextFieldDataAdmissao.setText(funcionario.getDataAdmissao());
+        jTextFieldEscala.setText(funcionario.getEscala());
+        jTextFieldHorario.setText(funcionario.getHorario());
+        jComboBoxTurno.setSelectedItem(funcionario.getTurno());
+        jTextFieldHorasSemanais.setText(funcionario.getHorasSemanais());
+        jTextFieldCodigoBarras.setText(funcionario.getCodigoDeBarras());
+        jTextFieldSenha.setText(funcionario.getSenha());
     }
 
     /**
@@ -341,8 +358,8 @@ public class alterarUsuario extends javax.swing.JFrame {
         novoFuncionario.setSenha(senha);
 
         try {
-            dadosFuncionario.cadastrarFuncionario(novoFuncionario);
-            JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            dadosFuncionario.alterarFuncionario(novoFuncionario);
+            JOptionPane.showMessageDialog(this, "Funcionário alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             cadastrarFuncionario tela = new cadastrarFuncionario();
             tela.setVisible(true);
@@ -382,7 +399,7 @@ public class alterarUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alterarUsuario().setVisible(true);
+                new alterarUsuario(null).setVisible(true);
             }
         });
     }

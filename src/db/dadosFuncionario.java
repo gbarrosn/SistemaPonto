@@ -181,7 +181,7 @@ public class dadosFuncionario {
     }
 
     // funcao que atualiza um funcionario no banco de dados
-    public void atualizarFuncionario(funcionario funcionario) throws SQLException {
+    public static void alterarFuncionario(funcionario funcionario) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         

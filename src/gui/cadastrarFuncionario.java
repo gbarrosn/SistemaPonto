@@ -278,7 +278,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setCodigoDeBarras(jTextFieldCodigoBarras.getText());
         novoFuncionario.setSenha(jTextFieldSenha.getText());
 
-        if (jTextFieldNome.getText().isEmpty() || jTextFieldMatricula.getText().isEmpty() || jTextFieldSetor.getText().isEmpty() || jTextFieldFuncao.getText().isEmpty() || jTextFieldDataAdmissao.getText().isEmpty() || jTextFieldEscala.getText().isEmpty() || jTextFieldHorario.getText().isEmpty() || jTextFieldHorasSemanais.getText().isEmpty() || jTextFieldCodigoBarras.getText().isEmpty() || jTextFieldSenha.getText().isEmpty()) {
+        if (jTextFieldNome.getText().equals("") || jTextFieldMatricula.getText().equals("") || jTextFieldSetor.getText().equals("")  || jTextFieldFuncao.getText().equals("")  || jTextFieldDataAdmissao.getText().equals("")  || jTextFieldEscala.getText().equals("")  || jTextFieldHorario.getText().equals("")  || jTextFieldHorasSemanais.getText().equals("")  || jTextFieldCodigoBarras.getText().equals("")  || jTextFieldSenha.getText().equals("") ) {
             JOptionPane.showMessageDialog(this, "Por favor preencha todos os dados!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             dadosFuncionario.cadastrarFuncionario(novoFuncionario);

@@ -265,31 +265,107 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
-        funcionario novoFuncionario = new funcionario();
-        novoFuncionario.setNome(jTextFieldNome.getText());
-        novoFuncionario.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-        novoFuncionario.setSetor(jTextFieldSetor.getText());
-        novoFuncionario.setTurno(jComboBoxTurno.getSelectedItem().toString());
-        novoFuncionario.setFuncao(jTextFieldFuncao.getText());
-        novoFuncionario.setDataAdmissao(jTextFieldDataAdmissao.getText());
-        novoFuncionario.setEscala(jTextFieldEscala.getText());
-        novoFuncionario.setHorario(jTextFieldHorario.getText());
-        novoFuncionario.setHorasSemanais(jTextFieldHorasSemanais.getText());
-        novoFuncionario.setCodigoDeBarras(jTextFieldCodigoBarras.getText());
-        novoFuncionario.setSenha(jTextFieldSenha.getText());
 
-        if (jTextFieldNome.getText().equals("") || jTextFieldMatricula.getText().equals("") || jTextFieldSetor.getText().equals("")  || jTextFieldFuncao.getText().equals("")  || jTextFieldDataAdmissao.getText().equals("")  || jTextFieldEscala.getText().equals("")  || jTextFieldHorario.getText().equals("")  || jTextFieldHorasSemanais.getText().equals("")  || jTextFieldCodigoBarras.getText().equals("")  || jTextFieldSenha.getText().equals("") ) {
-            JOptionPane.showMessageDialog(this, "Por favor preencha todos os dados!", "Error", JOptionPane.ERROR_MESSAGE);
+
+        String nome = jTextFieldNome.getText().trim();
+        if (nome.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo nome é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int matricula = 0;
+        String matriculaStr = jTextFieldMatricula.getText().trim();
+        if (matriculaStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo matrícula é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         } else {
-            dadosFuncionario.cadastrarFuncionario(novoFuncionario);
-            JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-            cadastrarFuncionario tela = new cadastrarFuncionario();
-            tela.setVisible(true);
+            try {
+                matricula = Integer.parseInt(matriculaStr);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "O campo matrícula deve ser um número", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
 
+        String setor = jTextFieldSetor.getText().trim();
+        if (setor.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo setor é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String turno = jComboBoxTurno.getSelectedItem().toString();
+        if (turno.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo turno é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String funcao = jTextFieldFuncao.getText().trim();
+        if (funcao.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo função é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String dataAdmissao = jTextFieldDataAdmissao.getText().trim();
+        if (dataAdmissao.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo data de admissão é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String escala = jTextFieldEscala.getText().trim();
+        if (escala.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo escala é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String horario = jTextFieldHorario.getText().trim();
+        if (horario.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo horário é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String horasSemanais = jTextFieldHorasSemanais.getText().trim();
+        if (horasSemanais.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo horas semanais é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String codigoDeBarras = jTextFieldCodigoBarras.getText().trim();
+        if (codigoDeBarras.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo código de barras é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String senha = jTextFieldSenha.getText().trim();
+        if (senha.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo senha é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         
-        
+        funcionario novoFuncionario = new funcionario();
+        novoFuncionario.setNome(nome);
+        novoFuncionario.setMatricula(matricula);
+        novoFuncionario.setSetor(setor);
+        novoFuncionario.setTurno(turno);
+        novoFuncionario.setFuncao(funcao);
+        novoFuncionario.setDataAdmissao(dataAdmissao);
+        novoFuncionario.setEscala(escala);
+        novoFuncionario.setHorario(horario);
+        novoFuncionario.setHorasSemanais(horasSemanais);
+        novoFuncionario.setCodigoDeBarras(codigoDeBarras);
+        novoFuncionario.setSenha(senha);
+
+
+        try {
+        dadosFuncionario.cadastrarFuncionario(novoFuncionario);
+        JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+        cadastrarFuncionario tela = new cadastrarFuncionario();
+        tela.setVisible(true);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar o funcionário: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**

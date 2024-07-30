@@ -168,7 +168,7 @@ public class saidaAlmoco extends javax.swing.JFrame {
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, SQLException {//GEN-FIRST:event_jButtonSaidaActionPerformed
         // TODO add your handling code here:
         // Get the matricula from the jTextField
-        String matricula = jTextFieldMatricula.getText();
+        int matricula = Integer.parseInt(jTextFieldMatricula.getText());
         String data = java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String hora = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 

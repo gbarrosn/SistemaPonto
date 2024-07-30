@@ -167,7 +167,7 @@ public class registrarSaida extends javax.swing.JFrame {
 
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButtonSaidaActionPerformed
 
-        String matricula = jTextFieldMatricula.getText();
+        int matricula = Integer.parseInt(jTextFieldMatricula.getText());
         String data = java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String hora = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 

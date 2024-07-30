@@ -173,7 +173,9 @@ public class listarFuncionarios extends javax.swing.JFrame {
         if (selectedRow != -1) {
             // TODO: utilizar os dados do funcionario selecionado para preencher os campos do formulário de alteração
             funcionario selectedFuncionario = funcionarios.get(selectedRow);
-            
+            alterarFuncionario tela = new alterarFuncionario(selectedFuncionario);
+            tela.setVisible(true);
+            this.dispose();
 
         } else {
 

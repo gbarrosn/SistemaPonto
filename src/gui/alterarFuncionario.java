@@ -13,12 +13,12 @@ import model.funcionario;
  *
  * @author gbarrosn
  */
-public class alterarUsuario extends javax.swing.JFrame {
+public class alterarFuncionario extends javax.swing.JFrame {
 
     /**
      * Creates new form alterarUsuario
      */
-    public alterarUsuario(funcionario funcionario) {
+    public alterarFuncionario(funcionario funcionario) {
         initComponents();
 
         jTextFieldNome.setText(funcionario.getNome());
@@ -361,7 +361,7 @@ public class alterarUsuario extends javax.swing.JFrame {
             dadosFuncionario.alterarFuncionario(novoFuncionario);
             JOptionPane.showMessageDialog(this, "Funcionário alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-            cadastrarFuncionario tela = new cadastrarFuncionario();
+            listarFuncionarios tela = new listarFuncionarios();
             tela.setVisible(true);
 
         } catch (Exception ex) {
@@ -386,20 +386,21 @@ public class alterarUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alterarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alterarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alterarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alterarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alterarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alterarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alterarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alterarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alterarUsuario(null).setVisible(true);
+                new alterarFuncionario(null).setVisible(true);
             }
         });
     }

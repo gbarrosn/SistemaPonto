@@ -79,11 +79,11 @@ public class conectarBanco {
         String sqlCriarRegistros = "CREATE TABLE registros (" +
                         "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +
                         "  id_funcionario INTEGER NOT NULL," +
-                        "  hora_entrada TIME," +
-                        "  saida_almoco TIME," +
-                        "  retorno_almoco TIME," +
-                        "  saida TIME," +
-                        "  data DATE NOT NULL," +
+                        "  hora_entrada text," +
+                        "  saida_almoco text," +
+                        "  retorno_almoco text," +
+                        "  saida text," +
+                        "  data text NOT NULL," +
                         "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
                         ");";
 

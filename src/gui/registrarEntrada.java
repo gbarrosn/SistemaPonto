@@ -174,14 +174,14 @@ public class registrarEntrada extends javax.swing.JFrame {
     private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButtonEntradaActionPerformed
         // TODO add your handling code here:
         String matricula = jTextFieldMatricula.getText();
-        String data = java.time.LocalDate.now().toString();
-        String hora = java.time.LocalTime.now().toString();
+        String data = java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String hora = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
         // registrar no banco de dados
         funcionario funcionarioRegistro = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
 
         if (funcionarioRegistro != null) {
-            dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), data, hora);
+            dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), hora, data);
         }
         
         

@@ -346,7 +346,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         }
 
         funcionario novoFuncionario = new funcionario();
-        novoFuncionario.setIdFuncionario(funcionario.getIdFuncionario());
+        novoFuncionario.setIdFuncionario(funcionario.getIdFuncionario()); //TODO: não está carregando o int id funcionario
         novoFuncionario.setNome(nome);
         novoFuncionario.setMatricula(matricula);
         novoFuncionario.setSetor(setor);

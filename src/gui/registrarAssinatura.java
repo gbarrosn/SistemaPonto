@@ -340,10 +340,12 @@ public class registrarAssinatura extends javax.swing.JFrame {
         @SuppressWarnings("deprecation")
         String senha = jPasswordField1.getText();
 
-        if (matricula == selectedFuncionario.getMatricula() && senha == selectedFuncionario.getSenha()) {
+        if (matricula == selectedFuncionario.getMatricula() && senha.equals(selectedFuncionario.getSenha())) {
             System.out.println("Senha certa");
+            //TODO: registrar assinatura
         } else {
-            System.out.println("erado");
+            System.out.println("errado");
+            JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

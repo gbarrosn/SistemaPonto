@@ -352,10 +352,21 @@ public class registrarAssinatura extends javax.swing.JFrame {
     
             int idFuncionario = selectedFuncionario.getIdFuncionario();
             List<registro> registros = dadosRegistro.buscarRegistrosPorId(idFuncionario);
+
+            int mesSelecionado = jComboBox1.getSelectedIndex() + 1;
+            //List<registro> registrosMesSelecionado = new ArrayList<>();
+            for (registro r : registros) {
+                String data = r.getData();
+                String[] parts = data.split("/");
+                int mes = Integer.parseInt(parts[1]);
+                if (mes == mesSelecionado) {
+                    registrosMes.add(r);
+                }
+            }
             
             // Exibir registros em uma tabela ou outro componente visual
-            for (registro r : registros) {
-                System.out.println(r.getIdFuncionario());
+            for (registro r : registrosMes) {
+                System.out.println(r.getIdFuncionario() + "  data  " + r.getData());
             }
 
         } catch (SQLException e) {

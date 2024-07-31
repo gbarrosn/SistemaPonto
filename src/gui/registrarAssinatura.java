@@ -32,6 +32,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
     List<funcionario> funcionarios = new ArrayList<>();
     List<registro>  registros = new ArrayList<>();
     List<registro> registrosMes = new ArrayList<>();
+    funcionario selectedFuncionario = new funcionario();
     /**
      * Creates new form registrarAssinatura
      */
@@ -334,7 +335,16 @@ public class registrarAssinatura extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //TODO: botão de registrar assinatura
+        int matricula = Integer.parseInt(jTextFieldMatricula.getText().trim());
+        @SuppressWarnings("deprecation")
+        String senha = jPasswordField1.getText();
 
+        if (matricula == selectedFuncionario.getMatricula() && senha == selectedFuncionario.getSenha()) {
+            System.out.println("Senha certa");
+        } else {
+            System.out.println("erado");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -345,7 +355,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         
         try {
-            funcionario selectedFuncionario = (funcionario) jComboBox2.getSelectedItem();
+            selectedFuncionario = (funcionario) jComboBox2.getSelectedItem();
             if (selectedFuncionario == null) {
                 JOptionPane.showMessageDialog(this, "Selecione um funcionário", "Aviso", JOptionPane.WARNING_MESSAGE);
                 return;

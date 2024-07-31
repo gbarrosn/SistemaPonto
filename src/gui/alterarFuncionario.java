@@ -274,10 +274,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String nome = jTextFieldNome.getText().trim();
-        if (nome.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo nome é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+
 
         int matricula = 0;
         String matriculaStr = jTextFieldMatricula.getText().trim();
@@ -294,58 +291,14 @@ public class alterarFuncionario extends javax.swing.JFrame {
         }
 
         String setor = jTextFieldSetor.getText().trim();
-        if (setor.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo setor é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String turno = jComboBoxTurno.getSelectedItem().toString();
-        if (turno.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo turno é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String funcao = jTextFieldFuncao.getText().trim();
-        if (funcao.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo função é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String dataAdmissao = jTextFieldDataAdmissao.getText().trim();
-        if (dataAdmissao.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo data de admissão é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String escala = jTextFieldEscala.getText().trim();
-        if (escala.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo escala é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String horario = jTextFieldHorario.getText().trim();
-        if (horario.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo horário é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String horasSemanais = jTextFieldHorasSemanais.getText().trim();
-        if (horasSemanais.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo horas semanais é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String codigoDeBarras = jTextFieldCodigoBarras.getText().trim();
-        if (codigoDeBarras.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo código de barras é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         String senha = jTextFieldSenha.getText().trim();
-        if (senha.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo senha é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }*/
 
         funcionario novoFuncionario = new funcionario();
         novoFuncionario.setIdFuncionario(funcionario.getIdFuncionario()); //TODO: não está carregando o int id funcionario

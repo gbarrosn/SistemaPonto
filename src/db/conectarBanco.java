@@ -35,7 +35,7 @@ public class conectarBanco {
                 //Statement stmt = connection.createStatement();
                 
             } catch (SQLException e) {
-                if (e.getMessage().contains("database 'pontoeletronico' does not exist")) {
+                if (e.getMessage().contains("Unknown database 'PontoEletronico'")) {
                     criarBanco();
                     criarTabelas();
                 } else {

@@ -337,6 +337,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //TODO: botão de registrar assinatura
         int matricula = Integer.parseInt(jTextFieldMatricula.getText().trim());
+        
         @SuppressWarnings("deprecation")
         String senha = jPasswordField1.getText();
 

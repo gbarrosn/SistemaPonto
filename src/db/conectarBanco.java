@@ -88,7 +88,7 @@ public class conectarBanco {
                         ");";
 
         String sqlCriarAssinatura = "CREATE TABLE assinatura (" +
-                                    "  id INTEGER PRIMARY KEY," +
+                                    "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +
                                     "  id_funcionario INTEGER NOT NULL," +
                                     "  data_assinatura TEXT NOT NULL," +
                                     "  hora_assinatura TEXT NOT NULL," +

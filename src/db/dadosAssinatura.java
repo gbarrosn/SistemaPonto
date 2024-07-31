@@ -9,7 +9,7 @@ import java.util.List;
 
 public class dadosAssinatura {
     //função que registra uma assinatura no banco de dados usando conectarBanco e assinatura
-    public void registrarAssinatura(int idFuncionario, int mes, String dataAssinatura, String horaAssinatura) throws SQLException {
+    public static void registrarAssinatura(int idFuncionario, int mes, String dataAssinatura, String horaAssinatura) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         

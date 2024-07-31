@@ -19,6 +19,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import db.dadosAssinatura;
 import db.dadosFuncionario;
 import db.dadosRegistro;
 import model.funcionario;
@@ -337,15 +338,33 @@ public class registrarAssinatura extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //TODO: botão de registrar assinatura
         int matricula = Integer.parseInt(jTextFieldMatricula.getText().trim());
-        
+
         @SuppressWarnings("deprecation")
         String senha = jPasswordField1.getText();
 
         if (matricula == selectedFuncionario.getMatricula() && senha.equals(selectedFuncionario.getSenha())) {
             System.out.println("Senha certa");
             //TODO: registrar assinatura
-        } else {
-            System.out.println("errado");
+
+            // Get the current time
+            LocalTime currentTime = LocalTime.now();
+            String formattedTime = currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+            // Get the current date
+            LocalDate currentDate = LocalDate.now();
+            String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yy"));
+
+            int mes = jComboBox1.getSelectedIndex() + 1;
+            int idFuncionario = selectedFuncionario.getIdFuncionario();
+
+            try {
+                dadosAssinatura.registrarAssinatura(idFuncionario, mes, formattedDate, formattedTime);
+                JOptionPane.showMessageDialog(this, "Assinatura registrada com sucesso!");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Erro ao registrar assinatura: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+
             JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");
         }
         

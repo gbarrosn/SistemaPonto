@@ -15,6 +15,7 @@ import model.funcionario;
  */
 public class alterarFuncionario extends javax.swing.JFrame {
 
+    private funcionario funcionarioAlterar;
     /**
      * Creates new form alterarUsuario
      */

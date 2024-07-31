@@ -275,7 +275,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         String nome = jTextFieldNome.getText().trim();
 
-
         int matricula = 0;
         String matriculaStr = jTextFieldMatricula.getText().trim();
         if (matriculaStr.isEmpty()) {

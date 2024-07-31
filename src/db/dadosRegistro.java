@@ -38,19 +38,15 @@ public class dadosRegistro {
             while (resultSet.next()) {
                 // Retrieve the data from the result set
                 int idRegistro = resultSet.getInt("id");
-                String setor = resultSet.getString("setor");
-                String turno = resultSet.getString("turno");
-                String funcao = resultSet.getString("funcao");
                 int idFuncionario = resultSet.getInt("id_funcionario");
                 String horaEntrada = resultSet.getString("hora_entrada");
                 String saidaAlmoco = resultSet.getString("saida_almoco");
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
-                int mes = resultSet.getInt("mes");
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data, mes);
+                registro registro = new registro(idRegistro, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -83,7 +79,7 @@ public class dadosRegistro {
     }
 
     // funcao que busca registros pelo id do funcionario e retorna uma lista de registros
-    public List<registro> buscarRegistrosPorId(int idFuncionario) throws SQLException {
+    public static List<registro> buscarRegistrosPorId(int idFuncionario) throws SQLException {
 
         List<registro> registros = new ArrayList<>();
         
@@ -104,19 +100,16 @@ public class dadosRegistro {
             while (resultSet.next()) {
                 // Retrieve the data from the result set
                 int idRegistro = resultSet.getInt("id");
-                String setor = resultSet.getString("setor");
-                String turno = resultSet.getString("turno");
-                String funcao = resultSet.getString("funcao");
                 int idFuncionarioResult = resultSet.getInt("id_funcionario");
                 String horaEntrada = resultSet.getString("hora_entrada");
                 String saidaAlmoco = resultSet.getString("saida_almoco");
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
-                int mes = resultSet.getInt("mes");
+
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data, mes);
+                registro registro = new registro(idRegistro, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -148,19 +141,15 @@ public class dadosRegistro {
             while (resultSet.next()) {
                 // Retrieve the data from the result set
                 int idRegistro = resultSet.getInt("id");
-                String setor = resultSet.getString("setor");
-                String turno = resultSet.getString("turno");
-                String funcao = resultSet.getString("funcao");
                 int idFuncionarioResult = resultSet.getInt("id_funcionario");
                 String horaEntrada = resultSet.getString("hora_entrada");
                 String saidaAlmoco = resultSet.getString("saida_almoco");
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
-                int mesResult = resultSet.getInt("mes");
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, setor, turno, funcao, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data, mesResult);
+                registro registro = new registro(idRegistro, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
                 registros.add(registro);
             }
         } catch (SQLException e) {

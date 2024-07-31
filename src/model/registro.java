@@ -21,8 +21,7 @@ public class registro {
     String data;
     int mes;
 
-    public registro(int idRegistro, String setor, String turno, String funcao, 
-    int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data, int mes) {
+    public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
         this.idRegistro = idRegistro;
         this.setor = setor;
         this.turno = turno;

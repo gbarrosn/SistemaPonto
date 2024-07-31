@@ -13,19 +13,23 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import db.dadosFuncionario;
+import db.dadosRegistro;
 import model.funcionario;
+import model.registro;
 /**
  *
  * @author gbarrosn
  */
 public class registrarAssinatura extends javax.swing.JFrame {
 
+    List<funcionario> funcionarios = new ArrayList<>();
+    List<registro>  registros = new ArrayList<>();
     /**
      * Creates new form registrarAssinatura
      */
     public registrarAssinatura() {
         initComponents();
-        jComboBox2ActionPerformed(null);
+        popularComboBox2();
     }
 
     /**
@@ -327,27 +331,40 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        //TODO: buscar os registros do mes selecionado e do funcionario selecionado e colocar na tabela
+        //TODO: usar o id do funcionario para buscar os registros dele
+        // TODO: depois usar o mês e criar outra lista de registros com os dados do mês selecionado no combobox1
+        int idFuncionario = jComboBox2.getSelectedIndex(); // Assuming the index represents the id of the selected funcionario
+        try {
+            registros = dadosRegistro.buscarRegistrosPorId(idFuncionario);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        for (registro r : registros) {
+            System.out.println("Data: " + r.getData());
+            System.out.println("Id Funcionario: " + r.getIdFuncionario());
+        }
+        // Now you can use the 'registros' list to do whatever you need with the retrieved registros
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         
-        jComboBox2.removeAllItems();
-
-        List<funcionario> funcionarios = new ArrayList<>();
-        try {
-            funcionarios = dadosFuncionario.buscarFuncionarios();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        for (funcionario funcionario : funcionarios) {
-            jComboBox2.addItem(funcionario.getNome());
-        }
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+    private void popularComboBox2() {
+        try {
+            funcionarios = dadosFuncionario.buscarFuncionarios();
+            jComboBox2.removeAllItems();
+            for (funcionario f : funcionarios) {
+                jComboBox2.addItem(f.getNome());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */

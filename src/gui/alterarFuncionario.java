@@ -313,7 +313,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setCodigoDeBarras(codigoDeBarras);
         novoFuncionario.setSenha(senha);
 
-        // Check if any field in novoFuncionario is empty
+        // Check if any field in novoFuncionario is empty TODO: REPLICAR A OTIMIZAÇÃO NAS OUTRAS CLASSES
         for (java.lang.reflect.Field field : novoFuncionario.getClass().getDeclaredFields()) {
             field.setAccessible(true);
             try {

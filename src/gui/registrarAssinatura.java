@@ -3,19 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.*;
 import java.awt.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -327,18 +322,18 @@ public class registrarAssinatura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         telaInicial tela = new telaInicial();
         this.dispose();
         tela.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextFieldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMatriculaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -347,6 +342,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        
         try {
             funcionario selectedFuncionario = (funcionario) jComboBox2.getSelectedItem();
             if (selectedFuncionario == null) {
@@ -361,6 +357,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
             for (registro r : registros) {
                 System.out.println(r.getIdFuncionario());
             }
+
         } catch (SQLException e) {
             // Handle the exception appropriately, e.g., show an error message to the user
             JOptionPane.showMessageDialog(this, "Erro ao buscar registros: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

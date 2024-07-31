@@ -77,15 +77,15 @@ public class conectarBanco {
                                         ");";
 
         String sqlCriarRegistros = "CREATE TABLE registros (" +
-                        "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +
-                        "  id_funcionario INTEGER NOT NULL," +
-                        "  hora_entrada text," +
-                        "  saida_almoco text," +
-                        "  retorno_almoco text," +
-                        "  saida text," +
-                        "  data text NOT NULL," +
-                        "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
-                        ");";
+                                "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +
+                                "  id_funcionario INTEGER NOT NULL," +
+                                "  hora_entrada text," +
+                                "  saida_almoco text," +
+                                "  retorno_almoco text," +
+                                "  saida text," +
+                                "  data text NOT NULL," +
+                                "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
+                                ");";
 
         String sqlCriarAssinatura = "CREATE TABLE assinatura (" +
                                     "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +

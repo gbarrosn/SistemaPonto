@@ -6,6 +6,8 @@ package gui;
 
 import javax.swing.JOptionPane;
 
+import com.mysql.cj.result.Field;
+
 import db.dadosFuncionario;
 import model.funcionario;
 
@@ -343,7 +345,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         if (senha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo senha é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
-        }
+        }*/
 
         funcionario novoFuncionario = new funcionario();
         novoFuncionario.setIdFuncionario(funcionario.getIdFuncionario()); //TODO: não está carregando o int id funcionario
@@ -358,6 +360,20 @@ public class alterarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setHorasSemanais(horasSemanais);
         novoFuncionario.setCodigoDeBarras(codigoDeBarras);
         novoFuncionario.setSenha(senha);
+
+        // Check if any field in novoFuncionario is empty
+        for (java.lang.reflect.Field field : novoFuncionario.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            try {
+                Object value = field.get(novoFuncionario);
+                if (value == null || value.toString().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "O campo " + field.getName() + " é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            } catch (IllegalAccessException ex) {
+                // Handle exception
+            }
+        }
 
         try {
             dadosFuncionario.alterarFuncionario(novoFuncionario);

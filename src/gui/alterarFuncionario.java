@@ -18,20 +18,20 @@ public class alterarFuncionario extends javax.swing.JFrame {
     /**
      * Creates new form alterarUsuario
      */
-    public alterarFuncionario(funcionario funcionario) {
+    public alterarFuncionario(funcionario funcionarioAlterar) {
         initComponents();
 
-        jTextFieldNome.setText(funcionario.getNome());
-        jTextFieldMatricula.setText(String.valueOf(funcionario.getMatricula()));
-        jTextFieldSetor.setText(funcionario.getSetor());
-        jTextFieldFuncao.setText(funcionario.getFuncao());
-        jTextFieldDataAdmissao.setText(funcionario.getDataAdmissao());
-        jTextFieldEscala.setText(funcionario.getEscala());
-        jTextFieldHorario.setText(funcionario.getHorario());
-        jComboBoxTurno.setSelectedItem(funcionario.getTurno());
-        jTextFieldHorasSemanais.setText(funcionario.getHorasSemanais());
-        jTextFieldCodigoBarras.setText(funcionario.getCodigoDeBarras());
-        jTextFieldSenha.setText(funcionario.getSenha());
+        jTextFieldNome.setText(funcionarioAlterar.getNome());
+        jTextFieldMatricula.setText(String.valueOf(funcionarioAlterar.getMatricula()));
+        jTextFieldSetor.setText(funcionarioAlterar.getSetor());
+        jTextFieldFuncao.setText(funcionarioAlterar.getFuncao());
+        jTextFieldDataAdmissao.setText(funcionarioAlterar.getDataAdmissao());
+        jTextFieldEscala.setText(funcionarioAlterar.getEscala());
+        jTextFieldHorario.setText(funcionarioAlterar.getHorario());
+        jComboBoxTurno.setSelectedItem(funcionarioAlterar.getTurno());
+        jTextFieldHorasSemanais.setText(funcionarioAlterar.getHorasSemanais());
+        jTextFieldCodigoBarras.setText(funcionarioAlterar.getCodigoDeBarras());
+        jTextFieldSenha.setText(funcionarioAlterar.getSenha());
     }
 
     /**
@@ -298,7 +298,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         String senha = jTextFieldSenha.getText().trim();
 
         funcionario novoFuncionario = new funcionario();
-        novoFuncionario.setIdFuncionario(funcionario.getIdFuncionario()); //TODO: não está carregando o int id funcionario
+        novoFuncionario.setIdFuncionario(funcionarioAlterar.getIdFuncionario()); //TODO: não está carregando o int id funcionario
         novoFuncionario.setNome(nome);
         novoFuncionario.setMatricula(matricula);
         novoFuncionario.setSetor(setor);

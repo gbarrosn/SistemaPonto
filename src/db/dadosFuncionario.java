@@ -39,7 +39,7 @@ public class dadosFuncionario {
             // Iterate over the result set
             while (resultSet.next()) {
                 // Retrieve the data from the result set
-                int id = resultSet.getInt("id");
+                String id = resultSet.getString("id");
                 String nome = resultSet.getString("nome");
                 String matricula = resultSet.getString("matricula");
                 String setor = resultSet.getString("setor");
@@ -56,7 +56,7 @@ public class dadosFuncionario {
                 
                 // Create a new Funcionario object
                 funcionario funcionario = new funcionario();
-                funcionario.setIdFuncionario(id);
+                funcionario.setIdFuncionario(Integer.parseInt(id)); // TODO : nem chega a aparecer a variavel id no o
                 funcionario.setNome(nome);
                 funcionario.setMatricula(Integer.parseInt(matricula));
                 funcionario.setSetor(setor);
@@ -300,4 +300,15 @@ public class dadosFuncionario {
         return funcionario;
     }
 
+
+    public static void main(String[] args) {
+        try {
+            List<funcionario> funcionarios = buscarFuncionarios();
+            for (funcionario f : funcionarios) {
+                System.out.println(f.getIdFuncionario());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

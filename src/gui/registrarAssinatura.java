@@ -3,11 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import db.dadosFuncionario;
+import model.funcionario;
 /**
  *
  * @author gbarrosn
@@ -19,6 +25,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
      */
     public registrarAssinatura() {
         initComponents();
+        jComboBox2ActionPerformed(null);
     }
 
     /**
@@ -123,10 +130,11 @@ public class registrarAssinatura extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3))))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -194,7 +202,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
         //TODO: popular esse combobox com os meses e quando assinar tem que ver quem assinou e procurar os registros dele, pra
         //poder reistrar a assinatura no mes que faltou ele assinar
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abrim", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +332,20 @@ public class registrarAssinatura extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        
+        jComboBox2.removeAllItems();
+
+        List<funcionario> funcionarios = new ArrayList<>();
+        try {
+            funcionarios = dadosFuncionario.buscarFuncionarios();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (funcionario funcionario : funcionarios) {
+            jComboBox2.addItem(funcionario.getNome());
+        }
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**

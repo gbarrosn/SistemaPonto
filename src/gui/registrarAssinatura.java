@@ -364,7 +364,10 @@ public class registrarAssinatura extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Erro ao registrar assinatura: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             }
+            
 
+        } else {
+            System.out.println("errado");
             JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");
         }
         

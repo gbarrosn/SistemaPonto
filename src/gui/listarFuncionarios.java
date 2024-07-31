@@ -141,7 +141,7 @@ public class listarFuncionarios extends javax.swing.JFrame {
 
         //List<funcionario> funcionarios = new ArrayList<>();
         try {
-            funcionarios = dadosFuncionario.buscarFuncionarios();
+            funcionarios = dadosFuncionario.buscarFuncionarios(); //TODO: o sistema ta carregando errado o idFuncionario
         } catch (SQLException e) {
             
             e.printStackTrace();

@@ -6,8 +6,6 @@ package gui;
 
 import javax.swing.JOptionPane;
 
-import com.mysql.cj.result.Field;
-
 import db.dadosFuncionario;
 import model.funcionario;
 

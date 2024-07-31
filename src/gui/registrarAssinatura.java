@@ -3,11 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,6 +28,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
     List<funcionario> funcionarios = new ArrayList<>();
     List<registro>  registros = new ArrayList<>();
+    List<registro> registrosMes = new ArrayList<>();
     /**
      * Creates new form registrarAssinatura
      */
@@ -337,13 +342,35 @@ public class registrarAssinatura extends javax.swing.JFrame {
         try {
             registros = dadosRegistro.buscarRegistrosPorId(idFuncionario);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        int selectedMonth = jComboBox1.getSelectedIndex() + 1;
+        
+        List<registro> registrosByMonth = new ArrayList<>();
         for (registro r : registros) {
+            Calendar cal = Calendar.getInstance();
+            Date dataRegistro = null;
+            try {
+                dataRegistro = (Date) sdf.parse(r.getData());
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            cal.setTime(dataRegistro);
+            int month = cal.get(Calendar.MONTH) + 1;
+            if (month == selectedMonth) {
+                registrosByMonth.add(r);
+            }
+        }
+        
+        for (registro r : registrosByMonth) {
             System.out.println("Data: " + r.getData());
             System.out.println("Id Funcionario: " + r.getIdFuncionario());
         }
+        // Now you can use the 'registrosByMonth' list to display the registros of the selected month in the combobox or perform any other operations.
         // Now you can use the 'registros' list to do whatever you need with the retrieved registros
 
         

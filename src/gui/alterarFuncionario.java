@@ -16,12 +16,14 @@ import model.funcionario;
 public class alterarFuncionario extends javax.swing.JFrame {
 
     private funcionario funcionarioAlterar;
+    private int idFuncionario;
     /**
      * Creates new form alterarUsuario
      */
     public alterarFuncionario(funcionario funcionarioAlterar) {
         initComponents();
 
+        idFuncionario = funcionarioAlterar.getIdFuncionario();
         jTextFieldNome.setText(funcionarioAlterar.getNome());
         jTextFieldMatricula.setText(String.valueOf(funcionarioAlterar.getMatricula()));
         jTextFieldSetor.setText(funcionarioAlterar.getSetor());
@@ -288,6 +290,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
             }
         }
 
+        //int id = funcionarioAlterar.getIdFuncionario();
         String setor = jTextFieldSetor.getText().trim();
         String turno = jComboBoxTurno.getSelectedItem().toString();
         String funcao = jTextFieldFuncao.getText().trim();
@@ -299,7 +302,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         String senha = jTextFieldSenha.getText().trim();
 
         funcionario novoFuncionario = new funcionario();
-        novoFuncionario.setIdFuncionario(funcionarioAlterar.getIdFuncionario()); //TODO: não está carregando o int id funcionario
+        novoFuncionario.setIdFuncionario(idFuncionario); //TODO: não está carregando o int id funcionario
         novoFuncionario.setNome(nome);
         novoFuncionario.setMatricula(matricula);
         novoFuncionario.setSetor(setor);

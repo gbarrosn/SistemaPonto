@@ -15,6 +15,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import db.dadosFuncionario;
 import db.dadosRegistro;
@@ -213,7 +220,8 @@ public class registrarAssinatura extends javax.swing.JFrame {
         //poder reistrar a assinatura no mes que faltou ele assinar
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abrim", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2 = new JComboBox<funcionario>();
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -334,64 +342,60 @@ public class registrarAssinatura extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        //TODO: usar o id do funcionario para buscar os registros dele
-        // TODO: depois usar o mês e criar outra lista de registros com os dados do mês selecionado no combobox1
-        int idFuncionario = jComboBox2.getSelectedIndex(); // Assuming the index represents the id of the selected funcionario
-        try {
-            registros = dadosRegistro.buscarRegistrosPorId(idFuncionario);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        int selectedMonth = jComboBox1.getSelectedIndex() + 1;
-        
-        List<registro> registrosByMonth = new ArrayList<>();
-        for (registro r : registros) {
-            Calendar cal = Calendar.getInstance();
-            Date dataRegistro = null;
-            try {
-                dataRegistro = (Date) sdf.parse(r.getData());
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            cal.setTime(dataRegistro);
-            int month = cal.get(Calendar.MONTH) + 1;
-            if (month == selectedMonth) {
-                registrosByMonth.add(r);
-            }
-        }
-        
-        for (registro r : registrosByMonth) {
-            System.out.println("Data: " + r.getData());
-            System.out.println("Id Funcionario: " + r.getIdFuncionario());
-        }
-        // Now you can use the 'registrosByMonth' list to display the registros of the selected month in the combobox or perform any other operations.
-        // Now you can use the 'registros' list to do whatever you need with the retrieved registros
-
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        
-
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            funcionario selectedFuncionario = (funcionario) jComboBox2.getSelectedItem();
+            if (selectedFuncionario == null) {
+                JOptionPane.showMessageDialog(this, "Selecione um funcionário", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+    
+            int idFuncionario = selectedFuncionario.getIdFuncionario();
+            List<registro> registros = dadosRegistro.buscarRegistrosPorId(idFuncionario);
+            
+            // Exibir registros em uma tabela ou outro componente visual
+            for (registro r : registros) {
+                System.out.println(r.getIdFuncionario());
+            }
+        } catch (SQLException e) {
+            // Handle the exception appropriately, e.g., show an error message to the user
+            JOptionPane.showMessageDialog(this, "Erro ao buscar registros: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // For logging or debugging
+        }
+    }
+    
     private void popularComboBox2() {
         try {
             funcionarios = dadosFuncionario.buscarFuncionarios();
-            jComboBox2.removeAllItems();
+    
+            DefaultComboBoxModel<funcionario> model = new DefaultComboBoxModel<>();
             for (funcionario f : funcionarios) {
-                jComboBox2.addItem(f.getNome());
+                model.addElement(f);
             }
+            jComboBox2.setModel(model);
+            jComboBox2.setRenderer(new FuncionarioRenderer());
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Handle the exception appropriately, e.g., show an error message to the user
+            JOptionPane.showMessageDialog(this, "Erro ao popular ComboBox: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // For logging or debugging
         }
     }
+    
+    class FuncionarioRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            if (value instanceof funcionario) {
+                funcionario func = (funcionario) value;
+                return super.getListCellRendererComponent(list, func.getNome(), index, isSelected, cellHasFocus);
+            }
+            return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -432,7 +436,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private JComboBox<funcionario> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

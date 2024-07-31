@@ -17,6 +17,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import db.dadosFuncionario;
 import db.dadosRegistro;
@@ -374,6 +375,15 @@ public class registrarAssinatura extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao buscar registros: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace(); // For logging or debugging
         }
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+        // Remove all rows from the table
+        model.setRowCount(0);
+        for (registro r : registrosMes) {
+            model.addRow(new Object[]{r.getData(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+        }
+        
     }
     
     private void popularComboBox2() {

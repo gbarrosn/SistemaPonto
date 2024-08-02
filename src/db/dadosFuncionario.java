@@ -51,6 +51,7 @@ public class dadosFuncionario {
                 String horasSemanais = resultSet.getString("horas_semanais");
                 String codigoDeBarras = resultSet.getString("codigo_de_barras");
                 String senha = resultSet.getString("senha");
+                boolean adm = resultSet.getBoolean("adm");
 
                 // Retrieve other fields as needed
                 
@@ -68,6 +69,7 @@ public class dadosFuncionario {
                 funcionario.setHorasSemanais(horasSemanais);
                 funcionario.setCodigoDeBarras(codigoDeBarras);
                 funcionario.setSenha(senha);
+                funcionario.setAdm(adm);
                 // Set other fields as needed
                 
                 // Add the funcionario to the list
@@ -157,13 +159,14 @@ public class dadosFuncionario {
         String query = "INSERT INTO funcionarios " + 
                         "(nome, matricula, setor, turno, funcao," +
                         "data_admissao, escala, horario, horas_semanais, " +
-                        "codigo_de_barras, senha) " +
+                        "codigo_de_barras, senha, adm) " +
                         "VALUES ('" + funcionario.getNome() + "', '" + 
                         funcionario.getMatricula() + "', '" + funcionario.getSetor() + "', '" + 
                         funcionario.getTurno() + "', '" + funcionario.getFuncao() + "', '" + 
                         funcionario.getDataAdmissao() + "', '" + funcionario.getEscala() + "', '" + 
                         funcionario.getHorario() + "', '" + funcionario.getHorasSemanais() + "', '" + 
-                        funcionario.getCodigoDeBarras() + "', '" + funcionario.getSenha() + "');";
+                        funcionario.getCodigoDeBarras() + "', '" + funcionario.getSenha() + "'," +
+                        funcionario.isAdm() + ")";
         
         try {
             // Create a statement

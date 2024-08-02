@@ -4,16 +4,23 @@
  */
 package gui;
 
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
+import model.funcionario;
+
 /**
  *
  * @author gbarrosn
  */
 public class alterarSenha extends javax.swing.JFrame {
-
+    funcionario funcionario;
     /**
      * Creates new form alterarSenha
      */
-    public alterarSenha() {
+    public alterarSenha(funcionario funcionario) {
         initComponents();
     }
 
@@ -48,6 +55,11 @@ public class alterarSenha extends javax.swing.JFrame {
         jLabel4.setText("Repita a senha:");
 
         jButton1.setText("Alterar Senha");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,6 +122,28 @@ public class alterarSenha extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String senhaAntiga = new String(jPasswordFieldAntiga.getPassword());
+        String senhaNova = new String(jPasswordFieldNova.getPassword());
+        String senhaNova2 = new String(jPasswordFieldNova2.getPassword());
+
+        if (senhaNova.equals(senhaNova2)) {
+            if (funcionario.getSenha().equals(senhaAntiga)) {
+                try {
+                    dadosFuncionario.alterarSenha(funcionario.getIdFuncionario(), senhaNova);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Senha antiga incorreta");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Senhas não conferem");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,7 +174,7 @@ public class alterarSenha extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alterarSenha().setVisible(true);
+                new alterarSenha(null).setVisible(true);
             }
         });
     }

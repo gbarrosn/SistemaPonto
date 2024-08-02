@@ -226,10 +226,21 @@ public class listarFuncionarios extends javax.swing.JFrame {
         cadastrarFuncionario tela = new cadastrarFuncionario();
         tela.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO abrir tela para alter a senha
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+        funcionario selectFuncionario = funcionarios.get(selectedRow);
+        alterarSenha tela = new alterarSenha(selectFuncionario);
+        tela.setVisible(true);
+        this.dispose();
+    } else {
+
+        JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário para alterar.");
+    }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

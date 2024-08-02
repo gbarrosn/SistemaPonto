@@ -344,7 +344,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
         if (matricula == selectedFuncionario.getMatricula() && senha.equals(selectedFuncionario.getSenha())) {
             System.out.println("Senha certa");
-            //TODO: registrar assinatura
+            //TODO: verificar se a matricula do usuário que está assinando é de adm, se sim, registrar essa segunda assinatura pra poder ter as duas
 
             // Get the current time
             LocalTime currentTime = LocalTime.now();

@@ -4,16 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/registrarAssinatura.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/model/assinatura.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/registrarSaida.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/db/dadosFuncionario.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/registrarEntrada.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/db/conectarBanco.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/voltaAlmoco.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/db/dadosAssinatura.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/model/funcionario.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/telaInicial.java</file>
-            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/saidaAlmoco.java</file>
+            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/configuracoes.java</file>
+            <file>file:/home/gbarrosn/NetBeansProjects/PontoEletronico/src/gui/listarFuncionarios.java</file>
         </group>
     </open-files>
 </project-private>

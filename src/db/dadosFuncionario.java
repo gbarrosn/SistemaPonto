@@ -300,6 +300,29 @@ public class dadosFuncionario {
         return funcionario;
     }
 
+    public static alterarSenha(int id, String senha) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to update the funcionario
+        String query = "UPDATE funcionarios SET " + 
+                        "senha = '" + senha + "' " + 
+                        "WHERE id = " + id;
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+            
+            // Close the statement and connection
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         try {

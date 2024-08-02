@@ -300,7 +300,7 @@ public class dadosFuncionario {
         return funcionario;
     }
 
-    public static alterarSenha(int id, String senha) throws SQLException {
+    public static void alterarSenha(int id, String senha) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         

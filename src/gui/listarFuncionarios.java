@@ -119,8 +119,8 @@ public class listarFuncionarios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
@@ -233,14 +233,14 @@ public class listarFuncionarios extends javax.swing.JFrame {
         // TODO abrir tela para alter a senha
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
-        funcionario selectFuncionario = funcionarios.get(selectedRow);
-        alterarSenha tela = new alterarSenha(selectFuncionario);
-        tela.setVisible(true);
-        this.dispose();
-    } else {
+            funcionario selectFuncionario = funcionarios.get(selectedRow);
+            alterarSenha tela = new alterarSenha(selectFuncionario); 
+            tela.setVisible(true);
+            this.dispose();
+        } else {
 
-        JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário para alterar.");
-    }
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário para alterar.");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

@@ -313,7 +313,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         String senha = jTextFieldSenha.getText().trim();
 
         funcionario novoFuncionario = new funcionario();
-        novoFuncionario.setIdFuncionario(idFuncionario); //TODO: não está carregando o int id funcionario
+        novoFuncionario.setIdFuncionario(idFuncionario); 
         novoFuncionario.setNome(nome);
         novoFuncionario.setMatricula(matricula);
         novoFuncionario.setSetor(setor);

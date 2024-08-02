@@ -109,6 +109,7 @@ public class conectarBanco {
     public static void main(String[] args) {
         try {
             Connection connection = conectarBanco.conectar();
+            //criarTabelas();
             // Your code here
             // Perform database operations using the connection object
 

@@ -21,6 +21,7 @@ public class funcionario {
     String horasSemanais;
     String codigoDeBarras;
     String senha;
+    boolean adm;
 
     /*public funcionario(int idFuncionario, String nome, String matricula, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String senha) {
         this.idFuncionario = idFuncionario;
@@ -36,6 +37,14 @@ public class funcionario {
         this.codigoDeBarras = codigoDeBarras;
         this.senha = senha;
     }*/
+
+    public boolean isAdm() {
+        return adm;
+    }
+
+    public void setAdm(boolean adm) {
+        this.adm = adm;
+    }
 
     public int getIdFuncionario() {
         return idFuncionario;

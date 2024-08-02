@@ -73,7 +73,8 @@ public class conectarBanco {
                                         "  horario TEXT NOT NULL," +
                                         "  horas_semanais TEXT NOT NULL," +
                                         "  codigo_de_barras TEXT NOT NULL," +
-                                        "  senha TEXT NOT NULL" +
+                                        "  senha TEXT NOT NULL," +
+                                        "  adm bit" +
                                         ");";
 
         String sqlCriarRegistros = "CREATE TABLE registros (" +

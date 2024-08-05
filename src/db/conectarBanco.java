@@ -97,6 +97,14 @@ public class conectarBanco {
                                     "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id) " +
                                     ");";
 
+        String sqlCriarAssinaturaCoordenacao = "CREATE TABLE assinaturaCoordenacao (" +
+                                                "id INT PRIMARY KEY AUTO_INCREMENT," +
+                                                "id_funcionario INT NOT NULL," +
+                                                "id_coordenacao INT NOT NULL," +
+                                                "data_assinatura DATE NOT NULL," +
+                                                "hora_assinatura TEXT NOT NULL," +
+                                                " );";
+                                                
         Connection conn = conectarBanco.conectar(); // Get a connection
         Statement stmt = conn.createStatement();
 
@@ -104,6 +112,7 @@ public class conectarBanco {
         stmt.execute(sqlCriarFuncionarios);
         stmt.execute(sqlCriarRegistros);
         stmt.execute(sqlCriarAssinatura);
+        stmt.execute(sqlCriarAssinaturaCoordenacao);
 
     }
     public static void main(String[] args) {

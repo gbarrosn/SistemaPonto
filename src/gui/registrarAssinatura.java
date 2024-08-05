@@ -371,12 +371,15 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
             try {
                 funcAdm = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
+
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
+                
                 e.printStackTrace();
             }
+
             if (funcAdm.isAdm()){
                 //TODO: registrar a assinatura de adm
+                System.out.println("verificação de adm funciona");
             }
             System.out.println("errado");
             JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");

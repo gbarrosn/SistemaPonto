@@ -272,6 +272,7 @@ public class dadosFuncionario {
                 String horasSemanais = resultSet.getString("horas_semanais");
                 String codigoDeBarras = resultSet.getString("codigo_de_barras");
                 String senha = resultSet.getString("senha");
+                boolean adm = resultSet.getBoolean("adm");
 
                 // Retrieve other fields as needed
                 
@@ -289,6 +290,7 @@ public class dadosFuncionario {
                 funcionario.setHorasSemanais(horasSemanais);
                 funcionario.setCodigoDeBarras(codigoDeBarras);
                 funcionario.setSenha(senha);
+                funcionario.setAdm(adm);
                 // Set other fields as needed
             }
             

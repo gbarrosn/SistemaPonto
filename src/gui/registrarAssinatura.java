@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import db.dadosAssinatura;
+import db.dadosAssinaturaCoordenacao;
 import db.dadosFuncionario;
 import db.dadosRegistro;
 import model.funcionario;
@@ -378,11 +379,21 @@ public class registrarAssinatura extends javax.swing.JFrame {
             }
 
             if (funcAdm.isAdm()){
-                //TODO: registrar a assinatura de adm
-                System.out.println("verificação de adm funciona");
+                // Get the current time
+                LocalTime currentTime = LocalTime.now();
+                String formattedTime = currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+                // Get the current date
+                LocalDate currentDate = LocalDate.now();
+                String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yy"));
+
+                dadosAssinaturaCoordenacao.registrarAssinaturaCoordenacao(funcAdm.getIdFuncionario(), selectedFuncionario.getIdFuncionario(), formattedDate, formattedTime, jComboBox1.getSelectedIndex() + 1);
+                JOptionPane.showMessageDialog(this, "Assinatura da coordenação registrada com sucesso!");
+                
+            } else {
+                System.out.println("errado");
+                JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");
             }
-            System.out.println("errado");
-            JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -1,8 +1,11 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import model.assinatura;
 
 public class dadosAssinatura {
     //função que registra uma assinatura no banco de dados usando conectarBanco e assinatura
@@ -26,8 +29,32 @@ public class dadosAssinatura {
 
     }
 
-    // buscar assinatura usando o id do funcionario
-    
+    // buscar assinatura usando o id do funcionario e mes
+    public static assinatura buscarAssinatura(int idFuncionario, int mes) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to select the assinatura
+        String query = "SELECT * FROM assinatura WHERE id_funcionario = " + idFuncionario + " AND mes = " + mes;
+
+        try {
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if (resultSet.next()) {
+                assinatura assinatura = new assinatura(resultSet.getInt("id"), resultSet.getInt("id_funcionario"), resultSet.getInt("mes"), resultSet.getString("hora_assinatura"), resultSet.getString("data_assinatura"));
+                return assinatura;
+            } 
+
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 
 
 }

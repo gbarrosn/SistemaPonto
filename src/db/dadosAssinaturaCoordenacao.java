@@ -6,8 +6,11 @@ package db;
 
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import model.assinaturaCoordenacao;
 
 
 /**
@@ -41,6 +44,35 @@ public class dadosAssinaturaCoordenacao {
         }
     }
 
+    public static assinaturaCoordenacao buscarAssinaturaCoordenacao(int idFuncionario, int mes) throws SQLException {
+        Connection connection = conectarBanco.conectar();
 
+        String query = "SELECT * FROM assinaturaCoordenacao WHERE id_funcionario = " + idFuncionario + " AND mes = " + mes;
 
+        try {
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if (resultSet.next()) {
+                assinaturaCoordenacao assinaturaCoordenacao = new assinaturaCoordenacao();
+                assinaturaCoordenacao.setIdAssinatura(resultSet.getInt("id"));
+                assinaturaCoordenacao.setIdFuncionario(resultSet.getInt("id_funcionario"));
+                assinaturaCoordenacao.setIdCoordenacao(resultSet.getInt("id_coordenacao"));
+                assinaturaCoordenacao.setMes(resultSet.getInt("mes"));
+                assinaturaCoordenacao.setDataAssinatura(resultSet.getString("data_assinatura"));
+                assinaturaCoordenacao.setHoraAssinatura(resultSet.getString("hora_assinatura"));
+
+                return assinaturaCoordenacao;
+            }
+
+            resultSet.close();
+            statement.close();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        return null;
+        
+    }
 }

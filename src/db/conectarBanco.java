@@ -103,6 +103,7 @@ public class conectarBanco {
                                                 "id_coordenacao INT NOT NULL," +
                                                 "data_assinatura DATE NOT NULL," +
                                                 "hora_assinatura TEXT NOT NULL," +
+                                                "mes integer not null," +
                                                 " );";
                                                 
         Connection conn = conectarBanco.conectar(); // Get a connection

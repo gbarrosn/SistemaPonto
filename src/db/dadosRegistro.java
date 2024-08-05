@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.funcionario;
 import model.registro;
 /**
  *
@@ -259,5 +260,9 @@ public class dadosRegistro {
         }
     }
 
+    public static List<registro> buscarRegistrosFuncionario(int idFuncionario, String data) {
+        return null;
+        //TODO: buscar os registros do funcionario x e retornar uma lista dos registros de todo mundo no dia pedido
+    }
 
 }

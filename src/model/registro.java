@@ -20,6 +20,7 @@ public class registro {
     String horaSaida;
     String data;
     int mes;
+    String nomeFuncionario;
 
     public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
         this.idRegistro = idRegistro;
@@ -36,6 +37,9 @@ public class registro {
     }
 
     // Getters
+    public String getNomeFuncionario () {
+        return nomeFuncionario;
+    }
     public int getIdRegistro() {
         return idRegistro;
     }
@@ -81,6 +85,10 @@ public class registro {
     }
 
     // Setters
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
     public void setIdRegistro(int idRegistro) {
         this.idRegistro = idRegistro;
     }

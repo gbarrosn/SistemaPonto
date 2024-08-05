@@ -214,8 +214,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        //TODO: popular esse combobox com os meses e quando assinar tem que ver quem assinou e procurar os registros dele, pra
-        //poder reistrar a assinatura no mes que faltou ele assinar
+        
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abrim", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 
         //jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -336,7 +335,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //TODO: botão de registrar assinatura
+        
         int matricula = Integer.parseInt(jTextFieldMatricula.getText().trim());
 
         @SuppressWarnings("deprecation")
@@ -366,7 +365,19 @@ public class registrarAssinatura extends javax.swing.JFrame {
             }
             
 
-        } else {
+        }  else {
+
+            funcionario funcAdm = null;
+
+            try {
+                funcAdm = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            if (funcAdm.isAdm()){
+                //TODO: registrar a assinatura de adm
+            }
             System.out.println("errado");
             JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");
         }

@@ -344,7 +344,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
         if (matricula == selectedFuncionario.getMatricula() && senha.equals(selectedFuncionario.getSenha())) {
             System.out.println("Senha certa");
-            //TODO: verificar se a matricula do usuário que está assinando é de adm, se sim, registrar essa segunda assinatura pra poder ter as duas
+            
 
             // Get the current time
             LocalTime currentTime = LocalTime.now();
@@ -389,7 +389,7 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
                 dadosAssinaturaCoordenacao.registrarAssinaturaCoordenacao(funcAdm.getIdFuncionario(), selectedFuncionario.getIdFuncionario(), formattedDate, formattedTime, jComboBox1.getSelectedIndex() + 1);
                 JOptionPane.showMessageDialog(this, "Assinatura da coordenação registrada com sucesso!");
-                
+
             } else {
                 System.out.println("errado");
                 JOptionPane.showMessageDialog(this, "Senha ou matrícula incorretas, verifique!");

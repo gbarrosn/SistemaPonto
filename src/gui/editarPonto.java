@@ -16,12 +16,14 @@ import model.registro;
 public class editarPonto extends javax.swing.JFrame {
 
     registro registro = null;
+    int idRegistro = 0;
     /**
      * Creates new form editarPonto
      */
     public editarPonto(registro registro) {
         initComponents();
 
+        idRegistro = registro.getIdRegistro();
         jTextFieldNome.setText(registro.getNomeFuncionario());
         jTextFieldHoraEntrada.setText(registro.getHoraEntrada());
         jTextFieldSaidaAlmoco.setText(registro.getSaidaAlmoco());
@@ -166,8 +168,9 @@ public class editarPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO alterar os dados do registro
-        registro registroAlterar = null;
+        registro registroAlterar = new registro();
 
+        registroAlterar.setIdRegistro(idRegistro);
         registroAlterar.setHoraEntrada(jTextFieldHoraEntrada.getText());
         registroAlterar.setSaidaAlmoco(jTextFieldSaidaAlmoco.getText());
         registroAlterar.setRetornoAlmoco(jTextFieldRetornoAlmoco.getText());

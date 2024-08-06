@@ -18,6 +18,14 @@ public class editarPonto extends javax.swing.JFrame {
      */
     public editarPonto(registro registro) {
         initComponents();
+
+        jTextFieldNome.setText(registro.getNomeFuncionario());
+        jTextFieldHoraEntrada.setText(registro.getHoraEntrada());
+        jTextFieldSaidaAlmoco.setText(registro.getSaidaAlmoco());
+        jTextFieldRetornoAlmoco.setText(registro.getRetornoAlmoco());
+        jTextFieldSaida.setText(registro.getHoraSaida());
+        
+
     }
 
     /**

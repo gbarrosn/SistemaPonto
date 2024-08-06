@@ -299,6 +299,19 @@ public class dadosRegistro {
         //TODO: buscar os registros do funcionario x e retornar uma lista dos registros de todo mundo no dia pedido
     }
 
-    //private static void alterarRegistro
+    public static void alterarRegistro(registro registro) throws SQLException {
+        Connection connection = conectarBanco.conectar();
+
+        String query = "UPDATE registros SET hora_entrada = '" + registro.getHoraEntrada() + "', saida_almoco = '" + 
+                        registro.getSaidaAlmoco() + "', retorno_almoco = '" + registro.getRetornoAlmoco() + "', saida = '" + 
+                        registro.getHoraSaida() + "' WHERE id = " + registro.getIdRegistro();
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

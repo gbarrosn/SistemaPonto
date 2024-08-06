@@ -260,7 +260,41 @@ public class dadosRegistro {
         }
     }
 
-    public static List<registro> buscarRegistrosFuncionario(int idFuncionario, String data) {
+    public static List<registro> buscarRegistrosFuncionario(String data) {
+
+        try (Connection connection = conectarBanco.conectar()) {
+            String query = "SELECT * FROM registros inner join funcionarios on (registros.id_funcionario = funcionarios.id) WHERE registros.data = '" + data + ";";
+
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+
+                List<registro> registros = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    int idRegistro = resultSet.getInt("id");
+                    int idFuncionario = resultSet.getInt("id_funcionario");
+                    String horaEntrada = resultSet.getString("hora_entrada");
+                    String saidaAlmoco = resultSet.getString("saida_almoco");
+                    String retornoAlmoco = resultSet.getString("retorno_almoco");
+                    String horaSaida = resultSet.getString("saida");
+                    String dataRegistro = resultSet.getString("data");
+                    String nome = resultSet.getString("nome");
+
+                    registro registro = new registro(idRegistro, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, dataRegistro);
+                    registro.setNomeFuncionario(nome);
+                    registros.add(registro);
+                }
+
+                return registros;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         return null;
         //TODO: buscar os registros do funcionario x e retornar uma lista dos registros de todo mundo no dia pedido
     }

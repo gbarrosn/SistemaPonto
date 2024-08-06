@@ -17,11 +17,11 @@ import javax.swing.table.DefaultTableModel;
  * @author gbarrosn
  */
 public class conferirPonto extends javax.swing.JFrame {
-
+    registro registro = null;
     /**
      * Creates new form conferirPonto
      */
-    public conferirPonto() {
+    public conferirPonto(registro registro) {
         initComponents();
         jButton2ActionPerformed(null);
     }
@@ -169,7 +169,7 @@ public class conferirPonto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new conferirPonto().setVisible(true);
+                new conferirPonto(null).setVisible(true);
             }
         });
     }

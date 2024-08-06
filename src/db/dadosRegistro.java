@@ -299,4 +299,6 @@ public class dadosRegistro {
         //TODO: buscar os registros do funcionario x e retornar uma lista dos registros de todo mundo no dia pedido
     }
 
+    //private static void alterarRegistro
+
 }

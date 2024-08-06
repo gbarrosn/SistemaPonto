@@ -263,7 +263,7 @@ public class dadosRegistro {
     public static List<registro> buscarRegistrosFuncionario(String data) {
 
         try (Connection connection = conectarBanco.conectar()) {
-            String query = "SELECT * FROM registros inner join funcionarios on (registros.id_funcionario = funcionarios.id) WHERE registros.data = '" + data + ";";
+            String query = "SELECT * FROM registros inner join funcionarios on (registros.id_funcionario = funcionarios.id) WHERE registros.data = '" + data + "';";
 
             try {
                 Statement statement = connection.createStatement();

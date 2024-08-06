@@ -4,6 +4,14 @@
  */
 package gui;
 
+import java.util.List;
+
+import db.dadosRegistro;
+import model.registro;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gbarrosn
@@ -101,6 +109,7 @@ public class conferirPonto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -112,6 +121,21 @@ public class conferirPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO listar os registros do dia e preencher a tabela
+
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = currentDate.format(formatter);
+
+        // Use the formatted date in your code
+        List<registro> registros = dadosRegistro.buscarRegistrosFuncionario(formattedDate);
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+        model.setRowCount(0);
+        for (registro r : registros) {
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

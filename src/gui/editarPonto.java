@@ -6,7 +6,11 @@ package gui;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
 import db.dadosRegistro;
+import model.funcionario;
 import model.registro;
 
 /**
@@ -208,21 +212,44 @@ public class editarPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO alterar os dados do registro
-        registro registroAlterar = new registro();
 
-        registroAlterar.setIdRegistro(idRegistro);
-        registroAlterar.setHoraEntrada(jTextFieldHoraEntrada.getText());
-        registroAlterar.setSaidaAlmoco(jTextFieldSaidaAlmoco.getText());
-        registroAlterar.setRetornoAlmoco(jTextFieldRetornoAlmoco.getText());
-        registroAlterar.setHoraSaida(jTextFieldSaida.getText());
+        funcionario funcionarioAdm = new funcionario();
 
-        // TODO salvar no banco de dados
+        int matricula = Integer.parseInt(jTextFieldMatricula.getText());
         try {
-            dadosRegistro.alterarRegistro(registroAlterar);
+            funcionarioAdm = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        if (funcionarioAdm == null || !funcionarioAdm.isAdm()) {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para alterar o registro");
+            
+        } else if (funcionarioAdm.getSenha().equals(jPasswordField1.getText().trim()) && funcionarioAdm.isAdm()) {
+            registro registroAlterar = new registro();
+
+            registroAlterar.setIdRegistro(idRegistro);
+            registroAlterar.setHoraEntrada(jTextFieldHoraEntrada.getText());
+            registroAlterar.setSaidaAlmoco(jTextFieldSaidaAlmoco.getText());
+            registroAlterar.setRetornoAlmoco(jTextFieldRetornoAlmoco.getText());
+            registroAlterar.setHoraSaida(jTextFieldSaida.getText());
+
+            // TODO salvar no banco de dados
+            try {
+                dadosRegistro.alterarRegistro(registroAlterar);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            JOptionPane.showMessageDialog(null, "Registro alterado com sucesso!");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique a matricula e a senha!");
+        }
+
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

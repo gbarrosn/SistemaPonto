@@ -23,6 +23,7 @@ public class conferirPonto extends javax.swing.JFrame {
      */
     public conferirPonto() {
         initComponents();
+        jButton2ActionPerformed(null);
     }
 
     /**

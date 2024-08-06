@@ -4,16 +4,19 @@
  */
 package gui;
 
+import model.registro;
+
 /**
  *
  * @author gbarrosn
  */
 public class editarPonto extends javax.swing.JFrame {
 
+    registro registro = null;
     /**
      * Creates new form editarPonto
      */
-    public editarPonto() {
+    public editarPonto(registro registro) {
         initComponents();
     }
 
@@ -104,7 +107,7 @@ public class editarPonto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new editarPonto().setVisible(true);
+                new editarPonto(null).setVisible(true);
             }
         });
     }

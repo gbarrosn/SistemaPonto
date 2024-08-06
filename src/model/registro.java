@@ -22,7 +22,7 @@ public class registro {
     int mes;
     String nomeFuncionario;
 
-    public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
+    /*public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
         this.idRegistro = idRegistro;
         this.setor = setor;
         this.turno = turno;
@@ -34,7 +34,7 @@ public class registro {
         this.horaSaida = horaSaida;
         this.data = data;
         this.mes = mes;
-    }
+    }*/
 
     // Getters
     public String getNomeFuncionario () {

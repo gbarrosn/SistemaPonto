@@ -47,7 +47,15 @@ public class dadosRegistro {
                 String data = resultSet.getString("data");
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
+                registro registro = new registro();
+                registro.setIdRegistro(idRegistro);
+                registro.setIdFuncionario(idFuncionario);
+                registro.setHoraEntrada(horaEntrada);
+                registro.setSaidaAlmoco(saidaAlmoco);
+                registro.setRetornoAlmoco(retornoAlmoco);
+                registro.setHoraSaida(horaSaida);
+                registro.setData(data);
+                
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -110,7 +118,14 @@ public class dadosRegistro {
 
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
+                registro registro = new registro();
+                registro.setIdRegistro(idRegistro);
+                registro.setIdFuncionario(idFuncionarioResult);
+                registro.setHoraEntrada(horaEntrada);
+                registro.setSaidaAlmoco(saidaAlmoco);
+                registro.setRetornoAlmoco(retornoAlmoco);
+                registro.setHoraSaida(horaSaida);
+                registro.setData(data);
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -150,7 +165,15 @@ public class dadosRegistro {
                 String data = resultSet.getString("data");
 
                 // Create a new Registro object
-                registro registro = new registro(idRegistro, idFuncionarioResult, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, data);
+                registro registro = new registro();
+                registro.setIdRegistro(idRegistro);
+                registro.setIdFuncionario(idFuncionarioResult);
+                registro.setHoraEntrada(horaEntrada);
+                registro.setSaidaAlmoco(saidaAlmoco);
+                registro.setRetornoAlmoco(retornoAlmoco);
+                registro.setHoraSaida(horaSaida);
+                registro.setData(data);
+                
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -281,8 +304,16 @@ public class dadosRegistro {
                     String dataRegistro = resultSet.getString("data");
                     String nome = resultSet.getString("nome");
 
-                    registro registro = new registro(idRegistro, idFuncionario, horaEntrada, saidaAlmoco, retornoAlmoco, horaSaida, dataRegistro);
+                    registro registro = new registro();
                     registro.setNomeFuncionario(nome);
+                    registro.setIdRegistro(idRegistro);
+                    registro.setIdFuncionario(idFuncionario);
+                    registro.setHoraEntrada(horaEntrada);
+                    registro.setSaidaAlmoco(saidaAlmoco);
+                    registro.setRetornoAlmoco(retornoAlmoco);
+                    registro.setHoraSaida(horaSaida);
+                    registro.setData(dataRegistro);
+                    
                     registros.add(registro);
                 }
 

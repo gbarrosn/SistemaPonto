@@ -4,6 +4,7 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import db.dadosRegistro;
@@ -21,12 +22,14 @@ import javax.swing.table.DefaultTableModel;
 public class conferirPonto extends javax.swing.JFrame {
 
     List<registro> registros = null;
+    List<registro> registrosMesSelecionado = new ArrayList<registro>();
     /**
      * Creates new form conferirPonto
      */
     public conferirPonto() {
         initComponents();
         popularTablelaHoje();
+        
     }
 
     /**
@@ -87,8 +90,23 @@ public class conferirPonto extends javax.swing.JFrame {
         });
 
         jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        jComboBoxMes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxMesMouseClicked(evt);
+            }
+        });
+        jComboBoxMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMesActionPerformed(evt);
+            }
+        });
 
         jComboBoxData.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,20 +168,10 @@ public class conferirPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO listar os registros do dia e preencher a tabela
+        int mes = jComboBoxMes.getSelectedIndex() + 1;
 
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String formattedDate = currentDate.format(formatter);
 
-        // Use the formatted date in your code
-        registros = dadosRegistro.buscarRegistrosFuncionario(formattedDate);
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
-        model.setRowCount(0);
-        for (registro r : registros) {
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
-        }
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -180,6 +188,24 @@ public class conferirPonto extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBoxDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxDataActionPerformed
+
+    private void jComboBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesActionPerformed
+        // TODO add your handling code here:
+        int mes = jComboBoxMes.getSelectedIndex() + 1;
+        registrosMesSelecionado = dadosRegistro.buscarRegistrosMes(mes);
+
+        jComboBoxData.setModel(new javax.swing.DefaultComboBoxModel<>(registrosMesSelecionado.stream().map(registro -> registro.getData()).toArray(String[]::new)));
+
+    }//GEN-LAST:event_jComboBoxMesActionPerformed
+
+    private void jComboBoxMesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxMesMouseClicked
+        // TODO add your handling code here:
+        jComboBoxMesActionPerformed(null);
+    }//GEN-LAST:event_jComboBoxMesMouseClicked
 
     private void popularTablelaHoje() {
         LocalDate currentDate = LocalDate.now();

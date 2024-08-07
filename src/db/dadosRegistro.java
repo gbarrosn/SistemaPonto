@@ -344,4 +344,45 @@ public class dadosRegistro {
         }
     }
 
+    public static List<registro> buscarRegistrosMes(int mes) {
+        try (Connection connection = conectarBanco.conectar()) {
+            String query = "SELECT * FROM registros WHERE data like '%/0 " + mes + "/%';";
+
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+
+                List<registro> registros = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    int idRegistro = resultSet.getInt("id");
+                    int idFuncionario = resultSet.getInt("id_funcionario");
+                    String horaEntrada = resultSet.getString("hora_entrada");
+                    String saidaAlmoco = resultSet.getString("saida_almoco");
+                    String retornoAlmoco = resultSet.getString("retorno_almoco");
+                    String horaSaida = resultSet.getString("saida");
+                    String dataRegistro = resultSet.getString("data");
+
+                    registro registro = new registro();
+                    registro.setIdRegistro(idRegistro);
+                    registro.setIdFuncionario(idFuncionario);
+                    registro.setHoraEntrada(horaEntrada);
+                    registro.setSaidaAlmoco(saidaAlmoco);
+                    registro.setRetornoAlmoco(retornoAlmoco);
+                    registro.setHoraSaida(horaSaida);
+                    registro.setData(dataRegistro);
+                    
+                    registros.add(registro);
+                }
+
+                return registros;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
+        return null;
+}
 }

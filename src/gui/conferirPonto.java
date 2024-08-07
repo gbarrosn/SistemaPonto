@@ -12,6 +12,7 @@ import model.registro;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -198,13 +199,29 @@ public class conferirPonto extends javax.swing.JFrame {
         int mes = jComboBoxMes.getSelectedIndex() + 1;
         registrosMesSelecionado = dadosRegistro.buscarRegistrosMes(mes);
 
-        jComboBoxData.setModel(new javax.swing.DefaultComboBoxModel<>(registrosMesSelecionado.stream().map(registro -> registro.getData()).toArray(String[]::new)));
+        List<String> datas = new ArrayList<String>();
+        for (registro r : registrosMesSelecionado) {
+            if (!datas.contains(r.getData())) {
+                datas.add(r.getData());
+            }
+        }
+        System.out.println(datas);
+        try {
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+            for (String data : datas) {
+                model.addElement(data);
+            }
+            jComboBoxData.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Não há registros para o mês selecionado!");
+        }
 
+    
     }//GEN-LAST:event_jComboBoxMesActionPerformed
 
     private void jComboBoxMesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxMesMouseClicked
         // TODO add your handling code here:
-        jComboBoxMesActionPerformed(null);
+        //jComboBoxMesActionPerformed(null);
     }//GEN-LAST:event_jComboBoxMesMouseClicked
 
     private void popularTablelaHoje() {

@@ -1,7 +1,9 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/home/gbarrosn/NetBeansProjects/PontoEletronico/lib/mysql-connector-j-9.0.0.jar",
+        "/home/gbarrosn/Downloads/OpenJDK21U-jdk_x64_linux_hotspot_21.0.4_7/jdk-21.0.4+7/include/linux/jni_md.h",
         "/home/gbarrosn/SistemaPonto/lib/mysql-connector-j-9.0.0.jar"
+    ],
+    "java.project.sourcePaths": [
+        "."
     ]
 }

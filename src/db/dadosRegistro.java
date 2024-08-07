@@ -345,8 +345,10 @@ public class dadosRegistro {
     }
 
     public static List<registro> buscarRegistrosMes(int mes) {
+        
         try (Connection connection = conectarBanco.conectar()) {
-            String query = "SELECT * FROM registros WHERE data like '%/0 " + mes + "/%';";
+
+            String query = "SELECT * FROM registros WHERE data like '%/0" + String.valueOf(mes).trim() + "/%';";
 
             try {
                 Statement statement = connection.createStatement();
@@ -385,4 +387,12 @@ public class dadosRegistro {
     }
         return null;
 }
+
+public static void main(String[] args) {
+    List<registro> registros = buscarRegistrosMes(8);
+    for (registro reg : registros) {
+        System.out.println(reg);
+    }
+}
+
 }

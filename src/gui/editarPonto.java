@@ -244,6 +244,9 @@ public class editarPonto extends javax.swing.JFrame {
             }
 
             JOptionPane.showMessageDialog(null, "Registro alterado com sucesso!");
+            conferirPonto tela = new conferirPonto();
+            this.dispose();
+            tela.setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(null, "Verifique a matricula e a senha!");

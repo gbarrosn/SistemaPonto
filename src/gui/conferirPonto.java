@@ -169,10 +169,15 @@ public class conferirPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO listar os registros do dia e preencher a tabela
-        int mes = jComboBoxMes.getSelectedIndex() + 1;
+        registros = dadosRegistro.buscarRegistrosFuncionario(jComboBoxData.getSelectedItem().toString());
 
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        
+        model.setRowCount(0);
+        for (registro r : registros) {
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+        }
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

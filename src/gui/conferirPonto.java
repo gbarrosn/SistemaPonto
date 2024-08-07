@@ -26,7 +26,7 @@ public class conferirPonto extends javax.swing.JFrame {
      */
     public conferirPonto() {
         initComponents();
-        jButton2ActionPerformed(null);
+        popularTablelaHoje();
     }
 
     /**
@@ -181,6 +181,21 @@ public class conferirPonto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void popularTablelaHoje() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = currentDate.format(formatter);
+
+        // Use the formatted date in your code
+        registros = dadosRegistro.buscarRegistrosFuncionario(formattedDate);
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+        model.setRowCount(0);
+        for (registro r : registros) {
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+        }
+    }
     /**
      * @param args the command line arguments
      */

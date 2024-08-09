@@ -33,7 +33,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jComboBoxEntrada.setSelectedItem(funcionarioAlterar.getHorario().split(" - ")[0]);
         jComboBoxSaida.setSelectedItem(funcionarioAlterar.getHorario().split(" - ")[1]);
         jComboBoxTurno.setSelectedItem(funcionarioAlterar.getTurno());
-        jTextFieldHorasSemanais.setText(funcionarioAlterar.getHorasSemanais());
+        jComboBoxSemanal.setSelectedItem(funcionarioAlterar.getHorasSemanais());
         jTextFieldCodigoBarras.setText(funcionarioAlterar.getCodigoDeBarras());
         jTextFieldSenha.setText(funcionarioAlterar.getSenha());
     }
@@ -66,7 +66,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jTextFieldHorasSemanais = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextFieldCodigoBarras = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -75,6 +74,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jComboBoxEntrada = new javax.swing.JComboBox<>();
         jComboBoxSaida = new javax.swing.JComboBox<>();
+        jComboBoxSemanal = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +136,8 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jComboBoxSaida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
 
+        jComboBoxSemanal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "40", "44" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,7 +179,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
                                             .addComponent(jLabel12)
                                             .addGap(0, 0, Short.MAX_VALUE))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTextFieldSenha)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -230,12 +232,13 @@ public class alterarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -243,9 +246,9 @@ public class alterarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,7 +313,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         String dataAdmissao = jTextFieldDataAdmissao.getText().trim();
         String escala = jTextFieldEscala.getText().trim();
         String horario = jComboBoxEntrada.getSelectedItem().toString() + " - " + jComboBoxSaida.getSelectedItem().toString();
-        String horasSemanais = jTextFieldHorasSemanais.getText().trim();
+        String horasSemanais = jComboBoxSemanal.getSelectedItem().toString();
         String codigoDeBarras = jTextFieldCodigoBarras.getText().trim();
         String senha = jTextFieldSenha.getText().trim();
 
@@ -403,6 +406,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JComboBox<String> jComboBoxEntrada;
     private javax.swing.JComboBox<String> jComboBoxSaida;
+    private javax.swing.JComboBox<String> jComboBoxSemanal;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -421,7 +425,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDataAdmissao;
     private javax.swing.JTextField jTextFieldEscala;
     private javax.swing.JTextField jTextFieldFuncao;
-    private javax.swing.JTextField jTextFieldHorasSemanais;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldSenha;

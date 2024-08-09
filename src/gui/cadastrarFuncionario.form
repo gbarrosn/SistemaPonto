@@ -98,7 +98,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTextFieldHorasSemanais" min="-2" pref="162" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxSemanal" min="-2" pref="162" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jTextFieldSenha" max="32767" attributes="0"/>
                                   </Group>
@@ -184,9 +184,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldHorasSemanais" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldCodigoBarras" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxSemanal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -288,8 +288,6 @@
             <Property name="text" type="java.lang.String" value="Horas semanais:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldHorasSemanais">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="text" type="java.lang.String" value="C&#xf3;digo de barras:"/>
@@ -364,6 +362,20 @@
                 <StringItem index="14" value="20:00"/>
                 <StringItem index="15" value="21:00"/>
                 <StringItem index="16" value="22:00"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxSemanal">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="20"/>
+                <StringItem index="1" value="40"/>
+                <StringItem index="2" value="44"/>
               </StringArray>
             </Property>
           </Properties>

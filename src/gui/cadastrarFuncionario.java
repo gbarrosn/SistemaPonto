@@ -53,7 +53,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jTextFieldHorasSemanais = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextFieldCodigoBarras = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -62,6 +61,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jComboBoxEntrada = new javax.swing.JComboBox<>();
         jComboBoxSaida = new javax.swing.JComboBox<>();
+        jComboBoxSemanal = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -122,6 +122,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jComboBoxSaida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
 
+        jComboBoxSemanal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "40", "44" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -163,7 +165,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                             .addComponent(jLabel12)
                                             .addGap(0, 0, Short.MAX_VALUE))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTextFieldSenha)))
                             .addGap(22, 22, 22)
@@ -230,9 +232,9 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,7 +331,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             return;
         }
 
-        String horasSemanais = jTextFieldHorasSemanais.getText().trim();
+        String horasSemanais = jComboBoxSemanal.getSelectedItem().toString();
         if (horasSemanais.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo horas semanais é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
@@ -419,6 +421,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBoxEntrada;
     private javax.swing.JComboBox<String> jComboBoxSaida;
+    private javax.swing.JComboBox<String> jComboBoxSemanal;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -437,7 +440,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDataAdmissao;
     private javax.swing.JTextField jTextFieldEscala;
     private javax.swing.JTextField jTextFieldFuncao;
-    private javax.swing.JTextField jTextFieldHorasSemanais;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldSenha;

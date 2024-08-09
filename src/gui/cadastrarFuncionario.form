@@ -113,8 +113,8 @@
                                   <Component id="jTextFieldCodigoBarras" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextFieldFuncao" min="-2" pref="90" max="-2" attributes="0"/>
                                           <Component id="jComboBoxEntrada" min="-2" pref="102" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxFuncao" min="-2" pref="102" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -158,10 +158,10 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxTurno" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxSetor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -246,8 +246,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldFuncao">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -406,6 +404,27 @@
               <StringArray count="2">
                 <StringItem index="0" value="Seg. - Sab."/>
                 <StringItem index="1" value="Seg. - Sex."/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxFuncao">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="10">
+                <StringItem index="0" value="RH"/>
+                <StringItem index="1" value="Procon"/>
+                <StringItem index="2" value="Funape"/>
+                <StringItem index="3" value="CAS"/>
+                <StringItem index="4" value="Coordena&#xe7;&#xe3;o"/>
+                <StringItem index="5" value="Compesa"/>
+                <StringItem index="6" value="SDS"/>
+                <StringItem index="7" value="Detran"/>
+                <StringItem index="8" value="Limpeza"/>
+                <StringItem index="9" value="TI"/>
               </StringArray>
             </Property>
           </Properties>

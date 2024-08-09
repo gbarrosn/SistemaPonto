@@ -27,7 +27,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jTextFieldNome.setText(funcionarioAlterar.getNome());
         jTextFieldMatricula.setText(String.valueOf(funcionarioAlterar.getMatricula()));
         jComboBoxSetor.setSelectedItem(funcionarioAlterar.getSetor());
-        jTextFieldFuncao.setText(funcionarioAlterar.getFuncao());
+        jComboBoxFuncao.setSelectedItem(funcionarioAlterar.getFuncao());
         jTextFieldDataAdmissao.setText(funcionarioAlterar.getDataAdmissao());
         jComboBoxEscala.setSelectedItem(funcionarioAlterar.getEscala());
         jComboBoxEntrada.setSelectedItem(funcionarioAlterar.getHorario().split(" - ")[0]);
@@ -57,7 +57,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldFuncao = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldDataAdmissao = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -75,6 +74,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jComboBoxSemanal = new javax.swing.JComboBox<>();
         jComboBoxSetor = new javax.swing.JComboBox<>();
         jComboBoxEscala = new javax.swing.JComboBox<>();
+        jComboBoxFuncao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +142,8 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jComboBoxEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seg. - Sab.", "Seg. - Sex." }));
 
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -191,14 +193,14 @@ public class alterarFuncionario extends javax.swing.JFrame {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxFuncao, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -227,9 +229,9 @@ public class alterarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -313,7 +315,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         //int id = funcionarioAlterar.getIdFuncionario();
         String setor = jComboBoxSetor.getSelectedItem().toString();
         String turno = jComboBoxTurno.getSelectedItem().toString();
-        String funcao = jTextFieldFuncao.getText().trim();
+        String funcao = jComboBoxFuncao.getSelectedItem().toString();
         String dataAdmissao = jTextFieldDataAdmissao.getText().trim();
         String escala = jComboBoxEscala.getSelectedItem().toString();
         String horario = jComboBoxEntrada.getSelectedItem().toString() + " - " + jComboBoxSaida.getSelectedItem().toString();
@@ -410,6 +412,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JComboBox<String> jComboBoxEntrada;
     private javax.swing.JComboBox<String> jComboBoxEscala;
+    private javax.swing.JComboBox<String> jComboBoxFuncao;
     private javax.swing.JComboBox<String> jComboBoxSaida;
     private javax.swing.JComboBox<String> jComboBoxSemanal;
     private javax.swing.JComboBox<String> jComboBoxSetor;
@@ -429,7 +432,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldCodigoBarras;
     private javax.swing.JTextField jTextFieldDataAdmissao;
-    private javax.swing.JTextField jTextFieldFuncao;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldSenha;

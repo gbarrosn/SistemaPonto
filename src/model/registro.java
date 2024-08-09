@@ -21,6 +21,7 @@ public class registro {
     String data;
     int mes;
     String nomeFuncionario;
+    String alteracao;
 
     /*public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
         this.idRegistro = idRegistro;
@@ -37,6 +38,11 @@ public class registro {
     }*/
 
     // Getters
+
+    public String getAlteracao() {
+        return alteracao;
+    }
+
     public String getNomeFuncionario () {
         return nomeFuncionario;
     }
@@ -85,6 +91,11 @@ public class registro {
     }
 
     // Setters
+
+    public void setAlteracao(String alteracao) {
+        this.alteracao = alteracao;
+    }
+
     public void setNomeFuncionario(String nomeFuncionario) {
         this.nomeFuncionario = nomeFuncionario;
     }

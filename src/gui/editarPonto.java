@@ -247,7 +247,7 @@ public class editarPonto extends javax.swing.JFrame {
 
 
 
-            String alteracao = "Alteração feita por: " + funcionarioAdm.getNome() + " no dia " + formattedDate + " às " + formattedTime;
+            String alteracao = "Alteração feita por " + funcionarioAdm.getNome() + " no dia " + formattedDate + " às " + formattedTime;
 
             // TODO salvar no banco de dados
             try {

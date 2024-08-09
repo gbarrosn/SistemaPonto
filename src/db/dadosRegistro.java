@@ -44,6 +44,8 @@ public class dadosRegistro {
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
+                String alteracao = resultSet.getString("alteracao");
+                
 
                 // Create a new Registro object
                 registro registro = new registro();
@@ -54,6 +56,7 @@ public class dadosRegistro {
                 registro.setRetornoAlmoco(retornoAlmoco);
                 registro.setHoraSaida(horaSaida);
                 registro.setData(data);
+                registro.setAlteracao(alteracao);
                 
                 registros.add(registro);
             }
@@ -114,6 +117,8 @@ public class dadosRegistro {
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
+                String alteracao = resultSet.getString("alteracao");
+                
 
 
                 // Create a new Registro object
@@ -125,6 +130,9 @@ public class dadosRegistro {
                 registro.setRetornoAlmoco(retornoAlmoco);
                 registro.setHoraSaida(horaSaida);
                 registro.setData(data);
+                registro.setAlteracao(alteracao);
+                
+
                 registros.add(registro);
             }
         } catch (SQLException e) {
@@ -162,6 +170,7 @@ public class dadosRegistro {
                 String retornoAlmoco = resultSet.getString("retorno_almoco");
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
+                String alteracao = resultSet.getString("alteracao");
 
                 // Create a new Registro object
                 registro registro = new registro();
@@ -172,6 +181,7 @@ public class dadosRegistro {
                 registro.setRetornoAlmoco(retornoAlmoco);
                 registro.setHoraSaida(horaSaida);
                 registro.setData(data);
+                registro.setAlteracao(alteracao);
                 
                 registros.add(registro);
             }
@@ -282,7 +292,7 @@ public class dadosRegistro {
         }
     }
 
-    public static List<registro> buscarRegistrosFuncionario(String data) {
+    public static List<registro> buscarRegistrosData(String data) {
 
         try (Connection connection = conectarBanco.conectar()) {
             String query = "SELECT * FROM registros inner join funcionarios on (registros.id_funcionario = funcionarios.id) WHERE registros.data = '" + data + "';";
@@ -302,6 +312,7 @@ public class dadosRegistro {
                     String horaSaida = resultSet.getString("saida");
                     String dataRegistro = resultSet.getString("data");
                     String nome = resultSet.getString("nome");
+                    String alteracao = resultSet.getString("alteracao");
 
                     registro registro = new registro();
                     registro.setNomeFuncionario(nome);
@@ -312,6 +323,10 @@ public class dadosRegistro {
                     registro.setRetornoAlmoco(retornoAlmoco);
                     registro.setHoraSaida(horaSaida);
                     registro.setData(dataRegistro);
+                    if (alteracao == null) {
+                        alteracao = "";
+                    }
+                    registro.setAlteracao(alteracao);
                     
                     registros.add(registro);
                 }
@@ -365,6 +380,7 @@ public class dadosRegistro {
                     String retornoAlmoco = resultSet.getString("retorno_almoco");
                     String horaSaida = resultSet.getString("saida");
                     String dataRegistro = resultSet.getString("data");
+                    String alteracao = resultSet.getString("alteracao");
 
                     registro registro = new registro();
                     registro.setIdRegistro(idRegistro);
@@ -374,6 +390,7 @@ public class dadosRegistro {
                     registro.setRetornoAlmoco(retornoAlmoco);
                     registro.setHoraSaida(horaSaida);
                     registro.setData(dataRegistro);
+                    registro.setAlteracao(alteracao);
                     
                     registros.add(registro);
                 }
@@ -390,9 +407,9 @@ public class dadosRegistro {
 }
 
 public static void main(String[] args) {
-    List<registro> registros = buscarRegistrosMes(8);
+    List<registro> registros = buscarRegistrosData("06/08/2024");
     for (registro reg : registros) {
-        System.out.println(reg);
+        System.out.println(reg.getAlteracao());
     }
 }
 

@@ -65,13 +65,13 @@ public class conferirPonto extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída"
+                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -123,14 +123,14 @@ public class conferirPonto extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(jComboBoxData, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(15, 15, 15))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -169,13 +169,13 @@ public class conferirPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO listar os registros do dia e preencher a tabela
-        registros = dadosRegistro.buscarRegistrosFuncionario(jComboBoxData.getSelectedItem().toString());
+        registros = dadosRegistro.buscarRegistrosData(jComboBoxData.getSelectedItem().toString());
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
         model.setRowCount(0);
         for (registro r : registros) {
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao()});
         }
 
 
@@ -235,13 +235,14 @@ public class conferirPonto extends javax.swing.JFrame {
         String formattedDate = currentDate.format(formatter);
 
         // Use the formatted date in your code
-        registros = dadosRegistro.buscarRegistrosFuncionario(formattedDate);
+        registros = dadosRegistro.buscarRegistrosData(formattedDate);
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
         model.setRowCount(0);
         for (registro r : registros) {
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+            System.out.println(r.getAlteracao());
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao()});
         }
     }
     /**

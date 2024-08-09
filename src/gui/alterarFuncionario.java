@@ -30,7 +30,8 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jTextFieldFuncao.setText(funcionarioAlterar.getFuncao());
         jTextFieldDataAdmissao.setText(funcionarioAlterar.getDataAdmissao());
         jTextFieldEscala.setText(funcionarioAlterar.getEscala());
-        jTextFieldHorario.setText(funcionarioAlterar.getHorario());
+        jComboBoxEntrada.setSelectedItem(funcionarioAlterar.getHorario().split(" - ")[0]);
+        jComboBoxSaida.setSelectedItem(funcionarioAlterar.getHorario().split(" - ")[1]);
         jComboBoxTurno.setSelectedItem(funcionarioAlterar.getTurno());
         jTextFieldHorasSemanais.setText(funcionarioAlterar.getHorasSemanais());
         jTextFieldCodigoBarras.setText(funcionarioAlterar.getCodigoDeBarras());
@@ -63,7 +64,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextFieldEscala = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextFieldHorario = new javax.swing.JTextField();
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jTextFieldHorasSemanais = new javax.swing.JTextField();
@@ -73,6 +73,8 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jTextFieldSenha = new javax.swing.JTextField();
         jButtonAlterar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jComboBoxEntrada = new javax.swing.JComboBox<>();
+        jComboBoxSaida = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,12 +110,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jLabel9.setText("Horario:");
 
-        jTextFieldHorario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldHorarioActionPerformed(evt);
-            }
-        });
-
         jComboBoxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde" }));
 
         jLabel10.setText("Horas semanais:");
@@ -135,6 +131,10 @@ public class alterarFuncionario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jComboBoxEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00" }));
+
+        jComboBoxSaida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,16 +180,19 @@ public class alterarFuncionario extends javax.swing.JFrame {
                                     .addComponent(jTextFieldHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTextFieldSenha)))
-                            .addGap(22, 22, 22)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel3)
-                                .addComponent(jTextFieldMatricula)
-                                .addComponent(jTextFieldFuncao)
-                                .addComponent(jLabel9)
-                                .addComponent(jTextFieldHorario)
-                                .addComponent(jLabel11)
-                                .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -230,7 +233,9 @@ public class alterarFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -242,10 +247,11 @@ public class alterarFuncionario extends javax.swing.JFrame {
                     .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -278,10 +284,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
 
-    private void jTextFieldHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldHorarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldHorarioActionPerformed
-
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
 
@@ -307,7 +309,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         String funcao = jTextFieldFuncao.getText().trim();
         String dataAdmissao = jTextFieldDataAdmissao.getText().trim();
         String escala = jTextFieldEscala.getText().trim();
-        String horario = jTextFieldHorario.getText().trim();
+        String horario = jComboBoxEntrada.getSelectedItem().toString() + " - " + jComboBoxSaida.getSelectedItem().toString();
         String horasSemanais = jTextFieldHorasSemanais.getText().trim();
         String codigoDeBarras = jTextFieldCodigoBarras.getText().trim();
         String senha = jTextFieldSenha.getText().trim();
@@ -399,6 +401,8 @@ public class alterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JComboBox<String> jComboBoxEntrada;
+    private javax.swing.JComboBox<String> jComboBoxSaida;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -417,7 +421,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDataAdmissao;
     private javax.swing.JTextField jTextFieldEscala;
     private javax.swing.JTextField jTextFieldFuncao;
-    private javax.swing.JTextField jTextFieldHorario;
     private javax.swing.JTextField jTextFieldHorasSemanais;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;

@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/gbarrosn/SistemaPonto/src/gui/conferirPonto.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/cadastrarFuncionario.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/gui/alterarFuncionario.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/gui/editarPonto.java</file>
         </group>
     </open-files>
 </project-private>

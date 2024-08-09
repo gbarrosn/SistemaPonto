@@ -109,13 +109,18 @@
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldMatricula" max="32767" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldHorario" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldCodigoBarras" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTextFieldFuncao" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextFieldFuncao" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxEntrada" min="-2" pref="102" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxSaida" min="-2" pref="103" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -168,7 +173,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextFieldDataAdmissao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldEscala" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldHorario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxSaida" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -264,11 +270,6 @@
             <Property name="text" type="java.lang.String" value="Horario:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldHorario">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldHorarioActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxTurno">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -318,6 +319,57 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Coordena&#xe7;&#xe3;o"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxEntrada">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="12">
+                <StringItem index="0" value="06:00"/>
+                <StringItem index="1" value="07:00"/>
+                <StringItem index="2" value="08:00"/>
+                <StringItem index="3" value="09:00"/>
+                <StringItem index="4" value="10:00"/>
+                <StringItem index="5" value="11:00"/>
+                <StringItem index="6" value="12:00"/>
+                <StringItem index="7" value="13:00"/>
+                <StringItem index="8" value="14:00"/>
+                <StringItem index="9" value="15:00"/>
+                <StringItem index="10" value="16:00"/>
+                <StringItem index="11" value="17:00"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxSaida">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="17">
+                <StringItem index="0" value="06:00"/>
+                <StringItem index="1" value="07:00"/>
+                <StringItem index="2" value="08:00"/>
+                <StringItem index="3" value="09:00"/>
+                <StringItem index="4" value="10:00"/>
+                <StringItem index="5" value="11:00"/>
+                <StringItem index="6" value="12:00"/>
+                <StringItem index="7" value="13:00"/>
+                <StringItem index="8" value="14:00"/>
+                <StringItem index="9" value="15:00"/>
+                <StringItem index="10" value="16:00"/>
+                <StringItem index="11" value="17:00"/>
+                <StringItem index="12" value="18:00"/>
+                <StringItem index="13" value="19:00"/>
+                <StringItem index="14" value="20:00"/>
+                <StringItem index="15" value="21:00"/>
+                <StringItem index="16" value="22:00"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

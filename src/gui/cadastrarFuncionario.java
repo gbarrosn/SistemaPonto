@@ -51,7 +51,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextFieldEscala = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextFieldHorario = new javax.swing.JTextField();
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jTextFieldHorasSemanais = new javax.swing.JTextField();
@@ -61,6 +60,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jTextFieldSenha = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jComboBoxEntrada = new javax.swing.JComboBox<>();
+        jComboBoxSaida = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -98,12 +99,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jLabel9.setText("Horario:");
 
-        jTextFieldHorario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldHorarioActionPerformed(evt);
-            }
-        });
-
         jComboBoxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde" }));
 
         jLabel10.setText("Horas semanais:");
@@ -122,6 +117,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         });
 
         jCheckBox2.setText("Coordenação");
+
+        jComboBoxEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00" }));
+
+        jComboBoxSaida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -173,13 +172,16 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addComponent(jTextFieldMatricula)
                                 .addComponent(jLabel9)
-                                .addComponent(jTextFieldHorario)
                                 .addComponent(jLabel11)
                                 .addComponent(jTextFieldCodigoBarras)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jCheckBox2)))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jCheckBox2)
+                                        .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,7 +221,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -265,10 +268,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private void jTextFieldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
-
-    private void jTextFieldHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldHorarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldHorarioActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
@@ -324,7 +323,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             return;
         }
 
-        String horario = jTextFieldHorario.getText().trim();
+        String horario = jComboBoxEntrada.getSelectedItem().toString() + " - " + jComboBoxSaida.getSelectedItem().toString();
         if (horario.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo horário é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
@@ -418,6 +417,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JComboBox<String> jComboBoxEntrada;
+    private javax.swing.JComboBox<String> jComboBoxSaida;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -436,7 +437,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDataAdmissao;
     private javax.swing.JTextField jTextFieldEscala;
     private javax.swing.JTextField jTextFieldFuncao;
-    private javax.swing.JTextField jTextFieldHorario;
     private javax.swing.JTextField jTextFieldHorasSemanais;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;

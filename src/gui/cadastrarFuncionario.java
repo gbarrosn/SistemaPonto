@@ -48,7 +48,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldDataAdmissao = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldEscala = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -62,6 +61,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jComboBoxSaida = new javax.swing.JComboBox<>();
         jComboBoxSemanal = new javax.swing.JComboBox<>();
         jComboBoxSetor = new javax.swing.JComboBox<>();
+        jComboBoxEscala = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -126,6 +126,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
+        jComboBoxEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seg. - Sab.", "Seg. - Sex." }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -162,10 +164,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                         .addComponent(jLabel10))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEscala)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel12)
-                                            .addGap(0, 0, Short.MAX_VALUE))))
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jComboBoxEscala, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jComboBoxSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,9 +226,9 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -321,7 +323,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             return;
         }
 
-        String escala = jTextFieldEscala.getText().trim();
+        String escala = jComboBoxEscala.getSelectedItem().toString();
         if (escala.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo escala é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
@@ -422,6 +424,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBoxEntrada;
+    private javax.swing.JComboBox<String> jComboBoxEscala;
     private javax.swing.JComboBox<String> jComboBoxSaida;
     private javax.swing.JComboBox<String> jComboBoxSemanal;
     private javax.swing.JComboBox<String> jComboBoxSetor;
@@ -441,7 +444,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldCodigoBarras;
     private javax.swing.JTextField jTextFieldDataAdmissao;
-    private javax.swing.JTextField jTextFieldEscala;
     private javax.swing.JTextField jTextFieldFuncao;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;

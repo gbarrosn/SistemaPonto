@@ -4,7 +4,12 @@
  */
 package gui;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -239,9 +244,19 @@ public class editarPonto extends javax.swing.JFrame {
             registroAlterar.setRetornoAlmoco(jTextFieldRetornoAlmoco.getText());
             registroAlterar.setHoraSaida(jTextFieldSaida.getText());
 
+            LocalTime currentTime = LocalTime.now();
+            String formattedTime = currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+            LocalDate currentDate = LocalDate.now();
+            String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yy"));
+
+
+
+            String alteracao = "Alteração feita por: " + funcionarioAdm.getNome() + " no dia " + formattedDate + " às " + formattedTime;
+
             // TODO salvar no banco de dados
             try {
-                dadosRegistro.alterarRegistro(registroAlterar);
+                dadosRegistro.alterarRegistro(registroAlterar, alteracao);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

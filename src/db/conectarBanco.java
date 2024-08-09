@@ -84,6 +84,7 @@ public class conectarBanco {
                                 "  retorno_almoco text," +
                                 "  saida text," +
                                 "  data text NOT NULL," +
+                                "  alteracao text," +
                                 "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
                                 ");";
 

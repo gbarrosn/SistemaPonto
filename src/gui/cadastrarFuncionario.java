@@ -42,7 +42,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldMatricula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldSetor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextFieldFuncao = new javax.swing.JTextField();
@@ -62,6 +61,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jComboBoxEntrada = new javax.swing.JComboBox<>();
         jComboBoxSaida = new javax.swing.JComboBox<>();
         jComboBoxSemanal = new javax.swing.JComboBox<>();
+        jComboBoxSetor = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -124,6 +124,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jComboBoxSemanal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "40", "44" }));
 
+        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,8 +144,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                             .addComponent(jLabel2))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextFieldSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel7))
+                                                .addComponent(jLabel7)
+                                                .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -210,10 +212,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox2))
+                    .addComponent(jCheckBox2)
+                    .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -295,7 +297,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             }
         }
 
-        String setor = jTextFieldSetor.getText().trim();
+        String setor = jComboBoxSetor.getSelectedItem().toString();
         if (setor.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo setor é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
@@ -422,6 +424,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxEntrada;
     private javax.swing.JComboBox<String> jComboBoxSaida;
     private javax.swing.JComboBox<String> jComboBoxSemanal;
+    private javax.swing.JComboBox<String> jComboBoxSetor;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -443,6 +446,5 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldSenha;
-    private javax.swing.JTextField jTextFieldSetor;
     // End of variables declaration//GEN-END:variables
 }

@@ -115,47 +115,6 @@ public class dadosRegistroMensal {
                     }
                 }
             }
-        registroMensal registro = new registroMensal();
-        registro = registros.get(0);
-
-        System.out.println("Registro:");
-            System.out.println("ID: " + registro.getRegistro().getIdRegistro());
-            System.out.println("ID Funcionario: " + registro.getRegistro().getIdFuncionario());
-            System.out.println("Hora Entrada: " + registro.getRegistro().getHoraEntrada());
-            System.out.println("Saida Almoco: " + registro.getRegistro().getSaidaAlmoco());
-            System.out.println("Retorno Almoco: " + registro.getRegistro().getRetornoAlmoco());
-            System.out.println("Hora Saida: " + registro.getRegistro().getHoraSaida());
-            System.out.println("Data: " + registro.getRegistro().getData());
-            System.out.println("Alteracao: " + registro.getRegistro().getAlteracao());
-            System.out.println("Funcionario:");
-            System.out.println("ID: " + registro.getFuncionario().getIdFuncionario());
-            System.out.println("Nome: " + registro.getFuncionario().getNome());
-            System.out.println("Matricula: " + registro.getFuncionario().getMatricula());
-            System.out.println("Setor: " + registro.getFuncionario().getSetor());
-            System.out.println("Turno: " + registro.getFuncionario().getTurno());
-            System.out.println("Funcao: " + registro.getFuncionario().getFuncao());
-            System.out.println("Data Admissao: " + registro.getFuncionario().getDataAdmissao());
-            System.out.println("Escala: " + registro.getFuncionario().getEscala());
-            System.out.println("Horario: " + registro.getFuncionario().getHorario());
-            System.out.println("Horas Semanais: " + registro.getFuncionario().getHorasSemanais());
-            System.out.println("Codigo de Barras: " + registro.getFuncionario().getCodigoDeBarras());
-            System.out.println("Senha: " + registro.getFuncionario().getSenha());
-            System.out.println("Adm: " + registro.getFuncionario().isAdm());
-            System.out.println("Assinatura:");
-            System.out.println("ID Funcionario: " + registro.getAssinatura().getIdFuncionario());
-            System.out.println("Mes: " + registro.getAssinatura().getMes());
-            System.out.println("Hora Assinatura: " + registro.getAssinatura().getHoraAssinatura());
-            System.out.println("Data Assinatura: " + registro.getAssinatura().getDataAssinatura());
-            System.out.println("Assinatura Coordenacao:");
-            System.out.println("ID Assinatura: " + registro.getAssinaturaCoordenacao().getIdAssinatura());
-            System.out.println("ID Coordenacao: " + registro.getAssinaturaCoordenacao().getIdCoordenacao());
-            System.out.println("Mes: " + registro.getAssinaturaCoordenacao().getMes());
-            System.out.println("Hora Assinatura: " + registro.getAssinaturaCoordenacao().getHoraAssinatura());
-            System.out.println("Data Assinatura: " + registro.getAssinaturaCoordenacao().getDataAssinatura());
-            System.out.println("Nome Coordenacao: " + registro.getAssinaturaCoordenacao().getNomeCoordenacao());
-            System.out.println();
-
-
 
         return registros;
         
@@ -166,8 +125,6 @@ public class dadosRegistroMensal {
 
 public static void main(String[] args) {
     List<registroMensal> registros = buscarDadosDoMes(8);
-    for (registroMensal registro : registros) {
-        System.out.println(registro.getFuncionario().getNome() + " " + registro.getAssinatura().getIdFuncionario() + " " + registro.getAssinatura().getMes() + " " + registro.getAssinatura().getHoraAssinatura() + " " + registro.getAssinatura().getDataAssinatura());
-    }
+    
 }
 }

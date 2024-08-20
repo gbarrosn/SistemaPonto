@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package db;
+import model.assinatura;
 import model.funcionario;
 import model.registro;
 import model.registroMensal;
@@ -59,9 +60,27 @@ public class dadosRegistroMensal {
 
                 registro.setFuncionario(func);
 
+                registros.add(registro);
 
             }
 
+            String queryAssinaturas = "SELECT * FROM assinatura a inner join funcionarios f on (a.id_funcionario = f.id) WHERE a.mes = " + mes;
+
+            PreparedStatement statementAssinaturas = connection.prepareStatement(queryAssinaturas);
+            ResultSet resultAssinaturas = statementAssinaturas.executeQuery();
+
+            while (resultAssinaturas.next()) {
+                int funcionarioId = resultAssinaturas.getInt("id_funcionario");
+                for (registroMensal registro : registros) {
+                    if (registro.getFuncionario().getIdFuncionario() == funcionarioId) {
+
+                        assinatura ass = new assinatura(resultAssinaturas.getInt("id"), resultAssinaturas.getInt("id_funcionario"), resultAssinaturas.getInt("mes"), resultAssinaturas.getString("hora_assinatura"), resultAssinaturas.getString("data_Assinatura") );
+
+                        registro.setAssinatura(ass);
+                        
+                    }
+                }
+            }
 
 
 

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package db;
+import model.funcionario;
 import model.registro;
 import model.registroMensal;
 import java.sql.Connection;
@@ -41,6 +42,24 @@ public class dadosRegistroMensal {
 
                 registro.setRegistro(reg);
 
+                funcionario func = new funcionario();
+                func.setIdFuncionario(result.getInt("id_funcionario"));
+                func.setNome(result.getString("nome"));
+                func.setMatricula(result.getInt("matricula"));
+                func.setSetor(result.getString("setor"));
+                func.setTurno(result.getString("turno"));
+                func.setFuncao(result.getString("funcao"));
+                func.setDataAdmissao(result.getString("data_admissao"));
+                func.setEscala(result.getString("escala"));
+                func.setHorario(result.getString("horario"));
+                func.setHorasSemanais(result.getString("horas_semanais"));
+                func.setCodigoDeBarras(result.getString("codigo_de_barras"));
+                func.setSenha(result.getString("senha"));
+                func.setAdm(result.getBoolean("adm"));
+
+                registro.setFuncionario(func);
+
+
             }
 
 
@@ -51,6 +70,9 @@ public class dadosRegistroMensal {
 
         return registros;
         
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
     }
 
+}
 }

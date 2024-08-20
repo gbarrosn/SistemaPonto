@@ -412,6 +412,8 @@ public class registrarAssinatura extends javax.swing.JFrame {
             }
     
             int idFuncionario = selectedFuncionario.getIdFuncionario();
+            registrosMes.clear();
+            
             List<registro> registros = dadosRegistro.buscarRegistrosPorId(idFuncionario);
 
             int mesSelecionado = jComboBox1.getSelectedIndex() + 1;
@@ -440,9 +442,14 @@ public class registrarAssinatura extends javax.swing.JFrame {
 
         // Remove all rows from the table
         model.setRowCount(0);
+        jTable1.setModel(model);
+        
+
         for (registro r : registrosMes) {
             model.addRow(new Object[]{r.getData(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
         }
+        
+        
         
     }
     

@@ -15,6 +15,15 @@ public class assinaturaCoordenacao {
     private int mes;
     private String dataAssinatura;
     private String horaAssinatura;
+    private String nomeCoordenacao;
+
+    public void setNomeCoordenacao(String nomeCoordenacao) {
+        this.nomeCoordenacao = nomeCoordenacao;
+    }
+
+    public String getNomeCoordenacao() {
+        return nomeCoordenacao;
+    }
 
     public int getIdAssinatura() {
         return idAssinatura;

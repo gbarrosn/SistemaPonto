@@ -4,6 +4,7 @@
  */
 package db;
 import model.assinatura;
+import model.assinaturaCoordenacao;
 import model.funcionario;
 import model.registro;
 import model.registroMensal;
@@ -19,6 +20,14 @@ import java.util.List;
  */
 public class dadosRegistroMensal {
     
+    /**
+     * Retrieves the monthly records for a given month.
+     * 
+     * @author gbarrosn
+     * @param mes The month for which to retrieve the records.
+     * @return A list of monthly records.
+     * @throws RuntimeException if a SQL exception occurs.
+     */
     public static List<registroMensal> buscarDadosDoMes(int mes) {
         List<registroMensal> registros = new ArrayList<>();
 
@@ -37,7 +46,7 @@ public class dadosRegistroMensal {
                 reg.setHoraEntrada(result.getString("hora_entrada"));
                 reg.setSaidaAlmoco(result.getString("saida_almoco"));
                 reg.setRetornoAlmoco(result.getString("retorno_almoco"));
-                reg.setHoraSaida(result.getString("hora_saida"));
+                reg.setHoraSaida(result.getString("saida"));
                 reg.setData(result.getString("data"));
                 reg.setAlteracao(result.getString("alteracao"));
 
@@ -82,8 +91,34 @@ public class dadosRegistroMensal {
                 }
             }
 
+            String queryAssinaturaCoordenacao = "SELECT * FROM assinaturaCoordenacao ac inner join funcionarios f on (ac.id_coordenacao = f.id) where ac.mes = " + mes;
 
+            PreparedStatement statementAssinaturaCoord = connection.prepareStatement(queryAssinaturaCoordenacao);
+            ResultSet resultAssCoord = statementAssinaturaCoord.executeQuery();
 
+            while (resultAssCoord.next()) {
+                int funcId = resultAssCoord.getInt("id_funcionario");
+                
+                for (registroMensal r : registros) {
+                    if (r.getFuncionario().getIdFuncionario() == funcId) {
+
+                        assinaturaCoordenacao assC = new assinaturaCoordenacao();
+
+                        assC.setIdAssinatura(resultAssCoord.getInt("id"));
+                        assC.setIdCoordenacao(resultAssCoord.getInt("id_coordenacao"));
+                        assC.setMes(resultAssCoord.getInt("mes"));
+                        assC.setHoraAssinatura(resultAssCoord.getString("hora_assinatura"));
+                        assC.setDataAssinatura(resultAssCoord.getString("data_assinatura"));
+                        assC.setNomeCoordenacao(resultAssCoord.getString("nome"));
+
+                        r.setAssinaturaCoordenacao(assC);
+                    }
+                }
+            }
+        registroMensal registro2 = new registroMensal();
+        registro2 = registros.get(0);
+
+        System.out.println(registro2.getFuncionario().getNome() + " " + registro2.getAssinatura().getIdFuncionario() + " " + registro2.getAssinatura().getMes() + " " + registro2.getAssinatura().getHoraAssinatura() + " " + registro2.getAssinatura().getDataAssinatura());
 
 
 
@@ -92,6 +127,12 @@ public class dadosRegistroMensal {
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
+}
 
+public static void main(String[] args) {
+    List<registroMensal> registros = buscarDadosDoMes(8);
+    for (registroMensal registro : registros) {
+        System.out.println(registro.getFuncionario().getNome() + " " + registro.getAssinatura().getIdFuncionario() + " " + registro.getAssinatura().getMes() + " " + registro.getAssinatura().getHoraAssinatura() + " " + registro.getAssinatura().getDataAssinatura());
+    }
 }
 }

@@ -449,7 +449,8 @@ public class registrarAssinatura extends javax.swing.JFrame {
         
 
         for (registro r : registrosMes) {
-            model.addRow(new Object[]{r.getData(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida()});
+            String atestado = r.isAtestado() ? "Sim" : "Não";
+            model.addRow(new Object[]{r.getData(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), atestado});
         }
         
         

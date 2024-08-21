@@ -116,9 +116,10 @@ public class dadosRegistroMensal {
                     }
                 }
             }
+            /*/
 
             registroMensal registro = new registroMensal();
-        registro = registros.get(0);
+        registro = registros.get(2);
 
         System.out.println("Registro:");
             System.out.println("ID: " + registro.getRegistro().getIdRegistro());
@@ -156,7 +157,7 @@ public class dadosRegistroMensal {
             System.out.println("Hora Assinatura: " + registro.getAssinaturaCoordenacao().getHoraAssinatura());
             System.out.println("Data Assinatura: " + registro.getAssinaturaCoordenacao().getDataAssinatura());
             System.out.println("Nome Coordenacao: " + registro.getAssinaturaCoordenacao().getNomeCoordenacao());
-            System.out.println();
+            System.out.println(); */
 
         return registros;
         

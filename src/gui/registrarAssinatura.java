@@ -215,7 +215,6 @@ public class registrarAssinatura extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        //TODO: popular esse combobox com os meses e quando assinar tem que ver quem assinou e procurar os registros dele, pra
         //poder reistrar a assinatura no mes que faltou ele assinar
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 

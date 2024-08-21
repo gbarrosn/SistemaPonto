@@ -66,13 +66,13 @@ public class conferirPonto extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração"
+                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração", "Atestado"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -186,7 +186,8 @@ public class conferirPonto extends javax.swing.JFrame {
 
         model.setRowCount(0);
         for (registro r : registros) {
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao()});
+            String atestado = r.isAtestado() ? "Sim" : "Não";
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao(), atestado});
         }
 
 

@@ -85,6 +85,7 @@ public class conectarBanco {
                                 "  saida text," +
                                 "  data text NOT NULL," +
                                 "  alteracao text," +
+                                "  atestado bit," +
                                 "  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)" +
                                 ");";
 

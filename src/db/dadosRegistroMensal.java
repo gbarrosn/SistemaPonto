@@ -49,6 +49,7 @@ public class dadosRegistroMensal {
                 reg.setHoraSaida(result.getString("saida"));
                 reg.setData(result.getString("data"));
                 reg.setAlteracao(result.getString("alteracao"));
+                reg.setAtestado(result.getBoolean("atestado"));
 
                 registro.setRegistro(reg);
 

@@ -45,6 +45,7 @@ public class dadosRegistro {
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
                 String alteracao = resultSet.getString("alteracao");
+                boolean atestado = resultSet.getBoolean("atestado");
                 
 
                 // Create a new Registro object
@@ -57,6 +58,7 @@ public class dadosRegistro {
                 registro.setHoraSaida(horaSaida);
                 registro.setData(data);
                 registro.setAlteracao(alteracao);
+                registro.setAtestado(atestado);
                 
                 registros.add(registro);
             }
@@ -118,7 +120,7 @@ public class dadosRegistro {
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
                 String alteracao = resultSet.getString("alteracao");
-                
+                boolean atestado = resultSet.getBoolean("atestado");
 
 
                 // Create a new Registro object
@@ -131,6 +133,8 @@ public class dadosRegistro {
                 registro.setHoraSaida(horaSaida);
                 registro.setData(data);
                 registro.setAlteracao(alteracao);
+                registro.setAtestado(atestado);
+
                 
 
                 registros.add(registro);
@@ -171,6 +175,7 @@ public class dadosRegistro {
                 String horaSaida = resultSet.getString("saida");
                 String data = resultSet.getString("data");
                 String alteracao = resultSet.getString("alteracao");
+                boolean atestado = resultSet.getBoolean("atestado");
 
                 // Create a new Registro object
                 registro registro = new registro();
@@ -182,6 +187,7 @@ public class dadosRegistro {
                 registro.setHoraSaida(horaSaida);
                 registro.setData(data);
                 registro.setAlteracao(alteracao);
+                registro.setAtestado(atestado);
                 
                 registros.add(registro);
             }
@@ -313,6 +319,7 @@ public class dadosRegistro {
                     String dataRegistro = resultSet.getString("data");
                     String nome = resultSet.getString("nome");
                     String alteracao = resultSet.getString("alteracao");
+                    boolean atestado = resultSet.getBoolean("atestado");
 
                     registro registro = new registro();
                     registro.setNomeFuncionario(nome);
@@ -323,6 +330,7 @@ public class dadosRegistro {
                     registro.setRetornoAlmoco(retornoAlmoco);
                     registro.setHoraSaida(horaSaida);
                     registro.setData(dataRegistro);
+                    registro.setAtestado(atestado);
                     if (alteracao == null) {
                         alteracao = "";
                     }
@@ -349,7 +357,7 @@ public class dadosRegistro {
 
         String query = "UPDATE registros SET hora_entrada = '" + registro.getHoraEntrada() + "', saida_almoco = '" + 
                         registro.getSaidaAlmoco() + "', retorno_almoco = '" + registro.getRetornoAlmoco() + "', saida = '" + 
-                        registro.getHoraSaida() + "', alteracao = '" + alteracao +
+                        registro.getHoraSaida() + "', alteracao = '" + alteracao + "', atestado = '" + registro.isAtestado() +
                         "' WHERE id = " + registro.getIdRegistro();
 
         try {
@@ -381,6 +389,7 @@ public class dadosRegistro {
                     String horaSaida = resultSet.getString("saida");
                     String dataRegistro = resultSet.getString("data");
                     String alteracao = resultSet.getString("alteracao");
+                    boolean atestado = resultSet.getBoolean("atestado");
 
                     registro registro = new registro();
                     registro.setIdRegistro(idRegistro);
@@ -391,6 +400,7 @@ public class dadosRegistro {
                     registro.setHoraSaida(horaSaida);
                     registro.setData(dataRegistro);
                     registro.setAlteracao(alteracao);
+                    registro.setAtestado(atestado);
                     
                     registros.add(registro);
                 }

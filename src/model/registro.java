@@ -22,6 +22,7 @@ public class registro {
     int mes;
     String nomeFuncionario;
     String alteracao;
+    boolean atestado;
 
     /*public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
         this.idRegistro = idRegistro;
@@ -38,6 +39,10 @@ public class registro {
     }*/
 
     // Getters
+
+    public boolean isAtestado() {
+        return atestado;
+    }
 
     public String getAlteracao() {
         return alteracao;
@@ -91,6 +96,9 @@ public class registro {
     }
 
     // Setters
+    public void setAtestado(boolean atestado) {
+        this.atestado = atestado;
+    }
 
     public void setAlteracao(String alteracao) {
         this.alteracao = alteracao;

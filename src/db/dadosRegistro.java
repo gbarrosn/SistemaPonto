@@ -416,6 +416,21 @@ public class dadosRegistro {
         return null;
 }
 
+    public static void adicionarAtestado(registro registro) {
+        try (Connection connection = conectarBanco.conectar()) {
+            String query = "UPDATE registros SET atestado = " + registro.isAtestado() + " WHERE id = " + registro.getIdRegistro();
+
+            try {
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 public static void main(String[] args) {
     List<registro> registros = buscarRegistrosData("06/08/2024");
     for (registro reg : registros) {

@@ -4,6 +4,16 @@
  */
 package gui;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
+import db.dadosRegistro;
+import model.funcionario;
 import model.registro;
 
 /**
@@ -127,25 +137,15 @@ public class registrarAtestado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Você não tem permissão para alterar o registro");
 
         } else if (funcionarioAdm.getSenha().equals(jPasswordField1.getText().trim()) && funcionarioAdm.isAdm()) {
-            registro registroAlterar = new registro();
+            registro registroAlterar = registro;
 
-            registroAlterar.setIdRegistro(idRegistro);
-            registroAlterar.setHoraEntrada(jTextFieldHoraEntrada.getText());
-            registroAlterar.setSaidaAlmoco(jTextFieldSaidaAlmoco.getText());
-            registroAlterar.setRetornoAlmoco(jTextFieldRetornoAlmoco.getText());
-            registroAlterar.setHoraSaida(jTextFieldSaida.getText());
+            registroAlterar.setAtestado(true);
 
-            LocalTime currentTime = LocalTime.now();
-            String formattedTime = currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-            LocalDate currentDate = LocalDate.now();
-            String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yy"));
-
-            String alteracao = "Alteração feita por " + funcionarioAdm.getNome() + " no dia " + formattedDate + " às " + formattedTime;
+            
 
             // TODO salvar no banco de dados
             try {
-                dadosRegistro.alterarRegistro(registroAlterar, alteracao);
+                //TODO criar função que vai inserir o atestado
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

@@ -416,7 +416,7 @@ public class dadosRegistro {
         return null;
 }
 
-    public static void adicionarAtestado(registro registro) {
+    public static void adicionarAtestado(registro registro) throws SQLException {
         try (Connection connection = conectarBanco.conectar()) {
             String query = "UPDATE registros SET atestado = " + registro.isAtestado() + " WHERE id = " + registro.getIdRegistro();
 

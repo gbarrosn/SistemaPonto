@@ -142,10 +142,8 @@ public class registrarAtestado extends javax.swing.JFrame {
             registroAlterar.setAtestado(true);
 
             
-
-            // TODO salvar no banco de dados
             try {
-                //TODO criar função que vai inserir o atestado
+                dadosRegistro.adicionarAtestado(registroAlterar);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

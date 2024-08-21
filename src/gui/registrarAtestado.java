@@ -21,12 +21,15 @@ import model.registro;
  * @author gbarrosn
  */
 public class registrarAtestado extends javax.swing.JFrame {
-    public registro registro;
+    public registro registroAlterar = new registro();
     /**
      * Creates new form registrarAtestado
      */
     public registrarAtestado(registro registro) {
         initComponents();
+        registroAlterar.setIdFuncionario(registro.getIdFuncionario());
+        
+
     }
 
     /**
@@ -137,7 +140,7 @@ public class registrarAtestado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Você não tem permissão para alterar o registro");
 
         } else if (funcionarioAdm.getSenha().equals(jPasswordField1.getText().trim()) && funcionarioAdm.isAdm()) {
-            registro registroAlterar = registro;
+            
 
             registroAlterar.setAtestado(true);
 

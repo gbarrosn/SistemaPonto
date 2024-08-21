@@ -182,48 +182,48 @@ public class telaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaActionPerformed
-        // TODO add your handling code here:
+        
         registrarEntrada telaEntrada = new registrarEntrada();
         telaEntrada.setVisible(true);
         this.dispose();
-        //TODO: falta fechar a tela inicial
+        
 
     }//GEN-LAST:event_jButtonEntradaActionPerformed
 
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaActionPerformed
-        // TODO add your handling code here:
+        
         registrarSaida telaSaida = new registrarSaida();
         telaSaida.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonSaidaActionPerformed
 
     private void jButtonAssinaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaActionPerformed
-        // TODO add your handling code here:
+        
         registrarAssinatura assinar = new registrarAssinatura();
         this.dispose();
         assinar.setVisible(true);
     }//GEN-LAST:event_jButtonAssinaturaActionPerformed
 
     private void jButtonAssinaturaCoordenacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaCoordenacaoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonAssinaturaCoordenacaoActionPerformed
 
     private void jButtonSaidaAlmocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaAlmocoActionPerformed
-        // TODO add your handling code here:
+        
         saidaAlmoco almoco = new saidaAlmoco();
         this.dispose();
         almoco.setVisible(true);
     }//GEN-LAST:event_jButtonSaidaAlmocoActionPerformed
 
     private void jButtonEntradaAlmocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaAlmocoActionPerformed
-        // TODO add your handling code here:
+        
         voltaAlmoco volta = new voltaAlmoco();
         volta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonEntradaAlmocoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         configuracoes tela = new configuracoes();
         tela.setVisible(true);
         this.dispose();

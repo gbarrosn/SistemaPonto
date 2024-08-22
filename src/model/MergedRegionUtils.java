@@ -73,4 +73,16 @@ public class
             return firstColumn;
         }
     }
+
+    public static Cell getNextCell(Cell cell, List<MergedRegion> mergedRegions) {
+        // TODO Auto-generated method stub
+        int nextColumn = cell.getColumnIndex() + getMergedRegionColumns(cell, mergedRegions);
+        return cell.getRow().getCell(nextColumn);
+
+    }
+
+    public static int getMergedRegionRows(Cell cell, List<MergedRegion> mergedRegions) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMergedRegionRows'");
+    }
 }

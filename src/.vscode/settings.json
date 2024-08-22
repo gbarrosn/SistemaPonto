@@ -14,7 +14,9 @@
         "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-full-5.2.3.jar",
         "/home/gbarrosn/SistemaPonto/lib/poi-scratchpad-5.2.3.jar",
         "/home/gbarrosn/SistemaPonto/lib/slf4j-api-1.7.36.jar",
-        "/home/gbarrosn/SistemaPonto/lib/xmlbeans-5.1.1.jar"
+        "/home/gbarrosn/SistemaPonto/lib/xmlbeans-5.1.1.jar",
+        "/home/gbarrosn/SistemaPonto/lib/ooxml-schemas-1.4.jar",
+        "/home/gbarrosn/SistemaPonto/lib/xmlbeans-3.0.1.jar"
     ],
     "java.project.sourcePaths": [
         "."

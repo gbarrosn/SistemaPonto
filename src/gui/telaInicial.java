@@ -205,7 +205,9 @@ public class telaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAssinaturaActionPerformed
 
     private void jButtonAssinaturaCoordenacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssinaturaCoordenacaoActionPerformed
-        
+        gerarFolhas tela = new gerarFolhas();
+        tela.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonAssinaturaCoordenacaoActionPerformed
 
     private void jButtonSaidaAlmocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaAlmocoActionPerformed

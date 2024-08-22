@@ -265,6 +265,8 @@ public class gerarFolhas extends javax.swing.JFrame {
                 workbook.write(outputStream);
             }
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

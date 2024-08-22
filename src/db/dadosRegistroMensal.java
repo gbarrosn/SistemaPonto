@@ -103,6 +103,7 @@ public class dadosRegistroMensal {
                     reg.setData(result.getString("data"));
                     reg.setAlteracao(result.getString("alteracao"));
                     reg.setAtestado(result.getBoolean("atestado"));
+                    reg.setMes(mes);
 
                     List<registro> registrosFuncionario = registroFuncionario.getRegistros();
                     registrosFuncionario.add(reg);

@@ -11,8 +11,14 @@ import javax.swing.table.DefaultTableModel;
 import db.dadosRegistroMensal;
 import model.*;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.pdfbox.pdmodel.font.PDType1Font.*;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -266,9 +272,32 @@ public class gerarFolhas extends javax.swing.JFrame {
             escala.getCell(5).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
 
-            try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+            /*try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
+            }*/
+            PDDocument doc = new PDDocument();
+            PDPage page = new PDPage();
+            doc.addPage(page);
+
+            PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+
+            contentStream.beginText();
+
+            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN), 12);
+
+            for (Row row : sheet) {
+                for (Cell cell : row) {
+                    String text = cell.getStringCellValue();
+                    contentStream.showText(text);
+                }
+                contentStream.newLine();
             }
+            contentStream.endText();
+            doc.save("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf");
+            doc.close();
+
+            workbook.close();
+
 
         } catch (IOException e) {
             e.printStackTrace();

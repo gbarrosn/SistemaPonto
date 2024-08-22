@@ -275,6 +275,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             /*try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }*/
+            try {
             PDDocument doc = new PDDocument();
             PDPage page = new PDPage();
             doc.addPage(page);
@@ -300,8 +301,12 @@ public class gerarFolhas extends javax.swing.JFrame {
                 contentStream.newLine();
             }
             contentStream.endText();
+            contentStream.close();
             doc.save("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf");
             doc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
             workbook.close();
 

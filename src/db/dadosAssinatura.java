@@ -1,6 +1,7 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,23 +11,40 @@ import model.assinatura;
 public class dadosAssinatura {
     //função que registra uma assinatura no banco de dados usando conectarBanco e assinatura
     public static void registrarAssinatura(int idFuncionario, int mes, String dataAssinatura, String horaAssinatura) throws SQLException {
-        // Connect to the database
+    // Connect to the database
         Connection connection = conectarBanco.conectar();
-        
-        // Create a query to insert the assinatura
-        String query = "INSERT INTO assinatura (id_funcionario, data_assinatura, hora_assinatura, mes) VALUES (" + idFuncionario +  ", '" + dataAssinatura + "', '" + horaAssinatura + "', " + mes +")";
-        
-        try {
-            // Create a statement
-            Statement statement = connection.createStatement();
-            
-            // Execute the query
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
 
+        // Verificar se a assinatura já existe
+        String checkQuery = "SELECT * FROM assinatura WHERE id_funcionario = ? AND mes = ?";
+        PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
+        checkStatement.setInt(1, idFuncionario);
+        checkStatement.setInt(2, mes);
+        ResultSet resultSet = checkStatement.executeQuery();
+
+        if (resultSet.next()) {
+            // Assinatura já existe, então atualizamos
+            String updateQuery = "UPDATE assinatura SET data_assinatura = ?, hora_assinatura = ? WHERE id_funcionario = ? AND mes = ?";
+            PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
+            updateStatement.setString(1, dataAssinatura);
+            updateStatement.setString(2, horaAssinatura);
+            updateStatement.setInt(3, idFuncionario);
+            updateStatement.setInt(4, mes);
+            updateStatement.executeUpdate();
+        } else {
+            // Assinatura não existe, então inserimos
+            String insertQuery = "INSERT INTO assinatura (id_funcionario, data_assinatura, hora_assinatura, mes) VALUES (?, ?, ?, ?)";
+            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+            insertStatement.setInt(1, idFuncionario);
+            insertStatement.setString(2, dataAssinatura);
+            insertStatement.setString(3, horaAssinatura);
+            insertStatement.setInt(4, mes);
+            insertStatement.executeUpdate();
         }
 
+        // Feche os recursos
+        resultSet.close();
+        checkStatement.close();
+        connection.close();
     }
 
     // buscar assinatura usando o id do funcionario e mes

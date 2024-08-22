@@ -47,7 +47,7 @@ public class
         return 1; // If the cell is not merged, it spans 1 column
     }
 
-    private static class MergedRegion {
+    public static class MergedRegion {
         private final int firstRow;
         private final int lastRow;
         private final int firstColumn;

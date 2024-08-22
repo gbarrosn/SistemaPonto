@@ -19,6 +19,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import model.MergedRegionUtils.*;
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
@@ -274,20 +276,39 @@ public class gerarFolhas extends javax.swing.JFrame {
                 PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
                 document.open();
 
+                List<MergedRegion> mergedRegions = MergedRegionUtils.identifyMergedRegions(sheet);
                 for (Row row : sheet) {
                     PdfPTable table = new PdfPTable(7);
                     for (Cell cell : row) {
+
                         String value = "";
-                        switch (cell.getCellType()) {
-                            case STRING:
-                                value = cell.getStringCellValue();
-                                break;
-                            case NUMERIC:
-                                value = String.valueOf(cell.getNumericCellValue());
-                                break;
-                            
+                        
+                        if (MergedRegionUtils.isMergedCell(cell, mergedRegions)) {
+                        
+                            PdfPCell spanningCell = new PdfPCell();
+                            spanningCell.setColspan(MergedRegionUtils.getMergedRegionColumns(cell, mergedRegions));
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    value = cell.getStringCellValue();
+                                    break;
+                                case NUMERIC:
+                                    value = String.valueOf(cell.getNumericCellValue());
+                                    break;
+                                
+                            }
+                            table.addCell(value);
+                        } else {
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    value = cell.getStringCellValue();
+                                    break;
+                                case NUMERIC:
+                                    value = String.valueOf(cell.getNumericCellValue());
+                                    break;
+                                
+                            }
+                            table.addCell(value);
                         }
-                        table.addCell(value);
                     }
                     document.add(table);
                     

@@ -160,37 +160,18 @@ public class dadosRegistroMensal {
             registroMensal registro = new registroMensal();
         registro = registros.get(0);
 
-        System.out.println("Registro 1:");
-            System.out.println("ID: " + registro.getRegistros().get(0).getIdRegistro());
-            System.out.println("ID Funcionario: " + registro.getRegistros().get(0).getIdFuncionario());
-            System.out.println("Hora Entrada: " + registro.getRegistros().get(0).getHoraEntrada());
-            System.out.println("Saida Almoco: " + registro.getRegistros().get(0).getSaidaAlmoco());
-            System.out.println("Retorno Almoco: " + registro.getRegistros().get(0).getRetornoAlmoco());
-            System.out.println("Hora Saida: " + registro.getRegistros().get(0).getHoraSaida());
-            System.out.println("Data: " + registro.getRegistros().get(0).getData());
-            System.out.println("Alteracao: " + registro.getRegistros().get(0).getAlteracao());
-            System.out.println("Atestado: " + registro.getRegistros().get(0).isAtestado());
-            System.out.println("Registro 2:");
-            System.out.println("ID: " + registro.getRegistros().get(1).getIdRegistro());
-            System.out.println("ID Funcionario: " + registro.getRegistros().get(1).getIdFuncionario());
-            System.out.println("Hora Entrada: " + registro.getRegistros().get(1).getHoraEntrada());
-            System.out.println("Saida Almoco: " + registro.getRegistros().get(1).getSaidaAlmoco());
-            System.out.println("Retorno Almoco: " + registro.getRegistros().get(1).getRetornoAlmoco());
-            System.out.println("Hora Saida: " + registro.getRegistros().get(1).getHoraSaida());
-            System.out.println("Data: " + registro.getRegistros().get(1).getData());
-            System.out.println("Alteracao: " + registro.getRegistros().get(1).getAlteracao());
-            System.out.println("Atestado: " + registro.getRegistros().get(1).isAtestado());
-            System.out.println("Registro 3:");
-            System.out.println("ID: " + registro.getRegistros().get(2).getIdRegistro());
-            System.out.println("ID Funcionario: " + registro.getRegistros().get(2).getIdFuncionario());
-            System.out.println("Hora Entrada: " + registro.getRegistros().get(2).getHoraEntrada());
-            System.out.println("Saida Almoco: " + registro.getRegistros().get(2).getSaidaAlmoco());
-            System.out.println("Retorno Almoco: " + registro.getRegistros().get(2).getRetornoAlmoco());
-            System.out.println("Hora Saida: " + registro.getRegistros().get(2).getHoraSaida());
-            System.out.println("Data: " + registro.getRegistros().get(2).getData());
-            System.out.println("Alteracao: " + registro.getRegistros().get(2).getAlteracao());
-            System.out.println("Atestado: " + registro.getRegistros().get(2).isAtestado());
-
+        for (registro reg : registro.getRegistros()) {
+            System.out.println("Registro:");
+            System.out.println("ID: " + reg.getIdRegistro());
+            System.out.println("ID Funcionario: " + reg.getIdFuncionario());
+            System.out.println("Hora Entrada: " + reg.getHoraEntrada());
+            System.out.println("Saida Almoco: " + reg.getSaidaAlmoco());
+            System.out.println("Retorno Almoco: " + reg.getRetornoAlmoco());
+            System.out.println("Hora Saida: " + reg.getHoraSaida());
+            System.out.println("Data: " + reg.getData());
+            System.out.println("Alteracao: " + reg.getAlteracao());
+            System.out.println("Atestado: " + reg.isAtestado());
+        }
 
             System.out.println("Funcionario:");
             System.out.println("ID: " + registro.getFuncionario().getIdFuncionario());
@@ -218,7 +199,8 @@ public class dadosRegistroMensal {
             System.out.println("Hora Assinatura: " + registro.getAssinaturaCoordenacao().getHoraAssinatura());
             System.out.println("Data Assinatura: " + registro.getAssinaturaCoordenacao().getDataAssinatura());
             System.out.println("Nome Coordenacao: " + registro.getAssinaturaCoordenacao().getNomeCoordenacao());
-            System.out.println(); */
+            System.out.println();  
+            // */
 
         return registros;
         

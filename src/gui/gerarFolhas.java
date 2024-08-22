@@ -16,6 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -239,11 +240,11 @@ public class gerarFolhas extends javax.swing.JFrame {
             // Nome
             Row row = sheet.getRow(1);
             Cell cell = row.getCell(0);
-            cell.setCellValue(registro.getFuncionario().getNome());
+            cell.setCellValue(registro.getFuncionario().getNome()); // funciona
 
             // Matrícula
             Cell cell2 = row.getCell(1);
-            cell2.setCellValue(registro.getFuncionario().getMatricula());
+            cell2.setCellValue(registro.getFuncionario().getMatricula()); //nao funciona
 
             // Lotação
             row = sheet.getRow(2);
@@ -252,18 +253,25 @@ public class gerarFolhas extends javax.swing.JFrame {
 
             // Data de admissão
             cell2 = row.getCell(1);
-            cell2.setCellValue(registro.getFuncionario().getDataAdmissao());
+            cell2.setCellValue(registro.getFuncionario().getDataAdmissao()); //nao funbciona
 
-            // Escala
+            // Função
             row = sheet.getRow(3);
             cell = row.getCell(0);
-            cell.setCellValue(registro.getFuncionario().getEscala());
+            cell.setCellValue(registro.getFuncionario().getFuncao());
 
             // Carga horária
             cell2 = row.getCell(1);
-            cell2.setCellValue(registro.getFuncionario().getHorasSemanais());
+            cell2.setCellValue(registro.getFuncionario().getHorasSemanais()); //nao funciona
+            
+            // Escala
+            row = sheet.getRow(4);
+            cell = row.getCell(0);
+            cell.setCellValue(registro.getFuncionario().getEscala());
 
-            try (FileOutputStream outputStream = new FileOutputStream("Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+            
+
+            try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
 

@@ -301,13 +301,14 @@ public class gerarFolhas extends javax.swing.JFrame {
                                     Cell currentCell = currentRow.getCell(colIdx);
                                     if (currentCell != null) {
                                         String value = "";
-                                        switch (cell.getCellType()) {
+                                        switch (currentCell.getCellType()) {
                                             case STRING:
-                                            value = cell.getStringCellValue();
+                                            value = currentCell.getStringCellValue();
                                             break;
                                             case NUMERIC:
-                                            value = String.valueOf(cell.getNumericCellValue());
-                                            break;  
+                                            value = String.valueOf(currentCell.getNumericCellValue());
+                                            break;
+                                        }
                                         mergedContent.append(value);
                                     }
                                 }
@@ -315,7 +316,17 @@ public class gerarFolhas extends javax.swing.JFrame {
                             }
                             pdfCell.setPhrase(new Phrase(mergedContent.toString()));
                         } else {
-                            pdfCell.setPhrase(new Phrase(cell.getStringCellValue()));
+                            String value = "";
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                value = cell.getStringCellValue();
+                                break;
+                                case NUMERIC:
+                                value = String.valueOf(cell.getNumericCellValue());
+                                break;  
+                            
+                            }
+                            pdfCell.setPhrase(new Phrase(value));
                         }
             
                         // Aplicar formatação à célula (opcional)

@@ -14,6 +14,10 @@ import model.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -212,7 +216,58 @@ public class gerarFolhas extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: gerar as folhas de ponto
 
+        for (registroMensal r : registrosMesSelecionado) {
+            try {
+                gerarFolhaPonto(r);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    public static void gerarFolhaPonto(registroMensal registro) throws FileNotFoundException, IOException {
+        
+        try (FileInputStream inputStream = new FileInputStream("Tabela ponto.xlsx")) {
+            Workbook workbook = new XSSFWorkbook(inputStream);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            // Preencher a folha de ponto
+
+            // Nome
+            Row row = sheet.getRow(1);
+            Cell cell = row.getCell(0);
+            cell.setCellValue(registro.getFuncionario().getNome());
+
+            // Matrícula
+            Cell cell2 = row.getCell(1);
+            cell2.setCellValue(registro.getFuncionario().getMatricula());
+
+            // Lotação
+            row = sheet.getRow(2);
+            cell = row.getCell(0);
+            cell.setCellValue(registro.getFuncionario().getSetor());
+
+            // Data de admissão
+            cell2 = row.getCell(1);
+            cell2.setCellValue(registro.getFuncionario().getDataAdmissao());
+
+            // Escala
+            row = sheet.getRow(3);
+            cell = row.getCell(0);
+            cell.setCellValue(registro.getFuncionario().getEscala());
+
+            // Carga horária
+            cell2 = row.getCell(1);
+            cell2.setCellValue(registro.getFuncionario().getHorasSemanais());
+
+            try (FileOutputStream outputStream = new FileOutputStream("Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+                workbook.write(outputStream);
+            }
+
+        }
+
+    }
 
     /**
      * @param args the command line arguments

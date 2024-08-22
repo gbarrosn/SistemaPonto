@@ -83,6 +83,7 @@ public class dadosRegistroMensal {
                     reg.setData(result.getString("data"));
                     reg.setAlteracao(result.getString("alteracao"));
                     reg.setAtestado(result.getBoolean("atestado"));
+                    reg.setMes(Integer.parseInt(reg.getData().split("/")[1]));
 
                     List<registro> registrosFuncionario = new ArrayList<>();
                     registrosFuncionario.add(reg);
@@ -103,7 +104,7 @@ public class dadosRegistroMensal {
                     reg.setData(result.getString("data"));
                     reg.setAlteracao(result.getString("alteracao"));
                     reg.setAtestado(result.getBoolean("atestado"));
-                    reg.setMes(mes);
+                    reg.setMes(Integer.parseInt(reg.getData().split("/")[1]));
 
                     List<registro> registrosFuncionario = registroFuncionario.getRegistros();
                     registrosFuncionario.add(reg);

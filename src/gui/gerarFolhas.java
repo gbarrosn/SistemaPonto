@@ -268,35 +268,37 @@ public class gerarFolhas extends javax.swing.JFrame {
             escala.getCell(5).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
 
-            /*try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+            try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
-            }*/
+            }
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
                 document.open();
-
+            
                 List<MergedRegion> mergedRegions = MergedRegionUtils.identifyMergedRegions(sheet);
                 for (Row row : sheet) {
-                    PdfPTable table = new PdfPTable(7);
+                    PdfPTable table = new PdfPTable(7); // Adjust based on actual number of columns
                     for (Cell cell : row) {
-
                         String value = "";
-                        
+            
                         if (MergedRegionUtils.isMergedCell(cell, mergedRegions)) {
-                        
                             PdfPCell spanningCell = new PdfPCell();
                             spanningCell.setColspan(MergedRegionUtils.getMergedRegionColumns(cell, mergedRegions));
+            
+                            // Add the content to the spanning cell (fix here)
+                            spanningCell.setPhrase(new Phrase(cell.getStringCellValue())); 
+            
                             switch (cell.getCellType()) {
                                 case STRING:
                                     value = cell.getStringCellValue();
                                     break;
                                 case NUMERIC:
                                     value = String.valueOf(cell.getNumericCellValue());
-                                    break;
-                                
+                                    break;  
+            
                             }
-                            table.addCell(value);
+                            table.addCell(spanningCell);
                         } else {
                             switch (cell.getCellType()) {
                                 case STRING:
@@ -304,21 +306,20 @@ public class gerarFolhas extends javax.swing.JFrame {
                                     break;
                                 case NUMERIC:
                                     value = String.valueOf(cell.getNumericCellValue());
-                                    break;
-                                
+                                    break;  
+            
                             }
                             table.addCell(value);
                         }
                     }
                     document.add(table);
-                    
-
                 }
                 document.close();
-
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        }
+            
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+            
 
             workbook.close();
 

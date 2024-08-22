@@ -14,7 +14,8 @@ import java.util.List;
  */
 
 
-public class MergedRegionUtils {
+public class  
+ MergedRegionUtils {
 
     public static List<MergedRegion> identifyMergedRegions(Sheet sheet) {
         List<MergedRegion> mergedRegions = new ArrayList<>();
@@ -59,8 +60,17 @@ public class MergedRegionUtils {
             this.lastColumn = lastColumn;
         }
 
-        public boolean contains(int rowIndex, int columnIndex) {
+        public  
+ boolean contains(int rowIndex, int columnIndex) {
             return firstRow <= rowIndex && rowIndex <= lastRow && firstColumn <= columnIndex && columnIndex <= lastColumn;
+        }
+
+        public int getLastColumn() {
+            return lastColumn;
+        }
+
+        public int getFirstColumn() {
+            return firstColumn;
         }
     }
 }

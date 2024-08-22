@@ -14,10 +14,13 @@ import model.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.IOException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
-
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 
 /**
  *
@@ -267,8 +270,34 @@ public class gerarFolhas extends javax.swing.JFrame {
                 workbook.write(outputStream);
             }*/
             try {
-            
-        } 
+                Document document = new Document();
+                PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
+                document.open();
+
+                for (Row row : sheet) {
+                    PdfPTable table = new PdfPTable(7);
+                    for (Cell cell : row) {
+                        String value = "";
+                        switch (cell.getCellType()) {
+                            case STRING:
+                                value = cell.getStringCellValue();
+                                break;
+                            case NUMERIC:
+                                value = String.valueOf(cell.getNumericCellValue());
+                                break;
+                            
+                        }
+                        table.addCell(value);
+                    }
+                    document.add(table);
+                    
+
+                }
+                document.close();
+
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
 
             workbook.close();
 

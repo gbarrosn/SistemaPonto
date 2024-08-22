@@ -242,26 +242,27 @@ public class gerarFolhas extends javax.swing.JFrame {
             nome.getCell(0).setCellValue("Nome: " + registro.getFuncionario().getNome()); // funciona
 
             // Matrícula
-            nome.getCell(1).setCellValue("Matrícula: " + String.valueOf(registro.getFuncionario().getMatricula())); //nao funciona
+            nome.getCell(5).setCellValue("Matrícula: " + String.valueOf(registro.getFuncionario().getMatricula())); //funciona
 
             // Lotação
             Row lotacao = sheet.getRow(2);
-            lotacao.getCell(0).setCellValue(registro.getFuncionario().getSetor());
+            lotacao.getCell(0).setCellValue("Setor:" + registro.getFuncionario().getSetor());
 
-            // Data de admissão
-            lotacao.getCell(1).setCellValue(registro.getFuncionario().getDataAdmissao()); //nao funbciona
+            
 
             // Função
             Row funcao = sheet.getRow(3);
-            funcao.getCell(0).setCellValue(registro.getFuncionario().getFuncao());
+            funcao.getCell(0).setCellValue("Função: " + registro.getFuncionario().getFuncao());
 
-            // Carga horária
-            funcao.getCell(1).setCellValue(registro.getFuncionario().getHorasSemanais()); //nao funciona
+            // Data de admissão
+            funcao.getCell(5).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); //nao funbciona
 
             // Escala
             Row escala = sheet.getRow(4);
-            escala.getCell(0).setCellValue(registro.getFuncionario().getEscala());
-
+            escala.getCell(0).setCellValue("Escala: " + registro.getFuncionario().getEscala());
+            
+            // Carga horária
+            escala.getCell(5).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais()); //nao funciona
             
 
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {

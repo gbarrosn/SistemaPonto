@@ -41,7 +41,6 @@ public class gerarFolhas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBoxMes = new javax.swing.JComboBox<>();
-        jComboBoxData = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,13 +77,6 @@ public class gerarFolhas extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxData.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxDataActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Atualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,9 +97,7 @@ public class gerarFolhas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jComboBoxData, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(68, 68, 68)
                         .addComponent(jButton2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -116,10 +106,9 @@ public class gerarFolhas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(113, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -155,27 +144,21 @@ public class gerarFolhas extends javax.swing.JFrame {
             }
         }
         System.out.println(nomes);
-        try {
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-            for (String data : nomes) {
-                model.addElement(data);
-            }
-            jComboBoxData.setModel(model);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Não há registros para o mês selecionado!");
-        }
+        
 
     }//GEN-LAST:event_jComboBoxMesActionPerformed
 
-    private void jComboBoxDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxDataActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO listar os registros do dia e preencher a tabela
-        registros = dadosRegistro.buscarRegistrosData(jComboBoxData.getSelectedItem().toString());
+        // TODO listar os registros assinados do mes e popular a tabela
+        int mes = jComboBoxMes.getSelectedIndex() + 1;
+        registrosMesSelecionado = dadosRegistroMensal.buscarDadosDoMes(mes);
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (registroMensal r : registrosMesSelecionado) {
+            model.addRow(new Object[]{r.getFuncionario().getNome(), "Assinado em: " + r.getAssinatura().getDataAssinatura() + " " + r.getAssinatura().getHoraAssinatura(), "Assinado pela Coordenação em: " + r.getAssinaturaCoordenacao().getDataAssinatura() + " " + r.getAssinaturaCoordenacao().getHoraAssinatura(), r.getAssinatura().getMes()});
+        }
+        
 
         
 
@@ -219,7 +202,6 @@ public class gerarFolhas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBoxData;
     private javax.swing.JComboBox<String> jComboBoxMes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

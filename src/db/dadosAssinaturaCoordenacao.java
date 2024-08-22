@@ -25,22 +25,20 @@ public class dadosAssinaturaCoordenacao {
         Connection connection = conectarBanco.conectar();
 
         // Verificar se a assinatura já existe
-        String checkQuery = "SELECT * FROM assinaturaCoordenacao WHERE id_coordenacao = ? AND id_funcionario = ? AND mes = ?";
+        String checkQuery = "SELECT * FROM assinaturaCoordenacao WHERE id_funcionario = ? AND mes = ?";
         PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
-        checkStatement.setInt(1, idCoordenacao);
-        checkStatement.setInt(2, idFuncionario);
-        checkStatement.setInt(3, mes);
+        checkStatement.setInt(1, idFuncionario);
+        checkStatement.setInt(2, mes);
         ResultSet resultSet = checkStatement.executeQuery();
 
         if (resultSet.next()) {
             // Assinatura já existe, então atualizamos
-            String updateQuery = "UPDATE assinaturaCoordenacao SET data_assinatura = ?, hora_assinatura = ? WHERE id_coordenacao = ? AND id_funcionario = ? AND mes = ?";
+            String updateQuery = "UPDATE assinaturaCoordenacao SET data_assinatura = ?, hora_assinatura = ?, id_coordenacao = ? WHERE id = ?";
             PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
             updateStatement.setString(1, dataAssinatura);
             updateStatement.setString(2, horaAssinatura);
             updateStatement.setInt(3, idCoordenacao);
-            updateStatement.setInt(4, idFuncionario);
-            updateStatement.setInt(5, mes);
+            updateStatement.setInt(4, resultSet.getInt("id"));
             updateStatement.executeUpdate();
         } else {
             // Assinatura não existe, então inserimos

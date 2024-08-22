@@ -389,7 +389,12 @@ public class registrarAssinatura extends javax.swing.JFrame {
                 LocalDate currentDate = LocalDate.now();
                 String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yy"));
 
-                dadosAssinaturaCoordenacao.registrarAssinaturaCoordenacao(funcAdm.getIdFuncionario(), selectedFuncionario.getIdFuncionario(), formattedDate, formattedTime, jComboBox1.getSelectedIndex() + 1);
+                try {
+                    dadosAssinaturaCoordenacao.registrarAssinaturaCoordenacao(funcAdm.getIdFuncionario(), selectedFuncionario.getIdFuncionario(), formattedDate, formattedTime, jComboBox1.getSelectedIndex() + 1);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 JOptionPane.showMessageDialog(this, "Assinatura da coordenação registrada com sucesso!");
 
             } else {

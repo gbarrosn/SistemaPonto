@@ -291,7 +291,7 @@ public class gerarFolhas extends javax.swing.JFrame {
         meses.add("Novembro");
         meses.add("Dezembro");
 
-        return meses.get(mes);
+        return meses.get(mes-1);
     }
     /**
      * @param args the command line arguments

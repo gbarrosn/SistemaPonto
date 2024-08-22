@@ -289,9 +289,9 @@ public class gerarFolhas extends javax.swing.JFrame {
                         if (MergedRegionUtils.isMergedCell(cell, mergedRegions)) {
                             // Calcula o colspan e o rowspan
                             int colspan = MergedRegionUtils.getMergedRegionColumns(cell, mergedRegions);
-                            //int rowspan = MergedRegionUtils.getMergedRegionRows(cell, mergedRegions); // Assumindo que MergedRegionUtils fornece este método
+                            int rowspan = MergedRegionUtils.getMergedRegionRows(cell, mergedRegions); // Assumindo que MergedRegionUtils fornece este método
                             pdfCell.setColspan(colspan);
-                            //pdfCell.setRowspan(rowspan);
+                            pdfCell.setRowspan(rowspan);
             
                             // Concatena o conteúdo de todas as células mescladas
                             StringBuilder mergedContent = new StringBuilder();

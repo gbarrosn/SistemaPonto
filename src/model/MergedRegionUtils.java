@@ -72,6 +72,16 @@ public class
         public int getFirstColumn() {
             return firstColumn;
         }
+
+        public int getLastRow() {
+            // TODO Auto-generated method stub
+            return lastRow;
+        }
+
+        public int getFirstRow() {
+            // TODO Auto-generated method stub
+            return firstRow;
+        }
     }
 
     public static Cell getNextCell(Cell cell, List<MergedRegion> mergedRegions) {
@@ -83,6 +93,11 @@ public class
 
     public static int getMergedRegionRows(Cell cell, List<MergedRegion> mergedRegions) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMergedRegionRows'");
+        for (MergedRegion region : mergedRegions) {
+            if (region.contains(cell.getColumnIndex(), cell.getRowIndex())) {
+                return region.getLastRow() - region.getFirstRow() + 1;
+            }
+        }
+        return 1; // If the cell is not merged, it spans 1 row
     }
-}
+ }

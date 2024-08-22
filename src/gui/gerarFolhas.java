@@ -271,14 +271,19 @@ public class gerarFolhas extends javax.swing.JFrame {
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
+
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
                 document.open();
             
                 List<MergedRegion> mergedRegions = MergedRegionUtils.identifyMergedRegions(sheet);
+                
                 for (Row row : sheet) {
                     PdfPTable table = new PdfPTable(7); // Adjust based on actual number of columns
+
+                    
+                    
                     for (Cell cell : row) {
                         String value = "";
             

@@ -156,12 +156,20 @@ public class gerarFolhas extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         for (registroMensal r : registrosMesSelecionado) {
+            boolean isDuplicate = false;
+            for (int i = 0; i < model.getRowCount(); i++) {
+            String nome = (String) model.getValueAt(i, 0);
+            if (nome.equals(r.getFuncionario().getNome())) {
+                isDuplicate = true;
+                break;
+            }
+            }
+            if (!isDuplicate) {
             String assinatura = r.getAssinatura() != null ? "Assinado em: " + r.getAssinatura().getDataAssinatura() + " " + r.getAssinatura().getHoraAssinatura() : "Assinatura não registrada";
             String assinaturaCoordenacao = r.getAssinaturaCoordenacao() != null ? "Assinado pela Coordenação em: " + r.getAssinaturaCoordenacao().getDataAssinatura() + " " + r.getAssinaturaCoordenacao().getHoraAssinatura() : "Assinatura não registrada";
             String mesS = r.getAssinatura() != null ? String.valueOf(r.getAssinatura().getMes()) : "Não assinado";
             model.addRow(new Object[]{r.getFuncionario().getNome(), assinatura, assinaturaCoordenacao, mesS});
-            
-            //model.addRow(new Object[]{r.getFuncionario().getNome(), "Assinado em: " + r.getAssinatura().getDataAssinatura() + " " + r.getAssinatura().getHoraAssinatura(), "Assinado pela Coordenação em: " + r.getAssinaturaCoordenacao().getDataAssinatura() + " " + r.getAssinaturaCoordenacao().getHoraAssinatura(), r.getAssinatura().getMes()});
+            }
         }
         
 

@@ -4,11 +4,28 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author gbarrosn
  */
 public class registroMensal {
+
+    /**
+     * @return the registros
+     */
+    public List<registro> getRegistros() {
+        return registros;
+    }
+
+    /**
+     * @param registros the registros to set
+     */
+    public void setRegistros(List<registro> registros) {
+        this.registros = registros;
+    }
 
     /**
      * @return the funcionario
@@ -69,6 +86,7 @@ public class registroMensal {
     private registro registro;
     private assinatura assinatura;
     private assinaturaCoordenacao assinaturaCoordenacao;
+    private List<registro> registros = new ArrayList<registro>();
 
     
 }

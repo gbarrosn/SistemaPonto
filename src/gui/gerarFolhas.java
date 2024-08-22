@@ -287,7 +287,14 @@ public class gerarFolhas extends javax.swing.JFrame {
 
             for (Row row : sheet) {
                 for (Cell cell : row) {
-                    String text = cell.getStringCellValue();
+                    String text;
+                    if (cell.getCellType() == CellType.STRING) {
+                        text = cell.getStringCellValue();
+                    } else if (cell.getCellType() == CellType.NUMERIC) {
+                        text = String.valueOf(cell.getNumericCellValue());
+                    } else {
+                        text = "";
+                    }
                     contentStream.showText(text);
                 }
                 contentStream.newLine();

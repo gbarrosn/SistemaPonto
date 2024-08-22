@@ -42,20 +42,6 @@ public class registroMensal {
     }
 
     /**
-     * @return the registro
-     */
-    public registro getRegistro() {
-        return registro;
-    }
-
-    /**
-     * @param registro the registro to set
-     */
-    public void setRegistro(registro registro) {
-        this.registro = registro;
-    }
-
-    /**
      * @return the assinatura
      */
     public assinatura getAssinatura() {
@@ -82,8 +68,8 @@ public class registroMensal {
     public void setAssinaturaCoordenacao(assinaturaCoordenacao assinaturaCoordenacao) {
         this.assinaturaCoordenacao = assinaturaCoordenacao;
     }
+    
     private funcionario funcionario;
-    private registro registro;
     private assinatura assinatura;
     private assinaturaCoordenacao assinaturaCoordenacao;
     private List<registro> registros = new ArrayList<registro>();

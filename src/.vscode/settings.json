@@ -16,7 +16,8 @@
         "/home/gbarrosn/SistemaPonto/lib/xmlbeans-5.1.1.jar",
         "/home/gbarrosn/SistemaPonto/lib/ooxml-schemas-1.4.jar",
         "/home/gbarrosn/SistemaPonto/lib/xmlbeans-3.0.1.jar",
-        "/home/gbarrosn/SistemaPonto/lib/pdfbox-app-3.0.3.jar"
+        "/home/gbarrosn/SistemaPonto/lib/pdfbox-app-3.0.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/itextpdf-5.5.9.jar"
     ],
     "java.project.sourcePaths": [
         "."

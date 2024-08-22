@@ -11,18 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import db.dadosRegistroMensal;
 import model.*;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.pdfbox.pdmodel.font.PDType1Font.*;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -276,37 +267,8 @@ public class gerarFolhas extends javax.swing.JFrame {
                 workbook.write(outputStream);
             }*/
             try {
-            PDDocument doc = new PDDocument();
-            PDPage page = new PDPage();
-            doc.addPage(page);
-
-            PDPageContentStream contentStream = new PDPageContentStream(doc, page);
-
-            contentStream.beginText();
-
-            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN), 12);
-
-            for (Row row : sheet) {
-                for (Cell cell : row) {
-                    String text;
-                    if (cell.getCellType() == CellType.STRING) {
-                        text = cell.getStringCellValue();
-                    } else if (cell.getCellType() == CellType.NUMERIC) {
-                        text = String.valueOf(cell.getNumericCellValue());
-                    } else {
-                        text = "";
-                    }
-                    contentStream.showText(text);
-                }
-                contentStream.newLine();
-            }
-            contentStream.endText();
-            contentStream.close();
-            doc.save("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf");
-            doc.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            
+        } 
 
             workbook.close();
 

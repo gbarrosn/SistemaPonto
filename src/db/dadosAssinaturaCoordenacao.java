@@ -6,6 +6,7 @@ package db;
 
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,29 +20,44 @@ import model.assinaturaCoordenacao;
  */
 public class dadosAssinaturaCoordenacao {
     
-    public static void registrarAssinaturaCoordenacao(int idCoordenacao, int idFuncionario, String dataAssinatura, String horaAssinatura, int mes) {
-        // Connect to the database
-        Connection connection = null;
-        try {
-            connection = conectarBanco.conectar();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        // Create a query to insert the assinatura
-        String query = "INSERT INTO assinaturaCoordenacao (id_coordenacao, id_funcionario, data_assinatura, hora_assinatura, mes) VALUES (" + idCoordenacao + ", " + idFuncionario +  ", '" + dataAssinatura + "', '" + horaAssinatura + "', " + mes +")";
-        
-        try {
-            // Create a statement
-            Statement statement = connection.createStatement();
-            
-            // Execute the query
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public static void registrarAssinaturaCoordenacao(int idCoordenacao, int idFuncionario, String dataAssinatura, String horaAssinatura, int mes) throws SQLException {
+    // Connect to the database
+        Connection connection = conectarBanco.conectar();
 
+        // Verificar se a assinatura já existe
+        String checkQuery = "SELECT * FROM assinaturaCoordenacao WHERE id_coordenacao = ? AND id_funcionario = ? AND mes = ?";
+        PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
+        checkStatement.setInt(1, idCoordenacao);
+        checkStatement.setInt(2, idFuncionario);
+        checkStatement.setInt(3, mes);
+        ResultSet resultSet = checkStatement.executeQuery();
+
+        if (resultSet.next()) {
+            // Assinatura já existe, então atualizamos
+            String updateQuery = "UPDATE assinaturaCoordenacao SET data_assinatura = ?, hora_assinatura = ? WHERE id_coordenacao = ? AND id_funcionario = ? AND mes = ?";
+            PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
+            updateStatement.setString(1, dataAssinatura);
+            updateStatement.setString(2, horaAssinatura);
+            updateStatement.setInt(3, idCoordenacao);
+            updateStatement.setInt(4, idFuncionario);
+            updateStatement.setInt(5, mes);
+            updateStatement.executeUpdate();
+        } else {
+            // Assinatura não existe, então inserimos
+            String insertQuery = "INSERT INTO assinaturaCoordenacao (id_coordenacao, id_funcionario, data_assinatura, hora_assinatura, mes) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+            insertStatement.setInt(1, idCoordenacao);
+            insertStatement.setInt(2, idFuncionario);
+            insertStatement.setString(3, dataAssinatura);
+            insertStatement.setString(4, horaAssinatura);
+            insertStatement.setInt(5, mes);
+            insertStatement.executeUpdate();
         }
+
+        // Feche os recursos
+        resultSet.close();
+        checkStatement.close();
+        connection.close();
     }
 
     public static assinaturaCoordenacao buscarAssinaturaCoordenacao(int idFuncionario, int mes) throws SQLException {

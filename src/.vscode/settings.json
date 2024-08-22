@@ -1,11 +1,20 @@
 {
     "java.project.referencedLibraries": [
         "/home/gbarrosn/Downloads/OpenJDK21U-jdk_x64_linux_hotspot_21.0.4_7/jdk-21.0.4+7/include/linux/jni_md.h",
-        "/home/gbarrosn/SistemaPonto/lib/mysql-connector-j-9.0.0.jar",
         "/home/gbarrosn/SistemaPonto/lib/barcode4j.jar",
-        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-full-5.2.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/commons-collections4-4.4.jar",
+        "/home/gbarrosn/SistemaPonto/lib/commons-compress-1.21.jar",
+        "/home/gbarrosn/SistemaPonto/lib/commons-io-2.11.0.jar",
+        "/home/gbarrosn/SistemaPonto/lib/log4j-api-2.18.0.jar",
+        "/home/gbarrosn/SistemaPonto/lib/log4j-core-2.20.0.jar",
+        "/home/gbarrosn/SistemaPonto/lib/mysql-connector-j-9.0.0.jar",
         "/home/gbarrosn/SistemaPonto/lib/poi-5.2.3.jar",
-        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-5.2.3.jar"
+        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-3.9.jar",
+        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-5.2.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-full-5.2.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/poi-scratchpad-5.2.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/slf4j-api-1.7.36.jar",
+        "/home/gbarrosn/SistemaPonto/lib/xmlbeans-5.1.1.jar"
     ],
     "java.project.sourcePaths": [
         "."

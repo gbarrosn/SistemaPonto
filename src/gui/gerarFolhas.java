@@ -228,8 +228,8 @@ public class gerarFolhas extends javax.swing.JFrame {
 
     public static void gerarFolhaPonto(registroMensal registro) throws FileNotFoundException, IOException {
         
-        try (FileInputStream inputStream = new FileInputStream("Tabela ponto.xlsx")) {
-            Workbook workbook = new XSSFWorkbook(inputStream);
+        try (Workbook workbook = new XSSFWorkbook(new FileInputStream("Tabela ponto.xlsx"))) {
+            
             Sheet sheet = workbook.getSheetAt(0);
 
             // Preencher a folha de ponto

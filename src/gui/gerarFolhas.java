@@ -248,7 +248,8 @@ public class gerarFolhas extends javax.swing.JFrame {
             Row lotacao = sheet.getRow(2);
             lotacao.getCell(0).setCellValue("Setor:" + registro.getFuncionario().getSetor());
 
-            
+            // mes atual
+            lotacao.getCell(5).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes())); //nao funciona
 
             // Função
             Row funcao = sheet.getRow(3);
@@ -275,6 +276,23 @@ public class gerarFolhas extends javax.swing.JFrame {
 
     }
 
+    public static String numeroMesToNome(int mes) {
+        List<String> meses = new ArrayList<String>();
+        meses.add("Janeiro");
+        meses.add("Fevereiro");
+        meses.add("Março");
+        meses.add("Abril");
+        meses.add("Maio");
+        meses.add("Junho");
+        meses.add("Julho");
+        meses.add("Agosto");
+        meses.add("Setembro");
+        meses.add("Outubro");
+        meses.add("Novembro");
+        meses.add("Dezembro");
+
+        return meses.get(mes);
+    }
     /**
      * @param args the command line arguments
      */

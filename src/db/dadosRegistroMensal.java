@@ -39,38 +39,77 @@ public class dadosRegistroMensal {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                registroMensal registro = new registroMensal();
-                registro reg = new registro();
-                reg.setIdRegistro(result.getInt("id"));
-                reg.setIdFuncionario(result.getInt("id_funcionario"));
-                reg.setHoraEntrada(result.getString("hora_entrada"));
-                reg.setSaidaAlmoco(result.getString("saida_almoco"));
-                reg.setRetornoAlmoco(result.getString("retorno_almoco"));
-                reg.setHoraSaida(result.getString("saida"));
-                reg.setData(result.getString("data"));
-                reg.setAlteracao(result.getString("alteracao"));
-                reg.setAtestado(result.getBoolean("atestado"));
+                int idFuncionario = result.getInt("id_funcionario");
+                boolean exists = false;
+                registroMensal registroFuncionario = new registroMensal();
+    
+                for (registroMensal registro : registros) {
+                    if (registro.getFuncionario().getIdFuncionario() == idFuncionario) {
+                        exists = true;
+                        registroFuncionario = registro;
+                        break;
+                    }
+                }
+    
+                if (!exists) {
+                    registroMensal registro = new registroMensal();
 
-                registro.setRegistro(reg);
+                    //carregando dados do funcionario
+                    funcionario func = new funcionario();
+                    func.setIdFuncionario(result.getInt("id_funcionario"));
+                    func.setNome(result.getString("nome"));
+                    func.setMatricula(result.getInt("matricula"));
+                    func.setSetor(result.getString("setor"));
+                    func.setTurno(result.getString("turno"));
+                    func.setFuncao(result.getString("funcao"));
+                    func.setDataAdmissao(result.getString("data_admissao"));
+                    func.setEscala(result.getString("escala"));
+                    func.setHorario(result.getString("horario"));
+                    func.setHorasSemanais(result.getString("horas_semanais"));
+                    func.setCodigoDeBarras(result.getString("codigo_de_barras"));
+                    func.setSenha(result.getString("senha"));
+                    func.setAdm(result.getBoolean("adm"));
 
-                funcionario func = new funcionario();
-                func.setIdFuncionario(result.getInt("id_funcionario"));
-                func.setNome(result.getString("nome"));
-                func.setMatricula(result.getInt("matricula"));
-                func.setSetor(result.getString("setor"));
-                func.setTurno(result.getString("turno"));
-                func.setFuncao(result.getString("funcao"));
-                func.setDataAdmissao(result.getString("data_admissao"));
-                func.setEscala(result.getString("escala"));
-                func.setHorario(result.getString("horario"));
-                func.setHorasSemanais(result.getString("horas_semanais"));
-                func.setCodigoDeBarras(result.getString("codigo_de_barras"));
-                func.setSenha(result.getString("senha"));
-                func.setAdm(result.getBoolean("adm"));
+                    registro.setFuncionario(func);
 
-                registro.setFuncionario(func);
+                    registro reg = new registro();
 
-                registros.add(registro);
+                    reg.setIdRegistro(result.getInt("id"));
+                    reg.setIdFuncionario(result.getInt("id_funcionario"));
+                    reg.setHoraEntrada(result.getString("hora_entrada"));
+                    reg.setSaidaAlmoco(result.getString("saida_almoco"));
+                    reg.setRetornoAlmoco(result.getString("retorno_almoco"));
+                    reg.setHoraSaida(result.getString("saida"));
+                    reg.setData(result.getString("data"));
+                    reg.setAlteracao(result.getString("alteracao"));
+                    reg.setAtestado(result.getBoolean("atestado"));
+
+                    List<registro> registrosFuncionario = new ArrayList<>();
+                    registrosFuncionario.add(reg);
+                    registro.setRegistros(registrosFuncionario);
+
+                    registros.add(registro);
+
+
+                } else {
+                    registro reg = new registro();
+
+                    reg.setIdRegistro(result.getInt("id"));
+                    reg.setIdFuncionario(result.getInt("id_funcionario"));
+                    reg.setHoraEntrada(result.getString("hora_entrada"));
+                    reg.setSaidaAlmoco(result.getString("saida_almoco"));
+                    reg.setRetornoAlmoco(result.getString("retorno_almoco"));
+                    reg.setHoraSaida(result.getString("saida"));
+                    reg.setData(result.getString("data"));
+                    reg.setAlteracao(result.getString("alteracao"));
+                    reg.setAtestado(result.getBoolean("atestado"));
+
+                    List<registro> registrosFuncionario = registroFuncionario.getRegistros();
+                    registrosFuncionario.add(reg);
+                    registroFuncionario.setRegistros(registrosFuncionario);
+                }
+
+               
 
             }
 
@@ -116,21 +155,43 @@ public class dadosRegistroMensal {
                     }
                 }
             }
-            /*/
+            /*
 
             registroMensal registro = new registroMensal();
-        registro = registros.get(2);
+        registro = registros.get(0);
 
-        System.out.println("Registro:");
-            System.out.println("ID: " + registro.getRegistro().getIdRegistro());
-            System.out.println("ID Funcionario: " + registro.getRegistro().getIdFuncionario());
-            System.out.println("Hora Entrada: " + registro.getRegistro().getHoraEntrada());
-            System.out.println("Saida Almoco: " + registro.getRegistro().getSaidaAlmoco());
-            System.out.println("Retorno Almoco: " + registro.getRegistro().getRetornoAlmoco());
-            System.out.println("Hora Saida: " + registro.getRegistro().getHoraSaida());
-            System.out.println("Data: " + registro.getRegistro().getData());
-            System.out.println("Alteracao: " + registro.getRegistro().getAlteracao());
-            System.out.println("Atestado: " + registro.getRegistro().isAtestado());
+        System.out.println("Registro 1:");
+            System.out.println("ID: " + registro.getRegistros().get(0).getIdRegistro());
+            System.out.println("ID Funcionario: " + registro.getRegistros().get(0).getIdFuncionario());
+            System.out.println("Hora Entrada: " + registro.getRegistros().get(0).getHoraEntrada());
+            System.out.println("Saida Almoco: " + registro.getRegistros().get(0).getSaidaAlmoco());
+            System.out.println("Retorno Almoco: " + registro.getRegistros().get(0).getRetornoAlmoco());
+            System.out.println("Hora Saida: " + registro.getRegistros().get(0).getHoraSaida());
+            System.out.println("Data: " + registro.getRegistros().get(0).getData());
+            System.out.println("Alteracao: " + registro.getRegistros().get(0).getAlteracao());
+            System.out.println("Atestado: " + registro.getRegistros().get(0).isAtestado());
+            System.out.println("Registro 2:");
+            System.out.println("ID: " + registro.getRegistros().get(1).getIdRegistro());
+            System.out.println("ID Funcionario: " + registro.getRegistros().get(1).getIdFuncionario());
+            System.out.println("Hora Entrada: " + registro.getRegistros().get(1).getHoraEntrada());
+            System.out.println("Saida Almoco: " + registro.getRegistros().get(1).getSaidaAlmoco());
+            System.out.println("Retorno Almoco: " + registro.getRegistros().get(1).getRetornoAlmoco());
+            System.out.println("Hora Saida: " + registro.getRegistros().get(1).getHoraSaida());
+            System.out.println("Data: " + registro.getRegistros().get(1).getData());
+            System.out.println("Alteracao: " + registro.getRegistros().get(1).getAlteracao());
+            System.out.println("Atestado: " + registro.getRegistros().get(1).isAtestado());
+            System.out.println("Registro 3:");
+            System.out.println("ID: " + registro.getRegistros().get(2).getIdRegistro());
+            System.out.println("ID Funcionario: " + registro.getRegistros().get(2).getIdFuncionario());
+            System.out.println("Hora Entrada: " + registro.getRegistros().get(2).getHoraEntrada());
+            System.out.println("Saida Almoco: " + registro.getRegistros().get(2).getSaidaAlmoco());
+            System.out.println("Retorno Almoco: " + registro.getRegistros().get(2).getRetornoAlmoco());
+            System.out.println("Hora Saida: " + registro.getRegistros().get(2).getHoraSaida());
+            System.out.println("Data: " + registro.getRegistros().get(2).getData());
+            System.out.println("Alteracao: " + registro.getRegistros().get(2).getAlteracao());
+            System.out.println("Atestado: " + registro.getRegistros().get(2).isAtestado());
+
+
             System.out.println("Funcionario:");
             System.out.println("ID: " + registro.getFuncionario().getIdFuncionario());
             System.out.println("Nome: " + registro.getFuncionario().getNome());

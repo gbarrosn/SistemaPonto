@@ -6,13 +6,14 @@ package gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import db.dadosRegistro;
 import db.dadosRegistroMensal;
 import model.*;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 
 /**
  *
@@ -210,7 +211,7 @@ public class gerarFolhas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: gerar as folhas de ponto
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

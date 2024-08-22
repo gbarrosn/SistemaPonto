@@ -1,7 +1,11 @@
 {
     "java.project.referencedLibraries": [
         "/home/gbarrosn/Downloads/OpenJDK21U-jdk_x64_linux_hotspot_21.0.4_7/jdk-21.0.4+7/include/linux/jni_md.h",
-        "/home/gbarrosn/SistemaPonto/lib/mysql-connector-j-9.0.0.jar"
+        "/home/gbarrosn/SistemaPonto/lib/mysql-connector-j-9.0.0.jar",
+        "/home/gbarrosn/SistemaPonto/lib/barcode4j.jar",
+        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-full-5.2.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/poi-5.2.3.jar",
+        "/home/gbarrosn/SistemaPonto/lib/poi-ooxml-5.2.3.jar"
     ],
     "java.project.sourcePaths": [
         "."

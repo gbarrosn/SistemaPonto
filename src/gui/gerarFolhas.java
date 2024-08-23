@@ -250,6 +250,9 @@ public class gerarFolhas extends javax.swing.JFrame {
             
             Sheet sheet = workbook.getSheetAt(0);
 
+            // Criar imagem do código de barras e inserir na planilha
+            createBarcode(String.valueOf(registro.getFuncionario().getIdFuncionario()), registro.getFuncionario().getCodigoDeBarras());
+
             // Preencher cabeçalho
 
             // Nome
@@ -301,7 +304,7 @@ public class gerarFolhas extends javax.swing.JFrame {
 
     }
 
-    public static void createImage(String imageName, String myString) {
+    public static void createBarcode(String imageName, String myString) {
 
         try {
 

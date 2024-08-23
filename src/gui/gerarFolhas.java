@@ -272,9 +272,10 @@ public class gerarFolhas extends javax.swing.JFrame {
 
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
-            }
+            } // agora basta usar o comando libreoffice --headless --convert-to pdf --outdir NomeDoPdf.pdf nomeDoArquivo.xlsx 
 
-            try {
+
+            /*try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
                 document.open();
@@ -298,7 +299,7 @@ public class gerarFolhas extends javax.swing.JFrame {
                            // Concatena o conteúdo de todas as células mescladas
                             StringBuilder mergedContent = new StringBuilder();
                             Set<String> processedCells = new HashSet<>();
-                            for (int rowIdx = cell.getRowIndex(); rowIdx <= cell.getRowIndex() /*+ rowspan - 1*/; rowIdx++) {
+                            for (int rowIdx = cell.getRowIndex(); rowIdx <= cell.getRowIndex() + rowspan - 1; rowIdx++) {
                                 Row currentRow = sheet.getRow(rowIdx);
                                 if (currentRow != null) {
                                     for (int colIdx = cell.getColumnIndex(); colIdx <= cell.getColumnIndex() + colspan - 1; colIdx++) {

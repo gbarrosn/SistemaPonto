@@ -202,7 +202,9 @@ public class conferirPonto extends javax.swing.JFrame {
             tela.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor, selecione um registro para alterar!");
+            registrarAtestadoNovo tela = new registrarAtestadoNovo();
+            tela.setVisible(true);
+            this.dispose();
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed

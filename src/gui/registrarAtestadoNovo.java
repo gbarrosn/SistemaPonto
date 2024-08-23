@@ -9,7 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultListCellRenderer;
+
+import org.apache.logging.log4j.core.config.builder.api.Component;
 
 import db.dadosFuncionario;
 import db.dadosRegistro;
@@ -22,11 +28,13 @@ import model.registro;
  */
 public class registrarAtestadoNovo extends javax.swing.JFrame {
     List<registro> registrosMesSelecionado = new ArrayList<registro>();
+    List<funcionario> funcionarios = new ArrayList<>();
     /**
      * Creates new form registrarAtestadoNovo
      */
     public registrarAtestadoNovo() {
         initComponents();
+        popularComboBox2();
     }
 
     /**
@@ -75,7 +83,9 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/GovPERGBpequeno1.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2 = new JComboBox<funcionario>();
+        jComboBox2.setModel(new DefaultComboBoxModel<funcionario>());
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -164,6 +174,7 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -248,6 +259,34 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBoxMesActionPerformed
 
+    private void popularComboBox2() {
+        try {
+            funcionarios = dadosFuncionario.buscarFuncionarios();
+    
+            DefaultComboBoxModel<funcionario> model = new DefaultComboBoxModel<>();
+            for (funcionario f : funcionarios) {
+                model.addElement(f);
+            }
+            jComboBox2.setModel(model);
+            jComboBox2.setRenderer(new FuncionarioRenderer());
+        } catch (SQLException e) {
+            // Handle the exception appropriately, e.g., show an error message to the user
+            JOptionPane.showMessageDialog(this, "Erro ao popular ComboBox: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // For logging or debugging
+        }
+    }
+    
+    class FuncionarioRenderer extends DefaultListCellRenderer {
+        @Override
+        public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            if (value instanceof funcionario) {
+                funcionario func = (funcionario) value;
+                return super.getListCellRendererComponent(list, func.getNome(), index, isSelected, cellHasFocus);
+            }
+            return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -286,7 +325,7 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private JComboBox<funcionario> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxData;
     private javax.swing.JComboBox<String> jComboBoxMes;
     private javax.swing.JLabel jLabel1;

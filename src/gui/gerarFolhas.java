@@ -306,6 +306,18 @@ public class gerarFolhas extends javax.swing.JFrame {
             // Carga horária
             escala.getCell(5).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
+            // Preencher a tabela de ponto
+
+            // listar os dias do mês com o nome da semana
+            List<String> dias = new ArrayList<String>();
+            for (registro r : registro.getRegistros()) {
+                if (!dias.contains(r.getData())) {
+                    dias.add(r.getData());
+                }
+            }
+
+            
+
 
 
             // criar excel para o libreoffice converter para pdf

@@ -15,15 +15,24 @@ import model.*;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.krysalis.barcode4j.impl.code128.Code128Bean;
+import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import model.MergedRegionUtils.*;
+
+//importando lib do barcode
+import org.krysalis.barcode4j.impl.code128.Code128Bean;
+import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
+import java.awt.image.BufferedImage;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
@@ -241,7 +250,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             
             Sheet sheet = workbook.getSheetAt(0);
 
-            // Preencher a folha de ponto
+            // Preencher cabeçalho
 
             // Nome
             Row nome = sheet.getRow(1);
@@ -272,6 +281,8 @@ public class gerarFolhas extends javax.swing.JFrame {
             escala.getCell(5).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
 
+
+            // criar excel para o libreoffice converter para pdf
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
@@ -288,6 +299,31 @@ public class gerarFolhas extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
+    }
+
+    public static void createImage(String imageName, String myString) {
+
+        try {
+
+            Code128Bean code128 = new Code128Bean();
+            code128.setHeight(15f);
+            code128.setModuleWidth(0.3);
+            code128.setQuietZone(10);
+            code128.doQuietZone(true);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+            code128.generateBarcode(canvas, myString);
+            canvas.finish();
+
+            FileOutputStream fos = new FileOutputStream("." + File.separator + "barcodes" + File.separator + imageName + ".png");
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void converterExcelParaPdf(String caminho) {

@@ -309,9 +309,32 @@ public class gerarFolhas extends javax.swing.JFrame {
             // Preencher a tabela de ponto
 
             // listar os dias do mês com o nome da semana
-            System.out.println("Data: " + registro.getRegistros().get(0).getData() + " Dia: " + registro.getRegistros().get(0).dataToDia(registro.getRegistros().get(0).getData()));
+            //System.out.println("Data: " + registro.getRegistros().get(0).getData() + " Dia: " + registro.getRegistros().get(0).dataToDia(registro.getRegistros().get(0).getData()));
 
-            
+            /*Row dia1 = sheet.getRow(7);
+            dia1.getCell(0).setCellValue(registro.getRegistros().get(0).getData());
+            dia1.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(registro.getRegistros().get(0).getData()));*/
+
+            List<String> datas = new ArrayList<String>();
+            int dia = 1;
+            while (dia <= 31) {
+                String data = "";
+                if (dia < 10) {
+                    data = "0" + String.valueOf(dia) + "/0" + String.valueOf(registro.getRegistros().get(0).getMes()) + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
+                } else {
+                    data = String.valueOf(dia) + "/0" + String.valueOf(registro.getRegistros().get(0).getMes()) + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
+                }
+                dia += 1;
+                datas.add(data);
+            }
+
+            int linha = 7;
+            for (String data : datas) {
+                Row linhaDia = sheet.getRow(linha);
+                linhaDia.getCell(0).setCellValue(data);
+                linhaDia.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(data));
+                linha += 1;
+            }
 
 
 

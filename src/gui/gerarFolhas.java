@@ -262,7 +262,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             CreationHelper helper = workbook.getCreationHelper();
             Drawing<?> drawing = sheet.createDrawingPatriarch();
             ClientAnchor anchor = helper.createClientAnchor();
-            anchor.setCol1(5);
+            anchor.setCol1(4);
             anchor.setCol2(7);
 
             anchor.setRow1(0);
@@ -273,7 +273,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             anchor.setDy2(Units.toEMU(2)); // Set the bottom offset to 2 millimeters
             Picture pict = drawing.createPicture(anchor, pictureIdx);
 
-            pict.resize(1, 0.8);
+            pict.resize(1, 0.7);
             
 
             // Preencher cabeçalho

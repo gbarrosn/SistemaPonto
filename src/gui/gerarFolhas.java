@@ -274,76 +274,9 @@ public class gerarFolhas extends javax.swing.JFrame {
                 workbook.write(outputStream);
             } // agora basta usar o comando libreoffice --headless --convert-to pdf --outdir NomeDoPdf.pdf nomeDoArquivo.xlsx 
 
-
-            /*try {
-                Document document = new Document();
-                PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
-                document.open();
-            
-                List<MergedRegion> mergedRegions = MergedRegionUtils.identifyMergedRegions(sheet);
-            
-                for (Row row : sheet) {
-                    PdfPTable table = new PdfPTable(6); // Ajustar de acordo com o número de colunas
-            
-                    for (Cell cell : row) {
-                        PdfPCell pdfCell = new PdfPCell();
-            
-                        // Verifica se a célula está mesclada
-                        if (MergedRegionUtils.isMergedCell(cell, mergedRegions)) {
-                            // Calcula o colspan e o rowspan
-                            int colspan = MergedRegionUtils.getMergedRegionColumns(cell, mergedRegions);
-                            //int rowspan = MergedRegionUtils.getMergedRegionRows(cell, mergedRegions); // Assumindo que MergedRegionUtils fornece este método
-                            pdfCell.setColspan(colspan);
-                            //pdfCell.setRowspan(rowspan);
-            
-                           // Concatena o conteúdo de todas as células mescladas
-                            StringBuilder mergedContent = new StringBuilder();
-                            Set<String> processedCells = new HashSet<>();
-                            for (int rowIdx = cell.getRowIndex(); rowIdx <= cell.getRowIndex() + rowspan - 1; rowIdx++) {
-                                Row currentRow = sheet.getRow(rowIdx);
-                                if (currentRow != null) {
-                                    for (int colIdx = cell.getColumnIndex(); colIdx <= cell.getColumnIndex() + colspan - 1; colIdx++) {
-                                        Cell currentCell = currentRow.getCell(colIdx);
-                                        if (currentCell != null && !processedCells.contains(currentCell.toString())) {
-                                            String value = currentCell.getStringCellValue();
-                                            if (!value.isEmpty()) {
-                                                mergedContent.append(value).append(" "); // Adiciona um espaço em branco entre as células
-                                            }
-                                            processedCells.add(currentCell.toString());
-                                        }
-                                    }
-                                    mergedContent.append("\n");
-                                }
-                            }
-                            pdfCell.setPhrase(new Phrase(mergedContent.toString()));
-                        } else {
-                            String value = "";
-                            switch (cell.getCellType()) {
-                                case STRING:
-                                value = cell.getStringCellValue();
-                                break;
-                                case NUMERIC:
-                                value = String.valueOf(cell.getNumericCellValue());
-                                break;  
-                            
-                            }
-                            pdfCell.setPhrase(new Phrase(value));
-                        }
-            
-                        // Aplicar formatação à célula (opcional)
-                        // ...
-            
-                        table.addCell(pdfCell);
-                    }
-                    document.add(table);
-                }
-                document.close();
-            } catch (DocumentException | IOException e) {
-                e.printStackTrace();
-            }
-            //*/
             
 
+          
             workbook.close();
 
 

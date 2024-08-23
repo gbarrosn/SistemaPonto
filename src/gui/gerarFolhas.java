@@ -13,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import db.dadosRegistroMensal;
 import model.*;
 
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.util.Units;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
@@ -252,6 +254,27 @@ public class gerarFolhas extends javax.swing.JFrame {
 
             // Criar imagem do código de barras e inserir na planilha
             createBarcode(String.valueOf(registro.getFuncionario().getIdFuncionario()), registro.getFuncionario().getCodigoDeBarras());
+            FileInputStream barcode = new FileInputStream("." + File.separator + "barcodes" + File.separator + String.valueOf(registro.getFuncionario().getIdFuncionario()) + ".png");
+            byte[] bytes = IOUtils.toByteArray(barcode);
+            int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
+            barcode.close();
+
+            CreationHelper helper = workbook.getCreationHelper();
+            Drawing<?> drawing = sheet.createDrawingPatriarch();
+            ClientAnchor anchor = helper.createClientAnchor();
+            anchor.setCol1(5);
+            anchor.setCol2(7);
+
+            anchor.setRow1(0);
+            anchor.setRow2(1);
+
+
+            anchor.setDy1(Units.toEMU(2)); // Set the top offset to 2 millimeters
+            anchor.setDy2(Units.toEMU(2)); // Set the bottom offset to 2 millimeters
+            Picture pict = drawing.createPicture(anchor, pictureIdx);
+
+            pict.resize(1, 0.8);
+            
 
             // Preencher cabeçalho
 

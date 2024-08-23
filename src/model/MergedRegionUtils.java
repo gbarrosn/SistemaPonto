@@ -14,8 +14,7 @@ import java.util.List;
  */
 
 
-public class  
- MergedRegionUtils {
+public class MergedRegionUtils {
 
     public static List<MergedRegion> identifyMergedRegions(Sheet sheet) {
         List<MergedRegion> mergedRegions = new ArrayList<>();
@@ -47,6 +46,22 @@ public class
         return 1; // If the cell is not merged, it spans 1 column
     }
 
+    public static int getMergedRegionRows(Cell cell, List<MergedRegion> mergedRegions) {
+        for (MergedRegion region : mergedRegions) {
+            if (region.contains(cell.getColumnIndex(), cell.getRowIndex())) {
+                // Check if the current cell is in the first row of the merged region
+                if (cell.getRowIndex() == region.getFirstRow()) {
+                    return region.getLastRow() - region.getFirstRow() + 1;
+                } else {
+                    // If not the first row, the cell doesn't contribute to the rowspan
+                    return 0;
+                }
+            }
+        }
+        return 1; // If the cell is not merged, it spans 1 row
+    }
+    
+
     public static class MergedRegion {
         private final int firstRow;
         private final int lastRow;
@@ -60,8 +75,7 @@ public class
             this.lastColumn = lastColumn;
         }
 
-        public  
- boolean contains(int rowIndex, int columnIndex) {
+        public boolean contains(int rowIndex, int columnIndex) {
             return firstRow <= rowIndex && rowIndex <= lastRow && firstColumn <= columnIndex && columnIndex <= lastColumn;
         }
 
@@ -74,30 +88,19 @@ public class
         }
 
         public int getLastRow() {
-            // TODO Auto-generated method stub
             return lastRow;
         }
 
         public int getFirstRow() {
-            // TODO Auto-generated method stub
             return firstRow;
         }
     }
 
     public static Cell getNextCell(Cell cell, List<MergedRegion> mergedRegions) {
-        // TODO Auto-generated method stub
         int nextColumn = cell.getColumnIndex() + getMergedRegionColumns(cell, mergedRegions);
         return cell.getRow().getCell(nextColumn);
 
     }
 
-    public static int getMergedRegionRows(Cell cell, List<MergedRegion> mergedRegions) {
-        // TODO Auto-generated method stub
-        for (MergedRegion region : mergedRegions) {
-            if (region.contains(cell.getColumnIndex(), cell.getRowIndex())) {
-                return region.getLastRow() - region.getFirstRow() + 1;
-            }
-        }
-        return 1; // If the cell is not merged, it spans 1 row
-    }
+
  }

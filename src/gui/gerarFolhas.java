@@ -4,7 +4,9 @@
  */
 package gui;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -271,7 +273,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
-
+/*
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
@@ -280,7 +282,7 @@ public class gerarFolhas extends javax.swing.JFrame {
                 List<MergedRegion> mergedRegions = MergedRegionUtils.identifyMergedRegions(sheet);
             
                 for (Row row : sheet) {
-                    PdfPTable table = new PdfPTable(7); // Ajustar de acordo com o número de colunas
+                    PdfPTable table = new PdfPTable(6); // Ajustar de acordo com o número de colunas
             
                     for (Cell cell : row) {
                         PdfPCell pdfCell = new PdfPCell();
@@ -293,26 +295,24 @@ public class gerarFolhas extends javax.swing.JFrame {
                             pdfCell.setColspan(colspan);
                             pdfCell.setRowspan(rowspan);
             
-                            // Concatena o conteúdo de todas as células mescladas
+                           // Concatena o conteúdo de todas as células mescladas
                             StringBuilder mergedContent = new StringBuilder();
-                            for (int rowIdx = cell.getRowIndex(); rowIdx < cell.getRowIndex() + rowspan; rowIdx++) {
+                            Set<String> processedCells = new HashSet<>();
+                            for (int rowIdx = cell.getRowIndex(); rowIdx <= cell.getRowIndex() + rowspan - 1; rowIdx++) {
                                 Row currentRow = sheet.getRow(rowIdx);
-                                for (int colIdx = cell.getColumnIndex(); colIdx < cell.getColumnIndex() + colspan; colIdx++) {
-                                    Cell currentCell = currentRow.getCell(colIdx);
-                                    if (currentCell != null) {
-                                        String value = "";
-                                        switch (currentCell.getCellType()) {
-                                            case STRING:
-                                            value = currentCell.getStringCellValue();
-                                            break;
-                                            case NUMERIC:
-                                            value = String.valueOf(currentCell.getNumericCellValue());
-                                            break;
+                                if (currentRow != null) {
+                                    for (int colIdx = cell.getColumnIndex(); colIdx <= cell.getColumnIndex() + colspan - 1; colIdx++) {
+                                        Cell currentCell = currentRow.getCell(colIdx);
+                                        if (currentCell != null && !processedCells.contains(currentCell.toString())) {
+                                            String value = currentCell.getStringCellValue();
+                                            if (!value.isEmpty()) {
+                                                mergedContent.append(value).append(" "); // Adiciona um espaço em branco entre as células
+                                            }
+                                            processedCells.add(currentCell.toString());
                                         }
-                                        mergedContent.append(value);
                                     }
+                                    mergedContent.append("\n");
                                 }
-                                mergedContent.append("\n"); // Adiciona nova linha para células mescladas em múltiplas linhas
                             }
                             pdfCell.setPhrase(new Phrase(mergedContent.toString()));
                         } else {
@@ -340,7 +340,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             } catch (DocumentException | IOException e) {
                 e.printStackTrace();
             }
-            
+            //*/
             
 
             workbook.close();

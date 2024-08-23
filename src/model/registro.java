@@ -4,6 +4,10 @@
  */
 package model;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author gbarrosn
@@ -150,6 +154,34 @@ public class registro {
 
     public void setMes(int mes) {
         this.mes = mes;
+    }
+
+    public String dataToDia(String data) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate date = LocalDate.parse(data, formatter);
+          
+        DayOfWeek diaDaSemana =  (date).getDayOfWeek();                                               
+        // Configura o dia da semana conforme a data                            
+        switch (diaDaSemana) 
+        {                                
+            case MONDAY:                             
+                return "SEGUNDA";
+            case TUESDAY:
+                return "TERÇA";
+            case WEDNESDAY:
+                return "QUARTA";
+            case THURSDAY:
+                return "QUINTA";
+            case FRIDAY:
+                return "SEXTA";
+            case SATURDAY:
+                return "SÁBADO";
+            case SUNDAY:
+                return "DOMINGO";
+            
+        }
+        return data;
     }
 
 }

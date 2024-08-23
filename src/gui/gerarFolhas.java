@@ -309,12 +309,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             // Preencher a tabela de ponto
 
             // listar os dias do mês com o nome da semana
-            List<String> dias = new ArrayList<String>();
-            for (registro r : registro.getRegistros()) {
-                if (!dias.contains(r.getData())) {
-                    dias.add(r.getData());
-                }
-            }
+            System.out.println("Data: " + registro.getRegistros().get(0).getData() + " Dia: " + registro.getRegistros().get(0).dataToDia(registro.getRegistros().get(0).getData()));
 
             
 

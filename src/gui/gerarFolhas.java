@@ -328,10 +328,21 @@ public class gerarFolhas extends javax.swing.JFrame {
                 datas.add(data);
             }
 
+            
+
             int linha = 7;
             for (String data : datas) {
                 Row linhaDia = sheet.getRow(linha);
-                linhaDia.getCell(0).setCellValue(data);
+
+                for (registro r : registro.getRegistros()) {
+                    if (r.getData().equals(data)) {
+                        linhaDia.getCell(2).setCellValue(r.getHoraEntrada());
+                        linhaDia.getCell(3).setCellValue(r.getSaidaAlmoco());
+                        linhaDia.getCell(4).setCellValue(r.getRetornoAlmoco());
+                        linhaDia.getCell(5).setCellValue(r.getHoraSaida());
+                        break;
+                    }
+                }
                 linhaDia.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(data));
                 linha += 1;
             }

@@ -279,36 +279,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             String caminho = "folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
             caminho = caminho.replace("\\ ", "");
 
-            // Construindo o comando com ProcessBuilder
-            ProcessBuilder builder = new ProcessBuilder(
-                "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", "folhas", caminho
-            );
-
-            try {
-                // Iniciando o processo
-                Process process = builder.start();
-
-                // Lendo a saída do processo (opcional)
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println(line);  
-
-                }
-
-                // Aguardando o término do processo
-                int exitCode = process.waitFor();
-
-                // Verificando o código de saída
-                if (exitCode == 0) {
-                    System.out.println("Conversão realizada com sucesso!");
-                } else {
-                    System.err.println("Erro ao converter o arquivo. Código de saída: " + exitCode);
-                }
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            }
-
+            converterExcelParaPdf(caminho);
           
             workbook.close();
 
@@ -316,6 +287,41 @@ public class gerarFolhas extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void converterExcelParaPdf(String caminho) {
+
+        // Construindo o comando com ProcessBuilder
+        ProcessBuilder builder = new ProcessBuilder(
+            "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", "folhas", caminho
+        );
+
+        try {
+            // Iniciando o processo
+            Process process = builder.start();
+
+            // Lendo a saída do processo (opcional)
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);  
+
+            }
+
+            // Aguardando o término do processo
+            int exitCode = process.waitFor();
+
+            // Verificando o código de saída
+            if (exitCode == 0) {
+                System.out.println("Conversão realizada com sucesso!");
+            } else {
+                System.err.println("Erro ao converter o arquivo. Código de saída: " + exitCode);
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

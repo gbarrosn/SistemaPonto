@@ -238,7 +238,7 @@ public class gerarFolhas extends javax.swing.JFrame {
 
         for (registroMensal r : registrosMesSelecionado) {
             try {
-                gerarFolhaPontoServidor(r);
+                gerarFolhaPontoTerceirizado(r);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -246,7 +246,7 @@ public class gerarFolhas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public static void gerarFolhaPontoServidor(registroMensal registro) throws FileNotFoundException, IOException {
+    public static void gerarFolhaPontoTerceirizado(registroMensal registro) throws FileNotFoundException, IOException {
         
         try (Workbook workbook = new XSSFWorkbook(new FileInputStream("Tabela ponto.xlsx"))) {
             
@@ -283,28 +283,28 @@ public class gerarFolhas extends javax.swing.JFrame {
             nome.getCell(0).setCellValue("Nome: " + registro.getFuncionario().getNome()); // funciona
 
             // Matrícula
-            nome.getCell(5).setCellValue("Matrícula: " + String.valueOf(registro.getFuncionario().getMatricula())); //funciona
+            nome.getCell(6).setCellValue("Matrícula: " + String.valueOf(registro.getFuncionario().getMatricula())); //funciona
 
             // Lotação
             Row lotacao = sheet.getRow(2);
             lotacao.getCell(0).setCellValue("Setor: " + registro.getFuncionario().getSetor());
 
             // mes atual
-            lotacao.getCell(5).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes()) + " de " + registro.getRegistros().get(0).getData().split("/")[2]); // funciona
+            lotacao.getCell(6).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes()) + " de " + registro.getRegistros().get(0).getData().split("/")[2]); // funciona
 
             // Função
             Row funcao = sheet.getRow(3);
             funcao.getCell(0).setCellValue("Função: " + registro.getFuncionario().getFuncao());
 
             // Data de admissão
-            funcao.getCell(5).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
+            funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
 
             // Escala
             Row escala = sheet.getRow(4);
             escala.getCell(0).setCellValue("Escala: " + registro.getFuncionario().getEscala());
             
             // Carga horária
-            escala.getCell(5).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
+            escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
             // Preencher a tabela de ponto
 

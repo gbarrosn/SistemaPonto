@@ -272,9 +272,19 @@ public class gerarFolhas extends javax.swing.JFrame {
 
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
-            } // agora basta usar o comando libreoffice --headless --convert-to pdf --outdir NomeDoPdf.pdf nomeDoArquivo.xlsx 
+            }
 
-            
+            // converter para pdf
+            String caminho = " 'folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx'";
+            caminho = caminho.replace("\\ ", "");
+            String command = "libreoffice --headless --convert-to pdf --outdir folhas" + caminho;
+
+                try {
+                    Process process = Runtime.getRuntime().exec(command);
+                    process.waitFor();
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
 
           
             workbook.close();

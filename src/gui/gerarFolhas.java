@@ -273,7 +273,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
-/*
+
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".pdf"));
@@ -291,14 +291,14 @@ public class gerarFolhas extends javax.swing.JFrame {
                         if (MergedRegionUtils.isMergedCell(cell, mergedRegions)) {
                             // Calcula o colspan e o rowspan
                             int colspan = MergedRegionUtils.getMergedRegionColumns(cell, mergedRegions);
-                            int rowspan = MergedRegionUtils.getMergedRegionRows(cell, mergedRegions); // Assumindo que MergedRegionUtils fornece este método
+                            //int rowspan = MergedRegionUtils.getMergedRegionRows(cell, mergedRegions); // Assumindo que MergedRegionUtils fornece este método
                             pdfCell.setColspan(colspan);
-                            pdfCell.setRowspan(rowspan);
+                            //pdfCell.setRowspan(rowspan);
             
                            // Concatena o conteúdo de todas as células mescladas
                             StringBuilder mergedContent = new StringBuilder();
                             Set<String> processedCells = new HashSet<>();
-                            for (int rowIdx = cell.getRowIndex(); rowIdx <= cell.getRowIndex() + rowspan - 1; rowIdx++) {
+                            for (int rowIdx = cell.getRowIndex(); rowIdx <= cell.getRowIndex() /*+ rowspan - 1*/; rowIdx++) {
                                 Row currentRow = sheet.getRow(rowIdx);
                                 if (currentRow != null) {
                                     for (int colIdx = cell.getColumnIndex(); colIdx <= cell.getColumnIndex() + colspan - 1; colIdx++) {

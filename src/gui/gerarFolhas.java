@@ -16,6 +16,8 @@ import model.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -274,17 +276,38 @@ public class gerarFolhas extends javax.swing.JFrame {
                 workbook.write(outputStream);
             }
 
-            // converter para pdf
-            String caminho = " 'folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx'";
+            String caminho = "folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
             caminho = caminho.replace("\\ ", "");
-            String command = "libreoffice --headless --convert-to pdf --outdir folhas" + caminho;
 
-                try {
-                    Process process = Runtime.getRuntime().exec(command);
-                    process.waitFor();
-                } catch (IOException | InterruptedException e) {
-                    e.printStackTrace();
+            // Construindo o comando com ProcessBuilder
+            ProcessBuilder builder = new ProcessBuilder(
+                "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", "folhas", caminho
+            );
+
+            try {
+                // Iniciando o processo
+                Process process = builder.start();
+
+                // Lendo a saída do processo (opcional)
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);  
+
                 }
+
+                // Aguardando o término do processo
+                int exitCode = process.waitFor();
+
+                // Verificando o código de saída
+                if (exitCode == 0) {
+                    System.out.println("Conversão realizada com sucesso!");
+                } else {
+                    System.err.println("Erro ao converter o arquivo. Código de saída: " + exitCode);
+                }
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
 
           
             workbook.close();

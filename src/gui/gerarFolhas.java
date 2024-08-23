@@ -262,8 +262,8 @@ public class gerarFolhas extends javax.swing.JFrame {
             CreationHelper helper = workbook.getCreationHelper();
             Drawing<?> drawing = sheet.createDrawingPatriarch();
             ClientAnchor anchor = helper.createClientAnchor();
-            anchor.setCol1(4);
-            anchor.setCol2(7);
+            anchor.setCol1(5);
+            anchor.setCol2(8);
 
             anchor.setRow1(0);
             anchor.setRow2(1);

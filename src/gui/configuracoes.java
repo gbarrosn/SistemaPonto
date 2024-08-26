@@ -60,7 +60,7 @@ public class configuracoes extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Alterar senha");
+        jButton2.setText("Cadastrar contrato");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -157,7 +157,10 @@ public class configuracoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListarFuncionariosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO abrir tela de alterar senha
+        // TODO abrir tela de contrato
+        cadastrarContrato tela = new cadastrarContrato();
+        tela.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

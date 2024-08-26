@@ -375,6 +375,21 @@ public class gerarFolhas extends javax.swing.JFrame {
             }
 
 
+            //preenchendo assinatura
+            assinatura assinatura = registro.getAssinatura();
+
+            String assinaturaStr = "Assinado por " + registro.getFuncionario().getNome() + " em " + assinatura.getDataAssinatura() + " às " + assinatura.getHoraAssinatura();
+
+            Row assinaturaRow = sheet.getRow(38);
+            assinaturaRow.getCell(0).setCellValue(assinaturaStr);
+
+            //preenchendo assinatura da coordenação
+            assinaturaCoordenacao assinaturaCoordenacao = registro.getAssinaturaCoordenacao();
+
+            String assinaturaCoordenacaoStr = "Assinado por " + assinaturaCoordenacao.getNomeCoordenacao() + " em " + assinaturaCoordenacao.getDataAssinatura() + " às " + assinaturaCoordenacao.getHoraAssinatura();
+
+            Row assinaturaCoordenacaoRow = sheet.getRow(39);
+            assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
 
             // criar excel para o libreoffice converter para pdf
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {

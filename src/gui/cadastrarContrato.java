@@ -4,6 +4,10 @@
  */
 package gui;
 
+import java.sql.SQLException;
+
+import db.dadosContrato;
+
 /**
  *
  * @author gbarrosn
@@ -94,6 +98,12 @@ public class cadastrarContrato extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO cadastrar o contrato
+        String contrato = jTextField1.getText();
+        try {
+            dadosContrato.cadastrarContrato(contrato);
+        } catch (SQLException ex) {
+            System.out.println("Erro ao cadastrar o contrato: " + ex.getMessage());
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

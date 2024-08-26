@@ -63,7 +63,7 @@
                               <Component id="jTextFieldDataAdmissao" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxSetor" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                              <Component id="jComboBoxContrato" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -148,7 +148,7 @@
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jComboBoxTurno" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxSetor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
@@ -224,7 +224,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Setor:"/>
+            <Property name="text" type="java.lang.String" value="Contrato:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -385,7 +385,7 @@
             <Property name="text" type="java.lang.String" value="Servidor"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxSetor">
+        <Component class="javax.swing.JComboBox" name="jComboBoxContrato">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="11">

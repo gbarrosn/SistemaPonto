@@ -375,21 +375,41 @@ public class gerarFolhas extends javax.swing.JFrame {
             }
 
 
-            //preenchendo assinatura
-            assinatura assinatura = registro.getAssinatura();
+            try {
+                //preenchendo assinatura
+                assinatura assinatura = registro.getAssinatura();
 
-            String assinaturaStr = "Assinado por " + registro.getFuncionario().getNome() + " em " + assinatura.getDataAssinatura() + " às " + assinatura.getHoraAssinatura();
+                String assinaturaStr = "Assinado por " + registro.getFuncionario().getNome() + " em " + assinatura.getDataAssinatura() + " às " + assinatura.getHoraAssinatura();
 
-            Row assinaturaRow = sheet.getRow(38);
-            assinaturaRow.getCell(0).setCellValue(assinaturaStr);
+                Row assinaturaRow = sheet.getRow(38);
+                Cell assinaturaCell = assinaturaRow.getCell(0);
+                assinaturaCell.setCellValue(assinaturaStr);
+                
+                CellStyle boldStyle = workbook.createCellStyle();
+                Font boldFont = workbook.createFont();
+                boldFont.setBold(true);
+                boldStyle.setFont(boldFont);
+                
+                assinaturaCell.setCellStyle(boldStyle);
 
-            //preenchendo assinatura da coordenação
-            assinaturaCoordenacao assinaturaCoordenacao = registro.getAssinaturaCoordenacao();
+            } catch (NullPointerException e) {
+                Row assinaturaRow = sheet.getRow(38);
+                assinaturaRow.getCell(0).setCellValue("");
+            }
 
-            String assinaturaCoordenacaoStr = "Assinado por " + assinaturaCoordenacao.getNomeCoordenacao() + " em " + assinaturaCoordenacao.getDataAssinatura() + " às " + assinaturaCoordenacao.getHoraAssinatura();
+            try {
+                //preenchendo assinatura da coordenação
+                assinaturaCoordenacao assinaturaCoordenacao = registro.getAssinaturaCoordenacao();
 
-            Row assinaturaCoordenacaoRow = sheet.getRow(39);
-            assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
+                String assinaturaCoordenacaoStr = "Assinado por " + assinaturaCoordenacao.getNomeCoordenacao() + " em " + assinaturaCoordenacao.getDataAssinatura() + " às " + assinaturaCoordenacao.getHoraAssinatura();
+
+                Row assinaturaCoordenacaoRow = sheet.getRow(39);
+                assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
+
+            } catch (NullPointerException e) {
+                Row assinaturaCoordenacaoRow = sheet.getRow(39);
+                assinaturaCoordenacaoRow.getCell(0).setCellValue("");
+            }
 
             // criar excel para o libreoffice converter para pdf
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {

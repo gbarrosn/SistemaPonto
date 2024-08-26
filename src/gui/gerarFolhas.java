@@ -389,6 +389,12 @@ public class gerarFolhas extends javax.swing.JFrame {
                 Font boldFont = workbook.createFont();
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);
+                boldStyle.setAlignment(HorizontalAlignment.CENTER);
+                
+                CellStyle styleCentralizado = workbook.createCellStyle();
+                styleCentralizado.setAlignment(HorizontalAlignment.CENTER);
+
+                assinaturaCell.setCellStyle(styleCentralizado);
                 
                 int indexNomeFuncionario = assinaturaStr.indexOf(registro.getFuncionario().getNome());
                 RichTextString richTextAssinatura = assinaturaCell.getRichStringCellValue();
@@ -413,6 +419,12 @@ public class gerarFolhas extends javax.swing.JFrame {
                 Font boldFont = workbook.createFont();
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);
+                boldStyle.setAlignment(HorizontalAlignment.CENTER);
+
+                CellStyle styleCentralizado = workbook.createCellStyle();
+                styleCentralizado.setAlignment(HorizontalAlignment.CENTER);
+
+                assinaturaCoordenacaoRow.getCell(0).setCellStyle(styleCentralizado);
 
                 int indexNomeCoordenacao = assinaturaCoordenacaoStr.indexOf(assinaturaCoordenacao.getNomeCoordenacao());
                 RichTextString richTextAssinaturaCoordenacao = assinaturaCoordenacaoRow.getCell(0).getRichStringCellValue();

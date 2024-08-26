@@ -8,6 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -46,5 +49,31 @@ public class dadosContrato {
         connection.close();
     }
 
-    
+    public static List<String> buscarContratos() throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to select the contrato
+        String query = "SELECT * FROM contrato";
+        List<String> contratos = new ArrayList<>();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                contratos.add(resultSet.getString("contrato"));
+            }
+
+            // Feche os recursos
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return contratos;
+    }
+
 }

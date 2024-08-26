@@ -22,6 +22,7 @@ public class funcionario {
     String codigoDeBarras;
     String senha;
     boolean adm;
+    boolean servidor;
 
     /*public funcionario(int idFuncionario, String nome, String matricula, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String senha) {
         this.idFuncionario = idFuncionario;
@@ -37,6 +38,14 @@ public class funcionario {
         this.codigoDeBarras = codigoDeBarras;
         this.senha = senha;
     }*/
+
+    public boolean isServidor() {
+        return servidor;
+    }
+
+    public void setServidor(boolean servidor) {
+        this.servidor = servidor;
+    }
 
     public boolean isAdm() {
         return adm;

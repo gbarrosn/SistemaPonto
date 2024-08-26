@@ -69,6 +69,7 @@ public class dadosRegistroMensal {
                     func.setCodigoDeBarras(result.getString("codigo_de_barras"));
                     func.setSenha(result.getString("senha"));
                     func.setAdm(result.getBoolean("adm"));
+                    func.setServidor(result.getBoolean("servidor"));
 
                     registro.setFuncionario(func);
 

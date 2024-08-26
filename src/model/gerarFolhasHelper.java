@@ -40,7 +40,7 @@ public class gerarFolhasHelper {
 
     public static void gerarFolhaPontoTerceirizado(registroMensal registro) throws FileNotFoundException, IOException {
         
-        try (Workbook workbook = new XSSFWorkbook(new FileInputStream("Tabela ponto.xlsx"))) {
+        try (Workbook workbook = new XSSFWorkbook(new FileInputStream("Tabela ponto terceirizados.xlsx"))) {
             
             Sheet sheet = workbook.getSheetAt(0);
 

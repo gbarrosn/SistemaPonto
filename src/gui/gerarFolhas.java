@@ -390,7 +390,10 @@ public class gerarFolhas extends javax.swing.JFrame {
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);
                 
-                assinaturaCell.setCellStyle(boldStyle);
+                int indexNomeFuncionario = assinaturaStr.indexOf(registro.getFuncionario().getNome());
+                RichTextString richTextAssinatura = assinaturaCell.getRichStringCellValue();
+
+                richTextAssinatura.applyFont(indexNomeFuncionario, indexNomeFuncionario + registro.getFuncionario().getNome().length(), boldFont);
 
             } catch (NullPointerException e) {
                 Row assinaturaRow = sheet.getRow(38);
@@ -405,6 +408,16 @@ public class gerarFolhas extends javax.swing.JFrame {
 
                 Row assinaturaCoordenacaoRow = sheet.getRow(39);
                 assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
+
+                CellStyle boldStyle = workbook.createCellStyle();
+                Font boldFont = workbook.createFont();
+                boldFont.setBold(true);
+                boldStyle.setFont(boldFont);
+
+                int indexNomeCoordenacao = assinaturaCoordenacaoStr.indexOf(assinaturaCoordenacao.getNomeCoordenacao());
+                RichTextString richTextAssinaturaCoordenacao = assinaturaCoordenacaoRow.getCell(0).getRichStringCellValue();
+
+                richTextAssinaturaCoordenacao.applyFont(indexNomeCoordenacao, indexNomeCoordenacao + assinaturaCoordenacao.getNomeCoordenacao().length(), boldFont);
 
             } catch (NullPointerException e) {
                 Row assinaturaCoordenacaoRow = sheet.getRow(39);

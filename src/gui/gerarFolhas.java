@@ -15,6 +15,7 @@ import model.*;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.util.Units;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
@@ -262,7 +263,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             CreationHelper helper = workbook.getCreationHelper();
             Drawing<?> drawing = sheet.createDrawingPatriarch();
             ClientAnchor anchor = helper.createClientAnchor();
-            anchor.setCol1(5);
+            anchor.setCol1(6);
             anchor.setCol2(8);
 
             anchor.setRow1(0);
@@ -306,15 +307,8 @@ public class gerarFolhas extends javax.swing.JFrame {
             // Carga horária
             escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
-            // Preencher a tabela de ponto
 
-            // listar os dias do mês com o nome da semana
-            //System.out.println("Data: " + registro.getRegistros().get(0).getData() + " Dia: " + registro.getRegistros().get(0).dataToDia(registro.getRegistros().get(0).getData()));
-
-            /*Row dia1 = sheet.getRow(7);
-            dia1.getCell(0).setCellValue(registro.getRegistros().get(0).getData());
-            dia1.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(registro.getRegistros().get(0).getData()));*/
-
+            //criando uma lista das datas do mês
             List<String> datas = new ArrayList<String>();
             int dia = 1;
             while (dia <= 31) {
@@ -328,8 +322,35 @@ public class gerarFolhas extends javax.swing.JFrame {
                 datas.add(data);
             }
 
-            
+            // preenchendo o cabeçalho com periodo de apuração
+            Row cabeçalho = sheet.getRow(0);
+            Cell cell = cabeçalho.getCell(0);
 
+            CellStyle styleTitulo = workbook.createCellStyle();
+            Font font = workbook.createFont();
+            font.setBold(true);
+            font.setFontHeightInPoints((short) 18);
+            styleTitulo.setFont(font);
+            styleTitulo.setAlignment(HorizontalAlignment.CENTER);
+            cell.setCellStyle(styleTitulo);
+            styleTitulo.setWrapText(true);
+
+            CellStyle style = workbook.createCellStyle();
+            style.setAlignment(HorizontalAlignment.CENTER);
+            Font font2 = workbook.createFont();
+            font2.setBold(true);
+            style.setFont(font2);
+            style.setWrapText(true);
+
+            cell.setCellValue("Folha de Ponto\n Período de apuração\n" + datas.get(0) + " a " + datas.get(datas.size()-1));
+
+            int indexQuebraLinha = cell.getStringCellValue().indexOf("\n");
+
+            RichTextString richText = cell.getRichStringCellValue();
+            richText.applyFont(0, indexQuebraLinha, font);
+            richText.applyFont(indexQuebraLinha, richText.length(), font2);
+
+            //preenchendo a tabela de ponto
             int linha = 7;
             for (String data : datas) {
                 Row linhaDia = sheet.getRow(linha);
@@ -375,8 +396,8 @@ public class gerarFolhas extends javax.swing.JFrame {
             Code128Bean code128 = new Code128Bean();
             code128.setHeight(15f);
             code128.setModuleWidth(0.3);
-            code128.setQuietZone(10);
-            code128.doQuietZone(true);
+            code128.setQuietZone(0);
+            code128.doQuietZone(false);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);

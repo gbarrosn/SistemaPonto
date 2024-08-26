@@ -75,18 +75,18 @@ public class gerarFolhasHelper {
             nome.getCell(0).setCellValue("Nome: " + registro.getFuncionario().getNome()); // funciona
 
             // Matrícula
-            nome.getCell(6).setCellValue("Matrícula: " + String.valueOf(registro.getFuncionario().getMatricula())); //funciona
+            nome.getCell(6).setCellValue("Nº Registro: " + String.valueOf(registro.getFuncionario().getMatricula())); //funciona
 
             // Lotação
             Row lotacao = sheet.getRow(2);
-            lotacao.getCell(0).setCellValue("Setor: " + registro.getFuncionario().getSetor());
+            lotacao.getCell(0).setCellValue(registro.getFuncionario().getSetor());
 
             // mes atual
             lotacao.getCell(6).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes()) + " de " + registro.getRegistros().get(0).getData().split("/")[2]); // funciona
 
             // Função
             Row funcao = sheet.getRow(3);
-            funcao.getCell(0).setCellValue("Função: " + registro.getFuncionario().getFuncao());
+            funcao.getCell(0).setCellValue(registro.getFuncionario().getFuncao());
 
             // Data de admissão
             funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
@@ -177,7 +177,7 @@ public class gerarFolhasHelper {
                 Cell assinaturaCell = assinaturaRow.getCell(0);
                 assinaturaCell.setCellValue(assinaturaStr);
                 
-                CellStyle boldStyle = workbook.createCellStyle();
+                CellStyle boldStyle = workbook.getCellStyleAt(0);
                 Font boldFont = workbook.createFont();
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);
@@ -207,7 +207,7 @@ public class gerarFolhasHelper {
                 Row assinaturaCoordenacaoRow = sheet.getRow(39);
                 assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
 
-                CellStyle boldStyle = workbook.createCellStyle();
+                CellStyle boldStyle = workbook.getCellStyleAt(0);
                 Font boldFont = workbook.createFont();
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);

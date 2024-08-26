@@ -59,10 +59,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jComboBoxEntrada = new javax.swing.JComboBox<>();
         jComboBoxSaida = new javax.swing.JComboBox<>();
         jComboBoxSemanal = new javax.swing.JComboBox<>();
-        jComboBoxSetor = new javax.swing.JComboBox<>();
         jComboBoxEscala = new javax.swing.JComboBox<>();
-        jComboBoxFuncao = new javax.swing.JComboBox<>();
         jCheckBoxServidor = new javax.swing.JCheckBox();
+        jComboBoxSetor = new javax.swing.JComboBox<>();
+        jComboBoxFuncao = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -125,13 +125,13 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jComboBoxSemanal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "40", "44" }));
 
-        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
-
         jComboBoxEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seg. - Sab.", "Seg. - Sex." }));
 
-        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Assistente Administrativo", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
-
         jCheckBoxServidor.setText("Servidor");
+
+        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APOIO ADMINISTRATIVO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,10 +146,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jComboBoxSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(6, 6, 6)
+                            .addComponent(jLabel2)
+                            .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(jLabel8)
@@ -160,7 +160,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBoxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jComboBoxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,7 +174,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBox2)
-                                    .addComponent(jCheckBoxServidor)))))
+                                    .addComponent(jCheckBoxServidor)))
+                            .addComponent(jComboBoxFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -211,9 +211,9 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                 .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jCheckBox2)))
                         .addGap(6, 6, 6)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

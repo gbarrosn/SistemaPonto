@@ -61,11 +61,11 @@
                               <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxSemanal" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                               <Component id="jTextFieldDataAdmissao" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                              <Component id="jComboBoxSetor" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSetor" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -77,7 +77,6 @@
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxFuncao" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jComboBoxEntrada" min="-2" pref="114" max="-2" attributes="0"/>
@@ -97,6 +96,7 @@
                                       <Component id="jCheckBoxServidor" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="jComboBoxFuncao" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jTextFieldNome" min="-2" pref="317" max="-2" attributes="0"/>
@@ -146,10 +146,10 @@
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboBoxSetor" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxTurno" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxFuncao" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jComboBoxTurno" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxSetor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -367,27 +367,6 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxSetor">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="10">
-                <StringItem index="0" value="RH"/>
-                <StringItem index="1" value="Procon"/>
-                <StringItem index="2" value="Funape"/>
-                <StringItem index="3" value="CAS"/>
-                <StringItem index="4" value="Coordena&#xe7;&#xe3;o"/>
-                <StringItem index="5" value="Compesa"/>
-                <StringItem index="6" value="SDS"/>
-                <StringItem index="7" value="Detran"/>
-                <StringItem index="8" value="Limpeza"/>
-                <StringItem index="9" value="TI"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxEscala">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -401,11 +380,16 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxFuncao">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxServidor">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Servidor"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxSetor">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="11">
-                <StringItem index="0" value="Assistente Administrativo"/>
+                <StringItem index="0" value="SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO"/>
                 <StringItem index="1" value="RH"/>
                 <StringItem index="2" value="Procon"/>
                 <StringItem index="3" value="Funape"/>
@@ -423,10 +407,27 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxServidor">
+        <Component class="javax.swing.JComboBox" name="jComboBoxFuncao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Servidor"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="11">
+                <StringItem index="0" value="APOIO ADMINISTRATIVO"/>
+                <StringItem index="1" value="RH"/>
+                <StringItem index="2" value="Procon"/>
+                <StringItem index="3" value="Funape"/>
+                <StringItem index="4" value="CAS"/>
+                <StringItem index="5" value="Coordena&#xe7;&#xe3;o"/>
+                <StringItem index="6" value="Compesa"/>
+                <StringItem index="7" value="SDS"/>
+                <StringItem index="8" value="Detran"/>
+                <StringItem index="9" value="Limpeza"/>
+                <StringItem index="10" value="TI"/>
+              </StringArray>
+            </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

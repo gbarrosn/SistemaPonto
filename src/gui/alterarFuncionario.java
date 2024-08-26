@@ -138,11 +138,11 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jComboBoxSemanal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "40", "44" }));
 
-        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
         jComboBoxEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seg. - Sab.", "Seg. - Sex." }));
 
-        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Assistente Administrativo", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APOIO ADMINISTRATIVO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

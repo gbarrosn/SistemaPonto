@@ -431,6 +431,24 @@ public class dadosRegistro {
         }
     }
 
+    public static void criarAtestado(registro registro) throws SQLException {
+        try (Connection connection = conectarBanco.conectar()) {
+            String query = "INSERT INTO registros (id_funcionario, hora_entrada, saida_almoco, retorno_almoco, saida, data, alteracao, atestado) VALUES (" + 
+                            registro.getIdFuncionario() + ", '" + registro.getHoraEntrada() + "', '" + registro.getSaidaAlmoco() + "', '" + registro.getRetornoAlmoco() + "', '" + 
+                            registro.getHoraSaida() + "', '" + registro.getData() + "', '" + registro.getAlteracao() + "', " + registro.isAtestado() + ")";
+            
+            try {
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 public static void main(String[] args) {
     List<registro> registros = buscarRegistrosData("06/08/2024");
     for (registro reg : registros) {

@@ -176,7 +176,7 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
         // TODO alterar os dados do registro
 
         funcionario funcionarioAdm = new funcionario();
-        registro registroAlterar = new registro();
+        registro registroAtestado = new registro();
 
         int matricula = Integer.parseInt(jTextFieldMatricula.getText());
         try {
@@ -191,10 +191,18 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
 
         } else if (funcionarioAdm.getSenha().equals(jPasswordField1.getText().trim()) && funcionarioAdm.isAdm()) {
 
-            registroAlterar.setAtestado(true);
+            registroAtestado.setAtestado(true);
+            registroAtestado.setIdFuncionario(((funcionario) jComboBox2.getSelectedItem()).getIdFuncionario());
+            registroAtestado.setData(jComboBoxData.getSelectedItem().toString());
+            registroAtestado.setMes(jComboBoxMes.getSelectedIndex() + 1);
+            registroAtestado.setHoraEntrada(" - ");
+            registroAtestado.setSaidaAlmoco(" - ");
+            registroAtestado.setRetornoAlmoco(" - ");
+            registroAtestado.setHoraSaida(" - ");
 
             try {
-                dadosRegistro.adicionarAtestado(registroAlterar);
+                //dadosRegistro.adicionarAtestado(registroAlterar);
+                dadosRegistro.criarAtestado(registroAtestado);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -232,25 +240,30 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
 
     private void jComboBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesActionPerformed
         // TODO add your handling code here:
+        jComboBoxData.removeAllItems();
         int mes = jComboBoxMes.getSelectedIndex() + 1;
-        registrosMesSelecionado = dadosRegistro.buscarRegistrosMes(mes);
+        int dia = 1;
+        int ano = java.time.Year.now().getValue();
 
-        List<String> datas = new ArrayList<String>();
-        for (registro r : registrosMesSelecionado) {
-            if (!datas.contains(r.getData())) {
-                datas.add(r.getData());
+        while (dia <= 31) {
+            if (dia <= 9) {
+                if (mes <= 9) {
+                    jComboBoxData.addItem("0" + dia + "/0" + mes + "/" + ano);
+                } else {
+                    jComboBoxData.addItem("0" + dia + "/" + mes + "/" + ano);
+                }
+            
+            } else {
+                if (mes <= 9) {
+                    jComboBoxData.addItem(dia + "/0" + mes + "/" + ano);
+                } else {
+                    jComboBoxData.addItem(dia + "/" + mes + "/" + ano);
+                }
+            
             }
+            dia++;
         }
-        System.out.println(datas);
-        try {
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-            for (String data : datas) {
-                model.addElement(data);
-            }
-            jComboBoxData.setModel(model);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Não há registros para o mês selecionado!");
-        }
+        
 
     }//GEN-LAST:event_jComboBoxMesActionPerformed
 

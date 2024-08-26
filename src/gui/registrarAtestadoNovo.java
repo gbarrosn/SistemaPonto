@@ -200,6 +200,8 @@ public class registrarAtestadoNovo extends javax.swing.JFrame {
             registroAtestado.setRetornoAlmoco(" - ");
             registroAtestado.setHoraSaida(" - ");
 
+            registroAtestado.setAlteracao("Atestado registrado por: " + funcionarioAdm.getNome());
+
             try {
                 //dadosRegistro.adicionarAtestado(registroAlterar);
                 dadosRegistro.criarAtestado(registroAtestado);

@@ -145,6 +145,8 @@ public class registrarAtestado extends javax.swing.JFrame {
 
             registroAlterar.setAtestado(true);
 
+            registroAlterar.setAlteracao("Atestado registrado por: " + funcionarioAdm.getNome());
+
             
             try {
                 dadosRegistro.adicionarAtestado(registroAlterar);

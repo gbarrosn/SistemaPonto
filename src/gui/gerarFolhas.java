@@ -4,10 +4,7 @@
  */
 package gui;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import javax.swing.table.DefaultTableModel;
 
 import db.dadosRegistroMensal;
@@ -30,15 +27,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import model.MergedRegionUtils.*;
-
-//importando lib do barcode
-import org.krysalis.barcode4j.impl.code128.Code128Bean;
-import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import java.awt.image.BufferedImage;
-
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
 
 /**
  *

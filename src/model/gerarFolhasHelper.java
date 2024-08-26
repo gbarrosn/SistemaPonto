@@ -158,9 +158,10 @@ public class gerarFolhasHelper {
                             linhaDia.getCell(7).setCellValue("Sim");
                             
                         }
-                        break;
+                        continue;
                     }
                 }
+                linhaDia.getCell(0).setCellValue(data);
                 linhaDia.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(data));
                 linha += 1;
             }
@@ -345,6 +346,7 @@ public class gerarFolhasHelper {
                         break;
                     }
                 }
+                linhaDia.getCell(0).setCellValue(data);
                 linhaDia.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(data));
                 linha += 1;
             }

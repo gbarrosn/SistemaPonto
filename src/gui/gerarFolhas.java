@@ -212,7 +212,11 @@ public class gerarFolhas extends javax.swing.JFrame {
 
         for (registroMensal r : registrosMesSelecionado) {
             try {
-                gerarFolhasHelper.gerarFolhaPontoTerceirizado(r);
+                if (r.getFuncionario().isServidor()) {
+                    gerarFolhasHelper.gerarFolhasPontoServidor(r);
+                } else {
+                    gerarFolhasHelper.gerarFolhaPontoTerceirizado(r);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

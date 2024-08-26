@@ -172,7 +172,7 @@ public class dadosFuncionario {
                         funcionario.getDataAdmissao() + "', '" + funcionario.getEscala() + "', '" + 
                         funcionario.getHorario() + "', '" + funcionario.getHorasSemanais() + "', '" + 
                         funcionario.getCodigoDeBarras() + "', '" + funcionario.getSenha() + "'," +
-                        funcionario.isAdm() + funcionario.isServidor() + ")";
+                        funcionario.isAdm() + ", " + funcionario.isServidor() + ")";
         
         try {
             // Create a statement

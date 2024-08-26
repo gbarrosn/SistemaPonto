@@ -107,6 +107,8 @@ public class conectarBanco {
                                                 "hora_assinatura TEXT NOT NULL," +
                                                 "mes integer not null," +
                                                 " );";
+                                            
+        String sqlCriarTabelContrato = "CREATE TABLE contrato ( id INT primary key auto_increment, contrato text);";
                                                 
         Connection conn = conectarBanco.conectar(); // Get a connection
         Statement stmt = conn.createStatement();
@@ -116,6 +118,7 @@ public class conectarBanco {
         stmt.execute(sqlCriarRegistros);
         stmt.execute(sqlCriarAssinatura);
         stmt.execute(sqlCriarAssinaturaCoordenacao);
+        stmt.execute(sqlCriarTabelContrato);
 
     }
     public static void main(String[] args) {

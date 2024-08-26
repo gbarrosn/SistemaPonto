@@ -361,6 +361,12 @@ public class gerarFolhas extends javax.swing.JFrame {
                         linhaDia.getCell(3).setCellValue(r.getSaidaAlmoco());
                         linhaDia.getCell(4).setCellValue(r.getRetornoAlmoco());
                         linhaDia.getCell(5).setCellValue(r.getHoraSaida());
+
+                        if (r.isAtestado()) {
+                            linhaDia.getCell(6).setCellValue("Atestado.");
+                            linhaDia.getCell(7).setCellValue("Sim");
+                            
+                        }
                         break;
                     }
                 }

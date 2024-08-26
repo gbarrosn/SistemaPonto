@@ -177,13 +177,13 @@ public class gerarFolhasHelper {
                 Cell assinaturaCell = assinaturaRow.getCell(0);
                 assinaturaCell.setCellValue(assinaturaStr);
                 
-                CellStyle boldStyle = workbook.getCellStyleAt(0);
+                CellStyle boldStyle = workbook.createCellStyle();
                 Font boldFont = workbook.createFont();
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);
                 boldStyle.setAlignment(HorizontalAlignment.CENTER);
                 
-                CellStyle styleCentralizado = workbook.createCellStyle();
+                CellStyle styleCentralizado = assinaturaCell.getCellStyle();
                 styleCentralizado.setAlignment(HorizontalAlignment.CENTER);
 
                 assinaturaCell.setCellStyle(styleCentralizado);
@@ -207,13 +207,13 @@ public class gerarFolhasHelper {
                 Row assinaturaCoordenacaoRow = sheet.getRow(39);
                 assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
 
-                CellStyle boldStyle = workbook.getCellStyleAt(0);
+                CellStyle boldStyle = workbook.createCellStyle();
                 Font boldFont = workbook.createFont();
                 boldFont.setBold(true);
                 boldStyle.setFont(boldFont);
                 boldStyle.setAlignment(HorizontalAlignment.CENTER);
 
-                CellStyle styleCentralizado = workbook.createCellStyle();
+                CellStyle styleCentralizado = assinaturaCoordenacaoRow.getCell(0).getCellStyle();
                 styleCentralizado.setAlignment(HorizontalAlignment.CENTER);
 
                 assinaturaCoordenacaoRow.getCell(0).setCellStyle(styleCentralizado);

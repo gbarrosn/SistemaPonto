@@ -3,3 +3,4 @@ banco.db
 /folhas/*
 /barcodes/*
 /dist/
+/instalador/arquivos instalador/*

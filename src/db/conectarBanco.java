@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class conectarBanco {
 
     // Atributos de conexão
-    private static final String SERVER = "localhost";
+    private static final String SERVER = "192.168.1.42:3306";
     private static final String USER = "ponto"; // Replace with your MySQL username
     private static final String PASSWORD = "senha"; // Replace with your MySQL password
     private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name
@@ -31,7 +31,19 @@ public class conectarBanco {
                 }
                 connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
                 System.out.println("Conexão com o banco de dados MySQL estabelecida!");
-                //Statement stmt = connection.createStatement();
+                Statement stmt = connection.createStatement();
+                stmt.execute("USE PontoEletronico;");
+                
+                // tentar usar tabelas e se nao existirem criar as tabelas
+                try {
+                    stmt.execute("SELECT * FROM funcionarios;");
+                } catch (SQLException e) {
+                    if (e.getMessage().contains("Table 'PontoEletronico.funcionarios' doesn't exist")) {
+                        criarTabelas();
+                    } else {
+                        throw e;
+                    }
+                }
                 
             } catch (SQLException e) {
                 if (e.getMessage().contains("Unknown database 'PontoEletronico'")) {
@@ -40,6 +52,7 @@ public class conectarBanco {
                 } else {
                     throw e;
                 }
+                
             }
         }
         return connection;
@@ -73,7 +86,7 @@ public class conectarBanco {
                                         "  horas_semanais TEXT NOT NULL," +
                                         "  codigo_de_barras TEXT NOT NULL," +
                                         "  senha TEXT NOT NULL," +
-                                        "  adm bit" +
+                                        "  adm bit, " +
                                         "  servidor bit" +
                                         ");";
 
@@ -105,7 +118,7 @@ public class conectarBanco {
                                                 "id_coordenacao INT NOT NULL," +
                                                 "data_assinatura DATE NOT NULL," +
                                                 "hora_assinatura TEXT NOT NULL," +
-                                                "mes integer not null," +
+                                                "mes integer not null" +
                                                 " );";
                                             
         String sqlCriarTabelContrato = "CREATE TABLE contrato ( id INT primary key auto_increment, contrato text);";

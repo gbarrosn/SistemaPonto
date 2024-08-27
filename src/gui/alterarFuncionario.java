@@ -4,8 +4,12 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
+import db.dadosContrato;
 import db.dadosFuncionario;
 import model.funcionario;
 
@@ -26,7 +30,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
         idFuncionario = funcionarioAlterar.getIdFuncionario();
         jTextFieldNome.setText(funcionarioAlterar.getNome());
         jTextFieldMatricula.setText(String.valueOf(funcionarioAlterar.getMatricula()));
-        jComboBoxSetor.setSelectedItem(funcionarioAlterar.getSetor());
         jComboBoxFuncao.setSelectedItem(funcionarioAlterar.getFuncao());
         jTextFieldDataAdmissao.setText(funcionarioAlterar.getDataAdmissao());
         jComboBoxEscala.setSelectedItem(funcionarioAlterar.getEscala());
@@ -36,6 +39,21 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jComboBoxSemanal.setSelectedItem(funcionarioAlterar.getHorasSemanais());
         jTextFieldCodigoBarras.setText(funcionarioAlterar.getCodigoDeBarras());
         jPasswordField1.setText(funcionarioAlterar.getSenha());
+
+        List<String> contratos = new ArrayList<>();
+        try {
+            contratos = dadosContrato.buscarContratos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar os contratos: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+        jComboBoxSetor.removeAllItems();
+        for (String contrato : contratos) {
+            jComboBoxSetor.addItem(contrato);
+        }
+
+        jComboBoxSetor.setSelectedItem(funcionarioAlterar.getSetor());
+
     }
 
     /**

@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFileChooser;
+
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.ClientAnchor;
@@ -38,7 +40,7 @@ import java.awt.image.BufferedImage;
  */
 public class gerarFolhasHelper {
 
-    public static void gerarFolhaPontoTerceirizado(registroMensal registro) throws FileNotFoundException, IOException {
+    public static void gerarFolhaPontoTerceirizado(registroMensal registro, File path) throws FileNotFoundException, IOException {
         
         try (Workbook workbook = new XSSFWorkbook(new FileInputStream("Tabela ponto terceirizados.xlsx"))) {
             
@@ -228,6 +230,8 @@ public class gerarFolhasHelper {
                 assinaturaCoordenacaoRow.getCell(0).setCellValue("");
             }
 
+            
+
             // criar excel para o libreoffice converter para pdf
             try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
@@ -247,7 +251,7 @@ public class gerarFolhasHelper {
 
     }
 
-    public static void gerarFolhasPontoServidor(registroMensal registro) throws FileNotFoundException, IOException {
+    public static void gerarFolhasPontoServidor(registroMensal registro, File path) throws FileNotFoundException, IOException {
             
             try (Workbook workbook = new XSSFWorkbook(new FileInputStream("Tabela ponto servidores.xlsx"))) {
                 
@@ -414,11 +418,11 @@ public class gerarFolhasHelper {
             }
 
             // criar excel para o libreoffice converter para pdf
-            try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+            try (FileOutputStream outputStream = new FileOutputStream(path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
 
-            String caminho = "folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
+            String caminho = path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
             caminho = caminho.replace("\\ ", "");
 
             converterExcelParaPdf(caminho);

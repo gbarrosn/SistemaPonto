@@ -5,13 +5,15 @@
 package gui;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 import db.dadosRegistroMensal;
 import model.*;
 
+import java.io.File;
 import java.io.IOException;
-import model.gerarFolhasHelper;
 
 /**
  *
@@ -210,12 +212,23 @@ public class gerarFolhas extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: gerar as folhas de ponto
 
+        // criar file chooser para escolher onde vai ser criada a pasta com os arquivos
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.showSaveDialog(null);
+            File file = fileChooser.getSelectedFile();
+            String path = file.getAbsolutePath();
+
+            String folderName = "Ponto de " + gerarFolhasHelper.numeroMesToNome(jComboBoxMes.getSelectedIndex() +1) + " de " + registrosMesSelecionado.get(0).getRegistros().get(0).getData().substring(6, 10);
+            File newFolder = new File(path + File.separator + folderName);
+            newFolder.mkdir();
+
         for (registroMensal r : registrosMesSelecionado) {
             try {
                 if (r.getFuncionario().isServidor()) {
-                    gerarFolhasHelper.gerarFolhasPontoServidor(r);
+                    gerarFolhasHelper.gerarFolhasPontoServidor(r, newFolder);
                 } else {
-                    gerarFolhasHelper.gerarFolhaPontoTerceirizado(r);
+                    gerarFolhasHelper.gerarFolhaPontoTerceirizado(r, newFolder);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

@@ -233,14 +233,14 @@ public class gerarFolhasHelper {
             
 
             // criar excel para o libreoffice converter para pdf
-            try (FileOutputStream outputStream = new FileOutputStream("folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+            try (FileOutputStream outputStream = new FileOutputStream(path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
                 workbook.write(outputStream);
             }
 
-            String caminho = "folhas" + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
+            String caminho = path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
             caminho = caminho.replace("\\ ", "");
 
-            converterExcelParaPdf(caminho);
+            converterExcelParaPdf(caminho, path.getAbsolutePath());
           
             workbook.close();
 
@@ -425,7 +425,7 @@ public class gerarFolhasHelper {
             String caminho = path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
             caminho = caminho.replace("\\ ", "");
 
-            converterExcelParaPdf(caminho);
+            converterExcelParaPdf(caminho, path.getAbsolutePath());
           
             workbook.close();
 
@@ -461,11 +461,11 @@ public class gerarFolhasHelper {
         }
     }
     
-    public static void converterExcelParaPdf(String caminho) {
+    public static void converterExcelParaPdf(String caminho, String saida) {
 
         // Construindo o comando com ProcessBuilder
         ProcessBuilder builder = new ProcessBuilder(
-            "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", "folhas", caminho
+            "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", saida, caminho
         );
 
         try {

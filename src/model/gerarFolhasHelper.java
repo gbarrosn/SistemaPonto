@@ -464,9 +464,16 @@ public class gerarFolhasHelper {
     public static void converterExcelParaPdf(String caminho, String saida) {
 
         // Construindo o comando com ProcessBuilder
-        ProcessBuilder builder = new ProcessBuilder(
+        ProcessBuilder builder;
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            builder = new ProcessBuilder(
+            "C:\\Program Files\\LibreOffice\\program\\soffice.bin", "--headless", "--convert-to", "pdf", "--outdir", saida, caminho
+            );
+        } else {
+            builder = new ProcessBuilder(
             "libreoffice", "--headless", "--convert-to", "pdf", "--outdir", saida, caminho
-        );
+            );
+        }
 
         try {
             // Iniciando o processo

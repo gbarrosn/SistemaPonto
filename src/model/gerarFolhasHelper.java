@@ -467,7 +467,7 @@ public class gerarFolhasHelper {
         ProcessBuilder builder;
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             builder = new ProcessBuilder(
-            "C:\\Program Files\\LibreOffice\\program\\soffice.bin", "--headless", "--convert-to", "pdf", "--outdir", saida, caminho
+            "C:\\Program Files\\LibreOffice\\program\\soffice.bin", "--headless", "--convert-to", "pdf", "--outdir", "\"" , saida, "\"", "\"", caminho, "\""
             );
         } else {
             builder = new ProcessBuilder(

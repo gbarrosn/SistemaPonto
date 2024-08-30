@@ -40,8 +40,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,14 +58,14 @@
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxSemanal" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldDataAdmissao" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxSemanal" alignment="0" pref="162" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldDataAdmissao" alignment="0" pref="162" max="32767" attributes="0"/>
                                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBoxServidor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxVinculo" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -98,7 +98,15 @@
                                   </Group>
                               </Group>
                               <Component id="jTextFieldNome" min="-2" pref="317" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" pref="203" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBoxServidor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -117,6 +125,14 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButtonCadastrar" min="-2" pref="108" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox1" min="-2" pref="240" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -125,9 +141,19 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="113" max="-2" attributes="0"/>
-                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="113" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jCheckBoxServidor" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -140,20 +166,27 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jTextFieldMatricula" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBoxTurno" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBoxServidor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxTurno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxFuncao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jComboBoxVinculo" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -181,6 +214,10 @@
                       <Component id="jTextFieldCodigoBarras" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="8" max="32767" attributes="0"/>
+                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jComboBoxContrato" min="-2" max="-2" attributes="0"/>
@@ -189,7 +226,7 @@
                       <Component id="jButton1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jButtonCadastrar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -434,6 +471,64 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel13">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="V&#xed;nculo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxVinculo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Servidor"/>
+                <StringItem index="1" value="CTD"/>
+                <StringItem index="2" value="Terceirizado"/>
+                <StringItem index="3" value="Terceirizado &#xd3;rg&#xe3;o"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Setor:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox1">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="22">
+                <StringItem index="0" value="RECEITA FEDERAL"/>
+                <StringItem index="1" value="CAPITANIA DOS PORTOS"/>
+                <StringItem index="2" value="INSS"/>
+                <StringItem index="3" value="IITB"/>
+                <StringItem index="4" value="PROCON"/>
+                <StringItem index="5" value="COMPESA"/>
+                <StringItem index="6" value="CIEE"/>
+                <StringItem index="7" value="CAS"/>
+                <StringItem index="8" value="FUNAPE"/>
+                <StringItem index="9" value="BOMBEIROS"/>
+                <StringItem index="10" value="DETRAN"/>
+                <StringItem index="11" value="LAFEPE"/>
+                <StringItem index="12" value="JUCEPE"/>
+                <StringItem index="13" value="EXPRESSO EMPREENDEDOR"/>
+                <StringItem index="14" value="CDL"/>
+                <StringItem index="15" value="PE-CONSIG"/>
+                <StringItem index="16" value="TRE"/>
+                <StringItem index="17" value="SEFA"/>
+                <StringItem index="18" value="AG&#xca;NCIA DO TRABALHO"/>
+                <StringItem index="19" value="AMMPLA"/>
+                <StringItem index="20" value="ADMINISTRATIVO"/>
+                <StringItem index="21" value="RECEP&#xc7;&#xc3;O"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

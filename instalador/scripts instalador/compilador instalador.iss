@@ -46,7 +46,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "Z:\home\gbarrosn\SistemaPonto\instalador\arquivos instalador\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Z:\home\gbarrosn\SistemaPonto\instalador\arquivos instalador\Tabela ponto servidores.xlsx"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Z:\home\gbarrosn\SistemaPonto\instalador\arquivos instalador\Tabela ponto terceirizados.xlsx"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Z:\home\gbarrosn\SistemaPonto\instalador\arquivos instalador\jdk-11.0.23.exe"; DestDir: "{app}"; DestName: "JREInstaller.exe"; Flags: deleteafterinstall; AfterInstall: RunJavaInstaller(); Check: IsWin64 AND InstallJava()
+;Source: "Z:\home\gbarrosn\SistemaPonto\instalador\arquivos instalador\jdk-11.0.23.exe"; DestDir: "{app}"; DestName: "JREInstaller.exe"; Flags: deleteafterinstall; AfterInstall: RunJavaInstaller(); Check: IsWin64 AND InstallJava()
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

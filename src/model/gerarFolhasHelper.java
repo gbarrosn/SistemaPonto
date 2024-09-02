@@ -81,7 +81,7 @@ public class gerarFolhasHelper {
 
             // Lotação
             Row lotacao = sheet.getRow(2);
-            lotacao.getCell(0).setCellValue(registro.getFuncionario().getSetor());
+            lotacao.getCell(0).setCellValue(registro.getFuncionario().getContrato());
 
             // mes atual
             lotacao.getCell(6).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes()) + " de " + registro.getRegistros().get(0).getData().split("/")[2]); // funciona

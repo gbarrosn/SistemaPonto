@@ -92,6 +92,11 @@ public class gerarFolhasHelper {
             Row funcao = sheet.getRow(3);
             funcao.getCell(0).setCellValue(registro.getFuncionario().getFuncao());
 
+            if (registro.getFuncionario().getFuncao().equals("Atendente") && registro.getFuncionario().getVinculo().equals("Terceirizado")) {
+                funcao.getCell(0).setCellValue("APOIO ADMINISTRATIVO");
+            }
+            
+
             // Data de admissão
             funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
 

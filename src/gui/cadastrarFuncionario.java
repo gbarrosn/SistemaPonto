@@ -131,7 +131,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jComboBoxContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
-        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APOIO ADMINISTRATIVO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Assistente Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Coordenação", "Assistente Coordenação", "Supervisor" }));
 
         jButton1.setText("Tela Principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

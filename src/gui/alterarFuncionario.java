@@ -40,6 +40,22 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jTextFieldCodigoBarras.setText(funcionarioAlterar.getCodigoDeBarras());
         jPasswordField1.setText(funcionarioAlterar.getSenha());
 
+        if (!funcionarioAlterar.isServidor()) {
+            jComboBoxVinculo.setSelectedItem("Terceirizado");
+        }
+
+        if (funcionarioAlterar.getVinculo() != null) {
+            if (funcionarioAlterar.getVinculo().equals("Servidor")) {
+            jComboBoxVinculo.setSelectedItem("Servidor");
+            } else if (funcionarioAlterar.getVinculo().equals("CTD")) {
+            jComboBoxVinculo.setSelectedItem("CTD");
+            } else if (funcionarioAlterar.getVinculo().equals("Terceirizado")) {
+            jComboBoxVinculo.setSelectedItem("Terceirizado");
+            } else if (funcionarioAlterar.getVinculo().equals("Terceirizado Órgão")) {
+            jComboBoxVinculo.setSelectedItem("Terceirizado Órgão");
+            }
+        }
+
         
 
         jComboBoxSetor.setSelectedItem(funcionarioAlterar.getSetor());
@@ -107,7 +123,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jLabel6.setText("Função:");
 
-        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APOIO ADMINISTRATIVO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Assistente Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Coordenação", "Assistente Coordenação", "Supervisor" }));
 
         jComboBoxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde" }));
 

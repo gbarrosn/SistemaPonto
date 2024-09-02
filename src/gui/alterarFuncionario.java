@@ -339,6 +339,12 @@ public class alterarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setVinculo(vinculo);
         novoFuncionario.setContrato(contrato);
 
+        if (novoFuncionario.getVinculo().equals("Servidor")) {
+            novoFuncionario.setContrato(" - ");
+        } else if (novoFuncionario.getVinculo().equals("CTD")) {
+            novoFuncionario.setContrato("CTD");
+        } 
+
         // Check if any field in novoFuncionario is empty TODO: REPLICAR A OTIMIZAÇÃO NAS OUTRAS CLASSES
         for (java.lang.reflect.Field field : novoFuncionario.getClass().getDeclaredFields()) {
             field.setAccessible(true);

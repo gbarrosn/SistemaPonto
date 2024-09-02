@@ -432,6 +432,13 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setServidor(servidor);
         novoFuncionario.setVinculo(jComboBoxVinculo.getSelectedItem().toString());
         novoFuncionario.setContrato(contrato);
+        
+        if (novoFuncionario.getVinculo().equals("Servidor")) {
+            novoFuncionario.setContrato(" - ");
+        } else if (novoFuncionario.getVinculo().equals("CTD")) {
+            novoFuncionario.setContrato("CTD");
+        } 
+        
 
 
         try {

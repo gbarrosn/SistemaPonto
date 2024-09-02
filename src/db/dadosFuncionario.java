@@ -74,6 +74,8 @@ public class dadosFuncionario {
                 funcionario.setSenha(senha);
                 funcionario.setAdm(adm);
                 funcionario.setServidor(servidor);
+                funcionario.setVinculo(vinculo);
+                funcionario.setContrato(contrato);
                 // Set other fields as needed
                 
                 // Add the funcionario to the list

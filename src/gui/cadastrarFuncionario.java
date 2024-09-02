@@ -69,12 +69,10 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jTextFieldCodigoBarras = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldSenha = new javax.swing.JTextField();
-        jCheckBox2 = new javax.swing.JCheckBox();
         jComboBoxEntrada = new javax.swing.JComboBox<>();
         jComboBoxSaida = new javax.swing.JComboBox<>();
         jComboBoxSemanal = new javax.swing.JComboBox<>();
         jComboBoxEscala = new javax.swing.JComboBox<>();
-        jCheckBoxServidor = new javax.swing.JCheckBox();
         jComboBoxContrato = new javax.swing.JComboBox<>();
         jComboBoxFuncao = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
@@ -123,8 +121,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jTextFieldSenha.setText("sad@123");
 
-        jCheckBox2.setText("Coordenação");
-
         jComboBoxEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00" }));
 
         jComboBoxSaida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
@@ -132,8 +128,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jComboBoxSemanal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "40", "44" }));
 
         jComboBoxEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seg. - Sab.", "Seg. - Sex." }));
-
-        jCheckBoxServidor.setText("Servidor");
 
         jComboBoxContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
@@ -203,14 +197,12 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
                                             .addComponent(jLabel6)
                                             .addComponent(jTextFieldMatricula))
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox2)
-                                    .addComponent(jCheckBoxServidor))
-                                .addGap(26, 26, 26))))
+                                .addGap(26, 359, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,15 +226,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jCheckBox2)
-                        .addGap(3, 3, 3)
-                        .addComponent(jCheckBoxServidor)))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -414,7 +399,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         }
         
         boolean adm = false;
-        boolean servidor = jCheckBoxServidor.isSelected();
+        boolean servidor = false;
 
         String admS = jComboBoxFuncao.getSelectedItem().toString();
         if (admS.equals("Coordenação" )|| admS.equals("Assistente Coordenação")) {
@@ -499,8 +484,6 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBoxServidor;
     private javax.swing.JComboBox<String> jComboBoxContrato;
     private javax.swing.JComboBox<String> jComboBoxEntrada;
     private javax.swing.JComboBox<String> jComboBoxEscala;

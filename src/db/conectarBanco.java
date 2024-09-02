@@ -87,7 +87,9 @@ public class conectarBanco {
                                         "  codigo_de_barras TEXT NOT NULL," +
                                         "  senha TEXT NOT NULL," +
                                         "  adm bit, " +
-                                        "  servidor bit" +
+                                        "  servidor bit," +
+                                        "  vinculo TEXT," +
+                                        "  contrato TEXT" +
                                         ");";
 
         String sqlCriarRegistros = "CREATE TABLE registros (" +

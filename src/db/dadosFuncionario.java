@@ -53,6 +53,8 @@ public class dadosFuncionario {
                 String senha = resultSet.getString("senha");
                 boolean adm = resultSet.getBoolean("adm");
                 boolean servidor = resultSet.getBoolean("servidor");
+                String vinculo = resultSet.getString("vinculo");
+                String contrato = resultSet.getString("contrato");
 
                 // Retrieve other fields as needed
                 
@@ -122,6 +124,8 @@ public class dadosFuncionario {
                 String senha = resultSet.getString("senha");
                 boolean adm = resultSet.getBoolean("adm");
                 boolean servidor = resultSet.getBoolean("servidor");
+                String vinculo = resultSet.getString("vinculo");
+                String contrato = resultSet.getString("contrato");
 
                 // Retrieve other fields as needed
                 
@@ -141,6 +145,8 @@ public class dadosFuncionario {
                 funcionario.setSenha(senha);
                 funcionario.setAdm(adm);
                 funcionario.setServidor(servidor);
+                funcionario.setVinculo(vinculo);
+                funcionario.setContrato(contrato);
 
                 // Set other fields as needed
             }
@@ -165,14 +171,14 @@ public class dadosFuncionario {
         String query = "INSERT INTO funcionarios " + 
                         "(nome, matricula, setor, turno, funcao," +
                         "data_admissao, escala, horario, horas_semanais, " +
-                        "codigo_de_barras, senha, adm, servidor) " +
+                        "codigo_de_barras, senha, adm, servidor, vinculo, contrato) " +
                         "VALUES ('" + funcionario.getNome() + "', '" + 
                         funcionario.getMatricula() + "', '" + funcionario.getSetor() + "', '" + 
                         funcionario.getTurno() + "', '" + funcionario.getFuncao() + "', '" + 
                         funcionario.getDataAdmissao() + "', '" + funcionario.getEscala() + "', '" + 
                         funcionario.getHorario() + "', '" + funcionario.getHorasSemanais() + "', '" + 
                         funcionario.getCodigoDeBarras() + "', '" + funcionario.getSenha() + "'," +
-                        funcionario.isAdm() + ", " + funcionario.isServidor() + ")";
+                        funcionario.isAdm() + ", " + funcionario.isServidor() + ", "+ funcionario.getVinculo() + ", " + funcionario.getContrato() + ")";
         
         try {
             // Create a statement
@@ -207,6 +213,10 @@ public class dadosFuncionario {
                         "horas_semanais = '" + funcionario.getHorasSemanais() + "', " + 
                         "codigo_de_barras = '" + funcionario.getCodigoDeBarras() + "', " + 
                         "senha = '" + funcionario.getSenha() + "' " + 
+                        "adm = " + funcionario.isAdm() + ", " +
+                        "servidor = " + funcionario.isServidor() + ", " +
+                        "vinculo = " + funcionario.getVinculo() + ", " +
+                        "contrato = " + funcionario.getContrato() + " " +
                         "WHERE id = " + funcionario.getIdFuncionario();
         
         try {
@@ -280,6 +290,8 @@ public class dadosFuncionario {
                 String senha = resultSet.getString("senha");
                 boolean adm = resultSet.getBoolean("adm");
                 boolean servidor = resultSet.getBoolean("servidor");
+                String vinculo = resultSet.getString("vinculo");
+                String contrato = resultSet.getString("contrato");
 
                 // Retrieve other fields as needed
                 
@@ -299,6 +311,8 @@ public class dadosFuncionario {
                 funcionario.setSenha(senha);
                 funcionario.setAdm(adm);
                 funcionario.setServidor(servidor);
+                funcionario.setVinculo(vinculo);
+                funcionario.setContrato(contrato);
                 // Set other fields as needed
             }
             

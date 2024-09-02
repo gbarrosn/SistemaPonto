@@ -344,8 +344,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             }
         }
 
-        String setor = jComboBoxContrato.getSelectedItem().toString();
-        if (setor.isEmpty()) {
+        String contrato = jComboBoxContrato.getSelectedItem().toString();
+        if (contrato.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo setor é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -419,7 +419,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         funcionario novoFuncionario = new funcionario();
         novoFuncionario.setNome(nome);
         novoFuncionario.setMatricula(matricula);
-        novoFuncionario.setSetor(setor);
+        novoFuncionario.setSetor(jComboBoxSetor.getSelectedItem().toString());
         novoFuncionario.setTurno(turno);
         novoFuncionario.setFuncao(funcao);
         novoFuncionario.setDataAdmissao(dataAdmissao);
@@ -430,6 +430,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setSenha(senha);
         novoFuncionario.setAdm(adm);
         novoFuncionario.setServidor(servidor);
+        novoFuncionario.setVinculo(jComboBoxVinculo.getSelectedItem().toString());
+        novoFuncionario.setContrato(contrato);
 
 
         try {

@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 
+import db.dadosFuncionario;
 
 import org.apache.poi.ss.usermodel.*;
 import java.awt.image.BufferedImage;
@@ -268,24 +270,36 @@ public class gerarFolhasHelper {
 
             // Lotação
             Row lotacao = sheet.getRow(2);
-            lotacao.getCell(0).setCellValue("Setor: " + registro.getFuncionario().getSetor());
+            lotacao.getCell(0).setCellValue("Lotação: " + registro.getFuncionario().getSetor());
 
             // mes atual
             lotacao.getCell(6).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes()) + " de " + registro.getRegistros().get(0).getData().split("/")[2]); // funciona
 
             // Função
             Row funcao = sheet.getRow(3);
-            funcao.getCell(0).setCellValue("Função: " + registro.getFuncionario().getFuncao());
+            funcao.getCell(0).setCellValue("Cargo: " + registro.getFuncionario().getFuncao());
 
             // Data de admissão
-            funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
+            //funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
 
-            // Escala
+            // chefia imediata
+            List<funcionario> func = new ArrayList<funcionario>();
+            try {
+                func = dadosFuncionario.buscarFuncionarios();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             Row escala = sheet.getRow(4);
-            escala.getCell(0).setCellValue("Escala: " + registro.getFuncionario().getEscala());
+            for (funcionario f : func) {
+                if (f.getFuncao().equals("Coordenação")) {
+                    
+                    escala.getCell(0).setCellValue("Chefia imediata: " + f.getNome());
+                }
+            }
             
             // Carga horária
-            escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
+            //escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
 
             //criando uma lista das datas do mês

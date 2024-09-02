@@ -137,7 +137,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jComboBoxContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
-        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APOIO ADMINISTRATIVO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APOIO ADMINISTRATIVO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Assistente Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
         jButton1.setText("Tela Principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -413,8 +413,23 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             return;
         }
         
-        boolean adm = jCheckBox2.isSelected();
+        boolean adm = false;
         boolean servidor = jCheckBoxServidor.isSelected();
+
+        String admS = jComboBoxFuncao.getSelectedItem().toString();
+        if (admS.equals("Coordenação" )|| admS.equals("Assistente Coordenação")) {
+            adm = true;
+        } else {
+            adm = false;
+        }
+
+        String servidorS = jComboBoxVinculo.getSelectedItem().toString();
+        if (servidorS.equals("Servidor")) {
+            servidor = true;
+        } else {
+            servidor = false;
+        }
+
 
         funcionario novoFuncionario = new funcionario();
         novoFuncionario.setNome(nome);

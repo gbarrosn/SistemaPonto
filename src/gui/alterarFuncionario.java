@@ -56,6 +56,11 @@ public class alterarFuncionario extends javax.swing.JFrame {
             }
         }
 
+        if (funcionarioAlterar.getFuncao() != null) {
+            jComboBoxFuncao.setSelectedItem(funcionarioAlterar.getFuncao());
+        }
+
+        
         
 
         jComboBoxSetor.setSelectedItem(funcionarioAlterar.getSetor());

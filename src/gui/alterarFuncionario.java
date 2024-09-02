@@ -139,7 +139,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jLabel14.setText("Setor:");
 
-        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RECEITA FEDERAL", "CAPITANIA DOS PORTOS", "INSS", "IITB", "PROCON", "COMPESA", "CIEE", "CAS", "FUNAPE", "BOMBEIROS", "DETRAN", "LAFEPE", "JUCEPE", "EXPRESSO EMPREENDEDOR", "CDL", "PE-CONSIG", "TRE", "SEFA", "AGÊNCIA DO TRABALHO", "AMMPLA", "ADMINISTRATIVO", "RECEPÇÃO" }));
+        jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RECEITA FEDERAL", "CAPITANIA DOS PORTOS", "INSS", "IITB", "PROCON", "COMPESA", "CIEE", "CAS", "FUNAPE", "BOMBEIROS", "DETRAN", "LAFEPE", "JUCEPE", "EXPRESSO EMPREENDEDOR", "CDL", "PE-CONSIG", "TRE", "SEFA", "AGÊNCIA DO TRABALHO", "AMMPLA", "ADMINISTRATIVO", "RECEPÇÃO", "ATENDIMENTO" }));
 
         jLabel4.setText("Contrato:");
 

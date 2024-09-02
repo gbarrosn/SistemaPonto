@@ -479,7 +479,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxSetor">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="22">
+              <StringArray count="23">
                 <StringItem index="0" value="RECEITA FEDERAL"/>
                 <StringItem index="1" value="CAPITANIA DOS PORTOS"/>
                 <StringItem index="2" value="INSS"/>
@@ -502,6 +502,7 @@
                 <StringItem index="19" value="AMMPLA"/>
                 <StringItem index="20" value="ADMINISTRATIVO"/>
                 <StringItem index="21" value="RECEP&#xc7;&#xc3;O"/>
+                <StringItem index="22" value="ATENDIMENTO"/>
               </StringArray>
             </Property>
           </Properties>

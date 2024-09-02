@@ -23,6 +23,8 @@ public class funcionario {
     String senha;
     boolean adm;
     boolean servidor;
+    String vinculo;
+    String contrato;
 
     /*public funcionario(int idFuncionario, String nome, String matricula, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String senha) {
         this.idFuncionario = idFuncionario;
@@ -38,6 +40,23 @@ public class funcionario {
         this.codigoDeBarras = codigoDeBarras;
         this.senha = senha;
     }*/
+
+    // Getters
+    public String getVinculo() {
+        return vinculo;
+    }
+
+    public void setVinculo(String vinculo) {
+        this.vinculo = vinculo;
+    }
+
+    public String getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(String contrato) {
+        this.contrato = contrato;
+    }
 
     public boolean isServidor() {
         return servidor;

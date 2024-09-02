@@ -214,11 +214,11 @@ public class dadosFuncionario {
                         "horario = '" + funcionario.getHorario() + "', " + 
                         "horas_semanais = '" + funcionario.getHorasSemanais() + "', " + 
                         "codigo_de_barras = '" + funcionario.getCodigoDeBarras() + "', " + 
-                        "senha = '" + funcionario.getSenha() + "' " + 
+                        "senha = '" + funcionario.getSenha() + "', " + 
                         "adm = " + funcionario.isAdm() + ", " +
                         "servidor = " + funcionario.isServidor() + ", " +
-                        "vinculo = " + funcionario.getVinculo() + ", " +
-                        "contrato = " + funcionario.getContrato() + " " +
+                        "vinculo = '" + funcionario.getVinculo() + "', " +
+                        "contrato = '" + funcionario.getContrato() + "' " +
                         "WHERE id = " + funcionario.getIdFuncionario();
         
         try {

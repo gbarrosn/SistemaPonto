@@ -357,8 +357,8 @@ public class dadosRegistro {
 
         String query = "UPDATE registros SET hora_entrada = '" + registro.getHoraEntrada() + "', saida_almoco = '" + 
                         registro.getSaidaAlmoco() + "', retorno_almoco = '" + registro.getRetornoAlmoco() + "', saida = '" + 
-                        registro.getHoraSaida() + "', alteracao = '" + alteracao + "', atestado = '" + registro.isAtestado() +
-                        "' WHERE id = " + registro.getIdRegistro();
+                        registro.getHoraSaida() + "', alteracao = '" + alteracao + "', atestado = " + registro.isAtestado() +
+                        " WHERE id = " + registro.getIdRegistro();
 
         try {
             Statement statement = connection.createStatement();

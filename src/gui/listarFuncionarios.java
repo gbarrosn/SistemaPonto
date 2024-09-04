@@ -174,7 +174,7 @@ public class listarFuncionarios extends javax.swing.JFrame {
             funcionarios = dadosFuncionario.buscarFuncionarios(); //TODO: o sistema ta carregando errado o idFuncionario
         } catch (SQLException e) {
             
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao buscar os funcionários: " + e.getMessage());
         }
 
         // Create a DefaultTableModel to hold the data for the table

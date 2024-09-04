@@ -87,7 +87,7 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return funcionarios;
@@ -158,7 +158,7 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return funcionario;
@@ -193,7 +193,7 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -232,7 +232,7 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -255,7 +255,7 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -323,7 +323,7 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return funcionario;
@@ -349,18 +349,18 @@ public class dadosFuncionario {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         try {
             List<funcionario> funcionarios = buscarFuncionarios();
             for (funcionario f : funcionarios) {
                 System.out.println(f.getIdFuncionario());
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 }

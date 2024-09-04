@@ -9,6 +9,8 @@ import java.util.List;
 
 import db.dadosRegistro;
 import model.registro;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -180,7 +182,12 @@ public class conferirPonto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO listar os registros do dia e preencher a tabela
-        registros = dadosRegistro.buscarRegistrosData(jComboBoxData.getSelectedItem().toString());
+        try {
+            registros = dadosRegistro.buscarRegistrosData(jComboBoxData.getSelectedItem().toString());
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            JOptionPane.showMessageDialog(this, "Erro ao buscar registros do dia selecionado!", e.getMessage(), JOptionPane.ERROR_MESSAGE);
+        }
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
@@ -216,7 +223,12 @@ public class conferirPonto extends javax.swing.JFrame {
     private void jComboBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesActionPerformed
         // TODO add your handling code here:
         int mes = jComboBoxMes.getSelectedIndex() + 1;
-        registrosMesSelecionado = dadosRegistro.buscarRegistrosMes(mes);
+        try {
+            registrosMesSelecionado = dadosRegistro.buscarRegistrosMes(mes);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            JOptionPane.showMessageDialog(this, "Erro ao buscar registros do mês selecionado!", e.getMessage(), JOptionPane.ERROR_MESSAGE);
+        }
 
         List<String> datas = new ArrayList<String>();
         for (registro r : registrosMesSelecionado) {
@@ -264,7 +276,12 @@ public class conferirPonto extends javax.swing.JFrame {
         String formattedDate = currentDate.format(formatter);
 
         // Use the formatted date in your code
-        registros = dadosRegistro.buscarRegistrosData(formattedDate);
+        try {
+            registros = dadosRegistro.buscarRegistrosData(formattedDate);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            JOptionPane.showMessageDialog(this, "Erro ao buscar registros do dia selecionado!", e.getMessage(), JOptionPane.ERROR_MESSAGE);
+        }
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 

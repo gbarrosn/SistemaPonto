@@ -63,7 +63,7 @@ public class dadosRegistro {
                 registros.add(registro);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return registros;
@@ -86,7 +86,7 @@ public class dadosRegistro {
             // Execute the query
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
 
     }
@@ -140,7 +140,7 @@ public class dadosRegistro {
                 registros.add(registro);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return registros;
@@ -192,7 +192,7 @@ public class dadosRegistro {
                 registros.add(registro);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return registros;
@@ -212,7 +212,7 @@ public class dadosRegistro {
             // Execute the query
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -235,7 +235,7 @@ public class dadosRegistro {
                 return true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
         
         return false;
@@ -255,7 +255,7 @@ public class dadosRegistro {
             // Execute the query
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
 
         }
     }
@@ -274,7 +274,7 @@ public class dadosRegistro {
             // Execute the query
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
 
         }
     }
@@ -293,12 +293,12 @@ public class dadosRegistro {
             // Execute the query
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
 
         }
     }
 
-    public static List<registro> buscarRegistrosData(String data) {
+    public static List<registro> buscarRegistrosData(String data) throws SQLException {
 
         try (Connection connection = conectarBanco.conectar()) {
             String query = "SELECT * FROM registros inner join funcionarios on (registros.id_funcionario = funcionarios.id) WHERE registros.data = '" + data + "';";
@@ -341,14 +341,14 @@ public class dadosRegistro {
 
                 return registros;
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw e;
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw e;
         }
 
-        return null;
+
         //TODO: buscar os registros do funcionario x e retornar uma lista dos registros de todo mundo no dia pedido
     }
 
@@ -364,11 +364,11 @@ public class dadosRegistro {
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
-    public static List<registro> buscarRegistrosMes(int mes) {
+    public static List<registro> buscarRegistrosMes(int mes) throws SQLException {
         
         try (Connection connection = conectarBanco.conectar()) {
 
@@ -407,13 +407,13 @@ public class dadosRegistro {
 
                 return registros;
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw e;
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw e;
     }
-        return null;
+        
 }
 
     public static void adicionarAtestado(registro registro) throws SQLException {
@@ -424,10 +424,10 @@ public class dadosRegistro {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw e;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -441,16 +441,22 @@ public class dadosRegistro {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw e;
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
 public static void main(String[] args) {
-    List<registro> registros = buscarRegistrosData("06/08/2024");
+    List<registro> registros = new ArrayList<>();
+    try {
+        registros = buscarRegistrosData("06/08/2024");
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
     for (registro reg : registros) {
         System.out.println(reg.getAlteracao());
     }

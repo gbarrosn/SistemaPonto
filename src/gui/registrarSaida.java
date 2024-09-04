@@ -175,7 +175,12 @@ public class registrarSaida extends javax.swing.JFrame {
 
         if (funcionarioRegistro != null) {
             if (dadosRegistro.verificarRegistroExistente(funcionarioRegistro.getIdFuncionario(), data)) {
+                try {
                 dadosRegistro.registrarSaida(funcionarioRegistro.getIdFuncionario(), hora, data);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    JOptionPane.showMessageDialog(this, "Erro ao registrar saída: " + e.getMessage());
+                }
                 JOptionPane.showMessageDialog(this, "Saída registrada!");
                 jTextFieldMatricula.setText("");
             } else {

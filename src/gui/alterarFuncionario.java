@@ -156,7 +156,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
 
         jLabel12.setText("Senha:");
 
-        jLabel11.setText("Código de barras:");
+        jLabel11.setText("Código de barras (apenas RM):");
 
         jLabel14.setText("Setor:");
 

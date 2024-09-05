@@ -373,7 +373,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo de barras:"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo de barras (apenas RM):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCodigoBarras">

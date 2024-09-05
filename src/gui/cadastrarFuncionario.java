@@ -115,7 +115,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         jLabel10.setText("Horas semanais:");
 
-        jLabel11.setText("Código de barras:");
+        jLabel11.setText("Código de barras (apenas RM):");
 
         jLabel12.setText("Senha:");
 

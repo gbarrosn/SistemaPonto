@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import db.dadosRegistroMensal;
@@ -227,8 +228,10 @@ public class gerarFolhas extends javax.swing.JFrame {
             try {
                 if (r.getFuncionario().isServidor()) {
                     gerarFolhasHelper.gerarFolhasPontoServidor(r, newFolder);
-                } else {
+                } else if (!r.getFuncionario().isServidor() && r.getFuncionario().getCodigoDeBarras() != null) {
                     gerarFolhasHelper.gerarFolhaPontoTerceirizado(r, newFolder);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Criar função para gerar uma folha de ponto genérica para terceirizados que não são da rm e CTD também");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

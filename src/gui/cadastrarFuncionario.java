@@ -388,8 +388,8 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
 
         String codigoDeBarras = jTextFieldCodigoBarras.getText().trim();
         if (codigoDeBarras.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo código de barras é obrigatório", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
+            JOptionPane.showMessageDialog(this, "O campo código de barras é obrigatório para funcionarios da RM", "Aviso", JOptionPane.ERROR_MESSAGE);
+            
         }
 
         String senha = jTextFieldSenha.getText().trim();

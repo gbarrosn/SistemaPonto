@@ -283,6 +283,15 @@ public class conferirPonto extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here: registrar saída antecipada
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            registro registroSaida = registros.get(selectedRow);
+            saidaAntecipada tela = new saidaAntecipada(registroSaida);
+            tela.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um registro para cadastrar o motivo da saída.");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void popularTablelaHoje() {

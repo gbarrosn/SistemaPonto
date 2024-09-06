@@ -175,13 +175,14 @@ public class voltaAlmoco extends javax.swing.JFrame {
         if (funcionarioRegistro != null) {
 
             try {
-            dadosRegistro.registrarRetornoAlmoco(funcionarioRegistro.getIdFuncionario(), hora, data);
+                dadosRegistro.registrarRetornoAlmoco(funcionarioRegistro.getIdFuncionario(), hora, data);
+                JOptionPane.showMessageDialog(this, "Saída registrada!");
+                jTextFieldMatricula.setText("");
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 JOptionPane.showMessageDialog(this, "Erro ao registrar a saída: " + e.getMessage());
             }
-            JOptionPane.showMessageDialog(this, "Saída registrada!");
-            jTextFieldMatricula.setText("");
+            
 
         } else {
             JOptionPane.showMessageDialog(this, "Funcionário não encontrado!");

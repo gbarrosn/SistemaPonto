@@ -87,6 +87,7 @@ public class dadosRegistroMensal {
                     reg.setAlteracao(result.getString("alteracao"));
                     reg.setAtestado(result.getBoolean("atestado"));
                     reg.setMes(Integer.parseInt(reg.getData().split("/")[1]));
+                    reg.setSaidaAntecipada(result.getString("saida_antecipada"));
 
                     List<registro> registrosFuncionario = new ArrayList<>();
                     registrosFuncionario.add(reg);
@@ -108,6 +109,7 @@ public class dadosRegistroMensal {
                     reg.setAlteracao(result.getString("alteracao"));
                     reg.setAtestado(result.getBoolean("atestado"));
                     reg.setMes(Integer.parseInt(reg.getData().split("/")[1]));
+                    reg.setSaidaAntecipada(result.getString("saida_antecipada"));
 
                     List<registro> registrosFuncionario = registroFuncionario.getRegistros();
                     registrosFuncionario.add(reg);

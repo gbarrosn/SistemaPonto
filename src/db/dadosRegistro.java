@@ -266,6 +266,22 @@ public class dadosRegistro {
         
         // Create a query to update the registro
         String query = "UPDATE registros SET saida_almoco = '" + hora + "' WHERE id_funcionario = " + id_funcionario + " AND data = '" + data + "'";
+
+        String check = "SELECT * FROM registros WHERE id_funcionario = " + id_funcionario + " AND data = '" + data + "'";
+
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery(check);
+            
+            if (!resultSet.next()) {
+                throw new SQLException("O funcionário não registrou a entrada");
+            } 
+        } catch (SQLException e) {
+            throw e;
+        }
         
         try {
             // Create a statement

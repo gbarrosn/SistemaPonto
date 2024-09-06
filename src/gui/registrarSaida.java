@@ -174,18 +174,17 @@ public class registrarSaida extends javax.swing.JFrame {
         funcionario funcionarioRegistro = dadosFuncionario.buscarFuncionarioPorMatricula(matricula);
 
         if (funcionarioRegistro != null) {
-            if (dadosRegistro.verificarRegistroExistente(funcionarioRegistro.getIdFuncionario(), data)) {
-                try {
+
+            try {
                 dadosRegistro.registrarSaida(funcionarioRegistro.getIdFuncionario(), hora, data);
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    JOptionPane.showMessageDialog(this, "Erro ao registrar saída: " + e.getMessage());
-                }
                 JOptionPane.showMessageDialog(this, "Saída registrada!");
                 jTextFieldMatricula.setText("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Registro de entrada não encontrado!");
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                JOptionPane.showMessageDialog(this, "Erro ao registrar saída: " + e.getMessage());
             }
+            
+
         } else {
             JOptionPane.showMessageDialog(this, "Funcionário não encontrado!");
         }

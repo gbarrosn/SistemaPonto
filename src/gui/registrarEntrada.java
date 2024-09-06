@@ -191,15 +191,16 @@ public class registrarEntrada extends javax.swing.JFrame {
             } else {
                 // Criar novo registro
                 try {
-                dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), hora, data);
+                    dadosRegistro.criarRegistro(funcionarioRegistro.getIdFuncionario(), hora, data);
+                    // Show message "Entrada registrada!"
+                    JOptionPane.showMessageDialog(this, "Entrada registrada!");
+                    // Clear the text field
+                    jTextFieldMatricula.setText("");
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     JOptionPane.showMessageDialog(this, "Erro ao registrar entrada: " + e.getMessage());
                 }
-                // Show message "Entrada registrada!"
-                JOptionPane.showMessageDialog(this, "Entrada registrada!");
-                // Clear the text field
-                jTextFieldMatricula.setText("");
+                
             }
         } else {
             // Show message "Funcionário não encontrado"

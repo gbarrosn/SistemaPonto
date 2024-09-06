@@ -299,7 +299,9 @@ public class dadosRegistro {
             
             if (!resultSet.next()) {
                 throw new SQLException("O funcionário não registrou a entrada");
-            } 
+            } else if (resultSet.getString("saida_almoco") != null) {
+                throw new SQLException("O funcionário já registrou a saída para o almoço");
+            }
         } catch (SQLException e) {
             throw e;
         }

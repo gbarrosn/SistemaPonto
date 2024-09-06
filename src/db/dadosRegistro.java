@@ -523,6 +523,20 @@ public class dadosRegistro {
         }
     }
 
+    public static void registrarSaidaAntecipada(registro registro) throws SQLException {
+        try (Connection connection = conectarBanco.conectar()) {
+            String query = "UPDATE registros SET saida_antecipada = '" + registro.getSaidaAntecipada() + "' WHERE id = " + registro.getIdRegistro();
+
+            try {
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+            } catch (SQLException e) {
+                throw e;
+            }
+
+        }
+    }
+
 public static void main(String[] args) {
     List<registro> registros = new ArrayList<>();
     try {

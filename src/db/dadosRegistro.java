@@ -204,6 +204,21 @@ public class dadosRegistro {
         
         // Create a query to insert the registro
         String query = "INSERT INTO registros (id_funcionario, hora_entrada, data) VALUES (" + id + ", '" + hora + "', '" + data + "')";
+        String check = "SELECT * FROM registros WHERE id_funcionario = " + id + " AND data = '" + data + "'";
+
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery(check);
+            
+            if (resultSet.next()) {
+                throw new SQLException("O funcionário já registrou a entrada");
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
         
         try {
             // Create a statement

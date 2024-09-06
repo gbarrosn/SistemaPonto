@@ -27,6 +27,7 @@ public class registro {
     String nomeFuncionario;
     String alteracao;
     boolean atestado;
+    String saidaAntecipada;
 
     /*public registro(int idRegistro, int idFuncionario, String horaEntrada, String saidaAlmoco, String retornoAlmoco, String horaSaida, String data) {
         this.idRegistro = idRegistro;
@@ -43,6 +44,14 @@ public class registro {
     }*/
 
     // Getters
+
+    public String getSaidaAntecipada() {
+        return saidaAntecipada;
+    }
+
+    public void setSaidaAntecipada(String saidaAntecipada) {
+        this.saidaAntecipada = saidaAntecipada;
+    }
 
     public boolean isAtestado() {
         return atestado;

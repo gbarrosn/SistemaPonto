@@ -117,6 +117,10 @@ public registro saidaAntecipada;
 
         try {
             dadosRegistro.registrarSaidaAntecipada(saidaAntecipada);
+            JOptionPane.showMessageDialog(this, "Saída antecipada registrada com sucesso!");
+            conferirPonto tela = new conferirPonto();
+            this.dispose();
+            tela.setVisible(true);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao registrar saída antecipada: " + e.getMessage());
         }

@@ -112,7 +112,7 @@ public registro saidaAntecipada;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: registrar
-        String saida = "Saída antecipada - Motivo: " + jTextFieldMotivo.getText();
+        String saida = "Motivo: " + jTextFieldMotivo.getText();
 
         saidaAntecipada.setSaidaAntecipada(saida);
 

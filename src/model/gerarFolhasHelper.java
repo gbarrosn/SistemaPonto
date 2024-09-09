@@ -167,6 +167,10 @@ public class gerarFolhasHelper {
                             linhaDia.getCell(7).setCellValue("Sim");
                             
                         }
+                        if (r.getSaidaAntecipada() != null) {
+                            linhaDia.getCell(6).setCellValue(r.getSaidaAntecipada());
+                        }
+                        
                         continue;
                     }
                 }

@@ -46,6 +46,7 @@ public class dadosRegistro {
                 String data = resultSet.getString("data");
                 String alteracao = resultSet.getString("alteracao");
                 boolean atestado = resultSet.getBoolean("atestado");
+                String saidaAntecipada = resultSet.getString("saida_antecipada");
                 
 
                 // Create a new Registro object
@@ -59,6 +60,7 @@ public class dadosRegistro {
                 registro.setData(data);
                 registro.setAlteracao(alteracao);
                 registro.setAtestado(atestado);
+                registro.setSaidaAntecipada(saidaAntecipada);
                 
                 registros.add(registro);
             }
@@ -121,6 +123,7 @@ public class dadosRegistro {
                 String data = resultSet.getString("data");
                 String alteracao = resultSet.getString("alteracao");
                 boolean atestado = resultSet.getBoolean("atestado");
+                String saidaAntecipada = resultSet.getString("saida_antecipada");
 
 
                 // Create a new Registro object
@@ -134,7 +137,7 @@ public class dadosRegistro {
                 registro.setData(data);
                 registro.setAlteracao(alteracao);
                 registro.setAtestado(atestado);
-
+                registro.setSaidaAntecipada(saidaAntecipada);
                 
 
                 registros.add(registro);
@@ -176,6 +179,7 @@ public class dadosRegistro {
                 String data = resultSet.getString("data");
                 String alteracao = resultSet.getString("alteracao");
                 boolean atestado = resultSet.getBoolean("atestado");
+                String saidaAntecipada = resultSet.getString("saida_antecipada");
 
                 // Create a new Registro object
                 registro registro = new registro();
@@ -188,6 +192,7 @@ public class dadosRegistro {
                 registro.setData(data);
                 registro.setAlteracao(alteracao);
                 registro.setAtestado(atestado);
+                registro.setSaidaAntecipada(saidaAntecipada);
                 
                 registros.add(registro);
             }
@@ -416,7 +421,7 @@ public class dadosRegistro {
                         saidaAntecipada = "";
                     }
                     registro.setSaidaAntecipada(saidaAntecipada);
-                    
+
                     registros.add(registro);
                 }
 
@@ -471,6 +476,7 @@ public class dadosRegistro {
                     String dataRegistro = resultSet.getString("data");
                     String alteracao = resultSet.getString("alteracao");
                     boolean atestado = resultSet.getBoolean("atestado");
+                    String saidaAntecipada = resultSet.getString("saida_antecipada");
 
                     registro registro = new registro();
                     registro.setIdRegistro(idRegistro);
@@ -482,6 +488,7 @@ public class dadosRegistro {
                     registro.setData(dataRegistro);
                     registro.setAlteracao(alteracao);
                     registro.setAtestado(atestado);
+                    registro.setSaidaAntecipada(saidaAntecipada);
                     
                     registros.add(registro);
                 }

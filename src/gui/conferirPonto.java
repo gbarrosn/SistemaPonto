@@ -69,13 +69,13 @@ public class conferirPonto extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração", "Atestado"
+                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração", "Atestado", "Saída Antecipada"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -205,7 +205,7 @@ public class conferirPonto extends javax.swing.JFrame {
         model.setRowCount(0);
         for (registro r : registros) {
             String atestado = r.isAtestado() ? "Sim" : "Não";
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao(), atestado});
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao(), atestado, r.getSaidaAntecipada()});
         }
 
 
@@ -312,7 +312,7 @@ public class conferirPonto extends javax.swing.JFrame {
         model.setRowCount(0);
         for (registro r : registros) {
             System.out.println(r.getAlteracao());
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao()});
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao(), r.getSaidaAntecipada()});
         }
     }
     /**

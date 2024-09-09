@@ -312,7 +312,8 @@ public class conferirPonto extends javax.swing.JFrame {
         model.setRowCount(0);
         for (registro r : registros) {
             System.out.println(r.getAlteracao());
-            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao(), r.getSaidaAntecipada()});
+            String atestado = r.isAtestado() ? "Sim" : "Não";
+            model.addRow(new Object[]{r.getNomeFuncionario(), r.getHoraEntrada(), r.getSaidaAlmoco(), r.getRetornoAlmoco(), r.getHoraSaida(), r.getAlteracao(), atestado, r.getSaidaAntecipada()});
         }
     }
     /**

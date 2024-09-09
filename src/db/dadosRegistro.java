@@ -394,6 +394,7 @@ public class dadosRegistro {
                     String nome = resultSet.getString("nome");
                     String alteracao = resultSet.getString("alteracao");
                     boolean atestado = resultSet.getBoolean("atestado");
+                    String saidaAntecipada = resultSet.getString("saida_antecipada");
 
                     registro registro = new registro();
                     registro.setNomeFuncionario(nome);
@@ -405,10 +406,16 @@ public class dadosRegistro {
                     registro.setHoraSaida(horaSaida);
                     registro.setData(dataRegistro);
                     registro.setAtestado(atestado);
+                    
                     if (alteracao == null) {
                         alteracao = "";
                     }
                     registro.setAlteracao(alteracao);
+                    
+                    if (saidaAntecipada == null) {
+                        saidaAntecipada = "";
+                    }
+                    registro.setSaidaAntecipada(saidaAntecipada);
                     
                     registros.add(registro);
                 }

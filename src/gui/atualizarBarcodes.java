@@ -49,7 +49,7 @@ public class atualizarBarcodes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox2.setModel(new DefaultComboBoxModel<funcionario>);
+        jComboBox2.setModel(new DefaultComboBoxModel<funcionario>());
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -118,7 +118,7 @@ public class atualizarBarcodes extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        conferirPonto tela = new conferirPonto();
+        configuracoes tela = new configuracoes();
         this.dispose();
         tela.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -187,7 +187,7 @@ public class atualizarBarcodes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private JComboBox<funcionario> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

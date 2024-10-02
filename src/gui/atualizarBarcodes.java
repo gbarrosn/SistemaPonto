@@ -139,10 +139,13 @@ public class atualizarBarcodes extends javax.swing.JFrame {
         // TODO add your handling code here: alterar barcode
         int idFuncionario = ((funcionario) jComboBox2.getSelectedItem()).getIdFuncionario();
         String barcode = jTextFieldBarcode.getText();
+        String nome = ((funcionario) jComboBox2.getSelectedItem()).getNome();
 
         try {
             dadosFuncionario.alterarCodigoDeBarras(idFuncionario, barcode);
-            JOptionPane.showMessageDialog(this, "Barcode atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Código do funcionário " + nome + " atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
+            jTextFieldBarcode.setText("");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar barcode: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();

@@ -125,7 +125,7 @@ public class atualizarBarcodes extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
 
-        funcionario funcionarioAdm = new funcionario();
+        
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
@@ -144,7 +144,7 @@ public class atualizarBarcodes extends javax.swing.JFrame {
         try {
             dadosFuncionario.alterarCodigoDeBarras(idFuncionario, barcode);
             JOptionPane.showMessageDialog(this, "Código do funcionário " + nome + " atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            
+
             jTextFieldBarcode.setText("");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar barcode: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

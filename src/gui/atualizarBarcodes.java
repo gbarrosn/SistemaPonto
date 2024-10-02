@@ -124,8 +124,12 @@ public class atualizarBarcodes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        funcionario selectedFuncionario = (funcionario) jComboBox2.getSelectedItem();
+        String barcode = selectedFuncionario.getCodigoDeBarras();
 
-        
+
+        jTextFieldBarcode.setText(barcode);
+    
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
@@ -163,6 +167,10 @@ public class atualizarBarcodes extends javax.swing.JFrame {
             }
             jComboBox2.setModel(model);
             jComboBox2.setRenderer(new FuncionarioRenderer());
+
+            funcionario selectedFuncionario = (funcionario) jComboBox2.getSelectedItem();
+            String barcode = selectedFuncionario.getCodigoDeBarras();
+            jTextFieldBarcode.setText(barcode);
         } catch (SQLException e) {
             // Handle the exception appropriately, e.g., show an error message to the user
             JOptionPane.showMessageDialog(this, "Erro ao popular ComboBox: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

@@ -353,6 +353,30 @@ public class dadosFuncionario {
         }
     }
 
+    public static void alterarCodigoDeBarras(int id, String codigoDeBarras) throws SQLException {
+        // Connect to the database
+        Connection connection = conectarBanco.conectar();
+        
+        // Create a query to update the funcionario
+        String query = "UPDATE funcionarios SET " + 
+                        "codigo_de_barras = '" + codigoDeBarras + "' " + 
+                        "WHERE id = " + id;
+        
+        try {
+            // Create a statement
+            Statement statement = connection.createStatement();
+            
+            // Execute the query
+            statement.executeUpdate(query);
+            
+            // Close the statement and connection
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         try {
             List<funcionario> funcionarios = buscarFuncionarios();

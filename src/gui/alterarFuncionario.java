@@ -40,6 +40,9 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jTextFieldCodigoBarras.setText(funcionarioAlterar.getCodigoDeBarras());
         jPasswordField1.setText(funcionarioAlterar.getSenha());
 
+        jComboBoxContrato.addItem(funcionarioAlterar.getContrato());
+        jComboBoxContrato.setSelectedItem(funcionarioAlterar.getContrato());
+
         if (!funcionarioAlterar.isServidor()) {
             jComboBoxVinculo.setSelectedItem("Terceirizado");
         }
@@ -163,8 +166,6 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jComboBoxSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RECEITA FEDERAL", "CAPITANIA DOS PORTOS", "INSS", "IITB", "PROCON", "COMPESA", "CIEE", "CAS", "FUNAPE", "BOMBEIROS", "DETRAN", "LAFEPE", "JUCEPE", "EXPRESSO EMPREENDEDOR", "CDL", "PE-CONSIG", "TRE", "SEFA", "AGÊNCIA DO TRABALHO", "AMMPLA", "ADMINISTRATIVO", "RECEPÇÃO", "ATENDIMENTO" }));
 
         jLabel4.setText("Contrato:");
-
-        jComboBoxContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO", "RH", "Procon", "Funape", "CAS", "Coordenação", "Compesa", "SDS", "Detran", "Limpeza", "TI" }));
 
         jButton1.setText("Tela Principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

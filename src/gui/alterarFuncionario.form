@@ -425,19 +425,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxContrato">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="11">
-            <StringItem index="0" value="SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO"/>
-            <StringItem index="1" value="RH"/>
-            <StringItem index="2" value="Procon"/>
-            <StringItem index="3" value="Funape"/>
-            <StringItem index="4" value="CAS"/>
-            <StringItem index="5" value="Coordena&#xe7;&#xe3;o"/>
-            <StringItem index="6" value="Compesa"/>
-            <StringItem index="7" value="SDS"/>
-            <StringItem index="8" value="Detran"/>
-            <StringItem index="9" value="Limpeza"/>
-            <StringItem index="10" value="TI"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>

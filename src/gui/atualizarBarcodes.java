@@ -140,7 +140,6 @@ public class atualizarBarcodes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here: alterar barcode
         int idFuncionario = ((funcionario) jComboBox2.getSelectedItem()).getIdFuncionario();
         String barcode = jTextFieldBarcode.getText();
         String nome = ((funcionario) jComboBox2.getSelectedItem()).getNome();

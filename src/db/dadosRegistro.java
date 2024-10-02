@@ -458,7 +458,13 @@ public class dadosRegistro {
         
         try (Connection connection = conectarBanco.conectar()) {
 
-            String query = "SELECT * FROM registros WHERE data like '%/0" + String.valueOf(mes).trim() + "/%';";
+            String query;
+
+            if (mes < 10) {
+                query = "SELECT * FROM registros WHERE data like '%/0" + String.valueOf(mes).trim() + "/%';";
+            } else {
+                query = "SELECT * FROM registros WHERE data like '%/" + String.valueOf(mes).trim() + "/%';";
+            }
 
             try {
                 Statement statement = connection.createStatement();

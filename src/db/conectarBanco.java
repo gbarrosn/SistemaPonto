@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.net.InetAddress;
+
 /**
  *
  * @author gbarrosn
@@ -14,7 +16,7 @@ import java.util.logging.Logger;
 public class conectarBanco {
 
     // Atributos de conexão
-    private static final String SERVER = "localhost:3306";
+    private static final String SERVER = "192.168.1.42:3306";
     private static final String USER = "ponto"; // Replace with your MySQL username
     private static final String PASSWORD = "senha"; // Replace with your MySQL password
     private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name
@@ -56,6 +58,17 @@ public class conectarBanco {
             }
         }
         return connection;
+    }
+
+    private static String escolherIpDb() {
+        try {
+            InetAddress ip = InetAddress.getLocalHost();
+            System.out.println("Current IP address : " + ip.getHostAddress());
+            return ip.getHostAddress();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "localhost";
+        }
     }
 
     private static void criarBanco() throws SQLException {
@@ -143,6 +156,7 @@ public class conectarBanco {
             //criarTabelas();
             // Your code here
             // Perform database operations using the connection object
+            escolherIpDb();
 
             // For example, execute queries, insert data, update data, etc.
         } catch (SQLException e) {

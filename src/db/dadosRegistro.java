@@ -261,7 +261,7 @@ public class dadosRegistro {
         return false;
     }
 
-    public static void registrarSaida(int id_funcionario, String hora, String data) throws SQLException {
+    public static void registrarPonto(int id_funcionario, String hora, String data) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         

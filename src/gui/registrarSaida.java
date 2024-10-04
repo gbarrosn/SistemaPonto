@@ -22,7 +22,7 @@ import db.dadosRegistro;
 public class registrarSaida extends javax.swing.JFrame {
 
     /**
-     * Creates new form registrarSaida
+     * Creates new form registrarPonto
      */
     public registrarSaida() {
         initComponents();
@@ -176,7 +176,7 @@ public class registrarSaida extends javax.swing.JFrame {
         if (funcionarioRegistro != null) {
 
             try {
-                dadosRegistro.registrarSaida(funcionarioRegistro.getIdFuncionario(), hora, data);
+                dadosRegistro.registrarPonto(funcionarioRegistro.getIdFuncionario(), hora, data);
                 JOptionPane.showMessageDialog(this, "Saída registrada!");
                 jTextFieldMatricula.setText("");
             } catch (SQLException e) {

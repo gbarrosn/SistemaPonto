@@ -286,7 +286,7 @@ public class conferirPonto extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
             registro registroSaida = registros.get(selectedRow);
-            saidaAntecipada tela = new saidaAntecipada(registroSaida);
+            registrarObservacao tela = new registrarObservacao(registroSaida);
             tela.setVisible(true);
             this.dispose();
         } else {

@@ -15,12 +15,12 @@ import model.registro;
  *
  * @author gbarrosn
  */
-public class saidaAntecipada extends javax.swing.JFrame {
+public class registrarObservacao extends javax.swing.JFrame {
 public registro saidaAntecipada;
     /**
      * Creates new form saidaAntecipada
      */
-    public saidaAntecipada(registro saidaAntecipada) {
+    public registrarObservacao(registro saidaAntecipada) {
         initComponents();
         this.saidaAntecipada = saidaAntecipada;
     }
@@ -112,7 +112,7 @@ public registro saidaAntecipada;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: registrar
-        String saida = "Motivo: " + jTextFieldMotivo.getText();
+        String saida = "Obs.: " + jTextFieldMotivo.getText();
 
         saidaAntecipada.setSaidaAntecipada(saida);
 
@@ -145,20 +145,21 @@ public registro saidaAntecipada;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(saidaAntecipada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarObservacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(saidaAntecipada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarObservacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(saidaAntecipada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarObservacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(saidaAntecipada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarObservacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new saidaAntecipada(null).setVisible(true);
+                new registrarObservacao(null).setVisible(true);
             }
         });
     }

@@ -119,7 +119,7 @@
                 <Column editable="true" title="Sa&#xed;da" type="java.lang.Object"/>
                 <Column editable="true" title="Altera&#xe7;&#xe3;o" type="java.lang.Object"/>
                 <Column editable="true" title="Atestado" type="java.lang.Object"/>
-                <Column editable="true" title="Sa&#xed;da Antecipada" type="java.lang.Object"/>
+                <Column editable="true" title="Observa&#xe7;&#xe3;o" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -244,7 +244,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sa&#xed;da antecipada"/>
+        <Property name="text" type="java.lang.String" value="Registrar observa&#xe7;&#xe3;o"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>

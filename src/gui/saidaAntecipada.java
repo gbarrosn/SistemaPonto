@@ -57,9 +57,9 @@ public registro saidaAntecipada;
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Registrar Saída Antecipada");
+        jLabel1.setText("Registrar Obs. de Horário");
 
-        jLabel2.setText("Saída antecipada - Motivo:");
+        jLabel2.setText("Motivo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +70,7 @@ public registro saidaAntecipada;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 101, Short.MAX_VALUE))
+                        .addGap(0, 207, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -118,12 +118,12 @@ public registro saidaAntecipada;
 
         try {
             dadosRegistro.registrarSaidaAntecipada(saidaAntecipada);
-            JOptionPane.showMessageDialog(this, "Saída antecipada registrada com sucesso!");
+            JOptionPane.showMessageDialog(this, "Observaçãos registrada com sucesso!");
             conferirPonto tela = new conferirPonto();
             this.dispose();
             tela.setVisible(true);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro ao registrar saída antecipada: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao registrar observação: " + e.getMessage());
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

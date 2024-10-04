@@ -75,7 +75,7 @@ public class conferirPonto extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração", "Atestado", "Saída Antecipada"
+                "Nome", "Chegada", "Almoço", "Fim do Almoço", "Saída", "Alteração", "Atestado", "Observação"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -120,7 +120,7 @@ public class conferirPonto extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Saída antecipada");
+        jButton5.setText("Registrar observação");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);

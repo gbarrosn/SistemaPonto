@@ -183,7 +183,7 @@ public class registrarPonto extends javax.swing.JFrame {
 
             try {
                 dadosRegistro.registrarPonto(funcionarioRegistro.getIdFuncionario(), hora, data);
-                JOptionPane.showMessageDialog(this, "Ponto registrado!");
+                JOptionPane.showMessageDialog(this, "Saída Registrada!");
                 jTextFieldMatricula.setText("");
             } catch (SQLException e) {
                 // TODO Auto-generated catch block

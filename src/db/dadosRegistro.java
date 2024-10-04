@@ -277,12 +277,19 @@ public class dadosRegistro {
             ResultSet resultSet = statement.executeQuery(check);
             
             if (!resultSet.next()) {
-                throw new SQLException("O funcionário não registrou a entrada");
+                //throw new SQLException("O funcionário não registrou a entrada");
+                criarRegistro(id_funcionario, hora, data);
+                throw new SQLException("Entrada registrada!");
             } else if (resultSet.getString("saida_almoco") == null) {
-                throw new SQLException("O funcionário não registrou a saída para o almoço");
+                //throw new SQLException("O funcionário não registrou a saída para o almoço");
+                registrarSaidaAlmoco(id_funcionario, hora, data);
+                throw new SQLException("Saída para o almoço registrada!");
             } else if (resultSet.getString("retorno_almoco") == null) {
-                throw new SQLException("O funcionário não registrou o retorno do almoço");
+                //throw new SQLException("O funcionário não registrou o retorno do almoço");
+                registrarRetornoAlmoco(id_funcionario, hora, data);
+                throw new SQLException("Retorno do almoço registrado!");
             } else if (resultSet.getString("saida") != null) {
+                //throw new SQLException("O funcionário já registrou a saída");
                 throw new SQLException("O funcionário já registrou a saída");
             }
         } catch (SQLException e) {

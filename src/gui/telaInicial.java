@@ -30,10 +30,7 @@ public class telaInicial extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButtonEntrada = new javax.swing.JButton();
         jButtonSaida = new javax.swing.JButton();
-        jButtonSaidaAlmoco = new javax.swing.JButton();
-        jButtonEntradaAlmoco = new javax.swing.JButton();
         jButtonAssinatura = new javax.swing.JButton();
         jButtonAssinaturaCoordenacao = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -47,31 +44,10 @@ public class telaInicial extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel2.setText("Sistema de Ponto");
 
-        jButtonEntrada.setText("Registrar Entrada");
-        jButtonEntrada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEntradaActionPerformed(evt);
-            }
-        });
-
-        jButtonSaida.setText("Registrar Saída");
+        jButtonSaida.setText("Registrar Ponto");
         jButtonSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaidaActionPerformed(evt);
-            }
-        });
-
-        jButtonSaidaAlmoco.setText("Saída Almoço");
-        jButtonSaidaAlmoco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaidaAlmocoActionPerformed(evt);
-            }
-        });
-
-        jButtonEntradaAlmoco.setText("Retorno Almoço");
-        jButtonEntradaAlmoco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEntradaAlmocoActionPerformed(evt);
             }
         });
 
@@ -103,9 +79,6 @@ public class telaInicial extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEntradaAlmoco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonSaidaAlmoco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAssinatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAssinaturaCoordenacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,13 +88,7 @@ public class telaInicial extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonSaidaAlmoco, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEntradaAlmoco, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAssinatura, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,9 +122,9 @@ public class telaInicial extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,15 +148,6 @@ public class telaInicial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaActionPerformed
-        
-        registrarEntrada telaEntrada = new registrarEntrada();
-        telaEntrada.setVisible(true);
-        this.dispose();
-        
-
-    }//GEN-LAST:event_jButtonEntradaActionPerformed
-
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaActionPerformed
         
         registrarSaida telaSaida = new registrarSaida();
@@ -209,20 +167,6 @@ public class telaInicial extends javax.swing.JFrame {
         tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonAssinaturaCoordenacaoActionPerformed
-
-    private void jButtonSaidaAlmocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaAlmocoActionPerformed
-        
-        saidaAlmoco almoco = new saidaAlmoco();
-        this.dispose();
-        almoco.setVisible(true);
-    }//GEN-LAST:event_jButtonSaidaAlmocoActionPerformed
-
-    private void jButtonEntradaAlmocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaAlmocoActionPerformed
-        
-        voltaAlmoco volta = new voltaAlmoco();
-        volta.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonEntradaAlmocoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
@@ -273,10 +217,7 @@ public class telaInicial extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAssinatura;
     private javax.swing.JButton jButtonAssinaturaCoordenacao;
-    private javax.swing.JButton jButtonEntrada;
-    private javax.swing.JButton jButtonEntradaAlmoco;
     private javax.swing.JButton jButtonSaida;
-    private javax.swing.JButton jButtonSaidaAlmoco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

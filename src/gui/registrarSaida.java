@@ -181,7 +181,7 @@ public class registrarSaida extends javax.swing.JFrame {
                 jTextFieldMatricula.setText("");
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
-                JOptionPane.showMessageDialog(this, "Erro ao registrar saída: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, e.getMessage());
             }
             
 

@@ -150,7 +150,7 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void jButtonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaidaActionPerformed
         
-        registrarSaida telaSaida = new registrarSaida();
+        registrarPonto telaSaida = new registrarPonto();
         telaSaida.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonSaidaActionPerformed

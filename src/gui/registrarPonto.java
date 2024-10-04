@@ -19,12 +19,12 @@ import db.dadosRegistro;
  *
  * @author gbarrosn
  */
-public class registrarSaida extends javax.swing.JFrame {
+public class registrarPonto extends javax.swing.JFrame {
 
     /**
      * Creates new form registrarPonto
      */
-    public registrarSaida() {
+    public registrarPonto() {
         initComponents();
     }
 
@@ -47,10 +47,16 @@ public class registrarSaida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextFieldMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMatriculaActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
         jLabel1.setText("Insira a sua matrícula abaixo:");
 
-        jButtonSaida.setText("Registrar Saída");
+        jButtonSaida.setText("Registrar Ponto");
         jButtonSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -182,6 +188,7 @@ public class registrarSaida extends javax.swing.JFrame {
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 JOptionPane.showMessageDialog(this, e.getMessage());
+                jTextFieldMatricula.setText("");
             }
             
 
@@ -191,6 +198,16 @@ public class registrarSaida extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButtonSaidaActionPerformed
+
+    private void jTextFieldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMatriculaActionPerformed
+        // TODO add your handling code here:
+        try {
+            jButtonSaidaActionPerformed(null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jTextFieldMatriculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,20 +226,21 @@ public class registrarSaida extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registrarSaida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarPonto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registrarSaida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarPonto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registrarSaida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarPonto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registrarSaida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarPonto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registrarSaida().setVisible(true);
+                new registrarPonto().setVisible(true);
             }
         });
     }

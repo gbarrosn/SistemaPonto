@@ -97,6 +97,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="jTextFieldMatricula">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMatriculaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -108,7 +111,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSaida">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registrar Sa&#xed;da"/>
+            <Property name="text" type="java.lang.String" value="Registrar Ponto"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaidaActionPerformed"/>

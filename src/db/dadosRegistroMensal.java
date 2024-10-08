@@ -31,9 +31,11 @@ public class dadosRegistroMensal {
     public static List<registroMensal> buscarDadosDoMes(int mes) {
         List<registroMensal> registros = new ArrayList<>();
 
+        String mesStr = mes < 10 ? "0" + mes : String.valueOf(mes);
+
         try {
             Connection connection = conectarBanco.conectar();
-            String sql = "SELECT * FROM registros r inner join funcionarios f on (r.id_funcionario = f.id) WHERE r.data LIKE '%/0" + mes + "/%'";
+            String sql = "SELECT * FROM registros r inner join funcionarios f on (r.id_funcionario = f.id) WHERE r.data LIKE '%/" + mesStr + "/%'";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();

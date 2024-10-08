@@ -113,11 +113,9 @@ public class gerarFolhasHelper {
             int dia = 1;
             while (dia <= 31) {
                 String data = "";
-                if (dia < 10) {
-                    data = "0" + String.valueOf(dia) + "/0" + String.valueOf(registro.getRegistros().get(0).getMes()) + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
-                } else {
-                    data = String.valueOf(dia) + "/0" + String.valueOf(registro.getRegistros().get(0).getMes()) + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
-                }
+                String diaStr = dia < 10 ? "0" + String.valueOf(dia) : String.valueOf(dia);
+                String mesStr = registro.getRegistros().get(0).getMes() < 10 ? "0" + String.valueOf(registro.getRegistros().get(0).getMes()) : String.valueOf(registro.getRegistros().get(0).getMes());
+                data = diaStr + "/" + mesStr + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
                 dia += 1;
                 datas.add(data);
             }
@@ -316,11 +314,9 @@ public class gerarFolhasHelper {
             int dia = 1;
             while (dia <= 31) {
                 String data = "";
-                if (dia < 10) {
-                    data = "0" + String.valueOf(dia) + "/0" + String.valueOf(registro.getRegistros().get(0).getMes()) + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
-                } else {
-                    data = String.valueOf(dia) + "/0" + String.valueOf(registro.getRegistros().get(0).getMes()) + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
-                }
+                String diaStr = dia < 10 ? "0" + String.valueOf(dia) : String.valueOf(dia);
+                String mesStr = registro.getRegistros().get(0).getMes() < 10 ? "0" + String.valueOf(registro.getRegistros().get(0).getMes()) : String.valueOf(registro.getRegistros().get(0).getMes());
+                data = diaStr + "/" + mesStr + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
                 dia += 1;
                 datas.add(data);
             }

@@ -16,7 +16,7 @@ import java.net.InetAddress;
 public class conectarBanco {
 
     // Atributos de conexão
-    private static final String SERVER = "192.168.1.42:3306";
+    private static final String SERVER = escolherIpDb();
     private static final String USER = "ponto"; // Replace with your MySQL username
     private static final String PASSWORD = "senha"; // Replace with your MySQL password
     private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name
@@ -61,14 +61,22 @@ public class conectarBanco {
     }
 
     private static String escolherIpDb() {
-        try {
-            InetAddress ip = InetAddress.getLocalHost();
-            System.out.println("Current IP address : " + ip.getHostAddress());
-            return ip.getHostAddress();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "localhost";
+        String validDatabase = null;
+        String[] ips = {"192.168.1.42:3306", "192.168.200.7:3306"};
+
+        for (String ip : ips) {
+            try {
+                InetAddress address = InetAddress.getByName(ip.split(":")[0]);
+                if (address.isReachable(1000)) {
+                    validDatabase = ip;
+                    break;
+                }
+            } catch (Exception e) {
+                // Handle any exceptions
+            }
         }
+
+        return validDatabase;
     }
 
     private static void criarBanco() throws SQLException {

@@ -65,15 +65,20 @@ public class conectarBanco {
         String[] ips = {"192.168.1.42:3306", "192.168.200.7:3306"};
 
         for (String ip : ips) {
+            
             try {
-                InetAddress address = InetAddress.getByName(ip.split(":")[0]);
-                if (address.isReachable(1000)) {
-                    validDatabase = ip;
-                    break;
-                }
-            } catch (Exception e) {
-                // Handle any exceptions
+                String[] ipParts = ip.split(":");
+                String ipAddress = ipParts[0];
+                int port = Integer.parseInt(ipParts[1]);
+                String url = "jdbc:mysql://" + ipAddress + ":" + port + "/PontoEletronico";
+                Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
+                testConnection.close();
+                validDatabase = ip;
+                break;
+            } catch (SQLException e) {
+                // Handle connection error
             }
+            
         }
 
         return validDatabase;

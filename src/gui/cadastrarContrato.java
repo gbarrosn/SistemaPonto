@@ -47,6 +47,11 @@ public class cadastrarContrato extends javax.swing.JFrame {
         jLabel1.setText("Digite os dados do contrato:");
 
         jTextField1.setText("Ex.: SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cadastrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +110,10 @@ public class cadastrarContrato extends javax.swing.JFrame {
             System.out.println("Erro ao cadastrar o contrato: " + ex.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

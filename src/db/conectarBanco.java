@@ -36,21 +36,10 @@ public class conectarBanco {
                 connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
                 System.out.println("Conexão com o banco de dados MySQL estabelecida!");
                 Statement stmt = connection.createStatement();
-                stmt.execute("USE PontoEletronico;");
-                
-                // tentar usar tabelas e se nao existirem criar as tabelas
-                try {
-                    stmt.execute("SELECT * FROM funcionarios;");
-                } catch (SQLException e) {
-                    if (e.getMessage().contains("Table 'PontoEletronico.funcionarios' doesn't exist")) {
-                        criarTabelas();
-                    } else {
-                        throw e;
-                    }
-                }
+                stmt.execute("USE PontoEletronicoTeste;");
                 
             } catch (SQLException e) {
-                if (e.getMessage().contains("Unknown database 'PontoEletronico'")) {
+                if (e.getMessage().contains("Unknown database 'PontoEletronicoTeste'")) {
                     criarBanco();
                     criarTabelas();
                 } else {
@@ -64,7 +53,7 @@ public class conectarBanco {
 
     private static String escolherIpDb() {
         String validDatabase = null;
-        String[] ips = {"192.168.1.42:3306", "192.168.200.7:3306", "192.168.200.74:3306", "localhost:3306"};
+        String[] ips = {"localhost:3306", "192.168.1.42:3306", "192.168.200.7:3306", "192.168.200.74:3306", "localhost:3306"};
 
         for (String ip : ips) {
             
@@ -72,27 +61,16 @@ public class conectarBanco {
                 String[] ipParts = ip.split(":");
                 String ipAddress = ipParts[0];
                 int port = Integer.parseInt(ipParts[1]);
-                String url = "jdbc:mysql://" + ipAddress + ":" + port + "/PontoEletronicoTeste";
+                String url = "jdbc:mysql://" + ipAddress + ":" + port;
                 System.out.println("Tentando conectar com " + url);
 
-                TimerTask task = new TimerTask() {
-                    public void run() {
-                        throw new RuntimeException("Falha ao conectar com " + url);
-                    }
-                };
 
-                Timer timer = new Timer();
-                timer.schedule(task, 15000); // Set the timer for 15 seconds
+                Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
+                System.out.println("Conexão com " + url + " estabelecida!");
+                testConnection.close();
+                validDatabase = ip;
+                return validDatabase;
 
-                try {
-                    Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
-                    System.out.println("Conexão com " + url + " estabelecida!");
-                    testConnection.close();
-                    validDatabase = ip;
-                    timer.cancel(); // Cancel the timer if the connection is successful
-                } catch (SQLException e) {
-                    System.out.println("Falha ao conectar com " + url);
-                }
 
             } catch (Exception e) {
                 System.out.println("Falha ao conectar com " + ip);
@@ -105,7 +83,7 @@ public class conectarBanco {
 
     public static boolean verificarDatabase() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://" + SERVER, USER, PASSWORD);
+            Connection conn = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
             conn.close();
             return true;
         } catch (SQLException e) {
@@ -133,7 +111,7 @@ public class conectarBanco {
     }
 
     public static void criarBanco() throws SQLException {
-        String sqlCriarBanco = "CREATE DATABASE PontoEletronico";
+        String sqlCriarBanco = "CREATE DATABASE PontoEletronicoTeste";
 
         Connection conn = DriverManager.getConnection("jdbc:mysql://" + SERVER, USER, PASSWORD);
         Statement stmt = conn.createStatement();

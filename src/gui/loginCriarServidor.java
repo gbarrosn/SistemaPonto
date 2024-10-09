@@ -83,12 +83,6 @@ public class loginCriarServidor extends javax.swing.JFrame {
                 try {
                     System.out.println("Criando banco de dados...");
                     conectarBanco.criarBanco();
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(rootPane, e.getMessage());
-                }
-            }
-            if (!conectarBanco.verificarTabelas()) {
-                try {
                     System.out.println("Criando tabelas...");
                     conectarBanco.criarTabelas();
                     this.dispose();
@@ -96,8 +90,10 @@ public class loginCriarServidor extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, e.getMessage());
                 }
             }
+
         } else {
             JOptionPane.showMessageDialog(null, "Senha incorreta");
+            jPasswordField1.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

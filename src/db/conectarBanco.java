@@ -19,7 +19,7 @@ public class conectarBanco {
     private static final String SERVER = escolherIpDb();
     private static final String USER = "ponto"; // Replace with your MySQL username
     private static final String PASSWORD = "senha"; // Replace with your MySQL password
-    private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name
+    private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name 
 
     private static Connection connection;
 
@@ -62,7 +62,7 @@ public class conectarBanco {
 
     private static String escolherIpDb() {
         String validDatabase = null;
-        String[] ips = {"192.168.1.42:3306", "192.168.200.7:3306", "localhost:3306"};
+        String[] ips = {"192.168.1.42:3306", "192.168.200.7:3306", "192.168.200.74:3306", "localhost:3306"};
 
         for (String ip : ips) {
             

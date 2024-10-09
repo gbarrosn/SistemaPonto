@@ -71,23 +71,23 @@ public class loginCriarServidor extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String password = jTextField1.getText();
         if (password.equals("Sad#Suporte")) {
+
             try {
                 conectarBanco.criarBanco();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 JOptionPane.showMessageDialog(rootPane, e.getMessage());
             }
             try {
                 conectarBanco.criarTabelas();
                 this.dispose();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 JOptionPane.showMessageDialog(rootPane, e.getMessage());
             }
         } else {

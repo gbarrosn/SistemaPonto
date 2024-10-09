@@ -46,7 +46,7 @@ public class cadastrarContrato extends javax.swing.JFrame {
 
         jLabel1.setText("Digite os dados do contrato:");
 
-        jTextField1.setText("Ex.: SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO");
+        jTextField1.setText("SAD - EXPRESSO CIDADAO - CT 035/2024 - ");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

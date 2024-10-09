@@ -74,7 +74,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ex.: SAD - EXPRESSO CIDADAO - CT 035/2024 - VITORIA DE ST ANTAO"/>
+        <Property name="text" type="java.lang.String" value="SAD - EXPRESSO CIDADAO - CT 035/2024 - "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>

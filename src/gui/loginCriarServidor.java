@@ -90,6 +90,9 @@ public class loginCriarServidor extends javax.swing.JFrame {
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(rootPane, e.getMessage());
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Banco de dados já existe!");
+                this.dispose();
             }
 
         } else {

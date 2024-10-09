@@ -84,7 +84,7 @@ public class conectarBanco {
         return validDatabase;
     }
 
-    private static void criarBanco() throws SQLException {
+    public static void criarBanco() throws SQLException {
         String sqlCriarBanco = "CREATE DATABASE PontoEletronico";
 
         Connection conn = DriverManager.getConnection("jdbc:mysql://" + SERVER, USER, PASSWORD);
@@ -97,7 +97,7 @@ public class conectarBanco {
         conn.close();
     }
 
-    private static void criarTabelas() throws SQLException {
+    public static void criarTabelas() throws SQLException {
         // Replace with your actual table creation SQL statements
         String sqlCriarFuncionarios = "CREATE TABLE funcionarios (" +
                                         "  id INTEGER PRIMARY KEY AUTO_INCREMENT," +

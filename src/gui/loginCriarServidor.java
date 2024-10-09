@@ -4,6 +4,11 @@
  */
 package gui;
 
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+import db.conectarBanco;
+
 /**
  *
  * @author gbarrosn
@@ -35,6 +40,11 @@ public class loginCriarServidor extends javax.swing.JFrame {
         jLabel1.setText("Insira a senha para criar o servidor:");
 
         jButton1.setText("Criar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,6 +72,28 @@ public class loginCriarServidor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String password = jTextField1.getText();
+        if (password.equals("Sad#Suporte")) {
+            try {
+                conectarBanco.criarBanco();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            }
+            try {
+                conectarBanco.criarTabelas();
+                this.dispose();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

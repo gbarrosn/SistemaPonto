@@ -85,6 +85,7 @@ public class loginCriarServidor extends javax.swing.JFrame {
                     conectarBanco.criarBanco();
                     System.out.println("Criando tabelas...");
                     conectarBanco.criarTabelas();
+                    JOptionPane.showMessageDialog(null, "Banco de dados e tabelas criados com sucesso!");
                     this.dispose();
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(rootPane, e.getMessage());

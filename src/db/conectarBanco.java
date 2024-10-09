@@ -2,6 +2,7 @@ package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -19,7 +20,7 @@ public class conectarBanco {
     private static final String SERVER = escolherIpDb();
     private static final String USER = "ponto"; // Replace with your MySQL username
     private static final String PASSWORD = "senha"; // Replace with your MySQL password
-    private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name 
+    private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronicoTeste"; // Database name 
 
     private static Connection connection;
 
@@ -70,8 +71,10 @@ public class conectarBanco {
                 String[] ipParts = ip.split(":");
                 String ipAddress = ipParts[0];
                 int port = Integer.parseInt(ipParts[1]);
-                String url = "jdbc:mysql://" + ipAddress + ":" + port + "/PontoEletronico";
+                String url = "jdbc:mysql://" + ipAddress + ":" + port + "/PontoEletronicoTeste";
+                System.out.println("Tentando conectar com " + url);
                 Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
+                System.out.println("Conexão com " + url + " estabelecida!");
                 testConnection.close();
                 validDatabase = ip;
                 break;
@@ -82,6 +85,35 @@ public class conectarBanco {
         }
 
         return validDatabase;
+    }
+
+    public static boolean verificarDatabase() {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://" + SERVER, USER, PASSWORD);
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public static boolean verificarTabelas() {
+        try {
+            Connection conn = conectar();
+            
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SHOW TABLES");
+            int tableCount = 0;
+            while (rs.next()) {
+                tableCount++;
+            }
+            rs.close();
+            
+            return (tableCount == 5);
+
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     public static void criarBanco() throws SQLException {

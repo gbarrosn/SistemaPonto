@@ -79,16 +79,22 @@ public class loginCriarServidor extends javax.swing.JFrame {
         String password = jPasswordField1.getText();
         if (password.equals("Sad#Suporte")) {
 
-            try {
-                conectarBanco.criarBanco();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            if (!conectarBanco.verificarDatabase()) {
+                try {
+                    System.out.println("Criando banco de dados...");
+                    conectarBanco.criarBanco();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(rootPane, e.getMessage());
+                }
             }
-            try {
-                conectarBanco.criarTabelas();
-                this.dispose();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            if (!conectarBanco.verificarTabelas()) {
+                try {
+                    System.out.println("Criando tabelas...");
+                    conectarBanco.criarTabelas();
+                    this.dispose();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(rootPane, e.getMessage());
+                }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Senha incorreta");

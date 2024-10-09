@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import java.net.InetAddress;
 
 /**
@@ -73,13 +74,28 @@ public class conectarBanco {
                 int port = Integer.parseInt(ipParts[1]);
                 String url = "jdbc:mysql://" + ipAddress + ":" + port + "/PontoEletronicoTeste";
                 System.out.println("Tentando conectar com " + url);
-                Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
-                System.out.println("Conexão com " + url + " estabelecida!");
-                testConnection.close();
-                validDatabase = ip;
-                break;
-            } catch (SQLException e) {
-                // Handle connection error
+
+                TimerTask task = new TimerTask() {
+                    public void run() {
+                        throw new RuntimeException("Falha ao conectar com " + url);
+                    }
+                };
+
+                Timer timer = new Timer();
+                timer.schedule(task, 15000); // Set the timer for 15 seconds
+
+                try {
+                    Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
+                    System.out.println("Conexão com " + url + " estabelecida!");
+                    testConnection.close();
+                    validDatabase = ip;
+                    timer.cancel(); // Cancel the timer if the connection is successful
+                } catch (SQLException e) {
+                    System.out.println("Falha ao conectar com " + url);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Falha ao conectar com " + ip);
             }
             
         }

@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.net.InetAddress;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 /**
  *
  * @author gbarrosn
@@ -51,31 +52,50 @@ public class conectarBanco {
         return connection;
     }
 
+    private static boolean pingHost(String host) {
+        try {
+            Process process = Runtime.getRuntime().exec("ping -c 1" + host);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("TTL"))  
+ {
+                    return true; // Host é acessível
+                }
+            }
+        } catch (Exception e) {
+            // Erro ao executar o comando ping
+            System.err.println("Erro ao pingar o host: " + e.getMessage());
+        }
+        return false;
+    }
+
     private static String escolherIpDb() {
         String validDatabase = null;
         String[] ips = {"192.168.1.42:3306", "192.168.200.74:3306", "192.168.200.7:3306", "10.1.1.41:3306", "localhost:3306"};
 
         for (String ip : ips) {
-            
-            try {
-                String[] ipParts = ip.split(":");
-                String ipAddress = ipParts[0];
-                int port = Integer.parseInt(ipParts[1]);
-                String url = "jdbc:mysql://" + ipAddress + ":" + port;
-                System.out.println("Tentando conectar com " + url);
+            String[] ipParts = ip.split(":");
+            String ipAddress = ipParts[0];
 
+            // Verifica se o host é acessível antes de tentar a conexão
+            System.out.println("Testando servidor " + ipAddress );
+            if (pingHost(ipAddress)) {
+                System.out.println("Servidor " + ipAddress + " encontrado!");
+                try {
+                    int port = Integer.parseInt(ipParts[1]);
+                    String url = "jdbc:mysql://" + ipAddress + ":" + port;
+                    System.out.println("Tentando conectar com " + url);
 
-                Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD);
-                System.out.println("Conexão com " + url + " estabelecida!");
-                testConnection.close();
-                validDatabase = ip;
-                return validDatabase;
-
-
-            } catch (Exception e) {
-                System.out.println("Falha ao conectar com " + ip);
+                    try (Connection testConnection = DriverManager.getConnection(url, USER, PASSWORD)) {
+                        System.out.println("Conexão com " + url + " estabelecida!");
+                    }
+                    validDatabase = ip;
+                    return validDatabase;
+                } catch (NumberFormatException | SQLException e) {
+                    System.out.println("Falha ao conectar com " + ip);
+                }
             }
-            
         }
 
         return validDatabase;

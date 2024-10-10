@@ -12,6 +12,7 @@ import java.util.TimerTask;
 import java.net.InetAddress;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author gbarrosn
@@ -54,18 +55,23 @@ public class conectarBanco {
 
     private static boolean pingHost(String host) {
         try {
-            Process process = Runtime.getRuntime().exec("ping -c 1" + host);
+            Process process = Runtime.getRuntime().exec("ping " + host);
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
+
+            // Wait for 2 seconds before checking for "TTL"
+            //TimeUnit.SECONDS.sleep(2);
+
             while ((line = reader.readLine()) != null) {
-                if (line.contains("TTL"))  
- {
-                    return true; // Host é acessível
+                if (line.contains("TTL")) {
+                    return true; // Host is accessible
+                } else if (line.contains("Esgotado")) {
+                    return false;
                 }
             }
         } catch (Exception e) {
-            // Erro ao executar o comando ping
-            System.err.println("Erro ao pingar o host: " + e.getMessage());
+            // Error executing the ping command
+            System.err.println("Error pinging host: " + e.getMessage());
         }
         return false;
     }

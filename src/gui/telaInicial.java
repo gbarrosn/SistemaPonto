@@ -4,6 +4,11 @@
  */
 package gui;
 
+import db.conectarBanco;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author gbarrosn
@@ -15,6 +20,11 @@ public class telaInicial extends javax.swing.JFrame {
      */
     public telaInicial() {
         initComponents();
+        try {
+            conectarBanco.conectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

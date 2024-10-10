@@ -53,7 +53,7 @@ public class conectarBanco {
 
     private static String escolherIpDb() {
         String validDatabase = null;
-        String[] ips = {"192.168.1.42:3306", "192.168.200.74:3306", "192.168.200.7:3306", "localhost:3306"};
+        String[] ips = {"192.168.1.42:3306", "192.168.200.74:3306", "192.168.200.7:3306", "10.1.1.41:3306", "localhost:3306"};
 
         for (String ip : ips) {
             

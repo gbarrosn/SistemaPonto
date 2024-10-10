@@ -9,12 +9,15 @@
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/conferirPonto.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/registrarAssinatura.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/db/dadosRegistro.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/gui/configuracoes.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/alterarFuncionario.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/editarPonto.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/listarFuncionarios.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/model/gerarFolhasHelper.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/gui/cadastrarContrato.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/cadastrarFuncionario.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/db/dadosRegistroMensal.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/gui/loginCriarServidor.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/gerarFolhas.java</file>
         </group>
     </open-files>

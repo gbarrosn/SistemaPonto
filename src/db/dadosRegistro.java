@@ -444,10 +444,10 @@ public class dadosRegistro {
     public static void alterarRegistro(registro registro, String alteracao) throws SQLException {
         Connection connection = conectarBanco.conectar();
 
-        String horaEntrada = registro.getHoraEntrada() == null ? "NULL" : "'" + registro.getHoraEntrada() + "'";
-        String saidaAlmoco = registro.getSaidaAlmoco() == null ? "NULL" : "'" + registro.getSaidaAlmoco() + "'";
-        String retornoAlmoco = registro.getRetornoAlmoco() == null ? "NULL" : "'" + registro.getRetornoAlmoco() + "'";
-        String horaSaida = registro.getHoraSaida() == null ? "NULL" : "'" + registro.getHoraSaida() + "'";
+        String horaEntrada = registro.getHoraEntrada() == "" ? "NULL" : "'" + registro.getHoraEntrada() + "'";
+        String saidaAlmoco = registro.getSaidaAlmoco() == "" ? "NULL" : "'" + registro.getSaidaAlmoco() + "'";
+        String retornoAlmoco = registro.getRetornoAlmoco() == "" ? "NULL" : "'" + registro.getRetornoAlmoco() + "'";
+        String horaSaida = registro.getHoraSaida() == "" ? "NULL" : "'" + registro.getHoraSaida() + "'";
 
         String query = "UPDATE registros SET hora_entrada = " + horaEntrada + ", saida_almoco = " + saidaAlmoco + ", retorno_almoco = " + retornoAlmoco + ", saida = " + horaSaida + ", alteracao = '" + alteracao + "', atestado = " + registro.isAtestado() + " WHERE id = " + registro.getIdRegistro();
 

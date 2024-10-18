@@ -224,6 +224,7 @@ public class gerarFolhas extends javax.swing.JFrame {
             File newFolder = new File(path + File.separator + folderName);
             newFolder.mkdir();
 
+        JOptionPane.showMessageDialog(this, "Aguarde enquanto os registros são gerados...");
         for (registroMensal r : registrosMesSelecionado) {
             try {
                 if (r.getFuncionario().isServidor()) {

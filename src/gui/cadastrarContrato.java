@@ -6,6 +6,8 @@ package gui;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import db.dadosContrato;
 
 /**
@@ -106,6 +108,11 @@ public class cadastrarContrato extends javax.swing.JFrame {
         String contrato = jTextField1.getText();
         try {
             dadosContrato.cadastrarContrato(contrato);
+            JOptionPane.showMessageDialog(null, "Contrato cadastrado com sucesso!");
+
+            telaInicial tela = new telaInicial();
+            tela.setVisible(true);
+            this.dispose();
         } catch (SQLException ex) {
             System.out.println("Erro ao cadastrar o contrato: " + ex.getMessage());
         }

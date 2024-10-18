@@ -237,6 +237,7 @@ public class gerarFolhas extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+        JOptionPane.showMessageDialog(this, "Registros gerados com sucesso!");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

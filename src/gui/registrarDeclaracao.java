@@ -237,7 +237,7 @@ public class registrarDeclaracao extends javax.swing.JFrame {
             registroAtestado.setRetornoAlmoco(" - ");
             registroAtestado.setHoraSaida(" - ");
 
-            registroAtestado.setAlteracao("Declaração registrada por: " + funcionarioAdm.getNome());
+            registroAtestado.setAlteracao("Declaração registrada");
 
             try {
                 //dadosRegistro.adicionarAtestado(registroAlterar);

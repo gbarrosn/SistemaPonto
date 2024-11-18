@@ -287,7 +287,7 @@ public class gerarFolhasHelper {
             funcao.getCell(0).setCellValue("Cargo: " + registro.getFuncionario().getFuncao());
 
             // Data de admissão
-            //funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
+            funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
 
             // chefia imediata
             List<funcionario> func = new ArrayList<funcionario>();
@@ -306,7 +306,7 @@ public class gerarFolhasHelper {
             }
             
             // Carga horária
-            //escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
+            escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
             
 
             //criando uma lista das datas do mês

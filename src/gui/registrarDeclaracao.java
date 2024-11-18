@@ -4,8 +4,15 @@
  */
 package gui;
 
-import model.funcionario;
-import model.registro;
+import java.sql.SQLException;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
+import db.dadosFuncionario;
+import db.dadosRegistro;
+import model.*;
 
 /**
  *
@@ -46,7 +53,7 @@ public class registrarDeclaracao extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/GovPERGBpequeno1.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jComboBox2.setModel(new DefaultComboBoxModel<funcionario>);
+        jComboBox2.setModel(new DefaultComboBoxModel<funcionario>());
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -289,7 +296,7 @@ public class registrarDeclaracao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private JComboBox<funcionario> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxData;
     private javax.swing.JComboBox<String> jComboBoxMes;
     private javax.swing.JLabel jLabel1;

@@ -5,9 +5,13 @@
 package gui;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import db.dadosFuncionario;
@@ -19,12 +23,15 @@ import model.*;
  * @author gbarrosn
  */
 public class registrarDeclaracao extends javax.swing.JFrame {
+    List<registro> registrosMesSelecionado = new ArrayList<registro>();
+    List<funcionario> funcionarios = new ArrayList<>();
 
     /**
      * Creates new form registrarDeclaracao
      */
     public registrarDeclaracao() {
         initComponents();
+        popularComboBox2();
     }
 
     /**
@@ -222,7 +229,6 @@ public class registrarDeclaracao extends javax.swing.JFrame {
 
         } else if (funcionarioAdm.getSenha().equals(jPasswordField1.getText().trim()) && funcionarioAdm.isAdm()) {
 
-            registroAtestado.setAtestado(true);
             registroAtestado.setIdFuncionario(((funcionario) jComboBox2.getSelectedItem()).getIdFuncionario());
             registroAtestado.setData(jComboBoxData.getSelectedItem().toString());
             registroAtestado.setMes(jComboBoxMes.getSelectedIndex() + 1);
@@ -231,11 +237,11 @@ public class registrarDeclaracao extends javax.swing.JFrame {
             registroAtestado.setRetornoAlmoco(" - ");
             registroAtestado.setHoraSaida(" - ");
 
-            registroAtestado.setAlteracao("Atestado registrado por: " + funcionarioAdm.getNome());
+            registroAtestado.setAlteracao("Declaração registrada por: " + funcionarioAdm.getNome());
 
             try {
                 //dadosRegistro.adicionarAtestado(registroAlterar);
-                dadosRegistro.criarAtestado(registroAtestado);
+                dadosRegistro.registrarDeclaracao(registroAtestado);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -250,6 +256,34 @@ public class registrarDeclaracao extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Verifique a matricula e a senha!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void popularComboBox2() {
+        try {
+            funcionarios = dadosFuncionario.buscarFuncionarios();
+    
+            DefaultComboBoxModel<funcionario> model = new DefaultComboBoxModel<>();
+            for (funcionario f : funcionarios) {
+                model.addElement(f);
+            }
+            jComboBox2.setModel(model);
+            jComboBox2.setRenderer(new FuncionarioRenderer());
+        } catch (SQLException e) {
+            // Handle the exception appropriately, e.g., show an error message to the user
+            JOptionPane.showMessageDialog(this, "Erro ao popular ComboBox: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // For logging or debugging
+        }
+    }
+
+    class FuncionarioRenderer extends DefaultListCellRenderer {
+        @Override
+        public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            if (value instanceof funcionario) {
+                funcionario func = (funcionario) value;
+                return super.getListCellRendererComponent(list, func.getNome(), index, isSelected, cellHasFocus);
+            }
+            return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        }
+    }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:

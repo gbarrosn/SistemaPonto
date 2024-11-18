@@ -569,6 +569,26 @@ public class dadosRegistro {
         }
     }
 
+    public static void registrarDeclaracao(registro registro) throws SQLException {
+        try (Connection connection = conectarBanco.conectar()) {
+            String query = "SELECT * FROM registros WHERE id_funcionario = " + registro.getIdFuncionario() + " AND data = '" + registro.getData() + "'";
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+
+                if (resultSet.next()) {
+                    String query2 = "UPDATE registros SET alteracao = '" + registro.getAlteracao() + "' WHERE id_funcionario = " + registro.getIdFuncionario() + " AND data = '" + registro.getData() + "'";
+                    statement.executeUpdate(query2);
+                } else {
+                    String query3 = "INSERT INTO registros (id_funcionario, data, alteracao) VALUES (" + registro.getIdFuncionario() + ", '" + registro.getData() + "', '" + registro.getAlteracao() + "')";
+                    statement.executeUpdate(query3);
+                }
+            } catch (SQLException e) {
+                throw e;
+            }
+    }
+}
+
 public static void main(String[] args) {
     List<registro> registros = new ArrayList<>();
     try {

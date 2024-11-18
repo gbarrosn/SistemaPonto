@@ -228,11 +228,11 @@ public class gerarFolhas extends javax.swing.JFrame {
             try {
                 if (r.getFuncionario().isServidor()) {
                     gerarFolhasHelper.gerarFolhasPontoServidor(r, newFolder);
+                } else if (r.getFuncionario().getVinculo().equals("CTD")) {
+                    gerarFolhasHelper.gerarFolhasPontoServidor(r, newFolder);
                 } else if (!r.getFuncionario().isServidor() && r.getFuncionario().getCodigoDeBarras() != null) {
                     gerarFolhasHelper.gerarFolhaPontoTerceirizado(r, newFolder);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Criar função para gerar uma folha de ponto genérica para terceirizados que não são da rm e CTD também");
-                }
+                } 
             } catch (IOException e) {
                 e.printStackTrace();
             }

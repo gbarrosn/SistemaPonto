@@ -168,7 +168,7 @@ public class gerarFolhasHelper {
                         if (r.getSaidaAntecipada() != null) {
                             linhaDia.getCell(6).setCellValue(r.getSaidaAntecipada());
                         }
-                        if (r.getAlteracao() != null) {
+                        if (r.getAlteracao() != null && r.getAlteracao().contains("Declaração")) {
                             linhaDia.getCell(6).setCellValue(r.getAlteracao());
                         }
                         
@@ -369,7 +369,7 @@ public class gerarFolhasHelper {
                             linhaDia.getCell(7).setCellValue("Sim");
                             
                         }
-                        if (r.getAlteracao() != null) {
+                        if (r.getAlteracao() != null && r.getAlteracao().contains("Declaração")) {
                             linhaDia.getCell(6).setCellValue(r.getAlteracao());
                         }
                         break;

@@ -27,7 +27,7 @@ public class dadosFuncionario {
         Connection connection = conectarBanco.conectar();
         
         // Create a query to retrieve the funcionarios
-        String query = "SELECT * FROM funcionarios";
+        String query = "SELECT * FROM funcionarios order by nome";
         
         try {
             // Create a statement

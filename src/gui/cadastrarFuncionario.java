@@ -402,7 +402,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
         boolean servidor = false;
 
         String admS = jComboBoxFuncao.getSelectedItem().toString();
-        if (admS.equals("Coordenação" )|| admS.equals("Assistente Coordenação")) {
+        if (admS.equals("Coordenação") || admS.equals("Assistente Coordenação")) {
             adm = true;
         } else {
             adm = false;
@@ -437,7 +437,11 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
             novoFuncionario.setContrato(" - ");
         } else if (novoFuncionario.getVinculo().equals("CTD")) {
             novoFuncionario.setContrato("CTD");
-        } 
+        }
+        
+        if (novoFuncionario.getFuncao().equals("Coordenação") || novoFuncionario.getFuncao().equals("Assistente Coordenação")) {
+            novoFuncionario.setAdm(true);
+        }
         
 
 

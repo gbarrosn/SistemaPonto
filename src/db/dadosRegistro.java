@@ -261,7 +261,7 @@ public class dadosRegistro {
         return false;
     }
 
-    public static void registrarPonto(int id_funcionario, String hora, String data) throws SQLException {
+    public static void registrarPonto(int id_funcionario, String hora, String data, String nome) throws SQLException {
         // Connect to the database
         Connection connection = conectarBanco.conectar();
         
@@ -278,30 +278,34 @@ public class dadosRegistro {
             
             if (!resultSet.next()) {
                 criarRegistro(id_funcionario, hora, data);
-                throw new SQLException("Entrada registrada!");
+                throw new SQLException("Entrada de " + nome + " registrada!");
             } else if (resultSet.getString("saida_almoco") == null) {
                 registrarSaidaAlmoco(id_funcionario, hora, data);
-                throw new SQLException("Saída para o almoço registrada!");
+                throw new SQLException("Saída para o almoço de " + nome + " registrada!");
             } else if (resultSet.getString("retorno_almoco") == null) {
                 registrarRetornoAlmoco(id_funcionario, hora, data);
-                throw new SQLException("Retorno do almoço registrado!");
+                throw new SQLException("Retorno do almoço de " + nome + " registrado!");
+            } else if (resultSet.getString("saida") == null) {
+                try {
+                    // Create a statement
+                    Statement statement2 = connection.createStatement();
+                    
+                    // Execute the query
+                    statement2.executeUpdate(query);
+                    throw new SQLException("A saída de " + nome + " foi registrada!");
+                } catch (SQLException e) {
+                    throw e;
+        
+                }
+                
             } else if (resultSet.getString("saida") != null) {
-                throw new SQLException("O funcionário já registrou a saída");
+                throw new SQLException(nome + " já registrou a saída");
             }
         } catch (SQLException e) {
             throw e;
         }
         
-        try {
-            // Create a statement
-            Statement statement = connection.createStatement();
-            
-            // Execute the query
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            throw e;
-
-        }
+        
     }
 
     public static void registrarSaidaAlmoco(int id_funcionario, String hora, String data) throws SQLException {

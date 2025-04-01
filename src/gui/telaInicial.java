@@ -62,6 +62,7 @@ public class telaInicial extends javax.swing.JFrame {
         });
 
         jButtonAssinatura.setText("Registrar Assinatura");
+        jButtonAssinatura.setEnabled(false);
         jButtonAssinatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAssinaturaActionPerformed(evt);
@@ -69,6 +70,7 @@ public class telaInicial extends javax.swing.JFrame {
         });
 
         jButtonAssinaturaCoordenacao.setText("Gerar Folhas de Ponto");
+        jButtonAssinaturaCoordenacao.setEnabled(false);
         jButtonAssinaturaCoordenacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAssinaturaCoordenacaoActionPerformed(evt);
@@ -76,6 +78,7 @@ public class telaInicial extends javax.swing.JFrame {
         });
 
         jButton1.setText("Configurações");
+        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

@@ -135,6 +135,7 @@
             <Component class="javax.swing.JButton" name="jButtonAssinatura">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrar Assinatura"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAssinaturaActionPerformed"/>
@@ -143,6 +144,7 @@
             <Component class="javax.swing.JButton" name="jButtonAssinaturaCoordenacao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gerar Folhas de Ponto"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAssinaturaCoordenacaoActionPerformed"/>
@@ -151,6 +153,7 @@
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

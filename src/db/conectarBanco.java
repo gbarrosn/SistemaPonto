@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class conectarBanco {
 
     // Atributos de conexão
-    private static final String SERVER = "localhost:3306";
+    private static final String SERVER = "192.168.1.42:3306";
     private static final String USER = "ponto"; // Replace with your MySQL username
     private static final String PASSWORD = "senha"; // Replace with your MySQL password
     private static final String DATABASE_URL = "jdbc:mysql://" + SERVER + "/PontoEletronico"; // Database name 

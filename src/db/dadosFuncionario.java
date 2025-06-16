@@ -223,7 +223,7 @@ public class dadosFuncionario {
                         "servidor = " + funcionario.isServidor() + ", " +
                         "vinculo = '" + funcionario.getVinculo() + "', " +
                         "contrato = '" + funcionario.getContrato() + "', " +
-                        "empresa = '" + funcionario.getEmpresa() + "', " +
+                        "empresa = '" + funcionario.getEmpresa() + "' " +
                         "WHERE id = " + funcionario.getIdFuncionario();
         
         try {

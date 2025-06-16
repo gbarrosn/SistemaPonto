@@ -230,9 +230,11 @@ public class gerarFolhas extends javax.swing.JFrame {
                     gerarFolhasHelper.gerarFolhasPontoServidor(r, newFolder);
                 } else if (r.getFuncionario().getVinculo().equals("CTD")) {
                     gerarFolhasHelper.gerarFolhasPontoServidor(r, newFolder);
-                } else if (!r.getFuncionario().isServidor() && r.getFuncionario().getCodigoDeBarras() != null) {
+                } else if (!r.getFuncionario().isServidor() && r.getFuncionario().getEmpresa().equals("RM")) {
                     gerarFolhasHelper.gerarFolhaPontoTerceirizado(r, newFolder);
-                } 
+                } else if (!r.getFuncionario().getEmpresa().equals("RM")) {
+                    gerarFolhasHelper.gerarFolhasPontoTerceirizados(r, newFolder);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

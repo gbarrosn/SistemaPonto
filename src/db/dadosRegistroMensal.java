@@ -74,6 +74,7 @@ public class dadosRegistroMensal {
                     func.setServidor(result.getBoolean("servidor"));
                     func.setVinculo(result.getString("vinculo"));
                     func.setContrato(result.getString("contrato"));
+                    func.setEmpresa(result.getString("empresa"));
 
                     registro.setFuncionario(func);
 

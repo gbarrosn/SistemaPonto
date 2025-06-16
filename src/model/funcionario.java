@@ -25,6 +25,7 @@ public class funcionario {
     boolean servidor;
     String vinculo;
     String contrato;
+    String empresa;
 
     /*public funcionario(int idFuncionario, String nome, String matricula, String setor, String turno, String funcao, String dataAdmissao, String escala, String horario, String horasSemanais, String codigoDeBarras, String senha) {
         this.idFuncionario = idFuncionario;
@@ -42,6 +43,9 @@ public class funcionario {
     }*/
 
     // Getters
+    public String getEmpresa() {
+        return empresa;
+    }
     public String getVinculo() {
         return vinculo;
     }
@@ -168,5 +172,9 @@ public class funcionario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 }

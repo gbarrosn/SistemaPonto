@@ -167,7 +167,8 @@ public class conectarBanco {
                                         "  adm bit, " +
                                         "  servidor bit," +
                                         "  vinculo TEXT," +
-                                        "  contrato TEXT" +
+                                        "  contrato TEXT," +
+                                        "  empresa TEXT" +
                                         ");";
 
         String sqlCriarRegistros = "CREATE TABLE registros (" +

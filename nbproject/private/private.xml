@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/gbarrosn/SistemaPonto/src/gui/atualizarBarcodes.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/db/conectarBanco.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/telaInicial.java</file>
-            <file>file:/home/gbarrosn/SistemaPonto/src/db/dadosRegistro.java</file>
-            <file>file:/home/gbarrosn/SistemaPonto/src/gui/conferirPonto.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/model/gerarFolhasHelper.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/model/funcionario.java</file>
+            <file>file:/home/gbarrosn/SistemaPonto/src/model/registro.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/db/dadosFuncionario.java</file>
             <file>file:/home/gbarrosn/SistemaPonto/src/gui/cadastrarFuncionario.java</file>
-            <file>file:/home/gbarrosn/SistemaPonto/src/gui/alterarFuncionario.java</file>
-            <file>file:/home/gbarrosn/SistemaPonto/src/gui/registrarDeclaracao.java</file>
-            <file>file:/home/gbarrosn/SistemaPonto/src/gui/gerarFolhas.java</file>
-            <file>file:/home/gbarrosn/SistemaPonto/src/gui/editarPonto.java</file>
         </group>
     </open-files>
 </project-private>

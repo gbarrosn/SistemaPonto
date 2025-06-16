@@ -486,7 +486,7 @@ public class gerarFolhasHelper {
 
             // Função
             Row funcao = sheet.getRow(3);
-            funcao.getCell(0).setCellValue("Cargo: " + registro.getFuncionario().getFuncao());
+            funcao.getCell(0).setCellValue("Auxiliar de Servicos Gerais"); //TODO: deixar dinamico pra cada empresa
 
             // Data de admissão
             funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona

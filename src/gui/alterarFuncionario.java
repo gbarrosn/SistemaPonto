@@ -385,6 +385,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         String contrato = jComboBoxContrato.getSelectedItem().toString();
         String empresa = jComboBoxEmpresa.getSelectedItem().toString();
 
+
         funcionario novoFuncionario = new funcionario();
         novoFuncionario.setIdFuncionario(idFuncionario); 
         novoFuncionario.setNome(nome);
@@ -401,6 +402,7 @@ public class alterarFuncionario extends javax.swing.JFrame {
         novoFuncionario.setVinculo(vinculo);
         novoFuncionario.setContrato(contrato);
         novoFuncionario.setEmpresa(empresa);
+
 
         if (novoFuncionario.getVinculo().equals("Servidor")) {
             novoFuncionario.setContrato(" - ");

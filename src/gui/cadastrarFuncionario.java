@@ -25,6 +25,7 @@ public class cadastrarFuncionario extends javax.swing.JFrame {
      */
     public cadastrarFuncionario() {
         initComponents();
+        jComboBoxVinculo.setSelectedItem("Terceirizado");
 
         // popular o combobox de contrato
         List<String> contratos = new ArrayList<>();

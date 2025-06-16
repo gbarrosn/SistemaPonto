@@ -460,6 +460,205 @@ public class gerarFolhasHelper {
         }
             
     }
+    
+    public static void gerarFolhasPontoTerceirizados(registroMensal registro, File path) throws FileNotFoundException, IOException {
+            
+            String empresa = registro.getFuncionario().getEmpresa();
+            try (Workbook workbook = new XSSFWorkbook(new FileInputStream(empresa + ".xlsx"))) {
+                
+                Sheet sheet = workbook.getSheetAt(0);
+    
+                // Preencher cabeçalho
+
+            // Nome
+            Row nome = sheet.getRow(1);
+            nome.getCell(0).setCellValue("Nome: " + registro.getFuncionario().getNome()); // funciona
+
+            // Matrícula
+            nome.getCell(6).setCellValue("Matrícula: " + String.valueOf(registro.getFuncionario().getMatricula())); //funciona
+
+            // Lotação
+            Row lotacao = sheet.getRow(2);
+            lotacao.getCell(0).setCellValue("Lotação: " + registro.getFuncionario().getSetor());
+
+            // mes atual
+            lotacao.getCell(6).setCellValue("Mês: " + numeroMesToNome(registro.getRegistros().get(0).getMes()) + " de " + registro.getRegistros().get(0).getData().split("/")[2]); // funciona
+
+            // Função
+            Row funcao = sheet.getRow(3);
+            funcao.getCell(0).setCellValue("Cargo: " + registro.getFuncionario().getFuncao());
+
+            // Data de admissão
+            funcao.getCell(6).setCellValue("Data de admissão: " + registro.getFuncionario().getDataAdmissao()); // funbciona
+
+            // chefia imediata
+            List<funcionario> func = new ArrayList<funcionario>();
+            try {
+                func = dadosFuncionario.buscarFuncionarios();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Row escala = sheet.getRow(4);
+            for (funcionario f : func) {
+                if (f.getFuncao().equals("Coordenação")) {
+                    
+                    escala.getCell(0).setCellValue("Chefia imediata: " + f.getNome());
+                }
+            }
+            
+            // Carga horária
+            escala.getCell(6).setCellValue("Carga horária: " + registro.getFuncionario().getHorasSemanais() + "h semanais."); // funciona
+            
+
+            //criando uma lista das datas do mês
+            List<String> datas = new ArrayList<String>();
+            int dia = 1;
+            while (dia <= 31) {
+                String data = "";
+                String diaStr = dia < 10 ? "0" + String.valueOf(dia) : String.valueOf(dia);
+                String mesStr = registro.getRegistros().get(0).getMes() < 10 ? "0" + String.valueOf(registro.getRegistros().get(0).getMes()) : String.valueOf(registro.getRegistros().get(0).getMes());
+                data = diaStr + "/" + mesStr + "/" + String.valueOf(registro.getRegistros().get(0).getData().split("/")[2]);
+                dia += 1;
+                datas.add(data);
+            }
+
+            // preenchendo o cabeçalho com periodo de apuração
+            Row cabeçalho = sheet.getRow(0);
+            Cell cell = cabeçalho.getCell(0);
+
+            CellStyle styleTitulo = workbook.createCellStyle();
+            Font font = workbook.createFont();
+            font.setBold(true);
+            font.setFontHeightInPoints((short) 18);
+            styleTitulo.setFont(font);
+            styleTitulo.setAlignment(HorizontalAlignment.CENTER);
+            cell.setCellStyle(styleTitulo);
+            styleTitulo.setWrapText(true);
+
+            CellStyle style = workbook.createCellStyle();
+            style.setAlignment(HorizontalAlignment.CENTER);
+            Font font2 = workbook.createFont();
+            font2.setBold(true);
+            style.setFont(font2);
+            style.setWrapText(true);
+
+            cell.setCellValue("Folha de Ponto\n Período de apuração\n" + datas.get(0) + " a " + datas.get(datas.size()-1));
+
+            int indexQuebraLinha = cell.getStringCellValue().indexOf("\n");
+
+            RichTextString richText = cell.getRichStringCellValue();
+            richText.applyFont(0, indexQuebraLinha, font);
+            richText.applyFont(indexQuebraLinha, richText.length(), font2);
+
+            //preenchendo a tabela de ponto
+            int linha = 7;
+            for (String data : datas) {
+                Row linhaDia = sheet.getRow(linha);
+
+                for (registro r : registro.getRegistros()) {
+                    if (r.getData().equals(data)) {
+                        linhaDia.getCell(2).setCellValue(r.getHoraEntrada());
+                        linhaDia.getCell(3).setCellValue(r.getSaidaAlmoco());
+                        linhaDia.getCell(4).setCellValue(r.getRetornoAlmoco());
+                        linhaDia.getCell(5).setCellValue(r.getHoraSaida());
+
+                        if (r.isAtestado()) {
+                            linhaDia.getCell(6).setCellValue("Atestado.");
+                            linhaDia.getCell(7).setCellValue("Sim");
+                            
+                        }
+                        if (r.getAlteracao() != null && r.getAlteracao().contains("Declaração")) {
+                            linhaDia.getCell(6).setCellValue(r.getAlteracao());
+                        }
+                        break;
+                    }
+                }
+                linhaDia.getCell(0).setCellValue(data);
+                linhaDia.getCell(1).setCellValue(registro.getRegistros().get(0).dataToDia(data));
+                linha += 1;
+            }
+
+
+            try {
+                //preenchendo assinatura
+                assinatura assinatura = registro.getAssinatura();
+
+                String assinaturaStr = "Assinado por " + registro.getFuncionario().getNome() + " em " + assinatura.getDataAssinatura() + " às " + assinatura.getHoraAssinatura();
+
+                Row assinaturaRow = sheet.getRow(38);
+                Cell assinaturaCell = assinaturaRow.getCell(0);
+                assinaturaCell.setCellValue(assinaturaStr);
+                
+                CellStyle boldStyle = workbook.createCellStyle();
+                Font boldFont = workbook.createFont();
+                boldFont.setBold(true);
+                boldStyle.setFont(boldFont);
+                boldStyle.setAlignment(HorizontalAlignment.CENTER);
+                
+                CellStyle styleCentralizado = workbook.createCellStyle();
+                styleCentralizado.setAlignment(HorizontalAlignment.CENTER);
+
+                assinaturaCell.setCellStyle(styleCentralizado);
+                
+                int indexNomeFuncionario = assinaturaStr.indexOf(registro.getFuncionario().getNome());
+                RichTextString richTextAssinatura = assinaturaCell.getRichStringCellValue();
+
+                richTextAssinatura.applyFont(indexNomeFuncionario, indexNomeFuncionario + registro.getFuncionario().getNome().length(), boldFont);
+
+            } catch (NullPointerException e) {
+                Row assinaturaRow = sheet.getRow(38);
+                assinaturaRow.getCell(0).setCellValue("");
+            }
+
+            try {
+                //preenchendo assinatura da coordenação
+                assinaturaCoordenacao assinaturaCoordenacao = registro.getAssinaturaCoordenacao();
+
+                String assinaturaCoordenacaoStr = "Assinado por " + assinaturaCoordenacao.getNomeCoordenacao() + " em " + assinaturaCoordenacao.getDataAssinatura() + " às " + assinaturaCoordenacao.getHoraAssinatura();
+
+                Row assinaturaCoordenacaoRow = sheet.getRow(39);
+                assinaturaCoordenacaoRow.getCell(0).setCellValue(assinaturaCoordenacaoStr);
+
+                CellStyle boldStyle = workbook.createCellStyle();
+                Font boldFont = workbook.createFont();
+                boldFont.setBold(true);
+                boldStyle.setFont(boldFont);
+                boldStyle.setAlignment(HorizontalAlignment.CENTER);
+
+                CellStyle styleCentralizado = workbook.createCellStyle();
+                styleCentralizado.setAlignment(HorizontalAlignment.CENTER);
+
+                assinaturaCoordenacaoRow.getCell(0).setCellStyle(styleCentralizado);
+
+                int indexNomeCoordenacao = assinaturaCoordenacaoStr.indexOf(assinaturaCoordenacao.getNomeCoordenacao());
+                RichTextString richTextAssinaturaCoordenacao = assinaturaCoordenacaoRow.getCell(0).getRichStringCellValue();
+
+                richTextAssinaturaCoordenacao.applyFont(indexNomeCoordenacao, indexNomeCoordenacao + assinaturaCoordenacao.getNomeCoordenacao().length(), boldFont);
+
+            } catch (NullPointerException e) {
+                Row assinaturaCoordenacaoRow = sheet.getRow(39);
+                assinaturaCoordenacaoRow.getCell(0).setCellValue("");
+            }
+
+            // criar excel para o libreoffice converter para pdf
+            try (FileOutputStream outputStream = new FileOutputStream(path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx")) {
+                workbook.write(outputStream);
+            }
+
+            String caminho = path.getAbsolutePath() + File.separator + "Folha de ponto " + registro.getFuncionario().getNome() + ".xlsx";
+            caminho = caminho.replace("\\ ", "");
+
+            converterExcelParaPdf(caminho, path.getAbsolutePath());
+          
+            workbook.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            
+    }
 
     public static void createBarcode(String imageName, String myString) {
 

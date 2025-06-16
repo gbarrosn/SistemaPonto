@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import db.dadosContrato;
 import db.dadosFuncionario;
+import java.sql.SQLException;
 import model.funcionario;
 
 /**
@@ -41,6 +42,20 @@ public class alterarFuncionario extends javax.swing.JFrame {
         jPasswordField1.setText(funcionarioAlterar.getSenha());
         jComboBoxEmpresa.setSelectedItem(funcionarioAlterar.getEmpresa());
 
+        List<String> contratos = null;
+        try {
+            contratos = dadosContrato.buscarContratos();
+        } catch (SQLException ex) {
+            System.getLogger(alterarFuncionario.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
+        int index = 0;
+        
+        while (index < contratos.size()) {
+            jComboBoxContrato.addItem(contratos.get(index));
+            index ++;
+        }
+        
         jComboBoxContrato.addItem(funcionarioAlterar.getContrato());
         jComboBoxContrato.setSelectedItem(funcionarioAlterar.getContrato());
 

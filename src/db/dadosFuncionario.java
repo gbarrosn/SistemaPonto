@@ -55,6 +55,7 @@ public class dadosFuncionario {
                 boolean servidor = resultSet.getBoolean("servidor");
                 String vinculo = resultSet.getString("vinculo");
                 String contrato = resultSet.getString("contrato");
+                String empresa = resultSet.getString("empresa");
 
                 // Retrieve other fields as needed
                 
@@ -76,6 +77,7 @@ public class dadosFuncionario {
                 funcionario.setServidor(servidor);
                 funcionario.setVinculo(vinculo);
                 funcionario.setContrato(contrato);
+                funcionario.setEmpresa(empresa);
                 // Set other fields as needed
                 
                 // Add the funcionario to the list
@@ -128,6 +130,7 @@ public class dadosFuncionario {
                 boolean servidor = resultSet.getBoolean("servidor");
                 String vinculo = resultSet.getString("vinculo");
                 String contrato = resultSet.getString("contrato");
+                String empresa = resultSet.getString("empresa");
 
                 // Retrieve other fields as needed
                 
@@ -149,6 +152,7 @@ public class dadosFuncionario {
                 funcionario.setServidor(servidor);
                 funcionario.setVinculo(vinculo);
                 funcionario.setContrato(contrato);
+                funcionario.setEmpresa(empresa);
 
                 // Set other fields as needed
             }
@@ -173,14 +177,14 @@ public class dadosFuncionario {
         String query = "INSERT INTO funcionarios " + 
                         "(nome, matricula, setor, turno, funcao," +
                         "data_admissao, escala, horario, horas_semanais, " +
-                        "codigo_de_barras, senha, adm, servidor, vinculo, contrato) " +
+                        "codigo_de_barras, senha, adm, servidor, vinculo, contrato, empresa) " +
                         "VALUES ('" + funcionario.getNome() + "', '" + 
                         funcionario.getMatricula() + "', '" + funcionario.getSetor() + "', '" + 
                         funcionario.getTurno() + "', '" + funcionario.getFuncao() + "', '" + 
                         funcionario.getDataAdmissao() + "', '" + funcionario.getEscala() + "', '" + 
                         funcionario.getHorario() + "', '" + funcionario.getHorasSemanais() + "', '" + 
                         funcionario.getCodigoDeBarras() + "', '" + funcionario.getSenha() + "'," +
-                        funcionario.isAdm() + ", " + funcionario.isServidor() + ", '"+ funcionario.getVinculo() + "', '" + funcionario.getContrato() + "')";
+                        funcionario.isAdm() + ", " + funcionario.isServidor() + ", '"+ funcionario.getVinculo() + "', '" + funcionario.getContrato() + "', '" + funcionario.getEmpresa() + "')";
         
         try {
             // Create a statement
@@ -218,7 +222,8 @@ public class dadosFuncionario {
                         "adm = " + funcionario.isAdm() + ", " +
                         "servidor = " + funcionario.isServidor() + ", " +
                         "vinculo = '" + funcionario.getVinculo() + "', " +
-                        "contrato = '" + funcionario.getContrato() + "' " +
+                        "contrato = '" + funcionario.getContrato() + "', " +
+                        "empresa = '" + funcionario.getEmpresa() + "', " +
                         "WHERE id = " + funcionario.getIdFuncionario();
         
         try {
@@ -294,6 +299,7 @@ public class dadosFuncionario {
                 boolean servidor = resultSet.getBoolean("servidor");
                 String vinculo = resultSet.getString("vinculo");
                 String contrato = resultSet.getString("contrato");
+                String empresa = resultSet.getString("empresa");
 
                 // Retrieve other fields as needed
                 
@@ -315,6 +321,7 @@ public class dadosFuncionario {
                 funcionario.setServidor(servidor);
                 funcionario.setVinculo(vinculo);
                 funcionario.setContrato(contrato);
+                funcionario.setEmpresa(empresa);
                 // Set other fields as needed
             }
             
